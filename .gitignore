@@ -1,0 +1,8 @@
+*.ipynb_checkpoints/
+*.pyc
+*.fit
+*.fits
+*.pickle
+*.out
+.ipynb_checkpoints
+*/.ipynb_checkpoints/*
