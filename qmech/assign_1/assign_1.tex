@@ -1,0 +1,371 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#1}
+\newcommand{\hmwkDueDate}{Due August 28, 2018}
+\newcommand{\hmwkClass}{Advanced Quantum Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+%\pagebreak
+
+\begin{homeworkProblem}
+
+
+\textbf{Solution}\\
+We solve each part separately.
+\\
+
+\textbf{Part 1 - Commutators}
+
+We expand out each term as follows,
+$$\comm{A}{\comm{B}{C}} = ABC - ACB -BCA + CBA$$
+$$\comm{C}{\comm{A}{B}} = CAB - CBA - ABC + BAC$$
+$$\comm{B}{\comm{C}{A}} = BCA - BAC - CAB + ACB$$
+
+Adding the three expressions above, we arrive at the expression
+$$[A, [B, C]] + [C, [A, B]] + [B, [C, A]] = 0.$$
+Hence Proved.\\
+
+\textbf{Part 2 - Poisson Brackets}\\
+$\pb{.}{.}$ denotes Poisson Bracket, $X_y=\pdv{X}{y}$ and $X_{yz}=\pdv{X}{y}{z}$. We expand each term as follows,'
+\begin{flalign*}
+\acomm{A}{\acomm{B}{C}}&=\acomm{A}{B_q C_p - B_p C_q}\\
+&=A_q B_{pq} C_p + A_q B_q C_{pp} + A_p B_{pq} C_p + A_p B_q C_{pq} -A_q B_{pp}C_q -A_q B_{p}C_{pq}-A_p B_{pq}C_q - A_p B_{p}C_{qq}\\
+\acomm{C}{\acomm{A}{B}}&=C_q A_{pq} B_p + C_q A_q B_{pp} + C_p A_{pq} B_p + C_p A_q B_{pq} -C_q A_{pp}B_q -C_q A_{p}B_{pq}-C_p A_{pq}B_q - C_p A_{p}B_{qq}\\
+\acomm{B}{\acomm{C}{A}}&=B_q C_{pq} A_p + B_q C_q A_{pp} + B_p C_{pq} A_p + B_p C_q A_{pq} -B_q C_{pp}A_q -B_q C_{p}A_{pq}-B_p C_{pq}A_q - B_p C_{p}A_{qq}
+\end{flalign*}
+Adding the three expressions above, we arrive at the expression
+$$\acomm{A}{\acomm{B}{C}}+\acomm{C}{\acomm{A}{B}}+\acomm{B}{\acomm{C}{A}}=0$$
+Hence Proved.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\textbf{Solution}
+\begin{flalign*}
+\comm{AB}{CD} &= A\comm{B}{CD} + \comm{A}{CD}B\\
+&= A\comm{B}{C}D + AC\comm{B}{D} + C\comm{A}{D}B + \comm{A}{C}DB\\
+&= A(\acomm{B}{C}-2CB)D + AC(2BD - \acomm{B}{D}) + C(2AD - \acomm{A}{D}) + (\acomm{A}{C}-2CA)DB\\
+&= A\acomm{B}{C}D-2ACBD + 2ACBD - AC\acomm{B}{D} + 2CADB - C\acomm{A}{D}B + \acomm{A}{C}DB-2CADB\\
+&= -AC\acomm{B}{D} + A\acomm{B}{C}D - C\acomm{A}{D}B + \acomm{A}{C}DB\\
+&= -AC\acomm{D}{B} + A\acomm{C}{B}D - C\acomm{D}{A}B + \acomm{C}{A}DB
+\end{flalign*}
+Hence Proved.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+\textbf{Solution}\\
+$$\va{\sigma}\vdot\va{n}=\left(
+\begin{array}{cc}
+n_z & n_x-i n_y \\
+n_x+i n_y & -n_z \\
+\end{array}
+\right)$$
+The corresponding equation for eigenvalues of this matrix is,
+$$\lambda ^2-n_x^2-n_y^2-n_z^2=0$$
+which gives as eigenvalues $\lambda = \pm \sqrt{n_x^2+n_y^2+n_z^2}$. Substituting these values in the eigenvalue equation $(\va{\sigma}\vdot\va{n}) X = \lambda X$, we get the following eigenvectors
+$$\left(
+\begin{array}{cc}
+\frac{-\sqrt{n_x^2+n_y^2+n_z^2}+n_z}{n_x+i n_y}\\
+1 \\
+\end{array}
+\right) \text{and} \left(
+\begin{array}{cc}
+\frac{\sqrt{n_x^2+n_y^2+n_z^2}+n_z}{n_x+i n_y}\\
+1 \\
+\end{array}
+\right) $$
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+\textbf{Solution}\\
+Let $\ket{\beta}$ be an arbitrary state, and $\ket{\lambda_i}$ be the eigenstates such that $\sum_{k} \ket{\lambda_k}\bra{\lambda_k}=1$ . Consider the following,
+\begin{flalign*}
+\prod_{i\ne j}\left(\frac{A-\lambda_i}{\lambda_j-\lambda_i}\right)\ket{\beta} &= \prod_{i\ne j}\left(\frac{A-\lambda_i}{\lambda_j-\lambda_i}\right) \sum_{k} \ket{\lambda_k}\bra{\lambda_k}\ket{\beta}\\
+&=\sum_{k}\prod_{i\ne j}\left(\frac{\lambda_k-\lambda_i}{\lambda_j-\lambda_i}\right) \ket{\lambda_k}\bra{\lambda_k}\ket{\beta} 
+\end{flalign*}
+Lets look closer at the sum above. For $k\ne j$, the coefficient $\frac{\lambda_k-\lambda_i}{\lambda_j-\lambda_i}$ in the sum will vanish for some $i$, rendering the whole product to be zero. So all that remains in the summation is the term corresponding to $k=j$. Hence,
+\begin{flalign*}
+\prod_{i\ne j}\left(\frac{A-\lambda_i}{\lambda_j-\lambda_i}\right)\ket{\beta} &= \prod_{i\ne j}\left(\frac{\lambda_j-\lambda_i}{\lambda_j-\lambda_i}\right) \ket{\lambda_j}\bra{\lambda_j}\ket{\beta}\\
+&= \prod_{i\ne j}\left(1\right) \ket{\lambda_j}\bra{\lambda_j}\ket{\beta}\\
+&= \ket{\lambda_j}\bra{\lambda_j}\ket{\beta}\\
+&= P_j\ket{\beta}
+\end{flalign*}
+Hence, $\prod_{i\ne j}\left(\frac{A-\lambda_i}{\lambda_j-\lambda_i}\right)=P_j$, the Projection operator onto $\ket{\lambda_j}$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+$F(\hat{x})$ and $G(\hat{p})$ have regular series expansions. So, for some constants $\alpha_i$ and $\beta_i$,
+
+$$F(\hat{x}) = \alpha_0 + \alpha_1 \hat{x} + \alpha_2 \hat{x}^2 + \ldots $$
+$$G(\hat{p}) = \beta_0 + \beta_1 \hat{p} + \beta_2 \hat{p}^2 + \ldots $$
+
+Consider $[\hat{p},\hat{x}^n]$,
+\begin{flalign*}
+[\hat{p},\hat{x}^n] &= \comm{\hat{p}}{\hat{x}}\hat{x}^{n-1} + \hat{x}\comm{\hat{p}}{\hat{x}}\hat{x}^{n-2} + \hat{x}^2\comm{\hat{p}}{\hat{x}}\hat{x}^{n-3} + \ldots \text{n terms}\\
+&= -in\hat{x}^{n-1}
+\end{flalign*}
+
+Consider $\comm{\hat{p}}{F(\hat{x})}.$
+\begin{flalign*}
+\comm{\hat{p}}{F(\hat{x})} &= \comm{\hat{p}}{\alpha_0 + \alpha_1 \hat{x} + \alpha_2 \hat{x}^2 + \ldots}\\
+&= \comm{\hat{p}}{\alpha_0} + \alpha_1\comm{\hat{p}}{ \hat{x}} +  \alpha_2\comm{\hat{p}}{ \hat{x}^2} + \ldots\\
+&= \sum_{j = 0}^{\infty} \alpha_j\comm{\hat{p}}{\hat{x}^j}\\
+&=-i\sum_{j = 1}^{\infty} \alpha_j(j\hat{x}^{j-1})\\
+&= -iF^\prime (\hat{x})
+\end{flalign*}
+
+Similarly, $\comm{\hat{x}}{\hat{p}^n} = in\hat{p}^{n-1}$, and,
+\begin{flalign*}
+\comm{\hat{x}}{G(\hat{p})} &= \sum_{j = 0}^{\infty} \beta_j\comm{\hat{x}}{\hat{p}^j}\\
+&= i\sum_{j = 1}^{\infty} \beta_j(j\hat{p}^{j-1})\\
+&= iG^\prime (\hat{p}) 
+\end{flalign*}
+\textbf{Hence Proved}
+\begin{flalign*}
+\comm{\hat{x}^2}{\hat{p}^2} &= \hat{x}\comm{\hat{x}}{\hat{p}^2} + \comm{\hat{x}}{\hat{p}^2}\hat{x}\\
+&= 2i\acomm{x}{p}
+\end{flalign*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\textbf{Solution}\\
+
+\textbf{Part (a)}\\
+The normalized coherent states are given by,
+\begin{flalign*}
+\ket{z} &= \frac{1}{\sqrt[4]{\pi } \exp \left(\frac{\alpha ^2}{2}\right)}\exp \left(-\frac{x^2}{2}+\alpha  x+i \beta  x\right)\\
+&= \frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x-\alpha)^2}{2}+i \beta  x\right)
+\end{flalign*}
+where $z = \alpha + i \beta$, $\hat{a}\ket{z} = z\ket{z}$. Hence,
+\begin{flalign*}
+\braket{z^\prime}{z} &= \int_{-\infty}^{\infty} \frac{1}{\sqrt[4]{\pi } \exp \left(\frac{\alpha ^2}{2}\right)} \frac{1}{\sqrt[4]{\pi } \exp \left(\frac{{\alpha^\prime} ^2}{2}\right)} \exp \left(-{x^2}+(\alpha+\alpha^\prime)  x+i (\beta - \beta^\prime) x\right) \\
+&= \exp \left(-\frac{\alpha ^2}{4}-\frac{1}{2} i \alpha ' \beta '+\frac{1}{2} i \beta  \alpha '+\frac{\alpha  \alpha '}{2}-\frac{\left(\alpha '\right)^2}{4}-\frac{1}{2} i \alpha  \beta '+\frac{i \alpha  \beta }{2}-\frac{\beta ^2}{4}+\frac{\beta  \beta '}{2}-\frac{\left(\beta '\right)^2}{4}\right) \\
+&= \exp \left(-\frac{(\alpha-\alpha^\prime) ^2}{4}-\frac{(\beta-\beta^\prime) ^2}{4} + \frac{\alpha \alpha^\prime (\beta - \beta^\prime)}{2}i \right) \\
+\end{flalign*}
+Here,  $z = \alpha + i \beta$ and  $z^\prime = \alpha^\prime + i \beta^\prime$\\
+
+\textbf{Part (b)}\\
+Consider $\ip{x'}{x}=\delta(x-x')$. The completeness relation is of the form $\int d^2 z f(z)\op{z}{z}=1$. Using this identity, we insert the complete states in $\ip{x}{x}$ as follows,
+\begin{flalign*}
+\int d^2 z f(z)\ip{x'}{z}\ip{z}{x} = \delta(x-x')\\
+\int d\alpha\ d\beta f(\alpha,\beta)\frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x'-\alpha)^2}{2}+i \beta  x'\right) \frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x-\alpha)^2}{2}-i \beta  x\right) =& \int d\beta \exp(i\beta(x-x'))
+\end{flalign*}
+This relation should hold for all $x'$, specifically for $x=x'$. Hence,
+\begin{flalign*}
+\int d\alpha\ d\beta f(\alpha,\beta)\frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\} = \int d\beta\\
+\int \ d\beta\left\{\int d\alpha f(\alpha,\beta)\frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}-1\right\} =0\\
+\end{flalign*}
+For this to hold for all $x$, the term in curly brackets should be zero.
+\begin{flalign}
+\int d\alpha f(\alpha,\beta)\frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}=1
+\end{flalign}
+At this point, we note that, $$\int d\alpha \frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}=1$$  By comparing preceding two equations, we can claim that $f(\alpha,\beta)=1$ is \textbf{one} possibility and the corresponding completeness relation is $$\int d^2 z \op{z}{z}=1$$
+Note that this is \textbf{a} completeness relation and not \textbf{the} completeness relation. In principle, any $f(\alpha,\beta)$ that satisfies (1) can be included in the completeness relation.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\textbf{Solution}\\
+
+\textbf{Part (a)}\\
+We know that $\expval{\hat{a}}{z} = z$ and $\expval{\hat{a^\dagger}}{z} = z^*$. Adding these two up, we get,
+$$\sqrt{2}\expval{\hat{x}}{z} = z + z^* = 2\Re{z}$$
+$$\expval{\hat{x}}{z} = \sqrt{2}\Re{z}$$
+Similarly, subtracting the two, we get,
+$$\sqrt{2}i\expval{\hat{p}}{z} = z - z^* = 2i\Im{z}$$
+$$\expval{\hat{p}}{z} = \sqrt{2}\Im{z}$$
+
+\textbf{Part (b)}
+\begin{flalign}
+\hat{a}^2 &= \frac{1}{2}(\hat{x}^2-\hat{p}^2+i\acomm{x}{p})\\
+\hat{a^\dagger}^2 &= \frac{1}{2}(\hat{x}^2-\hat{p}^2-i\acomm{x}{p})\\
+\hat{a}\hat{a^\dagger} &= \frac{1}{2}(\hat{x}^2+\hat{p}^2-i\comm{x}{p})\\
+\hat{a^\dagger}\hat{a} &= \frac{1}{2}(\hat{x}^2+\hat{p}^2+i\comm{x}{p})
+\end{flalign}
+Adding the above equations, we see,
+\begin{flalign*}
+2 \expval{\hat{x}^2}{z} &= \expval{\hat{a}^2 +\hat{a^\dagger}^2 +\acomm{a}{a^\dagger}}{z}\\
+&= \expval{\hat{a}^2}{z}+\expval{\hat{a^\dagger}^2}{z} + \expval{\comm{a}{a^\dagger}}{z} + 2\expval{a^\dagger a}{z}\\
+&= z^2 + {z^*}^2 + 1 + 2zz^*\\
+&= 1 + 4\Re(z)^2\\
+\expval{\hat{x}^2}{z} &= \frac{1}{2} + 2\Re(z)^2
+\end{flalign*}
+
+(1) + (2) - (3) - (4) gives,
+\begin{flalign*}
+-2 \expval{\hat{p}^2}{z} &= \expval{\hat{a}^2 +\hat{a^\dagger}^2 -\acomm{a}{a^\dagger}}{z}\\
+&=-4\Im{z}^2 - 1\\
+\expval{\hat{p}^2}{z} &= \frac{1}{2} + 2\Im{z}^2
+\end{flalign*}
+Substituting all required values above, we get,
+\begin{flalign*}
+\Delta x = \sqrt{\frac{1}{2}} \text{ ; } \Delta p = \sqrt{\frac{1}{2}} \text{ ; } \Delta x \Delta p = \frac{1}{2} 
+\end{flalign*}
+As is evident, this saturates the uncertainty relation $ \Delta x \Delta p \ge \frac{1}{2}$.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+
+\textbf{Solution}\\
+\textbf{Part (a)}
+$$\ket{\psi} = a_{00}\ket{00}+a_{01}\ket{01}+a_{10}\ket{10}+a_{11}\ket{11}$$
+The density matrix of system 1 is obtained by tracing over the degrees of freedom of system 2. $\rho_A = \Tr_B (\op{\psi}{\psi})$
+\begin{flalign*}
+\rho_A &= \ip{0_B}{\psi} \ip{\psi}{0_B} +  \ip{1_B}{\psi} \ip{\psi}{1_B}\\
+&= (a_{00}\ket{0}+a_{10}\ket{1})(a_{00}^*\bra{0}+a_{10}^*\bra{1})+(a_{11}\ket{1}+a_{01}\ket{0})(a_{11}^*\bra{1}+a_{01}^*\bra{0})\\
+&=(\abs{a_{00}}^2 + \abs{a_{01}^2})\op{0}{0} + (a_{11}^* a_{01}+a_{10}^* a_{00})\op{0}{1} + (a_{11} a_{01}^*+a_{10} a_{00}^*)\op{1}{0} +  (\abs{a_{11}}^2+\abs{a_{10}^2})\op{1}{1}\\
+&= \left(
+\begin{array}{cc}
+\abs{a_{00}}^2 + \abs{a_{01}^2} & a_{11}^* a_{01}+a_{10}^* a_{00} \\
+a_{11} a_{01}^*+a_{10} a_{00}^* & \abs{a_{11}}^2+\abs{a_{10}^2}\\
+\end{array}
+\right)
+\end{flalign*}
+Similarly, one can find $\rho_B$
+\begin{flalign*}
+\rho_B &= \ip{0_A}{\psi} \ip{\psi}{0_A} +  \ip{1_A}{\psi} \ip{\psi}{1_A}\\
+&= (a_{00}\ket{0}+a_{01}\ket{1})(a_{00}^*\bra{0}+a_{01}^*\bra{1})+(a_{11}\ket{1}+a_{10}\ket{0})(a_{11}^*\bra{1}+a_{10}^*\bra{0})\\
+&=(\abs{a_{00}}^2 + \abs{a_{10}^2})\op{0}{0} + (a_{11}^* a_{10}+a_{01}^* a_{00})\op{0}{1} + (a_{11} a_{10}^*+a_{01} a_{00}^*)\op{1}{0} +  (\abs{a_{11}}^2+\abs{a_{01}^2})\op{1}{1}\\
+&= \left(
+\begin{array}{cc}
+\abs{a_{00}}^2 + \abs{a_{10}^2} & a_{11}^* a_{10}+a_{01}^* a_{00} \\
+a_{11} a_{10}^*+a_{01} a_{00}^* & \abs{a_{11}}^2+\abs{a_{01}^2}\\
+\end{array}
+\right)\\
+\end{flalign*}
+\end{homeworkProblem}
+\end{document}
