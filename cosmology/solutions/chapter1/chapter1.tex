@@ -1,0 +1,205 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+	\nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+	\nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+	\stepcounter{#1}
+	\nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+	\ifnum#1>0
+	\setcounter{homeworkProblemCounter}{#1}
+	\fi
+	\section{Problem \arabic{homeworkProblemCounter}}
+	\setcounter{partCounter}{1}
+	\enterProblemHeader{homeworkProblemCounter}
+}{
+	\exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Chapter \#1}
+\newcommand{\hmwkDueDate}{\today}
+\newcommand{\hmwkClass}{Mukhanov Cosmology}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+	%\vspace{2in}
+	\textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+	\normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+	%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+	
+	\maketitle
+	
+	%\pagebreak
+	
+	\begin{homeworkProblem}
+		\textbf{Solution}
+		\\
+		
+		The following condition should be satisfied for a law to be the same for all observers, and hence, physical.
+		$$f(\va{r}_{CA} - \va{r}_{BA},t) = f(\va{r}_{CA},t) - f(\va{r}_{BA},t)$$
+		One can recall that this is an example of a linear transformation/operation. A general transformation linear in $x$ can be written as $f(\va{r},t) = H(t)\va{r}$, which is exactly the form of the Hubble law.
+	\end{homeworkProblem}
+
+	\begin{homeworkProblem}
+		Let $v_H$ be the Hubble velocity, and $v_P$ be the peculiar velocity of the galaxy. For peculiar velocity to be neglected, we assume that $v_H$ should be at least one order of magnitude larger than $v_P$ ie $v_H \approx$ 1000 km/s
+		\begin{flalign*}
+			v_H = Hr = 75r \text{ ; }
+			r = 1000/75 \approx \boxed{13.33 \text{MPc}}
+		\end{flalign*}
+	\end{homeworkProblem}
+	
+	\begin{homeworkProblem}
+		We know that, $$\frac{\dot{a}^2}{2} = \frac{4 \pi G \epsilon_0}{3}  \left(\frac{a_0^3}{a}\right) + \text{constant}$$
+		Hence when $a \rightarrow \infty$, $\dot{a} \rightarrow \infty$ and $H = \frac{\dot{a}}{a} \rightarrow \infty$
+		
+		We also know that,$$\epsilon^{cr}(1 - \Omega(t))= \frac{3E}{4 \pi G} \frac{\epsilon}{a^2}$$
+		As the RHS is a finite value, $E \rightarrow \infty$ when $a \rightarrow \infty$.
+	\end{homeworkProblem}
+
+	\begin{homeworkProblem}
+		
+		TO BE DONE
+		\begin{flalign*}
+			\epsilon^{cr}(1 - \Omega(t)) &= \frac{3E}{4 \pi G} \frac{\epsilon}{a^2}\\
+			\Omega(t) &= 1 - \frac{3E}{4 \pi G} \frac{\epsilon}{\epsilon^{cr}}\frac{1}{a^2}
+		\end{flalign*}
+		$$PE = -\frac{GM^2}{R} \text{ ; } KE = \frac{M}{den}$$
+	\end{homeworkProblem}
+
+	\begin{homeworkProblem}
+		Recall that Newton's second law applied to an expanding spherical ball of dust gives us
+		\begin{flalign*}
+			 \ \ddot{a} &= -  \frac{4 \pi G}{3} \epsilon a \\
+			 \therefore \ q &= -\frac{\ddot{a}}{aH^2} =\frac{4 \pi G}{3} \frac{\epsilon}{H^2}
+		\end{flalign*}
+		We know that $\epsilon^{cr} = \frac{3H^2}{8 \pi G}$ and $\Omega(t) = \frac{\epsilon}{\epsilon^{cr}}$. Hence,
+		$$\boxed{q = \frac{1}{2} \Omega(t)}$$
+		
+		For a spatially flat universe, $\Omega(t) =1$. Hence $\boxed{q=\frac{1}{2}}$.
+	\end{homeworkProblem}
+
+	\begin{homeworkProblem}
+		Restoring units of $c$, the expression for energy density $\epsilon(t)$ is
+		$$\epsilon(t) = \frac{c^2}{6 \pi G t^2} = \frac{7.162}{t^2} \times 10^{14} \text{ J/m$^3$}$$
+		
+		Substituting values, one gets $$\epsilon(t=10^{-43}s) = 7.162 \times 10^{100} \text{ J/m$^3$}$$
+		$$\epsilon(t=1s) = 7.162 \times 10^{14} \text{ J/m$^3$}$$
+		$$\epsilon(t=1 yr) = 0.72  \text{ J/m$^3$}$$
+	\end{homeworkProblem}
+
+	\begin{homeworkProblem}
+		$$H^2 - \frac{2E}{a(t)^2} = \frac{8 \pi G}{3}\epsilon(t)$$
+		As $t \rightarrow \infty$, 
+	\end{homeworkProblem}
+\end{document}

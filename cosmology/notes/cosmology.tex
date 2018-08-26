@@ -44,7 +44,7 @@ $$H =\frac{\dot{a}}{a}$$
 Obviously, the Hubble Law would only hold on cosmological length scales. The relative motion of the sun and the earth, for example, is not governed by this law, but by the inhomogeneities in the gravitational field.
 
 \section{Dynamics of Newtonian Dust}
-Consider a universe filled with \textit{dust} particles. What dust really means is matter which exerts negligible pressure compared to its energy density $\epsilon$. Lets also assume that gravity is a weak force and that the particles are not very far away from each other so as to avoid exceeding the speed of light. Now consider a sphere expanding about the origin, with its radious being given by $R(t) = a(t) \chi_{c}$. As the total mass is M, the energy density $\epsilon$ can be written as
+Consider a universe filled with \textit{dust} particles. What dust really means is matter which exerts negligible pressure compared to its energy density $\epsilon$. Lets also assume that gravity is a weak force and that the particles are not very far away from each other so as to avoid exceeding the speed of light. Now consider a sphere expanding about the origin, with its radius being given by $R(t) = a(t) \chi_{c}$. As the total mass is M, the energy density $\epsilon$ can be written as
 $$\epsilon(t)= \frac{3M}{4 \pi R(t)^3} = \frac{3M}{4 \pi R_0^3} \left(\frac{a_0}{a(t)}\right)^3 = \epsilon_0 \left(\frac{a_0}{a(t)}\right)^3  $$
 Taking the time derivative,
 $$\dot{\epsilon}(t) = \epsilon_0 \left(\frac{a_0}{a(t)}\right)^3 \left(\frac{-3\dot{a}}{a}\right) = -3H \epsilon(t)$$
@@ -56,4 +56,29 @@ $$\therefore  \ \ddot{a} = -  \frac{4 \pi G}{3} \epsilon a$$
 
 We have essentially got the evolution equations for the energy density and the scale factor in a Newtonian dust setting. Substituting for $\epsilon$ in the equation for $a(t)$,
 $$\ddot{a} = -  \frac{4 \pi G \epsilon_0}{3}  \left(\frac{a_0^3}{a^2}\right) $$
+Multiplying by $\dot{a}$ and integrating we get,
+$$\frac{\dot{a}^2}{2} - \frac{4 \pi G \epsilon_0}{3}  \left(\frac{a_0^3}{a}\right) = \text{constant} = E  $$
+
+The form of this energy-like equation for the scale factor is similar to the energy equation for a rocket launched into orbit. If one provides the rocket too little kinetic energy, it will fall back to earth. Similarly, the fate of this Newtonian dust universe, ie. whether it keeps expanding or collapses unto itself depends on the sign of the energy $E$. Writing the equation in terms of the Hubble constant,
+$$H^2 - \frac{2E}{a^2} = \frac{8 \pi G}{3}\epsilon$$
+Setting $E=0$ in the above equation, one can derive the critical density,
+$$\epsilon^{cr} = \frac{3H^2}{8\pi G}$$ Substituting this back in the other equation,
+$$\epsilon^{cr}(1 - \Omega(t))= \frac{3E}{4 \pi G} \frac{\epsilon}{a^2}$$
+where $\Omega(t) = \frac{\epsilon^{cr}}{\epsilon}$ is called the \textit{cosmological parameter}. $Omega(t)$ varies with time, but because the sign of $E$ is fixed, the quantity $(1-\Omega(t))$ does not change sign. Hence, we just need to measure the current value of the cosmological parameter to determine the sign of $E$ in the universe.
+
+As is conveyed in popular talks, the sign of $E$ is linked to the spatial geometry of the Universe in general relativity. This spatial curvature has the sign opposite to that of $E$.
+
+ Let's imagine we probe the value of $\Omega_0$. The possible scenarios are :-
+\begin{itemize}
+	\item $\epsilon_0 > \epsilon^{cr}$ ie $\Omega > 1$ and $E < 0$. The spatial curvature will be positive (closed universe). The scale factor reaches some maximum value and the universe recollapses.
+	\item $\epsilon_0 < \epsilon^{cr}$ ie $\Omega < 1$ and $E > 0$. The spatial curvature will be negative (open universe). The universe exapnds hyperbolically.
+	\item $\epsilon_0 = \epsilon^{cr}$ ie $\Omega = 1$ and $E = 0$. The spatial curvature will be zero (flat universe). The scale factor reaches some maximum value and the universe recollapses.
+\end{itemize}
+
+In all three cases, extrapolating the universe backwards, we face an initial singularity. Note that we are still working with dust-dominated universe (and also Newtonian theory, duh); the analyses we have done are only toy-model-like. Nonetheless, we hope we have gained some physical intuition from the same.
+
+Lets just play with our toy-model for one last time. In a flat universe,
+$$\frac{\dot{a}^2a}{2} = \frac{4}{9} \left(\derivative{a^{3/2}}{t} \right)^2 = \frac{4 \pi G \epsilon_0 a_0^3}{3} = \text{constant} $$
+Hence, $a \propto t^{2/3}$, $H = \frac{2}{3t}$. We can then write the age of universe expression as,
+$$t_0 = \frac{2}{3H_0} \text{ and also } \epsilon(t) = \frac{1}{6 \pi G t^2}$$
 \end{document}
