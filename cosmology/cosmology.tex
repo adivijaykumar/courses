@@ -1,0 +1,59 @@
+\documentclass[a4paper,11pt]{report}
+%\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm, mathtools}
+\usepackage{hyperref}
+
+\linespread{1.0}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.8em}
+
+\title{\textbf{Notes on Cosmology}}
+\author{\textbf{Aditya Vijaykumar}}
+
+\begin{document}
+\maketitle \tableofcontents
+
+
+\chapter{Kinematics, Dynamics and Geometry}
+For most of the 20th century, cosmologists agreed that the universe was homogenous and isotropic ie. there is no single \textit{preferred}  point or direction in the universe. This is called the \textit{Cosmological Principle} in popular terms. On the face of it, this is a very powerful assumption - it allows us to make predictions about the universe sitting at where we are on the earth. It remained an intelligent guess until the age of data took over cosmology.
+
+Data now shows that the universe is indeed homogenous and isotropic, but only on large enough scales (greater than 100 Mpc). Hence, if we coarse grain the universe on a scale smaller than 100 Mpc, we will start seeing inhomogeneities like galaxies, galaxy clusters etc. This was not entirely unexpected. So we decided to live with it.
+
+But then there is a twist. Theory suggests that the universe continues to be homogenous and isotropic for scales bigger than that of the observable universe (3000 Mpc and beyond), but inhomogeneities start to creep in at distance scales much larger than 3000 Mpc. Answering questions on these scales in indeed very tough, not only because one can't seem to pose the question in a mathematically precise fashion, but also because one can't imagine verifying these predictions empirically.
+
+Nevertheless, as travellers in the conquest for truth, it is imperative for us to learn what our forefathers thought of the cosmos, and hopefully avoid making the same mistakes again.
+
+\section{Hubble Law}
+
+Hubble postulated that, in a homogenous, isotropic expanding universe, the relative velocities of observers obey the Hubble Law.$$\vec{v}_{B,A}=H(t)\vec{r}_{AB}$$ Is the Hubble law in agreement with the homogenous and isotropic assumption? Let's check,
+$$\vec{v}_{B,A}=H(t)\vec{r}_{AB} \text{ ; } \vec{v}_{C,B}=H(t)\vec{r}_{BC}$$
+$$\text{Hence, } \vec{v}_{C,A} = H(t)(\vec{r}_{AB} + \vec{r}_{BC}) = H(t)\vec{r}_{AC}$$ which is what we should have expected. In fact, one can show explicitly that Hubble Expansion Law is \textit{the only} law that is comaptible with homogeneity and isotropic expansion.
+
+One could go ahead and write the Law as a differential equation as follows
+$$\dot{\vec{r}}_{AB}=H(t)\vec{r}_{AB}$$ Integrating this,
+$$ r_{AB} = r_0 \exp\int H(t)dt = a(t)  r_0 $$
+where $\exp\int H(t)dt = a(t)$ is called the \textit{scale factor}. $r_0$ is the separation between A and B at some given instant of time (taken to be $t=0$ without loss of generality), and $r_{AB}$ denotes the distance between them after time $t$ has elapsed.
+
+It is also straightforward to write the Hubble constant in terms of the scale factor and its time derivative,
+$$H =\frac{\dot{a}}{a}$$
+Obviously, the Hubble Law would only hold on cosmological length scales. The relative motion of the sun and the earth, for example, is not governed by this law, but by the inhomogeneities in the gravitational field.
+
+\section{Dynamics of Newtonian Dust}
+Consider a universe filled with \textit{dust} particles. What dust really means is matter which exerts negligible pressure compared to its energy density $\epsilon$. Lets also assume that gravity is a weak force and that the particles are not very far away from each other so as to avoid exceeding the speed of light. Now consider a sphere expanding about the origin, with its radious being given by $R(t) = a(t) \chi_{c}$. As the total mass is M, the energy density $\epsilon$ can be written as
+$$\epsilon(t)= \frac{3M}{4 \pi R(t)^3} = \frac{3M}{4 \pi R_0^3} \left(\frac{a_0}{a(t)}\right)^3 = \epsilon_0 \left(\frac{a_0}{a(t)}\right)^3  $$
+Taking the time derivative,
+$$\dot{\epsilon}(t) = \epsilon_0 \left(\frac{a_0}{a(t)}\right)^3 \left(\frac{-3\dot{a}}{a}\right) = -3H \epsilon(t)$$
+
+We can also write down Newton's second law for the sphere as follows,
+$$\ddot{R} = -\frac{GM}{R^2} = -G \frac{4 \pi }{3} \epsilon(t) R $$
+Dividing by $R_0$ we get,
+$$\therefore  \ \ddot{a} = -  \frac{4 \pi G}{3} \epsilon a$$
+
+We have essentially got the evolution equations for the energy density and the scale factor in a Newtonian dust setting. Substituting for $\epsilon$ in the equation for $a(t)$,
+$$\ddot{a} = -  \frac{4 \pi G \epsilon_0}{3}  \left(\frac{a_0^3}{a^2}\right) $$
+\end{document}
