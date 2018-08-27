@@ -7,6 +7,7 @@
 \usepackage{amsfonts}
 \usepackage{tikz}
 \usepackage{physics}
+\usepackage{amssymb}
 \usepackage[plain]{algorithm}
 \usepackage{algpseudocode}
 
@@ -156,82 +157,33 @@ $$\dot{E} = m\ddot{x}\dot{x} + \alpha x \dot{x} + \beta x^3\dot{x}$$
 Substituting from the equation of motion for $m\ddot{x}$,
 $$\dot{E}=-(\delta \dot{x} + \alpha x + \beta x^3)\dot{x} + \alpha x \dot{x} + \beta x^3\dot{x}$$
 $$\dot{E} = -\delta \dot{x}^2$$
-Hence energy is dissipated from the system at a rate $\delta \dot{x}^2$.
+Hence energy is dissipated from the system at a rate $\delta \dot{x}^2$.\\
 
+\textbf{Part (b) and (c) }- \textit{code files attached}\\
 
+\textbf{Part (d)}
+$$E= m\dot{x}^2/2 + \alpha x^2/2 + \beta x^4/4$$
 
-\end{homeworkProblem}
+The turning points will satisfy $E = \alpha x^2/2 + \beta x^4/4$\\
 
-\begin{homeworkProblem}
-    Give an appropriate positive constant \(c\) such that \(f(n) \leq c \cdot
-    g(n)\) for all \(n > 1\).
+\textbf{Part (f)}\\
+Substituting $x = A \cos(\omega t + \phi)$ in $m\ddot{x} + \delta \dot{x} + \alpha x  = \gamma \cos(\omega t) $
+\begin{flalign*}
+	(-m\omega^2 + \alpha )\cos(\omega t + \phi) - \delta \omega \sin(\omega t + \phi) = \frac{\gamma}{A}\cos(\omega t)
+\end{flalign*}	
+Expanding the RHS and equating coefficients of $\cos(\omega t)$ and $\sin(\omega t)$, one gets
+$$(-m\omega^2 + \alpha )\cos(\phi) - \delta \omega \sin(\phi) = \frac{\gamma}{A}$$
+$$-(-m\omega^2 + \alpha )\sin(\phi) - \delta \omega \cos(\phi) = 0$$
+Solving these, we get
+$$A = \frac{\gamma}{(-m\omega^2 + \alpha )\cos(\phi) - \delta \omega \sin(\phi)} \text{ ; } \phi = \tan^{-1} \left(\frac{\delta \omega}{\alpha - m\omega^2}\right)$$
 
-    \begin{enumerate}
-        \item \(f(n) = n^2 + n + 1\), \(g(n) = 2n^3\)
-        \item \(f(n) = n\sqrt{n} + n^2\), \(g(n) = n^2\)
-        \item \(f(n) = n^2 - n + 1\), \(g(n) = n^2 / 2\)
-    \end{enumerate}
+[PLOT THESE]\\
 
-    \textbf{Solution}
-
-    We solve each solution algebraically to determine a possible constant
-    \(c\).
-    \\
-
-    \textbf{Part One}
-
-    \[
-        \begin{split}
-            n^2 + n + 1 &=
-            \\
-            &\leq n^2 + n^2 + n^2
-            \\
-            &= 3n^2
-            \\
-            &\leq c \cdot 2n^3
-        \end{split}
-    \]
-
-    Thus a valid \(c\) could be when \(c = 2\).
-    \\
-
-    \textbf{Part Two}
-
-    \[
-        \begin{split}
-            n^2 + n\sqrt{n} &=
-            \\
-            &= n^2 + n^{3/2}
-            \\
-            &\leq n^2 + n^{4/2}
-            \\
-            &= n^2 + n^2
-            \\
-            &= 2n^2
-            \\
-            &\leq c \cdot n^2
-        \end{split}
-    \]
-
-    Thus a valid \(c\) is \(c = 2\).
-    \\
-
-    \textbf{Part Three}
-
-    \[
-        \begin{split}
-            n^2 - n + 1 &=
-            \\
-            &\leq n^2
-            \\
-            &\leq c \cdot n^2/2
-        \end{split}
-    \]
-
-    Thus a valid \(c\) is \(c = 2\).
+\textbf{Part (g)}\\
+Substituting $x = \sum_{n=0}^{\infty} a_n x^n$ in $m\ddot{x} + \delta \dot{x} + \alpha x + \beta x^3  = \gamma \cos(\omega t)$
 
 \end{homeworkProblem}
-\scriptsize
-$$\frac{-1.5 g \sin \left(\theta _1(t)\right)+0.5 g \sin \left(\theta _1(t)+2 \theta _2(t)\right)-0.5 g \sin \left(\theta _1(t)-2 \theta _2(t)\right)+0.25 g \sin \left(\theta _1(t)-2 \theta _2(t)+2 \theta _3(t)\right)+0.25 g \sin \left(\theta _1(t)+2 \theta _2(t)-2 \theta _3(t)\right)-0.25 1._{\text{Null}} \theta _3'(t){}^2 \sin \left(\theta _1(t)-\theta _3(t)\right)+0.25 1._{\text{Null}} \theta _3'(t){}^2 \sin \left(\theta _1(t)+2 \theta _2(t)-\theta _3(t)\right)+0.25 1._{\text{Null}} \theta _3'(t){}^2 \sin \left(\theta _1(t)+\theta _3(t)\right)-0.25 1._{\text{Null}} \theta _3'(t){}^2 \sin \left(\theta _1(t)-2 \theta _2(t)+\theta _3(t)\right)+\theta _1'(t){}^2 \left(\sin \left(2 \theta _1(t)\right) \left(0.5 \sin ^2\left(\theta _2(t)\right)+0.5\right)-1. \sin \left(\theta _1(t)\right) \cos \left(\theta _1(t)\right) \cos ^2\left(\theta _2(t)\right)\right)+2. \theta _2'(t){}^2 \sin \left(\theta _2(t)\right) \cos \left(\theta _1(t)\right)}{0.5 \cos \left(2 \theta _1(t)\right)-0.25 \cos \left(2 \left(\theta _1(t)-\theta _2(t)\right)\right)-0.5 \cos \left(2 \theta _2(t)\right)-0.25 \cos \left(2 \left(\theta _1(t)+\theta _2(t)\right)\right)-0.5 \cos \left(2 \left(\theta _2(t)-\theta _3(t)\right)\right)+2.}$$
+
+
 
 \end{document}
