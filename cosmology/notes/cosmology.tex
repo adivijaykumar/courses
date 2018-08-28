@@ -81,4 +81,35 @@ Lets just play with our toy-model for one last time. In a flat universe,
 $$\frac{\dot{a}^2a}{2} = \frac{4}{9} \left(\derivative{a^{3/2}}{t} \right)^2 = \frac{4 \pi G \epsilon_0 a_0^3}{3} = \text{constant} $$
 Hence, $a \propto t^{2/3}$, $H = \frac{2}{3t}$. We can then write the age of universe expression as,
 $$t_0 = \frac{2}{3H_0} \text{ and also } \epsilon(t) = \frac{1}{6 \pi G t^2}$$
+
+\section{Einstein it, duh}
+Newtonian theory is \textit{obviously} wrong. So its better to quickly stop being stupid and start worshipping Einstein.
+
+To start off, lets waste some time thinking what the geometry of a homogenous, isotropic space would look like. We can think of the universe as an evolving homogenous and istropic hypersurface.
+
+Lets first consider surfaces of this kind in 2 dimensions. The well known surfaces are the plane and the 2-sphere. We write the embedding of a two sphere in 3D Euclidean space as follows,
+$$x^2 + y^2 + z^2 = a^2$$
+$a$ being the radius of the sphere. Taking the derivative,
+$$2x dx + 2y dy +2z dz = 0$$
+$$\therefore dz = -\frac{xdx + ydy}{z}$$
+Substituting this in the distance metric,
+$$dl^2 = dx^2 + dy^2 + \frac{(xdx + ydy)^2}{a^2 - x^2 - y^2}$$
+
+Hence, we can represent distance between any two points on the hypersurface by just two independent coordinates $x$ and $y$. But lets, for the sake of easing up our calculations, substitute $x = r' \cos\phi$ and $y = r' \sin \phi$. Differentiting $x^2 + y^2 = r'^2$,
+$$xdx + ydy = r' dr'$$
+$$\therefore dl^2 = dr'^2 + r'^2d\phi^2 + \frac{r'^2 dr'^2}{a^2 - r'^2}$$
+$$\therefore dl^2 = \frac{dr'^2 }{1 - \frac{r'^2}{a^2}} + r'^2d\phi^2 $$
+We note that in the $a^2 \rightarrow \infty$ limit, this is just the flat space metric. On can also in principle have $a^2 < 0$; we would not be able to visualize it as an embedding in 3D, but that's not the fault of the subject of mathematics. This space with $a^2 < 0$ has negative curvature and is called the \textit{Lobachevski space}.
+
+At this point, to simplify things further, lets rescale our coordinates as $r = r'/\sqrt{\abs{a^2}}$. Then,
+$$dl^2 = \abs{a}^2\left\{\frac{dr^2}{1 - k{r^2}} + r^2d\phi^2 \right\}$$
+
+where $k=1$ for sphere, $k=-1$ for pseudo-sphere, and $k=0$ for plane. The scale doesn't have any physical meaning as such, so we redefine our coordinates to absorb it. The generalization of the above analysis for three dimensions is as follows,
+$$dl^2 = a^2\left\{\frac{dr^2}{1 - k{r^2}} + r^2(d\theta^2 + \sin^2\theta) \right\}$$
+We can also work with a coordinate $\chi$ defined as,
+$$d\chi^2 = \frac{dr^2}{1-kr^2}$$ One can explicitly verify by integrating that $\chi = \text{arcsinh } r$ for $k = -1$, $\chi = r$ for $k=0$ and $\chi = \arcsin r$ for $k=1$. One can now rewrite the metric as follows,
+$$dl^2 = a^2(d\chi^2 + \sinh[2](\chi)d \Omega^2) \text{ ; } k = -1$$
+$$dl^2 = a^2(d\chi^2 + \chi^2 d \Omega^2) \text{ ; } k = -1$$
+$$dl^2 = a^2(d\chi^2 + \sin[2](\chi)d \Omega^2) \text{ ; } k = -1$$
+
 \end{document}

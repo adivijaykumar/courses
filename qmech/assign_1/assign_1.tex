@@ -139,6 +139,7 @@
 
 \maketitle
 
+\textit{I would like to acknowledge Chandramouli Chowdhury and Junaid Bhat for discussions for various parts of the assignment, and especially for Problem 6.}
 %\pagebreak
 
 \begin{homeworkProblem}
@@ -282,19 +283,19 @@ Here,  $z = \alpha + i \beta$ and  $z^\prime = \alpha^\prime + i \beta^\prime$\\
 \textbf{Part (b)}\\
 Consider $\ip{x'}{x}=\delta(x-x')$. The completeness relation is of the form $\int d^2 z f(z)\op{z}{z}=1$. Using this identity, we insert the complete states in $\ip{x}{x}$ as follows,
 \begin{flalign*}
-\int d^2 z f(z)\ip{x'}{z}\ip{z}{x} = \delta(x-x')\\
-\int d\alpha\ d\beta f(\alpha,\beta)\frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x'-\alpha)^2}{2}+i \beta  x'\right) \frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x-\alpha)^2}{2}-i \beta  x\right) =& \int d\beta \exp(i\beta(x-x'))
+\int d^2 z f(z)\ip{x'}{z}\ip{z}{x}= \delta(x-x')\\
+\int d\alpha\ d\beta (-2i) f(\alpha,\beta)\frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x'-\alpha)^2}{2}+i \beta  x'\right) \frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x-\alpha)^2}{2}-i \beta  x\right) &= \int d\beta \exp(i\beta(x-x'))
 \end{flalign*}
+$$\int d\beta \left\{ d\alpha (-2i) f(\alpha,\beta)\frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x'-\alpha)^2}{2}+i \beta  x'\right) \frac{1}{\sqrt[4]{\pi }}\exp \left(-\frac{(x-\alpha)^2}{2}-i \beta  x\right) - \exp(i\beta(x-x')) \right\} = 0$$
 This relation should hold for all $x'$, specifically for $x=x'$. Hence,
 \begin{flalign*}
-\int d\alpha\ d\beta f(\alpha,\beta)\frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\} = \int d\beta\\
-\int \ d\beta\left\{\int d\alpha f(\alpha,\beta)\frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}-1\right\} =0\\
+\int \ d\beta\left\{\int d\alpha (-2i) f(\alpha,\beta)\frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}-1\right\} =0\\
 \end{flalign*}
 For this to hold for all $x$, the term in curly brackets should be zero.
 \begin{flalign}
-\int d\alpha f(\alpha,\beta)\frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}=1
+\int d\alpha (-2i) f(\alpha,\beta)\frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}=1
 \end{flalign}
-At this point, we note that, $$\int d\alpha \frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}=1$$  By comparing preceding two equations, we can claim that $f(\alpha,\beta)=1$ is \textbf{one} possibility and the corresponding completeness relation is $$\int d^2 z \op{z}{z}=1$$
+At this point, we note that, $$\int d\alpha \frac{1}{\sqrt{\pi }}\exp \{-{(x-\alpha)^2}\}=1$$  By comparing preceding two equations, we can claim that $(-2i)f(\alpha,\beta)=1$ ie. $f(\alpha,\beta) = \frac{i}{2}$ is \textbf{one} possibility and the corresponding completeness relation is $$\int d^2 z \op{z}{z}=1$$
 Note that this is \textbf{a} completeness relation and not \textbf{the} completeness relation. In principle, any $f(\alpha,\beta)$ that satisfies (1) can be included in the completeness relation.
 \end{homeworkProblem}
 
@@ -367,5 +368,32 @@ a_{11} a_{10}^*+a_{01} a_{00}^* & \abs{a_{11}}^2+\abs{a_{01}^2}\\
 \end{array}
 \right)\\
 \end{flalign*}
+
+\textbf{Part (b)}\\
+We can clearly see that $\rho_B$ can be obtained from $\rho_A$ by merely switching $a_{10}$ and $a_{01}$. We calculate the eigenvalues in Mathematica. For $\rho_A$, the eigenvalues $\lambda_1$ and $\lambda_2$ are given by,
+
+\begin{flalign*}
+2\lambda_1 &= |a_{00}|^2 + |a_{11}|^2 + |a_{01}|^2 + |a_{10}|^2 
+-[  
+|a_{00}|^4 + |a_{01}|^4 + ( |a_{10}|^2 + |a_{11}|^2 )^2\\ 
+&+ 
+2 a_{01}^* ( (-a_{01} a_{10} + 2 a_{00} a_{11}) a^*_{10} + a_{01} |a_{11}|^2  ) + 2 a^*_{00} ( a_{00} |a_{01}|^2 + a_{00} |a_{10}|^2 + 2 (a_{01} a_{10} - a_{00} a_{11} a^*_{11}) )
+]^{1/2}
+\end{flalign*}
+
+\begin{flalign*}
+	2\lambda_2 &= |a_{00}|^2 + |a_{11}|^2 + |a_{01}|^2 + |a_{10}|^2  
+	+ [  
+	|a_{00}|^4 + |a_{01}|^4 + |a_{10}|^4 + |a_{11}|^4 
+	\\ &+ 2 \{ |a_{10} a_{11}|^2 + a^*_{01}  (  a^*_{10} (-a_{10} a_{01} + 2 a_{00} a_{11}) + a_{01} |a_{11}|^2  )
+	+ a^*_{00} ( a_{00} |a_{01}|^2 + a_{00} |a_{10}|^2 ) 
+	+ a^*_{11} (2 a_{01} a_{10} - a_{00} a_{11})
+	\}
+	]^{1/2}
+\end{flalign*}
+
+As earlier mentioned, the eigenvalues of $\rho_B$ can be obtained by interchanging $a_{10}$ and $a_{01}$.
+
+
 \end{homeworkProblem}
 \end{document}
