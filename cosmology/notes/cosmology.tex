@@ -7,6 +7,7 @@
 \usepackage{amsmath}
 \usepackage{amsthm, mathtools}
 \usepackage{hyperref}
+\usepackage{color}
 
 \linespread{1.0}
 \setlength{\parindent}{0em}
@@ -112,8 +113,38 @@ $$dl^2 = a^2(d\chi^2 + \sinh[2](\chi)d \Omega^2) \text{ ; } k = -1$$
 $$dl^2 = a^2(d\chi^2 + \chi^2 d \Omega^2) \text{ ; } k = 0$$
 $$dl^2 = a^2(d\chi^2 + \sin[2](\chi)d \Omega^2) \text{ ; } k = +1$$
 
-Consider the 2-sphere in the positive curvature case at a given $\chi$. The surface area will be given by $S_{2d}(\chi) = 4 \pi a^2 \sin^2 \chi$. We note that as the radius $\chi$ increases, the surface area first increases and reaches a maximum, and thereafter starts decreasing, vanishing at $x=\chi$.
+\textbf{Consider the 2-sphere} in the positive curvature case at a given $\chi$. The surface area will be given by $S_{2d}(\chi) = 4 \pi a^2 \sin^2 \chi$. We note that as the radius $\chi$ increases, the surface area first increases and reaches a maximum, and thereafter starts decreasing, vanishing at $\chi=\pi$.
 
+The differential volume element $dV$ is given by,
+$$dV = S_{2d} \ dl_r = 4 \pi a^3 \sin[2](\chi) d \chi$$ Therefore the volume of a sphere with radius $\chi_0$ is,
+$$V(\chi_0) = 2 \pi a^3 (\chi_0 - \frac{1}{2} \sin 2\chi_0)$$
+
+At low $\chi_0$, $V = 4 \pi (a \chi_0)^3/3$ and $\chi_0=\pi$ gives $V = 2 \pi^2 a^3$
+
+\textbf{Consider the 2-pseudosphere} in the negative curvature case at 	given $\chi$
+$$dl^2 = a^2 \sinh[2](\chi)d \Omega^2 \text{ ; } S_{2d} =4 \pi a^2 \sinh^2 \chi $$
+
+This increases exponentially for as $\chi$ increases.
+
+In the most suitable coordinate system where the symmetries of our current construction are manifest \textcolor{red}{(Why?)}, we can write the metric of spacetime as 
+$$ds^2 = dt^2 - a^2(t) \left(\frac{dr^2}{1 - k{r^2}} + r^2(d\theta^2 + \sin^2\theta)\right) = g_{\alpha \beta} dx^\alpha dx^\beta$$ On large scales, matter can be approximated to be a perfect fluid \textcolor{red}{(Why?)},
+$$T^\alpha_\beta = (\epsilon+p)u^\alpha u_\beta - p \delta^\alpha_\beta$$
+where $\epsilon$ is energy density and $p= p (\epsilon)$ depends on the properties of the matter. Another interesting case that one might encounter in cosmology is that of a classical scalar field. The energy momentum tensor for a scalar field is given as,
+$$T^\alpha_\beta = \phi^{,\alpha} \phi_{,\beta} - \left( \frac{1}{2}\phi^{,\gamma} \phi_{,\gamma} - V(\phi) \right)\delta^\alpha_\beta$$
+\textbf{\textcolor{red}{To be explored further}}.
+
+\subsection*{Friedmann Equations}
+
+How are the Newtonian evolution equations modified when one accounts for GR? In pricniple, one has to the metric and the energy momentum tensor into the Einstein's equations and derive the expressions. Expressions thus derived are called \textit{Friedmann equations}. \textcolor{red}{(do the derivation on mathematica)}. Mukhanov wishes to enlighten us in a different way.
+
+First law of thermodynamics tells us $dE = -pdV$. Since $V \propto a^3$, and $E = \epsilon V$, one can write,
+$$d \epsilon = -3 (p+\epsilon) d\ln a \text{ ie. } \dot{\epsilon} = -3H(\epsilon + p)$$
+
+The other Newtonian evolution equations get modified as follows, 
+$$\ddot{a} = \frac{4 \pi}{3}(\epsilon + 3p)a \text{ and } H^2 + \frac{k}{a^2} = \frac{8 \pi G}{3}\epsilon$$ 
+The $k$ is indeed the curvature factor that was introduced a while ago.
+
+In Newtonian cosmology, the Universe is always flat and the scale factor has no real interpretationin terms of geometry.. It also is able to describe matter which is presureless and is expanding with velocities much less as compared to the speed of lgiht. GR, in contrast, provides a self-consistent theory of the cosmos, and it can describe relativistic matter with any equation of state. The matter content indeed determines the geometry of the universe, and the scale factor has a geometrical interpretation as the radius of curvature.
 
 
 \end{document}
