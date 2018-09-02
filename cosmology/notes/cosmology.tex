@@ -1,26 +1,29 @@
-\documentclass[a4paper,11pt]{report}
-%\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+\documentclass[a4paper,11pt]{article}
 
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm, mathtools}
-\usepackage{hyperref}
+%\usepackage{hyperref}
 \usepackage{color}
+\usepackage{jheppub}
+\usepackage[T1]{fontenc} % if needed
 
-\linespread{1.0}
-\setlength{\parindent}{0em}
-\setlength{\parskip}{0.8em}
+%\linespread{1.0}
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.8em}
 
 \title{\textbf{Notes on Cosmology}}
-\author{\textbf{Aditya Vijaykumar}}
+\author{Aditya Vijaykumar}
+\affiliation{International Centre for Theoretical Sciences, Bengaluru, India.}
+\emailAdd{aditya.vijaykumar@icts.res.in}
+
 
 \begin{document}
-\maketitle \tableofcontents
+\maketitle
 
-
-\chapter{Kinematics, Dynamics and Geometry}
+\section{Kinematics, Dynamics and Geometry}
 For most of the 20th century, cosmologists agreed that the universe was homogenous and isotropic ie. there is no single \textit{preferred}  point or direction in the universe. This is called the \textit{Cosmological Principle} in popular terms. On the face of it, this is a very powerful assumption - it allows us to make predictions about the universe sitting at where we are on the earth. It remained an intelligent guess until the age of data took over cosmology.
 
 Data now shows that the universe is indeed homogenous and isotropic, but only on large enough scales (greater than 100 Mpc). Hence, if we coarse grain the universe on a scale smaller than 100 Mpc, we will start seeing inhomogeneities like galaxies, galaxy clusters etc. This was not entirely unexpected. So we decided to live with it.
@@ -29,7 +32,7 @@ But then there is a twist. Theory suggests that the universe continues to be hom
 
 Nevertheless, as travellers in the conquest for truth, it is imperative for us to learn what our forefathers thought of the cosmos, and hopefully avoid making the same mistakes again.
 
-\section{Hubble Law}
+\subsection{Hubble Law}
 
 Hubble postulated that, in a homogenous, isotropic expanding universe, the relative velocities of observers obey the Hubble Law.$$\vec{v}_{B,A}=H(t)\vec{r}_{AB}$$ Is the Hubble law in agreement with the homogenous and isotropic assumption? Let's check,
 $$\vec{v}_{B,A}=H(t)\vec{r}_{AB} \text{ ; } \vec{v}_{C,B}=H(t)\vec{r}_{BC}$$
@@ -44,7 +47,7 @@ It is also straightforward to write the Hubble constant in terms of the scale fa
 $$H =\frac{\dot{a}}{a}$$
 Obviously, the Hubble Law would only hold on cosmological length scales. The relative motion of the sun and the earth, for example, is not governed by this law, but by the inhomogeneities in the gravitational field.
 
-\section{Dynamics of Newtonian Dust}
+\subsection{Dynamics of Newtonian Dust}
 Consider a universe filled with \textit{dust} particles. What dust really means is matter which exerts negligible pressure compared to its energy density $\epsilon$. Lets also assume that gravity is a weak force and that the particles are not very far away from each other so as to avoid exceeding the speed of light. Now consider a sphere expanding about the origin, with its radius being given by $R(t) = a(t) \chi_{c}$. As the total mass is M, the energy density $\epsilon$ can be written as
 $$\epsilon(t)= \frac{3M}{4 \pi R(t)^3} = \frac{3M}{4 \pi R_0^3} \left(\frac{a_0}{a(t)}\right)^3 = \epsilon_0 \left(\frac{a_0}{a(t)}\right)^3  $$
 Taking the time derivative,
@@ -83,7 +86,7 @@ $$\frac{\dot{a}^2a}{2} = \frac{4}{9} \left(\derivative{a^{3/2}}{t} \right)^2 = \
 Hence, $a \propto t^{2/3}$, $H = \frac{2}{3t}$. We can then write the age of universe expression as,
 $$t_0 = \frac{2}{3H_0} \text{ and also } \epsilon(t) = \frac{1}{6 \pi G t^2}$$
 
-\section{Einstein it, duh}
+\subsection{Einstein it, duh}
 Newtonian theory is \textit{obviously} wrong. So its better to quickly stop being stupid and start worshipping Einstein.
 
 To start off, lets waste some time thinking what the geometry of a homogenous, isotropic space would look like. We can think of the universe as an evolving homogenous and istropic hypersurface.
@@ -133,7 +136,7 @@ where $\epsilon$ is energy density and $p= p (\epsilon)$ depends on the properti
 $$T^\alpha_\beta = \phi^{,\alpha} \phi_{,\beta} - \left( \frac{1}{2}\phi^{,\gamma} \phi_{,\gamma} - V(\phi) \right)\delta^\alpha_\beta$$
 \textbf{\textcolor{red}{To be explored further}}.
 
-\subsection*{Friedmann Equations}
+\subsubsection*{Friedmann Equations}
 
 How are the Newtonian evolution equations modified when one accounts for GR? In pricniple, one has to the metric and the energy momentum tensor into the Einstein's equations and derive the expressions. Expressions thus derived are called \textit{Friedmann equations}. \textcolor{red}{(do the derivation on mathematica)}. Mukhanov wishes to enlighten us in a different way.
 

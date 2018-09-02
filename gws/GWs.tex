@@ -1,24 +1,29 @@
-\documentclass[a4paper,11pt]{report}
-%\pdfoutput=1 % if your are submitting a pdflatex (i.e. if you have
+\documentclass[a4paper,11pt]{article}
 
 \usepackage{physics}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsmath}
 \usepackage{amsthm, mathtools}
-\usepackage{hyperref}
+%\usepackage{hyperref}
+\usepackage{color}
+\usepackage{jheppub}
+\usepackage[T1]{fontenc} % if needed
 
-\linespread{1.0}
-\setlength{\parindent}{0em}
-\setlength{\parskip}{0.8em}
+%\linespread{1.0}
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.8em}
 
-\title{\textbf{Notes on Gravitational Waves}}
-\author{\textbf{Aditya Vijaykumar}}
+\title{\textbf{Some Information about Gravitational Waves}}
+\author{Aditya Vijaykumar}
+\affiliation{International Centre for Theoretical Sciences, Bengaluru, India.}
+\emailAdd{aditya.vijaykumar@icts.res.in}
+
 
 \begin{document}
-\maketitle \tableofcontents
+\maketitle
 
-\chapter{Gravitational Waves as Geometry}
+\section{Gravitational Waves as Geometry}
 
 \textit{Though Maggiore, the main reference for this tome, prefers not to use geometric units, I shall unapologetically use them.}
 
@@ -36,7 +41,7 @@ $$\boxed{R_{\mu \nu} - \frac{1}{2}g_{\mu \nu}R = 8 \pi T_{\mu \nu}}$$
 General relativity is invariant under a huge groups of transformations $x^\mu \rightarrow x'^\mu(x)$, as long as $x'$ is invertible, differentiable, and has a differentiable inverse. Such transformations are called \textit{diffeomorphisms}. Under diffeomorphisms, $g_{\mu \nu}$ transforms as,
 $$g_{\mu \nu}(x') = \pdv{x^\rho}{x'^\mu} \pdv{x^\sigma}{x'^\nu} g_{\mu \nu}(x)$$
 
-\section{Expansions around flat space}
+\subsection{Expansions around flat space}
 Lets imagine that our system is a perturbation around the flat space metric,
 $$g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$$
 The magnitude of $h_{\mu \nu}$ is infinitesmal, and we only consider equations upto first order in $h_{\mu \nu}$.
@@ -51,4 +56,4 @@ $$g'_{\mu \nu}(x') = \pdv{x^\rho}{x'^\mu} \pdv{x^\sigma}{x'^\nu} g_{\rho \sigma}
 	h'_{\mu \nu}(x') &= h_{\mu \nu}(x) - \pdv{\xi_\nu}{x'^\mu} - \pdv{\xi_\mu}{x'^\nu} 
 \end{flalign*}
 
-\end{document}
+\end{document}\grid
