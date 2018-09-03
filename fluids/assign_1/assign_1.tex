@@ -148,25 +148,34 @@
     $$\text{Kn} = \frac{\lambda}{L} = \frac{k_B T}{\sqrt{2} \pi d^2 p L}$$
     where $L$ is the characteristic length scale, and $T$ and $p$ are the temperature and pressure respectively.
     
-    We can take some approximations for the the variations of $T$ and $p$, but we note that data for the variation of $T$ and $p$ is also available publicly \href{http://www.hyvac.com/tech_support/atmosphere%20vs%20pressure%202.htm}{here}.
+    We can take some approximations for the the variations of $T$ and $p$, but we note that data for the variation of $T$ and $p$ is also available publicly \url{http://www.hyvac.com/tech_support/atmosphere%20vs%20pressure%202.htm}.
     We import that data and use it to do our calculations. We also assume some standard values for all the other parameters.
     
     \begin{figure}[!h]
     	\centering
-    	\includegraphics[scale=0.5]{knudsen.png}
+    	\includegraphics[scale=0.45]{knudsen.png}
     \end{figure}
     
     \end{homeworkProblem}
 
 \begin{homeworkProblem}
 	$$\dv{C}{\eta} = \kappa \exp({\frac{-\eta^2}{4D}})$$ where $\eta = x/\sqrt{t}$. 
-	Integrating the above with respect to $\eta$ within limits 0 and $x/\sqrt{t}$, one gets,
-	$$ C(x,t) = \sqrt{D\pi} \kappa \ \text{erf}\left(\frac{x}{2\sqrt{D} \sqrt{t}}\right)$$
+	Performing the indefinite integral and substituting for $\eta$, one gets,
+	$$ C(\eta) = \sqrt{D\pi} \kappa \ \text{erf}\left(\frac{\eta}{2\sqrt{D}}\right) + \alpha = \sqrt{D\pi} \kappa \ \text{erf}\left(\frac{x}{2\sqrt{D}\sqrt{t}}\right) + \alpha$$
+	where $\alpha$ is some integration constant. We now go ahead and impose boundary conditions
+	\begin{itemize}
+		\item The concentration at the flower $(x=0)$ is assumed to be a constant $C_0$ at all times. As erf$(0) = 0$, $\alpha=C_0$
+		\item At $t=0$, any $x$ would have zero concentration. As erf$(x \rightarrow \infty) = 1$, We get the condition that $\sqrt{D\pi} \kappa + C_0 = 0$ ie. $\kappa = -C_0/\sqrt{D \pi}$
+	\end{itemize}
 	
-	The function is plotted below,
+	Therefore, the final solution is,
+	$$C(x,t) = C_0\ \left[1 - \text{erf}\left(\frac{x}{2\sqrt{D}\sqrt{t}}\right)\right]$$
+	
+	
+	The function is plotted below for different $t$ using standard value of diffusivity $D \approx 10^{-5} $ $m^2/s$,
 	\begin{figure}[!h]
 		\centering
-		\includegraphics[scale=0.7]{q2.png}
+		\includegraphics[scale=0.45]{q2.png}
 	\end{figure}
 \end{homeworkProblem}
 
