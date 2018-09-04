@@ -144,10 +144,23 @@ First law of thermodynamics tells us $dE = -pdV$. Since $V \propto a^3$, and $E 
 $$d \epsilon = -3 (p+\epsilon) d\ln a \text{ ie. } \dot{\epsilon} = -3H(\epsilon + p)$$
 
 The other Newtonian evolution equations get modified as follows, 
-$$\ddot{a} = \frac{4 \pi}{3}(\epsilon + 3p)a \text{ and } H^2 + \frac{k}{a^2} = \frac{8 \pi G}{3}\epsilon$$ 
+$$\ddot{a} = -\frac{4 \pi}{3}(\epsilon + 3p)a \text{ and } H^2 + \frac{k}{a^2} = \frac{8 \pi G}{3}\epsilon$$ 
 The $k$ is indeed the curvature factor that was introduced a while ago.
 
 In Newtonian cosmology, the Universe is always flat and the scale factor has no real interpretationin terms of geometry.. It also is able to describe matter which is presureless and is expanding with velocities much less as compared to the speed of lgiht. GR, in contrast, provides a self-consistent theory of the cosmos, and it can describe relativistic matter with any equation of state. The matter content indeed determines the geometry of the universe, and the scale factor has a geometrical interpretation as the radius of curvature.
 
+\subsection{Conformal Time}
+Consider defining the conformal time $\eta$ as follows,
+$$\eta = \int \frac{dt}{a(t)} \text{ such that } a(t)d\eta = dt$$
+The second of the above equations can be rewritten as,
+$$ a'^2 + k a^2 = \frac{8\pi G}{3}\epsilon a^4$$  and the first can be written as,
+$$a a'' -a'^2 = -\frac{4 \pi}{3}(\epsilon + 3p)a^4$$
+Substituting, one gets,
+$$a a'' + \frac{4 \pi}{3}(\epsilon + 3p)a^4 + k a^2 = \frac{8\pi G}{3}\epsilon a^4$$
+$$a'' + k a = \frac{4 \pi}{3}(\epsilon - 3p)a^3 $$
+The last equation is just the trace of Einstein equations \textbf{\textcolor{red}{Verify!}}. In case of radiation, $\epsilon = 3p$, and hence, $a'' + ka = 0$ which gives us the solutions,
+$$a = \underbrace{a_m \sinh(\eta)}_{k=-1} \text{ , }\underbrace{a_m \eta}_{k=0} \text{ , } \underbrace{a_m \sin(\eta)}_{k=+1} $$ where the corresponding physical time $t$ is,
+$$t = \underbrace{\cosh \eta - 1}_{k=-1} \text{ , }\underbrace{\frac{\eta^2}{2}}_{k=0} \text{ , } \underbrace{1 - \cos \eta}_{k=+1} $$
 
+If we consider the flat radiation dominated universe specifically, we see that $\eta \propto \sqrt{t}$ and $a \propto \sqrt{t}$. Hence $H = \frac{1}{2t}$. Substituting this into the Friedman equations, we see that $\epsilon \propto 1/t^2$ \textit{ie.} $\epsilon \propto 1/a^4$.
 \end{document}
