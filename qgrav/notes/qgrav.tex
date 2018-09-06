@@ -46,6 +46,14 @@ As mentioned earlier, a field can be thought of as a collection of decoupled har
 $$\comm{\hat{\phi_{\vb{k}}}(t)}{\hat{\pi_{\vb{k'}}}(t)} = i \delta(\vb{k}+\vb{k'})$$
 The vacuum state is the state corresponding to the lowest energy configuration. One can clearly see that the commutation relations cannot be satisfied for the most intuitive low energy configuration \textit{ie.} $\phi(\vb{x},t) = 0$, implying that the vacuum state is really something non-trivial. But since, for a free field, all the $\phi_{\vb{k}}$ are decoupled, we can write the vacuum state wave functional as the product of all wavefunctions, each describing the ground state of the harmonic oscillator with the wavenumber $\vb{k}$. Again, for large volume, one can write,
 $$\psi[\phi] \propto \exp(-\frac{1}{2}\int d^3 \vb{k} \abs{\phi_{\vb{k}}}^2 \omega_{\vb{k}})$$
+Consider the integral inside the exponential,
+\begin{flalign*}
+\int d^3 \vb{k} \abs{\phi_{\vb{k}}}^2 \omega_{\vb{k}} &= \int  d^3 \vb{k}  \phi_{\vb{k}} \phi_{\vb{k}}^* \sqrt{k^2 + m^2}\\
+&= \int   d^3 \vb{x} d^3 \vb{y} \phi(\vb{x}) \phi(\vb{y}) \int  d^3 \vb{k}  e^{i\vb{k}(\vb{y} - \vb{x})} \sqrt{k^2 + m^2}\\
+&= \int   d^3 \vb{x} d^3 \vb{y} \phi(\vb{x}) \phi(\vb{y}) K(\vb{x},\vb{y})
+\end{flalign*}
+where $K(\vb{x},\vb{y})$ is called the kernel.
+
 The vacuum energy density is just the sum of all ground state energies,
 $$\frac{E_o}{V}= \int\frac{d^3 \vb{k}}{(2\pi)^3} \frac{\omega_{k}}{2}$$
 Okay, now this is a very interesting expression for the energy. We see that because $\omega_k = \sqrt{k^2+m^2}$, we can see that this integral diverges as $k^4$. If quantum gravity is assumed to be modelled as a scalar field, and we put a cutoff for our integration at let's say the Planckian scale, we see that the vacuum energy density is of the order unity in Planck units, which in turn corresponds to a mass density of $10^{94} g/cm^3$. The mass of the \textit{entire} observable universe is $10^{55}g$! One can try to resolve this problem by \textit{positing} that vacuum energy does not contribute to gravity, or by using some supersymmetric variants of such theories.
@@ -57,9 +65,23 @@ We know that $$\phi_{\vb{k}} = \frac{a_{\vb{k}} + a_{-\vb{k}}}{\sqrt{2\omega_k}}
 $$\abs{\phi_{\vb{k}}^2} = \frac{(a_{\vb{k}} + a_{-\vb{k}})(a_{\vb{k}} + a_{-\vb{k}})}{{2\omega_k}}$$
 Taking the ground state expectation value of this expression, one obtains that $\delta \phi_{\vb{k}} \sim \omega_k^{-1/2}$. What if we measure the average value of a field over space? Lets consider a cubical box of side $L$  and define the average value $\phi_L$ as follows,
 $$\phi_L = \frac{1}{L^3} \int_{-L/2}^{-L/2}dx \int_{-L/2}^{-L/2}dy \int_{-L/2}^{-L/2}dz \ \phi(\vb{x})$$
-We again calculate fluctuations in this average value by the formula $\delta \phi_L = \sqrt{\expval{\phi_L^2}}$. Evaluating this quantity, we get $\delta \phi_L = \sqrt{(\delta \phi_{\vb{k}})^2/L^3}$. \textcolor{red}{(explictly verify)}
+We again calculate fluctuations in this average value by the formula $\delta \phi_L = \sqrt{\expval{\phi_L^2}}$. 
+\begin{flalign*}
+\phi_L &\sim \frac{1}{L^3}  \int_{-L/2}^{-L/2}dx \int_{-L/2}^{-L/2}dy \int_{-L/2}^{-L/2}dz \ \int \phi_{\vb{k}}(t) e^{i \vb{k} \vdot \vb{x}} d^3\vb{k}\\
+&\sim \frac{1}{L^3} \int \frac{1}{k_x k_y k_z}\sin \frac{k_xL}{2} \sin \frac{k_yL}{2} \sin \frac{k_zL}{2}  \  \phi_{\vb{k}}(t) e^{i \vb{k} \vdot \vb{x}} d^3\vb{k}
+\end{flalign*}
+Let us say that $f_x =\frac{1}{k_x} \sin \frac{k_xL}{2}$ and so forth for $y$ and $z$. $f_x \rightarrow L/2$ for small $k_x$ and $0$ for large $k_x$. So the contribution to the integral can be taken to be from small $k$, and hence is of the order $L^3$. So $\delta \phi_L = \sqrt{\expval{\phi_L^2}} \sim [(\delta \phi_{\vb{k}})^2 / L^3]^{1/2}$.
 
 \subsection{Gravity Can Create Particles?}
-Consider a single harmonic oscillator with a time dependent frequency $\omega(t)$. \textbf{\textcolor{red}{DO the exercise here}}
+Consider a single harmonic oscillator with the following features.
+$$\underbrace{\ddot{q}(t) + \omega^2 q = 0}_{t<0 \text{ and } t>T} \text{ ; } \underbrace{\ddot{q}(t) - \Omega^2 q = 0}_{0<t<T}$$
+The solution, obviously, is
+$$q(t) = \underbrace{q_1 \sin(\omega t)}_{t<0 \text{ (assume)}} \text{ ; } \underbrace{Ae^{\Omega t} + Be^{-\Omega t}}_{0<t<T} \text{ ; } \underbrace{q_2 \sin (\omega t + \alpha)}_{t>T}$$
+Matching $q(t)$ and $\dot{q}(t)$ at $t=0,T$, we get the condition,
+$$\tan(\omega T + \alpha) = \frac{\omega}{\Omega} \text{ ; } q_2 \sin (\omega T + \alpha) = A e^{\Omega T} \text{ ; } A = \frac{q_1}{2} \frac{\omega}{\Omega}$$
+
+Hence,
+$$q_2 = \frac{1}{2} q_1 \sqrt{1 + \frac{\omega^2}{\Omega^2}} e^{\Omega T}$$
+ \textbf{\textcolor{red}{DO the exercise here}}
 
 \end{document}
