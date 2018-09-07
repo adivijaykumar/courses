@@ -87,7 +87,16 @@ Matching $q(t)$ and $\dot{q}(t)$ at $t=0,T$, we get the condition,
 $$\tan(\omega T + \alpha) = \frac{\omega}{\Omega} \text{ ; } q_2 \sin (\omega T + \alpha) = A e^{\Omega T} \text{ ; } A = \frac{q_1}{2} \frac{\omega}{\Omega}$$
 
 Hence,
-$$q_2 = \frac{1}{2} q_1 \sqrt{1 + \frac{\omega^2}{\Omega^2}} e^{\Omega T}$$
- \textbf{\textcolor{red}{DO the exercise here}}
+$$q_2 \approx \frac{1}{2} q_1 \sqrt{1 + \frac{\omega^2}{\Omega^2}} e^{\Omega T}$$
+
+We see that the final state has a much larger energy as compared to the initial state, which we, in turn, interpret as the creation of many particles the time interval $[0,T]$. Can we look at how many particles are produced, approximately? The exact relation for the amplitudes (valid at all times) is 
+\bes
+q_2 =  q_1 \sqrt{1 + \frac{\omega^2}{\Omega^2}} \sinh \Omega_0 T
+\ees
+The oscillator energies $\propto q^2$. If we take the initial state to be the ground state, it is straightforward to see that the number of particles $ n  $ produced is 
+\bes
+n = \dfrac{q_2^2}{q_1^2} = \qty(1+ \dfrac{\omega^2}{\Omega^2})\sinh^2 \Omega_0 T
+\ees
+Hmm, can something of this sort happen in gravity? Let's hope.
 
 \end{document}

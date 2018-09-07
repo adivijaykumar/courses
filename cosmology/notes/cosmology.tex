@@ -16,7 +16,7 @@
 \newcommand{\bes}{\begin{equation*}}
 \newcommand{\ees}{\end{equation*}}
 \newcommand{\bea}{\begin{flalign*}}
-\newcommand{\eea}{\end{flalign*}}
+\newcommand{\eet}{\end{flalign*}}
 %\linespread{1.0}
 %\setlength{\parindent}{0em}
 %\setlength{\parskip}{0.8em}
@@ -25,7 +25,6 @@
 \author{Aditya Vijaykumar}
 \affiliation{International Centre for Theoretical Sciences, Bengaluru, India.}
 \emailAdd{aditya.vijaykumar@icts.res.in}
-
 
 \begin{document}
 \maketitle
@@ -179,4 +178,14 @@ The metric now becomes,
 \bes
 ds^2 = dt^2 -t^2 (d \chi^2 + \sinh^2 \chi d\Omega^2)
 \ees
+One can easily check that this is just the Minkowski spacetime written in expanding coordinates by making the substitutions $ \tau = t \cosh\chi $ and $  r = t \sinh\chi $
+\begin{flalign*}
+	ds^2 &= d\tau^2 - (dr^2 + r^2 d\Omega^2)\\
+	&=  dt^2 -t^2 (d \chi^2 + \sinh^2 \chi d\Omega^2)
+\end{flalign*}
+The velocity $ v $ is just given by,
+\be
+v = \dfrac{r}{\tau} = \tanh \chi < 1
+\ee
+
 \end{document}
