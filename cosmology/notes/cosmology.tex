@@ -10,6 +10,13 @@
 \usepackage{jheppub}
 \usepackage[T1]{fontenc} % if needed
 
+% My Commands
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
 %\linespread{1.0}
 %\setlength{\parindent}{0em}
 %\setlength{\parskip}{0.8em}
@@ -136,7 +143,7 @@ where $\epsilon$ is energy density and $p= p (\epsilon)$ depends on the properti
 $$T^\alpha_\beta = \phi^{,\alpha} \phi_{,\beta} - \left( \frac{1}{2}\phi^{,\gamma} \phi_{,\gamma} - V(\phi) \right)\delta^\alpha_\beta$$
 \textbf{\textcolor{red}{To be explored further}}.
 
-\subsubsection*{Friedmann Equations}
+\subsubsection{Friedmann Equations}
 
 How are the Newtonian evolution equations modified when one accounts for GR? In pricniple, one has to the metric and the energy momentum tensor into the Einstein's equations and derive the expressions. Expressions thus derived are called \textit{Friedmann equations}. \textcolor{red}{(do the derivation on mathematica)}. Mukhanov wishes to enlighten us in a different way.
 
@@ -162,5 +169,14 @@ The last equation is just the trace of Einstein equations \textbf{\textcolor{red
 $$a = \underbrace{a_m \sinh(\eta)}_{k=-1} \text{ , }\underbrace{a_m \eta}_{k=0} \text{ , } \underbrace{a_m \sin(\eta)}_{k=+1} $$ where the corresponding physical time $t$ is,
 $$t = \underbrace{\cosh \eta - 1}_{k=-1} \text{ , }\underbrace{\frac{\eta^2}{2}}_{k=0} \text{ , } \underbrace{1 - \cos \eta}_{k=+1} $$
 
-If we consider the flat radiation dominated universe specifically, we see that $\eta \propto \sqrt{t}$ and $a \propto \sqrt{t}$. Hence $H = \frac{1}{2t}$. Substituting this into the Friedman equations, we see that $\epsilon \propto 1/t^2$ \textit{ie.} $\epsilon \propto 1/a^4$.
+If we consider the flat radiation dominated universe specifically, we see that $\eta \propto \sqrt{t}$ and $a \propto \sqrt{t}$. Hence $H = \frac{1}{2t}$. Substituting this into the Friedmann equations, we see that $\epsilon \propto 1/t^2$ \textit{ie.} $\epsilon \propto 1/a^4$.
+
+\textbf{\textcolor{red}{Do the conformal time exercises}}
+
+\section{Milne Universe}
+Consider open universe in the limit of vanishing energy density. The Friedmann equation boils down to $$ H^2  = \frac{1}{a^2} \implies \dot{a}^2 = 1 \implies a=t$$
+The metric now becomes,
+\bes
+ds^2 = dt^2 -t^2 (d \chi^2 + \sinh^2 \chi d\Omega^2)
+\ees
 \end{document}

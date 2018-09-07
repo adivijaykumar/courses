@@ -77,6 +77,12 @@
     \exitProblemHeader{homeworkProblemCounter}
 }
 
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
 %
 % Homework Details
 %   - Title
@@ -87,11 +93,11 @@
 %   - Author
 %
 
-\newcommand{\hmwkTitle}{Lecture \#2}
+\newcommand{\hmwkTitle}{Lecture \#3}
 \newcommand{\hmwkDueDate}{\today}
 \newcommand{\hmwkClass}{Trefethen and Bau}
 \newcommand{\hmwkClassTime}{}
-\newcommand{\hmwkClassInstructor}{Professor Isaac Newton}
+\newcommand{\hmwkClassInstructor}{}
 \newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
 
 %
@@ -142,7 +148,30 @@
 %\pagebreak
 
 \begin{homeworkProblem}
+    For something to be a vector norm it should satisfy three conditions. We list down these three conditions and see if $\norm{\vdot}_W = \norm{Wx}$ does indeed satisfy them, 
+    \begin{itemize}
+    	\item $\norm{x}_W \ge 0$. This is automatically satisfied by the definition of the norm.
+    	\item $\norm{x}_W = 0 $ iff $x=0$. As $W$ is a nonsingular matrix by assumption, this property is satisfied as well.
+    	\item $\norm{\alpha x}_W = \abs{\alpha} \norm{x}_W$. As $\alpha$ is just a multiplicative constant and $W$ is indeed a matrix, this property is satisfied as well.
+    \end{itemize}
     
+    Hence, $\norm{\vdot}$ is a vector norm.
 \end{homeworkProblem}
 
+\begin{homeworkProblem}
+	By the definition of $\norm{A}$, $\norm{A} \ge \norm{Ax}, \forall \text{ unit vectors }x$
+	
+	\textcolor{red}{DO this problem}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	$$\norm{x}_\infty = \sqrt{x_0^2} \le \sqrt{x_0^2 + \sum_{i \ne 0} x_i^2} \le \norm{x}_2$$ Equality is achieved for any vector having only one element.
+	\\
+	
+	\textbf{Part (b)}\\
+	$$\norm{x}_2 = \sqrt{\sum_i x_i^2} \le \sqrt{m (\max x_i)^2}\le \sqrt{m}\norm{x}_\infty$$ Equality is achieved for any vector having elements with the same absolute value.\\
+	
+	\textbf{Part (c)}\\
+\end{homeworkProblem}
 \end{document}
