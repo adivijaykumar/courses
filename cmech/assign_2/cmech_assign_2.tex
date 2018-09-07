@@ -7,6 +7,7 @@
 \usepackage{amsfonts}
 \usepackage{tikz}
 \usepackage{physics}
+\usepackage{amssymb}
 \usepackage[plain]{algorithm}
 \usepackage{algpseudocode}
 
@@ -27,7 +28,7 @@
 
 \pagestyle{fancy}
 \lhead{\hmwkAuthorName}
-\chead{\hmwkClass\ (\hmwkClassInstructor\ \hmwkClassTime): \hmwkTitle}
+\chead{\hmwkClass\ : \hmwkTitle}
 \rhead{\firstxmark}
 \lfoot{\lastxmark}
 \cfoot{\thepage}
@@ -87,11 +88,11 @@
 %   - Author
 %
 
-\newcommand{\hmwkTitle}{Lecture \#1}
-\newcommand{\hmwkDueDate}{\today}
-\newcommand{\hmwkClass}{Trefethen and Bau}
+\newcommand{\hmwkTitle}{Assignment\ \#1}
+\newcommand{\hmwkDueDate}{Due 11th September 2018}
+\newcommand{\hmwkClass}{Classical Mechanics}
 \newcommand{\hmwkClassTime}{}
-\newcommand{\hmwkClassInstructor}{Professor Isaac Newton}
+\newcommand{\hmwkClassInstructor}{Prof.Manas Kulkarni}
 \newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
 
 %
@@ -136,103 +137,13 @@
 \newcommand{\Bias}{\mathrm{Bias}}
 
 \begin{document}
-
 \maketitle
 
-%\pagebreak
-\begin{homeworkProblem}\small
-$\left[\begin{array}{cccc}
-1 & -1 & 0 & 0	\\
-0 & 1 & 0 & 0	\\
-0 & -1 & 1 & 0	\\
-0 & -1 & 0 & 1	
-\end{array}\right]
-\left[\begin{array}{cccc}
-1 & 0 & 1 & 0	\\
-0 & 1 & 0 & 0	\\
-0 & 0 & 1 & 0	\\
-0 & 0 & 0 & 1	
-\end{array}\right]
-\left[\begin{array}{cccc}
-1 & 0 & 0 & 0	\\
-0 & 1 & 0 & 0	\\
-0 & 0 & \frac{1}{2} & 1	\\
-0 & 0 & 0 & 0	
-\end{array}\right]$B
-$\left[\begin{array}{cccc}
-2 & 0 & 0 & 0	\\
-0 & 1 & 0 & 0	\\
-0 & 0 & 1 & 0	\\
-0 & 0 & 0 & 1	
-\end{array}\right]
-\left[\begin{array}{cccc}
-0 & 0 & 0 & 1	\\
-0 & 1 & 0 & 0	\\
-0 & 0 & 1 & 0	\\
-1 & 0 & 0 & 0	
-\end{array}\right]
-\left[\begin{array}{cccc}
-1 & 0 & 0 & 0	\\
-0 & 1 & 0 & 0	\\
-0 & 0 & 1 & 1	\\
-0 & 0 & 0 & 0	
-\end{array}\right]
-\left[\begin{array}{cccc}
-0 & 0 & 0	\\
-1 & 0 & 0	\\
-0 & 1 & 0	\\
-0 & 0 & 1	
-\end{array}\right]
-$\\
-
-A is just the product of all matrices to the left of B and C is just the product of all matrices to the right of B.
-
-\end{homeworkProblem}
-
 \begin{homeworkProblem}
-\textbf{Part (a)}
-\begin{flalign*}
-	f_1&=k_{12} \left(-l_{12}-x_1+x_2\right)\\
-	f_2&=k_{23} \left(-l_{32}-x_2+x_3\right)-k_{12} \left(-l_{12}-x_1+x_2\right)\\
-	f_3&=k_{34} \left(-l_{34}-x_3+x_4\right)-k_{23} \left(-l_{32}-x_2+x_3\right)\\
-	f_4&=-k_{34} \left(-l_{34}-x_3+x_4\right)
-\end{flalign*}
-$$\left[\begin{array}{cccc}
-f_1 \\
-f_2 \\
-f_3\\
-f_4 
-\end{array}\right] = \left[\begin{array}{cccc}
--k_{12} & k_{12} & 0 & 0	\\
-k_{12} & -(k_{12}+k_{23}) & k_{23} & 0	\\
-0 & k_{23} & -(k_{23}+k_{34}) & k_{34}	\\
-0 & 0 & k_{34} & -k_{34}	
-\end{array}\right] \left[\begin{array}{cccc}
-x_1 \\
-x_2 \\
-x_3\\
-x_4 
-\end{array}\right] + (constant \ matrix)$$
-
-\textbf{Part (b)}
-The dimensions of K will be that of $\frac{f}{x}$, ie. $\frac{kg}{s^2}$.\\
-
-\textbf{Part (c)}
-The dimensions of $\det(K)$ will be ${(\frac{kg}{s^2})}^4$.\\
-
-\textbf{Part (d)}
-$$1 \frac{kg}{s^2} = 1000\frac{g}{s^2}$$
-$$1 (\frac{kg}{s^2})^4 = 10^{12}\frac{g}{s^2}$$
-$$\det(K)=10^{12}\det(K')$$
-\end{homeworkProblem}
-
-\begin{homeworkProblem}
-Let the identity $I=[e_1,e_2,\ldots,e_m]$, $R^{-1}=[a_1,a_2,\ldots,a_n]$. Let us write the expression $I = R^{-1}R$ as follows,
-$$[e_1,e_2,\ldots,e_m]=[a_1,a_2,\ldots,a_n] \left[ \begin{array}{cccc}
-r_{11} & r_{12} & \ldots & r_{1m}\\
-r_{21} & r_{22} & \ldots & r_{2m}\\
-\vdots & \vdots & \vdots & \vdots \\
-r_{1m} & r_{2m} & \ldots & r_{mm}\\
-\end{array}\right]$$
+	\solution\\
+	The Lagrangian for the given system can be written as,
+	$$L = T + V = \frac{1}{2} m x^2 \omega ^2+\frac{1}{2} m \left(\dot{x}^2+\dot{y}^2\right)-m g y$$
+	From the problem, we know that $y = k \left(\frac{x}{l}\right)^\alpha$, which means that $\dot{y} =k \alpha \frac{x^{\alpha -1 }}{l^\alpha}\dot{x}$. Substituting these into the form of the Lagrangian and simplifying, we get,
+	$$L=\frac{1}{2} m \left(-2 g k \left(\frac{x}{l}\right)^{\alpha }+\dot{x}^2\left(\frac{\alpha ^2 k^2  x^{2 \alpha-2 }}{l^\alpha} + 1\right)+x^2 \omega ^2\right)$$
 \end{homeworkProblem}
 \end{document}
