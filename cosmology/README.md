@@ -1,0 +1,1 @@
+One hopes one will finally be accustomed to cosmology with this exploration, largely following the book by Prof. Mukhanov and lecture notes by Prof. Baumann. One might also, if one feels like, try to survey modern day approaches to inflation inspired by string theory. 

@@ -1,0 +1,1 @@
+One needs to get accustomed with what gravitational waves are before jumping in and working on it. One hopes the two tomes by Maggiore will aid one's exploration.

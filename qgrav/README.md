@@ -1,0 +1,1 @@
+One has always wondered how one describes quantum field in the presence of gravity, and it is time one finally gained a good understanding. One has no clue where this will lead, but one chooses to follow the book by Prof. Mukhanov, and read from other references if needed.

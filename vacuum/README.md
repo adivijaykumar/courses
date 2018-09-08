@@ -1,0 +1,3 @@
+This is a exploratory effort in understanding vacuum spacetimes from all aspects - analytical, numerical, geometrical - so that one can prepare oneself to understand the higher truths in the phenomenological and experimental results of such spacetimes.
+
+The main references are expected to be books on General Relativity by Prof. T Padmanabhan and Prof. Sean Carroll, and the book on Numerical Relativity by Prof. Baumgarte and Prof. Shapiro. If the occasion demands, we might also refer to Prof. Maggiore's two tomes on Gravitational Waves. 
