@@ -13,13 +13,6 @@
 
 \usetikzlibrary{automata,positioning}
 
-\newcommand{\be}{\begin{equation}}
-\newcommand{\ee}{\end{equation}}
-\newcommand{\bes}{\begin{equation*}}
-\newcommand{\ees}{\end{equation*}}
-\newcommand{\bea}{\begin{flalign*}}
-\newcommand{\eea}{\end{flalign*}}
-%
 % Basic Document Settings
 %
 
@@ -157,5 +150,71 @@
 	$$L = T + V = \frac{1}{2} m x^2 \omega ^2+\frac{1}{2} m \left(\dot{x}^2+\dot{y}^2\right)-m g y$$
 	From the problem, we know that $y = k \left(\frac{x}{l}\right)^\alpha$, which means that $\dot{y} =k \alpha \frac{x^{\alpha -1 }}{l^\alpha}\dot{x}$. Substituting these into the form of the Lagrangian and simplifying, we get,
 	$$L=\frac{1}{2} m \left(-2 g k \left(\frac{x}{l}\right)^{\alpha }+\dot{x}^2\left(\frac{\alpha ^2 k^2  x^{2 \alpha-2 }}{l^\alpha} + 1\right)+x^2 \omega ^2\right)$$
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	The Schrodinger equation is given by 
+	\bes
+	-\frac{\hbar^2}{2m}\pdv[2]{\psi}{x} + V\psi = i \hbar \pdv{\psi}{t}
+	\ees
+	We choose $ \psi $ and $ \psi^* $ as our generalized coordinates, and $ (t,x) $ as the dependent coordinates. One can write the equations of motion in a compact form as follows,
+	
+	\bes
+	\partial_\mu \qty(\pdv{L}{(\partial_\mu \psi)}) = \pdv{L}{\psi} \qq{and} \partial_\mu \qty(\pdv{L}{(\partial_\mu \psi^*)}) = \pdv{L}{\psi^*}
+	\ees
+	
+	where the index $ \mu $ goes over $ (t,x) $.
+	
+	\textbf{Part (b)}\\
+	Kinetic energy of the wire is zero. The Lagrangian can be written as,
+	\bes
+	L = - \int ds \ \rho g y = - \int \sqrt{dx^2 + dy^2} \ \rho g y = - \int dx y \sqrt{1 + y'^2} \ \rho g
+	\ees
+	
+	Writing down the equation of motion for the Lagrangian density instead of the Lagrangian, one gets,
+	\bes
+	\deriv{\frac{yy'}{\sqrt{1+y'^2}}} - \sqrt{1+y'^2} = 0
+	\ees
+	\bes
+	\frac{yy'' + y'^2}{\sqrt{1+y'^2}} - \frac{y y'^2 y''}{1+y'^2} - \sqrt{1+y'^2}=0
+	\ees
+	Expanding this out and simplifying a bit, one gets,
+	\bes
+	\frac{yy''}{(1+y'^2)^\frac{3}{2}} - \frac{1}{\sqrt{1+y'^2}}=0 \implies \deriv{\frac{y}{\sqrt{1+y'^2}}} = 0
+	\ees
+	\bes
+	\therefore \frac{y}{\sqrt{1+y'^2}} = \alpha \implies y = \alpha \cosh \qty(\frac{x}{\alpha} + \beta)
+	\ees	
+	
+	\textbf{Part (c)}\\
+	The distance metric on a sphere spherical polar coordinates is given by,
+	\bes
+	ds^2 = r^2 (d\theta^2 + \sin^2\theta d\phi^2) = d\theta^2 [ r^2 (1 + \sin^2\theta \phi'^2)]
+	\ees
+	\bes
+	\therefore ds = d\theta \sqrt{r^2 (1 + \sin^2\theta \phi'^2)}
+	\ees
+	From the ansatz $  S = L d\tau $, we can identify that the Lagrangian $ L = \sqrt{r^2 (1 + \sin^2\theta \phi'^2)} $. For finding the \textit{equations of motion}, it is fine and also easier to work with $ L^2 $ rather than $ L $ in this problem. Writing down the equations of motion for $\phi(\theta)$,
+	\bes
+	\dv{\sin^2\theta \phi'}{\theta} = 0 \implies \phi' = \alpha \csc[2](\theta) \implies \phi(\theta) = a \cot\theta + b
+	\ees
+	where $ \alpha, a, b $ are constants. If the distance is to be found out between two points $ (\phi_1,\theta_1) $ and $ (\phi_2,\theta_2) $, then,
+	
+	\bes
+	\phi_1 = a \cot\theta_1 + b \qq{and} \phi_2 = a \cot\theta_2 + b
+	\ees
+	which gives,
+	\bes
+	a = \frac{\phi_1-\phi_2}{\cot \theta_1 - \cot \theta_2} \qq{and} b= \frac{\phi_1 \tan \theta_1 - \phi_2 \tan \theta_2}{\tan \theta_1 - \tan \theta_2 }
+	\ees
 \end{homeworkProblem}
 \end{document}
