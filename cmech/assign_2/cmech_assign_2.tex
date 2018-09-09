@@ -150,6 +150,15 @@
 	$$L = T + V = \frac{1}{2} m x^2 \omega ^2+\frac{1}{2} m \left(\dot{x}^2+\dot{y}^2\right)-m g y$$
 	From the problem, we know that $y = k \left(\frac{x}{l}\right)^\alpha$, which means that $\dot{y} =k \alpha \frac{x^{\alpha -1 }}{l^\alpha}\dot{x}$. Substituting these into the form of the Lagrangian and simplifying, we get,
 	$$L=\frac{1}{2} m \left(-2 g k \left(\frac{x}{l}\right)^{\alpha }+\dot{x}^2\left(\frac{\alpha ^2 k^2  x^{2 \alpha-2 }}{l^\alpha} + 1\right)+x^2 \omega ^2\right)$$
+	The equation of motion can be written as,
+	\bes
+	\alpha  g k x^2 \left(\frac{x}{l}\right)^{\alpha }+(\alpha -1) \alpha ^2 k^2 \dot{x}^2 \left(\frac{x}{l}\right)^{2 \alpha }+\alpha ^2 k^2 x \ddot{x} \left(\frac{x}{l}\right)^{2 \alpha }-x^4 \omega ^2+x^3 \ddot{x}=0
+	\ees
+	The equlibrium points will satisfy $ \dot{x}=\ddot{x}=0 $. This means that the equilibrium point will be,
+	\bes
+	x_0 = \qty(\frac{\omega^2 l^\alpha}{gk\alpha})^\frac{1}{\alpha-2}
+	\ees
+	We substitute $ x = x_0 + \epsilon $
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
@@ -173,6 +182,7 @@
 	\ees
 	
 	where the index $ \mu $ goes over $ (t,x) $.
+	\\
 	
 	\textbf{Part (b)}\\
 	Kinetic energy of the wire is zero. The Lagrangian can be written as,
@@ -194,6 +204,8 @@
 	\bes
 	\therefore \frac{y}{\sqrt{1+y'^2}} = \alpha \implies y = \alpha \cosh \qty(\frac{x}{\alpha} + \beta)
 	\ees	
+	One can get the constants $ \alpha $ and $ \beta $ by imposing the end point conditions for the curve.
+	\\
 	
 	\textbf{Part (c)}\\
 	The distance metric on a sphere spherical polar coordinates is given by,
