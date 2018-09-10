@@ -1,4 +1,4 @@
 # courses
-Assignments for Courses at ICTS
+Assignments and notes for self-study and credit courses.
 
-LaTeX templates taken from [here](https://github.com/jdavis/latex-homework-template).
+LaTeX templates taken from [here](https://github.com/adivijaykumar/latex-homework-template).
