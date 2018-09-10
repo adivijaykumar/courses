@@ -93,7 +93,7 @@
 %   - Author
 %
 
-\newcommand{\hmwkTitle}{Assignment\ \#1}
+\newcommand{\hmwkTitle}{Assignment\ \#2}
 \newcommand{\hmwkDueDate}{Due 11th September 2018}
 \newcommand{\hmwkClass}{Classical Mechanics}
 \newcommand{\hmwkClassTime}{}
@@ -152,13 +152,30 @@
 	$$L=\frac{1}{2} m \left(-2 g k \left(\frac{x}{l}\right)^{\alpha }+\dot{x}^2\left(\frac{\alpha ^2 k^2  x^{2 \alpha-2 }}{l^\alpha} + 1\right)+x^2 \omega ^2\right)$$
 	The equation of motion can be written as,
 	\bes
-	\alpha  g k x^2 \left(\frac{x}{l}\right)^{\alpha }+(\alpha -1) \alpha ^2 k^2 \dot{x}^2 \left(\frac{x}{l}\right)^{2 \alpha }+\alpha ^2 k^2 x \ddot{x} \left(\frac{x}{l}\right)^{2 \alpha }-x^4 \omega ^2+x^3 \ddot{x}=0
+	\boxed{\alpha  g k x^2 \left(\frac{x}{l}\right)^{\alpha }+(\alpha -1) \alpha ^2 k^2 \dot{x}^2 \left(\frac{x}{l}\right)^{2 \alpha }+\alpha ^2 k^2 x \ddot{x} \left(\frac{x}{l}\right)^{2 \alpha }-x^4 \omega ^2+x^3 \ddot{x}=0}
 	\ees
 	The equlibrium points will satisfy $ \dot{x}=\ddot{x}=0 $. This means that the equilibrium point will be,
 	\bes
 	x_0 = \qty(\frac{\omega^2 l^\alpha}{gk\alpha})^\frac{1}{\alpha-2}
 	\ees
 	We substitute $ x = x_0 + \epsilon $
+
+	\bes
+	\ddot{y}  + y\frac{(\alpha-2 )\omega^2}{{\alpha ^2 k^2    \left(\frac{x_0}{l}\right)^{2 \alpha }}+1}  = 0
+	\ees
+	
+	For small oscillations, the coefficient of $ y $ in the above equation should be positive. Hence,
+	
+	\bes
+	\frac{(\alpha - 2 )\omega^2}{{\alpha ^2 k^2    \left(\frac{x_0}{l}\right)^{2 \alpha }}+1}   > 0
+	\ees
+	\bes
+	\therefore \alpha - 2 > 0 \implies \boxed{\alpha > 2}
+	\ees
+	The frequency of oscillations $ \omega_0 $ is simply the square root of the coefficient of $ y $,
+	\bes
+	\boxed{\omega_0 = \sqrt{\frac{\alpha - 2 }{{\alpha ^2 k^2    \left(\frac{x_0}{l}\right)^{2 \alpha }}+1}}\omega} \qq{where} x_0 = \qty(\frac{\omega^2 l^\alpha}{gk\alpha})^\frac{1}{\alpha-2}
+	\ees
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
@@ -173,16 +190,24 @@
 	\textbf{Part (a)}\\
 	The Schrodinger equation is given by 
 	\bes
-	-\frac{\hbar^2}{2m}\pdv[2]{\psi}{x} + V\psi = i \hbar \pdv{\psi}{t}
+	-\frac{\hbar^2}{2m}\pdv[2]{\psi}{x} + V\psi = i \hbar \pdv{\psi}{t} \qq{and} -\frac{\hbar^2}{2m}\pdv[2]{\psi^*}{x} + V\psi^* = -i \hbar \pdv{\psi^*}{t}
 	\ees
-	We choose $ \psi $ and $ \psi^* $ as our generalized coordinates, and $ (t,x) $ as the dependent coordinates. One can write the equations of motion in a compact form as follows,
+	We choose $ \psi $ and $ \psi^* $ as our generalized coordinates, and $ (t,x) $ as the dependent coordinates. One should be able to write the equations of motion in a compact form as follows,
 	
 	\bes
 	\partial_\mu \qty(\pdv{L}{(\partial_\mu \psi)}) = \pdv{L}{\psi} \qq{and} \partial_\mu \qty(\pdv{L}{(\partial_\mu \psi^*)}) = \pdv{L}{\psi^*}
 	\ees
 	
-	where the index $ \mu $ goes over $ (t,x) $.
-	\\
+	where the index $ \mu $ goes over $ (t,x) $. Let's analyze every term in the Schrodinger Equation and figure out what corresponding term in the Lagrangian will give rise to that term,
+	\begin{itemize}
+		\item The first term on the LHS is a double $ x $ derivative and will come from some single derivative term of the form $ L_1 = \psi' \psi'^*$
+		\item The second term on the LHS has no derivatives and will come from a term of the form $ L_2 = \psi \psi^*$
+		\item The RHS is a single $ t $ derivative and will come from some term of the form $ \dot{\psi} \psi^*$. To make it symmetric, let's consider $ L_3 = -\dot{\psi} \psi^* + \dot{\psi^*} \psi  $
+	\end{itemize}
+	So our final Lagrangian will be of the form $  L = a_1 L_1 + a_2 L_2 + a_3 L_3 $. Substituting our ansatz, we find our constants, and then the final Lagrangian can be written as,
+	\begin{equation*}
+	\boxed{L = -\frac{\hbar^2}{2m}\psi' \psi'^* + V \dot{\psi} \psi^* + i \hbar (-\dot{\psi} \psi^* + \dot{\psi^*} \psi)}
+	\end{equation*}
 	
 	\textbf{Part (b)}\\
 	Kinetic energy of the wire is zero. The Lagrangian can be written as,
@@ -202,7 +227,7 @@
 	\frac{yy''}{(1+y'^2)^\frac{3}{2}} - \frac{1}{\sqrt{1+y'^2}}=0 \implies \deriv{\frac{y}{\sqrt{1+y'^2}}} = 0
 	\ees
 	\bes
-	\therefore \frac{y}{\sqrt{1+y'^2}} = \alpha \implies y = \alpha \cosh \qty(\frac{x}{\alpha} + \beta)
+	\therefore \frac{y}{\sqrt{1+y'^2}} = \alpha \implies \boxed{y = \alpha \cosh \qty(\frac{x}{\alpha} + \beta)}
 	\ees	
 	One can get the constants $ \alpha $ and $ \beta $ by imposing the end point conditions for the curve.
 	\\
@@ -217,7 +242,7 @@
 	\ees
 	From the ansatz $  S = L d\tau $, we can identify that the Lagrangian $ L = \sqrt{r^2 (1 + \sin^2\theta \phi'^2)} $. For finding the \textit{equations of motion}, it is fine and also easier to work with $ L^2 $ rather than $ L $ in this problem. Writing down the equations of motion for $\phi(\theta)$,
 	\bes
-	\dv{\sin^2\theta \phi'}{\theta} = 0 \implies \phi' = \alpha \csc[2](\theta) \implies \phi(\theta) = a \cot\theta + b
+	\dv{\sin^2\theta \phi'}{\theta} = 0 \implies \phi' = \alpha \csc[2](\theta) \implies \boxed{\phi(\theta) = a \cot\theta + b}
 	\ees
 	where $ \alpha, a, b $ are constants. If the distance is to be found out between two points $ (\phi_1,\theta_1) $ and $ (\phi_2,\theta_2) $, then,
 	
