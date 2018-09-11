@@ -158,7 +158,7 @@
 	\bes
 	x_0 = \qty(\frac{\omega^2 l^\alpha}{gk\alpha})^\frac{1}{\alpha-2}
 	\ees
-	We substitute $ x = x_0 + \epsilon $
+	We substitute $ x(t) = x_0 + \epsilon y(t)$
 
 	\bes
 	\ddot{y}  + y\frac{(\alpha-2 )\omega^2}{{\alpha ^2 k^2    \left(\frac{x_0}{l}\right)^{2 \alpha }}+1}  = 0
@@ -179,11 +179,85 @@
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
-	content...
+	\textbf{Part (a)}\\
+	We first write down the Lagrangian,
+	\begin{align*}
+	L &= T-V\\
+	&= \underbrace{\dfrac{M (R_1 - R_2)^2 \dot{\theta_1^2}}{2}}_{\text{Centre of mass revolution}}+ \underbrace{\dfrac{M R_2^2 \dot{\theta_2}^2}{4}}_{\text{rotation}} + Mg (R_1-R_2)\cos \theta_1
+	\end{align*}
+	
+	The equations of motion can now be written as,
+	\begin{equation*}
+	\boxed{\ddot{\theta_2} = 0 \qq{and} \ddot{\theta_1}= -\dfrac{g(R_1-R_2)}{R_2^2}\sin \theta_1}
+	\end{equation*}
+	
+	\textbf{Part (b)}\\
+	As there is rolling without slipping, the following constraint condition would hold,
+	
+	\begin{equation*}
+	R_2 \dot{\theta_2} = (R_1 - R_2)\dot{\theta_1} \implies f = R_2 {\theta_2} - (R_1-R_2) {\theta_1} = 0
+	\end{equation*}
+	Note that differentiating this also gives,
+	\begin{equation*}
+	R_2 \ddot{\theta_2} = (R_1 - R_2)\ddot{\theta_1}
+	\end{equation*}
+	
+	\textbf{Part (c)}\\
+	Putting in constraint conditions, the equations of motion get modified as,
+	\begin{equation*}
+	\derivative{t} \qty(\pdv{L}{\dot{q}}) - \pdv{L}{{q}} = \lambda \pdv{f}{{q}}
+	\end{equation*}
+	which modifies the equations in this problem as,
+	\begin{equation*}
+	M R_2^2 \ddot{\theta_2} =  \lambda R_2 \qq{and} \dfrac{M (R_1-R_2)^2}{2} \ddot{\theta_1} = -{Mg(R_1-R_2)}\sin \theta_1 - \lambda (R_1-R_2)
+	\end{equation*}
+	\begin{equation*}
+	M R_2 \ddot{\theta_2} =  \lambda  \qq{and} \dfrac{M (R_1-R_2)}{2} \ddot{\theta_1} = -{Mg}\sin \theta_1 - \lambda 
+	\end{equation*}
+	Taking the ratio of these two and substituting,
+	\begin{equation*}
+	\dfrac{2R_2}{R_1-R_2} \dfrac{R_1-R_2}{R_2} = \dfrac{\lambda}{-{Mg}\sin \theta_1 - \lambda}
+	\end{equation*}
+	\begin{equation*}
+	\abs{\lambda} = \dfrac{Mg\sin \theta_1}{3} = \qq{Constraint Force}
+	\end{equation*}
+	
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
-	content...
+	\textbf{Part (a)}\\
+	A bicycle really has just two degrees of freedom in the simplest sense,
+	\begin{itemize}
+		\item The angle associated to the pedalling motion 
+		\item The angle associated to the motion of the handle 
+	\end{itemize}
+
+	\textbf{Part (b)}\\
+	The arrangement has $ M-1 $ links and hence $ M-2 $ angles in between. There is also one degree of freedom associated with the rotation of the chain if considered as a rigid body. Hence, there are a total of $ M-1 $ degrees of freedom.
+	\\
+	
+	\textbf{Part (c)}\\
+	Due to \textit{homogeneity and isotropy of space} Lagrangian of a free particle should be,
+	\begin{itemize}
+		\item \textit{Invariant under Rotation} - Hence, $L(v,x)$, where $ v $ and $ x $ are the absolute value of the velocity and position vectors.
+		\item \textit{Invariant under Translation} - This means that L cannot depend on $ x $ at all. Hence $ L=L(v) $.
+	\end{itemize}
+
+	\textbf{Part (d)}\\
+	\begin{equation*}
+	\derivative{t} \qty(\pdv{L'}{v'}) = \derivative{t} (2v') = \derivative{t} v' = 0
+	\end{equation*}
+	which is the equation of motion for free particle in the original frame. Hence, $ L' = v'^2 $ is a possible choice.
+	\\
+	
+	\textbf{Part (e)}\\
+	\begin{equation*}
+	L'(v+V_0) = L(v) +\dv{F(x,t)}{t} = L'(v) + \eval{V_0 \dv{L'}{v_c}}_{v_c=v} + \ldots
+	\end{equation*}
+	As $ L(v) = L'(v) $, we have $ \dv{F(x,t)}{t} =  \eval{V_0 \dv{L'}{v_c}}_{v_c=v} $. As $ F $ does not depend on v, it's first derivative can depend only linearly on $ v $. Hence,
+	\begin{equation*}
+	\dv{L'}{v} \sim v \implies L \sim v^2
+	\end{equation*}
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
