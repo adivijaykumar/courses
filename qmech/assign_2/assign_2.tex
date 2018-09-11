@@ -146,12 +146,54 @@
 \begin{document}
 
 \maketitle
-\newpage
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
 
-%\pagebreak
 
 \begin{homeworkProblem}
-    
+	We know that the energy eigenstates of the harmonic oscillator form a basis. Hence, the required coherent state $ \ket{z} $ can be written in terms of these eigenstates as,
+	\begin{equation*}
+	\ket{z} = \sum_{n=0}^{\infty} c_n \ket{n} = \sum_{n=0}^{\infty} c_n \frac{(a^\dagger)^n}{\sqrt{n!}}\ket{0}
+	\end{equation*}
+	Substituting this in the equation for coherent state $ a\ket{z} = z \ket{z} $,
+	\begin{align*}
+	 \sum_{n=0}^{\infty} c_n a \ket{n} &=  \sum_{n=0}^{\infty} z c_n \ket{n}\\
+	 \sum_{n=1}^{\infty} c_n \sqrt{n} \ket{n-1} &=  \sum_{n=0}^{\infty} z c_n \ket{n}\\
+	 \sum_{n=0}^{\infty} c_{n+1} \sqrt{n+1} \ket{n} &=  \sum_{n=0}^{\infty} z c_n \ket{n}\\
+	 \therefore c_{n+1} \sqrt{n+1} &= z c_n
+	\end{align*}
+	
+	We have effectively derived a recursion relation for the coefficients $ c_n $. If we start off with $ c_n = \alpha $,
+	\begin{equation*}
+	c_1 = {z \alpha} \qq{,} c_2 = \frac{z^2 \alpha}{\sqrt{2}} \qq{,} c_3 = \dfrac{z^3 \alpha}{\sqrt{3\vdot 2}} \qq{,} \ldots \qq{,} c_n = \dfrac{z^n \alpha}{\sqrt{n!}}
+	\end{equation*}
+	So, our coherent state can now be written as,
+	
+	\begin{align*}
+	\ket{z} &= \alpha \sum_{n=0}^{\infty}  \frac{(za^\dagger)^n}{n!}\ket{0}\\
+	&= \alpha e^{a^\dagger z}\ket{0}
+	\end{align*}
 \end{homeworkProblem}
+	
+\begin{homeworkProblem}
+	We know that,
+	\begin{equation*}
+	{x}(0) = \frac{{a} + {a}^\dagger}{\sqrt{2m\omega}} \qq{,} {p}(0) = \frac{\sqrt{m\omega} ({a} - {a}^\dagger)}{\sqrt{2}i} \qq{,} x(t) = e^{iHt}x(0)e^{-iHt} \qq{,} p(t) = e^{iHt}p(0)e^{-iHt}
+	\end{equation*}
+	Consider $C_1(t)$,
+	\begin{align*}
+	C_1(t) &= \ev{e^{iHt}x(0)e^{-iHt}x(0)}{0}\\
+	&= \dfrac{e^{i\omega t/2}}{\sqrt{2m\omega}}\bra{0}x(0)e^{-iHt}\ket{1} \impliedby \{a^\dagger\ket{0} = \ket{1} \qq{,} \bra{0}e^{iHt} = e^{i\omega t/2}\bra{0}\}\\
+	&= \dfrac{e^{i\omega t/2}}{\sqrt{2m\omega}} \dfrac{e^{-3i\omega t/2}}{\sqrt{2m\omega}} \ip{1}{1} \impliedby \{\bra{0}a = \bra{1} \qq{,} e^{-iHt}\ket{1} = e^{-3i\omega t/2}\ket{1}\}\\
+	&= \dfrac{e^{-i\omega t}}{{2m\omega}}
+	\end{align*}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+%\pagebreak 	
 
 \end{document}
