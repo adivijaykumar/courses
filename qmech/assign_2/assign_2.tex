@@ -181,13 +181,30 @@
 	\begin{equation*}
 	{x}(0) = \frac{{a} + {a}^\dagger}{\sqrt{2m\omega}} \qq{,} {p}(0) = \frac{\sqrt{m\omega} ({a} - {a}^\dagger)}{\sqrt{2}i} \qq{,} x(t) = e^{iHt}x(0)e^{-iHt} \qq{,} p(t) = e^{iHt}p(0)e^{-iHt}
 	\end{equation*}
-	Consider $C_1(t)$,
+	From this, we note the following,
 	\begin{align*}
-	C_1(t) &= \ev{e^{iHt}x(0)e^{-iHt}x(0)}{0}\\
-	&= \dfrac{e^{i\omega t/2}}{\sqrt{2m\omega}}\bra{0}x(0)e^{-iHt}\ket{1} \impliedby \{a^\dagger\ket{0} = \ket{1} \qq{,} \bra{0}e^{iHt} = e^{i\omega t/2}\bra{0}\}\\
-	&= \dfrac{e^{i\omega t/2}}{\sqrt{2m\omega}} \dfrac{e^{-3i\omega t/2}}{\sqrt{2m\omega}} \ip{1}{1} \impliedby \{\bra{0}a = \bra{1} \qq{,} e^{-iHt}\ket{1} = e^{-3i\omega t/2}\ket{1}\}\\
-	&= \dfrac{e^{-i\omega t}}{{2m\omega}}
+	 x(t)\ket{0} &= e^{iHt}x(0)e^{-iHt}\ket{0}\\
+	 &=  e^{-i\omega t/2}e^{iHt}x(0)\ket{0}\\
+	 &=  \frac{e^{-i\omega t/2}}{\sqrt{2m\omega}}e^{iHt}\ket{1}\\
+	 x(t)\ket{0} &=  \frac{e^{i\omega t}}{\sqrt{2m\omega}}\ket{1} \implies \bra{0}x(t)=\frac{e^{-i\omega t}}{\sqrt{2m\omega}} \bra{1}
 	\end{align*}
+	\begin{align*}
+	\qq{Similarly, }	 p(t)\ket{0} &= e^{iHt}p(0)e^{-iHt}\ket{0}\\
+	&=  e^{-i\omega t/2}e^{iHt}p(0)\ket{0}\\
+	&=  -\frac{e^{-i\omega t/2}\sqrt{m\omega}}{\sqrt{2}i}e^{iHt}\ket{1}\\
+	p(t)\ket{0} &=  -\frac{e^{i\omega t}\sqrt{m\omega}}{\sqrt{2}i}\ket{1} \implies \bra{0}p(t) =  \frac{e^{-i\omega t}\sqrt{m\omega}}{\sqrt{2}i}\bra{1} 
+	\end{align*}
+	
+	Now consider the quantities to be calculated,
+	\begin{equation*}
+	C_1(t) = \ev{x(t)x(0)}{0} = \frac{e^{-i\omega t}}{\sqrt{2m\omega}} \frac{1}{\sqrt{2m\omega}} = \boxed{\frac{e^{-i\omega t}}{2m\omega}}
+	\end{equation*}
+	\begin{equation*}
+	C_2(t) = \ev{x(t)p(0)}{0} - \ev{p(0)x(t)}{0}= -\dfrac{e^{-i\omega t}}{2i} + \dfrac{e^{i\omega t}}{2i}= \boxed{\sin \omega t}
+	\end{equation*}
+	\begin{equation*}
+	C_3(t) = \ev{p(t)x(0)}{0} - \ev{x(0)p(t)}{0}= \dfrac{e^{-i\omega t}}{2i} - \dfrac{e^{i\omega t}}{2i}= \boxed{-\sin \omega t}
+	\end{equation*}
 \end{homeworkProblem}
 
 
