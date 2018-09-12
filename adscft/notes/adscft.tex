@@ -21,7 +21,11 @@
 \newcommand{\bea}{\begin{flalign*}}
 \newcommand{\eea}{\end{flalign*}}
 
+\usetikzlibrary{decorations.pathmorphing}
 
+\tikzset{zigzag/.style={decorate, decoration=zigzag}}
+\def \L {2.}
+\definecolor{darkgreen}{HTML}{006622}
 %\linespread{1.0}
 %\setlength{\parindent}{0em}
 %\setlength{\parskip}{0.8em}
@@ -36,20 +40,24 @@ One shall mainly follow the path taken by Prof. Hong Liu in his MIT OCW course S
 \begin{document}
 \maketitle
 \section{Motivations}
+\subsection{Spin-2}
+
 From a field theory perspective, it is natural to ask whether a massless spin-$2$ particle \textcolor{red}{Ex : Why is gravity massless spin $ 2 $?} can arise as the bound state of a lower spin theory. If yes, that is equivalent to saying that gravity has effectively \textit{emerged}. Gluons and quarks can indeed form massive spin-$ 2 $ bound states which are unstable. \textcolor{red}{Ex : How do spin-$2$ particles arise in QCD?}.
+\subsection{Weinberg-Witten Theorem}
 
 But can one generate massless spin-$ 2 $ particles from this by maybe changing the theory a bit? Weinberg and Witten said no. They gave the following theorems
 
 \begin{itemize}
-
-\item \textbf{Theorem 1} - A theory that allows the construction of a Lorentz covariant conserved current cannot contain a massless particle of spin $  > 1/2 $ with non-vanishing charge.
-\item \textbf{Theorem 2} - A theory that allows Lorentz covariant conserved stress tensor cannot contain massless particles of spin $ >1 $.
+	
+	\item \textbf{Theorem 1} - A theory that allows the construction of a Lorentz covariant conserved current cannot contain a massless particle of spin $  > 1/2 $ with non-vanishing charge.
+	\item \textbf{Theorem 2} - A theory that allows Lorentz covariant conserved stress tensor cannot contain massless particles of spin $ >1 $.
 \end{itemize}
-As GR need not have a conserved stress tensor \textcolor{red}{???}, these theorems do not forbid the graviton. But the second theorem also prohibits renormalizable theories in Minkowski spacetime in having an emergent gravity description. There is, however, a hidden assumption in this theory - it only applies to particles that live in the spacetime of the original theory. This seems like a straightforward, obvious assumption. But, in AdS/CFT, gravity lives in a different spacetime!
+As GR need not have a conserved stress tensor \textcolor{red}{???}, these theorems do not forbid the graviton. But the second theorem also prohibits renormalizable theories in Minkowski spacetime in having an emergent gravity description. There is, however, a hidden assumption in this theory - it only applies to particles that live in the spacetime of the original theory. This seems like a straightforward, obvious assumption. But, in AdS/CFT, gravity\footnote{gh} lives in a different spacetime!
 
 \textbf{\textcolor{red}{{Prove the Weinberg Witten Theorem}}}
 
 \section{Black Holes ain't so Black}
+
 In non-gravitational physics, in principle, one can probe arbitrarily large length scales. When gravity comes in, this stops being true. When $ E \gg m_p $, there will come a point when the Schwarzchild radius $ r_s \sim GE_{c} $ will become the fundamental distance scale. 
 
 \subsection{Classical Black Holes}
@@ -70,49 +78,26 @@ This has the following properties,
 	\bes
 	\qq{\textcolor{red}{Surface Gravity}} \kappa = \frac{1}{2}f'(r_s) = \frac{1}{2r_s} = \frac{1}{4M}
 	\ees
-		\centering
-		\begin{tikzpicture}[scale=0.5]
-		\centering
-		\node (I)    at ( 4,0)   {I};
-		\node (II)   at (-4,0)   {II};
-		\node (III)  at (0, 2.5) {III};
-		\node (IV)   at (0,-2.5) {IV};
-		
-		\path  % Four corners of left diamond
-		(II) +(90:4)  coordinate[label=90:$i^+$]  (IItop)
-		+(-90:4) coordinate[label=-90:$i^-$] (IIbot)
-		+(0:4)   coordinate                  (IIright)
-		+(180:4) coordinate[label=180:$i^0$] (IIleft)
-		;
-		\draw (IIleft) -- 
-		node[midway, above left]    {$\cal{J}^+$}
-		node[midway, below, sloped] {$\bar{u}=\infty$}
-		(IItop) --
-		node[midway, below, sloped] {$\bar{u}=0$}
-		(IIright) -- 
-		node[midway, below, sloped] {$\bar{u}=0$}
-		(IIbot) --
-		node[midway, above, sloped] {$\bar{v}=-\infty$}
-		node[midway, below left]    {$\cal{J}^-$}    
-		(IIleft) -- cycle;
-		
-		\path % Four conners of the right diamond (no labels this time)
-		(I) +(90:4)  coordinate (Itop)
-		+(-90:4) coordinate (Ibot)
-		+(180:4) coordinate (Ileft)
-		+(0:4)   coordinate (Iright)
-		;
-		% No text this time in the next diagram
-		\draw  (Ileft) -- (Itop) -- (Iright) -- (Ibot) -- (Ileft) -- cycle;
-		
-		% Squiggly lines
-		\draw[decorate,decoration=zigzag] (IItop) -- (Itop)
-		node[midway, above, inner sep=2mm] {$r=0$};
-		
-		\draw[decorate,decoration=zigzag] (IIbot) -- (Ibot)
-		node[midway, below, inner sep=2mm] {$r=0$};
-		
-		\end{tikzpicture}
-	
 \end{itemize}
+
+
+\subsection{Causal Structure and Rindler Spacetime}
+Consider the region just outside the black hole horizon,
+\begin{equation*}
+f(r) = f(r_s) + (r-r_s)f'(r_s) + \ldots= (r-r_s)f'(r_s) + \ldots
+\end{equation*}
+From the metric, we can see that the proper distance $ \rho $ is just given by,
+\begin{equation*}
+\rho = \int_{r_s}^r \dfrac{dr}{\sqrt{f(r)}} = \int_{r_s}^r \dfrac{dr}{\sqrt{(r-r_s)f'(r_s)}} = 2\sqrt{\frac{r-r_s}{f'(r_s)}}
+\end{equation*}
+Hence,
+\begin{equation*}
+f(r) = (f'(r_s))^2\rho^2/4 = \kappa^2 \rho^2
+\end{equation*}
+and the metric can be written as,
+\begin{align*}
+ds^2 &= - \kappa^2 \rho^2 dt^2 + d\rho^2 +  r_s^2(d\theta^2 + \sin^2 \theta d\phi^2)\\
+&=   \underbrace{-\rho^2 d\eta^2 + d\rho^2}_{\text{(1+1)d Minkowski Spacetime in Rindler coordinates}} +  \underbrace{r_s^2(d\Omega^2)}_{\text{2-sphere}}
+\end{align*}
+\textbf{\textcolor{red}{Continue this from Hartman and other sources}}
 \end{document}
