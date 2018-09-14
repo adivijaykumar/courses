@@ -333,17 +333,54 @@
 \begin{homeworkProblem}
 	The Lagrangian for a charged particle in a magnetic field is given by,
 	\begin{equation*}
-	L= \dfrac{1}{2}m (\dot{x}^2 + \dot{y}^2) + q(A_x \dot{x} + A_y \dot{y})
+	L=\dfrac{1}{2}m (\dot{x}^2 + \dot{y}^2) + q\vb{A}\vdot \vb{v} = \dfrac{1}{2}m (\dot{x}^2 + \dot{y}^2) + q(A_x \dot{x} + A_y \dot{y})
 	\end{equation*}
 	\textbf{Part (a)}\\
-	The magnetic field $ \vb{B} $ is given by $ \vb{B} = \curl{\vb{A}}$. We can easily see that the addition of any term of the form $ \grad{\lambda} $, where $\lambda$ is a scalar, to the vector potential gives the same $ \vb{B} $.
+	The magnetic field $ \vb{B} $ is given by $ \vb{B} = \curl{\vb{A}}$. We can easily see that the addition of any term of the form $ \grad{\lambda} $, where $\lambda$ is a scalar, to the vector potential gives the same $ \vb{B} $. This freedom is called the \textit{gauge freedom} and the choice of a particular $ \lambda $ is called \textit{choosing a gauge}.
 	\\
 	
 	\textbf{Part (b)}\\
-	Taking $ \vb{A} = \vb{A}(x) $, we write the Euler-Lagrange equations for the coordinate $ y $,
+	As $ \vb{B} = constant $ and $ \vb{B} = \curl{\vb{A}} = \qty(\pdv{A_x}{y} - \pdv{A_y}{x})\vu{z} = - \pdv{A_y}{x}\vu{z}$ $$ A_y = B x  + \alpha$$ where $ \alpha $ is a constant. There is infinite freedom in the choice for $ A_x $, and we can take it to be $ A_x = 0 $. This choice of gauge is called the \textit{Landau Gauge}. The manifest symmetries from the form of the Lagrangian are,
+	
+	\begin{itemize}
+		\item $ x $-translation - we make the transformation $ x' = x+ a $, $ y' = y $. We have,
+		\begin{equation*}
+		\delta L = q(A_x(x+a) - A_x(x))\dot{y} = qB\dot{y} = a\dv{(qBy)}{t}
+		\end{equation*}
+		The corresponding conserved quantity is, hence,
+		\begin{equation*}
+		\pdv{L}{\dot{x}'}\pdv{x'}{a} + \pdv{L}{\dot{y}'}\pdv{y'}{a} - qBy= \boxed{m\dot{x} - qBy = constant}
+		\end{equation*}
+		
+		\item $ y $-translation - $ x' = x $, $ y' = y + a$. $ \delta L = 0 $. Hence, $\boxed{ m\dot{y} + qBx = constant}$.
+		
+		\item $z$-rotation - $ x' = x \cos\theta - y \sin\theta $, $ y' = x\sin \theta + y \cos\theta$. $ \delta L = 0 $. Hence,
+		\begin{equation*}
+		\eval{\qty(\pdv{L}{\dot{x}'}\pdv{x'}{\theta} + \pdv{L}{\dot{y}'}\pdv{y'}{\theta})}_{\theta=0} = \boxed{-m\dot{x}y + (m\dot{y}+qBx)(x) = constant}
+		\end{equation*}
+		This is essentially the angular momentum $xp_y - yp_x$.
+	\end{itemize}
+	
+	\textbf{Part (c)}\\
+	The symmetric gauge is given by $ \vb{A} = \frac{B}{2}(-y,x)$. The manifest symmetries from the form of the Lagrangian are :-
+	
+	\begin{itemize}
+	\item $ x $-translation - $ x' = x+ a $, $ y' = y $. $ \delta L = a\dv{(q\frac{B}{2}y)}{t} $. Hence,
 	\begin{equation*}
-	\derivative{(m \dot{y} + qA_y)}{t} = 0  \implies m \dot{y} + qA_y = constant
+	m\dot{x}  -\dfrac{qBy}{2} -\dfrac{qBy}{2} = \boxed{m\dot{x} - qBy = constant }
 	\end{equation*}
 	
+	\item $ y $-translation - $ x' = x $, $ y' = y + a$. $ \delta L = a\dv{(-q\frac{B}{2}x)}{t} $. Hence, $\boxed{ m\dot{y} + qBx = constant}$.
+	
+	\item $z$-rotation - $ x' = x \cos\theta - y \sin\theta $, $ y' = x\sin \theta + y \cos\theta$. $ \delta L = 0 $. Hence,
+	\begin{align*}
+	\eval{\qty(\pdv{L}{\dot{x}'}\pdv{x'}{\theta} + \pdv{L}{\dot{y}'}\pdv{y'}{\theta})}_{\theta=0} &= \qty(m\dot{x} -\dfrac{qBy}{2})(-y) + \qty(m\dot{y}+\dfrac{qBx}{2})(x) \\
+	&= \boxed{-my\dot{x} + mx \dot{y} + \dfrac{qB}{2}(x^2 + y^2)= constant}
+	\end{align*}
+	This is also the angular momentum $xp_y - yp_x$.
+\end{itemize}
+
+\textbf{Part (e)}\\
+As is evident from above, symmetries and conserved quantities do not depend on choice of gauge.
 \end{homeworkProblem}
 \end{document}
