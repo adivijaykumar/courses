@@ -151,7 +151,7 @@ First law of thermodynamics tells us $dE = -pdV$. Since $V \propto a^3$, and $E 
 $$d \epsilon = -3 (p+\epsilon) d\ln a \text{ ie. } \dot{\epsilon} = -3H(\epsilon + p)$$
 
 The other Newtonian evolution equations get modified as follows, 
-$$\ddot{a} = -\frac{4 \pi}{3}(\epsilon + 3p)a \text{ and } H^2 + \frac{k}{a^2} = \frac{8 \pi G}{3}\epsilon$$ 
+$$\ddot{a} = -\frac{4 \pi G}{3}(\epsilon + 3p)a \text{ and } H^2 + \frac{k}{a^2} = \frac{8 \pi G}{3}\epsilon$$ 
 The $k$ is indeed the curvature factor that was introduced a while ago.
 
 In Newtonian cosmology, the Universe is always flat and the scale factor has no real interpretationin terms of geometry.. It also is able to describe matter which is presureless and is expanding with velocities much less as compared to the speed of lgiht. GR, in contrast, provides a self-consistent theory of the cosmos, and it can describe relativistic matter with any equation of state. The matter content indeed determines the geometry of the universe, and the scale factor has a geometrical interpretation as the radius of curvature.
@@ -173,7 +173,7 @@ If we consider the flat radiation dominated universe specifically, we see that $
 
 \textbf{\textcolor{red}{Do the conformal time exercises}}
 
-\section{Milne Universe}
+\subsection{Milne Universe}
 Consider open universe in the limit of vanishing energy density. The Friedmann equation boils down to $$ H^2  = \frac{1}{a^2} \implies \dot{a}^2 = 1 \implies a=t$$
 The metric now becomes,
 \bes
@@ -188,5 +188,33 @@ The velocity $ v $ is just given by,
 \be
 v = \dfrac{r}{\tau} = \tanh \chi < 1
 \ee
+
+\subsection{De Sitter Universe}
+De Sitter Universe is a spacetime with constant positive homogenous and isotropic curvature. From the Friedman equations, we know that,
+\begin{align*}
+dE &= -pdV\\
+d\epsilon &= -3 (p + \epsilon) d \ln a \impliedby V \propto a^3, E = \epsilon V\\
+d\epsilon &= -3 (-\epsilon + \epsilon) d \ln a = 0
+\end{align*}
+This means that energy density stays constant during expansion. Using other Friedman equation,
+\begin{align*}
+\ddot{a} &= -\frac{4 \pi G}{3}(\epsilon + 3p)a\\
+\ddot{a} &= +\frac{8 \pi G}{3}\epsilon a \implies \boxed{\ddot{a} - H_\Lambda^2 a = 0}
+\end{align*}
+where $H_\Lambda = \frac{8 \pi G}{3}\epsilon$. The most general solution to this equation is,
+\begin{equation*}
+a = C_1 \exp H_\Lambda t + C_2 \exp (- H_\Lambda t)
+\end{equation*}
+Substituting this ansatz into the equation $ H^2 + k/a^2 = 8\pi G \epsilon/3 = H_\Lambda^2 $, we get the constraint on $ C_1 $ and $ C_2 $ as,
+\begin{equation*}
+4C_1 C_2 H_\Lambda^2 = k
+\end{equation*}
+Now we are in a position to deal with this on a case-by-case basis in $ k $.
+\begin{itemize}
+	\item $  k= 0 $, we take $ C_2 = 0 $, and the solution represents a flat expanding universe. \textcolor{red}{why not take $ C_1 $ zero?}
+	
+	\item $ k=1 $, $ {C_1}={C_2}= 1/2 H_\Lambda $.
+	\item $ k=-1 $, $ {C_1}=-{C_2}= 1/2 H_\Lambda $.	
+\end{itemize}
 
 \end{document}
