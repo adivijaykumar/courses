@@ -200,16 +200,53 @@
 	C_1(t) = \ev{x(t)x(0)}{0} = \frac{e^{-i\omega t}}{\sqrt{2m\omega}} \frac{1}{\sqrt{2m\omega}} = \boxed{\frac{e^{-i\omega t}}{2m\omega}}
 	\end{equation*}
 	\begin{equation*}
-	C_2(t) = \ev{x(t)p(0)}{0} - \ev{p(0)x(t)}{0}= -\dfrac{e^{-i\omega t}}{2i} + \dfrac{e^{i\omega t}}{2i}= \boxed{\sin \omega t}
+	C_2(t) = \ev{x(t)p(0)}{0} - \ev{p(0)x(t)}{0}= -\dfrac{e^{-i\omega t}}{2i} - \dfrac{e^{i\omega t}}{2i}= \boxed{i \cos \omega t}
 	\end{equation*}
 	\begin{equation*}
-	C_3(t) = \ev{p(t)x(0)}{0} - \ev{x(0)p(t)}{0}= \dfrac{e^{-i\omega t}}{2i} - \dfrac{e^{i\omega t}}{2i}= \boxed{-\sin \omega t}
+	C_3(t) = \ev{p(t)x(0)}{0} - \ev{x(0)p(t)}{0}= \dfrac{e^{-i\omega t}}{2i} + \dfrac{e^{i\omega t}}{2i}= \boxed{-i \cos \omega t}
 	\end{equation*}
 \end{homeworkProblem}
 
 
 \begin{homeworkProblem}
-	content...
+	\textbf{Part (a)}
+	\begin{align*}
+	Z(\beta) = \Tr e^{-\beta H} &= \sum_{n=0}^{\infty} \expval{e^{-\beta H}}{n}\\
+	&= \sum_{n=0}^{\infty} e^{-\beta(n+\frac{1}{2})\omega}\\
+	&= \frac{e^{-\beta \omega /2}}{1-e^{-\beta \omega}}
+	\end{align*}
+	
+	\textbf{Part (b)}\\
+	Given that,
+	\begin{equation*}
+	x(\tau) = \sum_n x_n e^{\frac{2\pi i n \tau}{\beta}} = \sum_n (a_n + i b_n) e^{\frac{2\pi i n \tau}{\beta}}
+	\end{equation*}
+	As we require $ x(\tau) $ to be real, it follows from above that $ x_n = x_n^* $. Taking $ \omega_n = \frac{2\pi n}{\beta} $
+	\begin{equation*}
+	-S_E = \int_{0}^{\beta} d \tau \qty(\frac{m\dot{x}^2}{2} - \frac{m\omega^2 x^2}{2})
+	\end{equation*}
+	\begin{align*}
+	&=  \sum_{p,q} \qty(\frac{m x_p x_q \omega_p \omega_q}{2} - \frac{m\omega^2 x_p x_q }{2}) \int_{0}^{\beta} e^{i (\omega_q + \omega_p)\tau} d \tau\\
+	&=  \sum_{p,q} \qty(\frac{m x_p x_q \omega_p \omega_q}{2} - \frac{m\omega^2 x_p x_q }{2}) \beta \delta_{p,-q}\\
+	&=  \sum_{q} \qty(\frac{m x_{-q} x_q \omega_{-q} \omega_q}{2} - \frac{m\omega^2 x_{-q} x_q }{2}) \beta \\
+	&=  \frac{m}{2}\sum_{q} \beta\qty(-x_{q}^* x_q  \omega_q^2- \omega^2 x_{q}^* x_q)\\
+	-S_E&=  -\frac{m\beta}{2}\sum_{q}x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 )
+	\end{align*}
+	The required path integral to be done is,
+	\begin{align*}
+	Z_c(\beta) &= N \int \mathcal{D}x \exp - \frac{m\beta}{2}\sum_{q}x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 ) \qq{where $ N $ is some normalization}\\
+	&= N \int \mathcal{D}x \exp( - m\beta \sum_{q=1}^{\infty} x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 ) - \frac{m\beta x_0^2\omega^2}{2}) \\
+	&= N \int dx_0  \exp(-\frac{m\beta x_0^2\omega^2}{2}) \cross \prod_{q=1}^{\infty} \int d x_q d x_q^* \exp -  m\beta x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 ) \\
+	&= N \sqrt{\frac{2\pi}{m \beta \omega^2}} \cross \prod_{q=1}^\infty \frac{2\pi}{m \beta (\omega_q^2 + \omega^2 )}
+	\end{align*}
+	One can also calculate the quantity $ Z_{free}(\beta) $ which corresponds to $ \omega = 0 $. Following the steps above, that comes out to be,
+	\begin{equation*}
+	Z_{free}(\beta) = N \prod_{q=1}^\infty \frac{2\pi}{m \beta \omega_q^2}
+	\end{equation*}
+	Our final partition function is,
+	\begin{align*}
+	Z(\beta) = \frac{Z_c(\beta)}{Z_{free}(\beta)} = \sqrt{\frac{2\pi}{m \beta \omega^2}} \cross \prod_{q=1}^\infty \frac{\omega_q^2}{\omega_q^2 + \omega^2}
+	\end{align*}
 \end{homeworkProblem}
 %\pagebreak 	
 
