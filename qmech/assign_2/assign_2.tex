@@ -146,10 +146,30 @@
 \begin{document}
 
 \maketitle
-\begin{homeworkProblem}
-	content...
-\end{homeworkProblem}
 
+\textit{\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury and Junaid Bhat for discussions in this assignment.}
+\begin{homeworkProblem}
+Before we start looking at the the actual problem itself, let's consider a simpler problem - that of proving $ e^x e^{-x} = 1$. Lets Taylor expand the same and look at terms order by order,
+\begin{align*}
+e^x e^{-x} &= \qty(1 + x + \dfrac{x^2 }{2!} + \dfrac{x^3}{3!} + \ldots)\qty(1 - x + \dfrac{x^2 }{2!} - \dfrac{x^3}{3!} + \ldots)\\
+&= 1 + (x -x) + \qty(\dfrac{x^2 }{2} + \dfrac{x^2 }{2} - x^2) + \qty(\dfrac{x^3 }{6} -  \dfrac{x^3 }{6} + \dfrac{x^3}{2} - \dfrac{x^3}{2} ) + \ldots
+\end{align*}
+We note that terms cancel out order by order.
+\begin{align*}
+U &= \sum_n \dfrac{(-i)^n}{n!} \int_{0}^{t} dt_1 \ldots \int_{0}^{t} dt_n \mathcal{T}[H(t_1)\ldots H(t_2)]\\
+&= 1 - i \int_0^t dt_1 H(t_1) - \dfrac{1}{2} \int_0^t \int_0^t dt_1 dt_2 \qty[\theta(t_1 - t_2)H(t_1)H(t_2) + \theta(t_2 - t_1)H(t_2)H(t_1)] + \ldots\\
+U^\dagger &= 1 + i \int_0^t dt_1 H(t_1) - \dfrac{1}{2} \int_0^t \int_0^t dt_1 dt_2 \qty[\theta(t_2 - t_1)H(t_1)H(t_2) + \theta(t_1 - t_2)H(t_2)H(t_1)] + \ldots\\
+\therefore U^\dagger U &= 1 + \qty(- i \int_0^t dt_1 H(t_1) + i \int_0^t dt'_1 H(t'_1) ) + \int_0^t \int_0^t dt_1 dt_2 \qty[H(t_1) H(t_2)]\\
+&\qty(- \dfrac{1}{2} \int_0^t \int_0^t dt_1 dt_2 \qty[\theta_{12}H(t_1)H(t_2) + \theta_{21}H(t_2)H(t_1)] - \dfrac{1}{2} \int_0^t \int_0^t dt'_1 dt'_2 \qty[\theta_{2'1'}H(t'_1)H(t'_2) + \theta_{1'2'}H(t'_2)H(t'_1)] )\\&+ \ldots
+%&+ \dfrac{1}{4} \int_0^t \int_0^t \int_0^t \int_0^t dt_1 dt_2  dt'_1 dt'_2 \qty[\theta_{12}\theta_{1'2'}H(t_1)H(t_2)H(t_1)H(t_2) + \theta_{21}H(t_2)H(t_1)]
+\end{align*}
+The terms in the first parenthesis just cancel each other. As the primed variables are just dummies one can ignore the primes and write the terms in the second parenthesis in terms of $ t_1 $ and $ t_2 $. We can rewrite that particular term as follows (using the fact that $ \theta_{12} + \theta_{21} = 1 $),
+\begin{align*}
+- \dfrac{1}{2} \int_0^t \int_0^t dt_1 dt_2 \qty[\theta_{12}H(t_1)H(t_2) + \theta_{21}H(t_2)H(t_1) + \theta_{21}H(t_1)H(t_2) + \theta_{12}H(t_2)H(t_1)]\\
+= - \dfrac{1}{2} \int_0^t \int_0^t dt_1 dt_2 \qty[H(t_1)H(t_2) + H(t_2)H(t_1)] = - \int_0^t \int_0^t dt_1 dt_2 \qty[H(t_1)H(t_2)]
+\end{align*}
+This shows that the terms cancel. This will hold at higher orders too, albeit with more complicated $ \theta $ functions.
+\end{homeworkProblem}
 
 \begin{homeworkProblem}
 	We know that the energy eigenstates of the harmonic oscillator form a basis. Hence, the required coherent state $ \ket{z} $ can be written in terms of these eigenstates as,
@@ -169,13 +189,11 @@
 	c_1 = {z \alpha} \qq{,} c_2 = \frac{z^2 \alpha}{\sqrt{2}} \qq{,} c_3 = \dfrac{z^3 \alpha}{\sqrt{3\vdot 2}} \qq{,} \ldots \qq{,} c_n = \dfrac{z^n \alpha}{\sqrt{n!}}
 	\end{equation*}
 	So, our coherent state can now be written as,
-	
 	\begin{align*}
 	\ket{z} &= \alpha \sum_{n=0}^{\infty}  \frac{(za^\dagger)^n}{n!}\ket{0}\\
 	&= \alpha e^{a^\dagger z}\ket{0}
 	\end{align*}
-\end{homeworkProblem}
-	
+\end{homeworkProblem}	
 \begin{homeworkProblem}
 	We know that,
 	\begin{equation*}
@@ -213,40 +231,38 @@
 	\begin{align*}
 	Z(\beta) = \Tr e^{-\beta H} &= \sum_{n=0}^{\infty} \expval{e^{-\beta H}}{n}\\
 	&= \sum_{n=0}^{\infty} e^{-\beta(n+\frac{1}{2})\omega}\\
-	&= \frac{e^{-\beta \omega /2}}{1-e^{-\beta \omega}}
+	&= \frac{e^{-\beta \omega /2}}{1-e^{-\beta \omega}} = \dfrac{2}{\sinh \dfrac{\beta \omega}{2}}
 	\end{align*}
 	
 	\textbf{Part (b)}\\
 	Given that,
 	\begin{equation*}
-	x(\tau) = \sum_n x_n e^{\frac{2\pi i n \tau}{\beta}} = \sum_n (a_n + i b_n) e^{\frac{2\pi i n \tau}{\beta}}
+	x(\tau) = \sum_n x_n e^{\frac{2\pi i n \tau}{\beta}}
 	\end{equation*}
 	As we require $ x(\tau) $ to be real, it follows from above that $ x_n = x_n^* $. Taking $ \omega_n = \frac{2\pi n}{\beta} $
 	\begin{equation*}
-	-S_E = \int_{0}^{\beta} d \tau \qty(\frac{m\dot{x}^2}{2} - \frac{m\omega^2 x^2}{2})
+	S_E = \int_{0}^{\beta} d \tau \qty(\frac{m\dot{x}^2}{2} + \frac{m\omega^2 x^2}{2})
 	\end{equation*}
 	\begin{align*}
-	&=  \sum_{p,q} \qty(\frac{m x_p x_q \omega_p \omega_q}{2} - \frac{m\omega^2 x_p x_q }{2}) \int_{0}^{\beta} e^{i (\omega_q + \omega_p)\tau} d \tau\\
-	&=  \sum_{p,q} \qty(\frac{m x_p x_q \omega_p \omega_q}{2} - \frac{m\omega^2 x_p x_q }{2}) \beta \delta_{p,-q}\\
-	&=  \sum_{q} \qty(\frac{m x_{-q} x_q \omega_{-q} \omega_q}{2} - \frac{m\omega^2 x_{-q} x_q }{2}) \beta \\
-	&=  \frac{m}{2}\sum_{q} \beta\qty(-x_{q}^* x_q  \omega_q^2- \omega^2 x_{q}^* x_q)\\
+	&=  \sum_{p,q} \qty(-\frac{m x_p x_q \omega_p \omega_q}{2} + \frac{m\omega^2 x_p x_q }{2}) \int_{0}^{\beta} e^{i (\omega_q + \omega_p)\tau} d \tau\\
+	&=  \sum_{p,q} \qty(-\frac{m x_p x_q \omega_p \omega_q}{2} + \frac{m\omega^2 x_p x_q }{2}) \beta \delta_{p,-q}\\
+	&=  \sum_{q} \qty(-\frac{m x_{-q} x_q \omega_{-q} \omega_q}{2} + \frac{m\omega^2 x_{-q} x_q }{2}) \beta \\
+	&=  \frac{m}{2}\sum_{q} \beta\qty(x_{q}^* x_q  \omega_q^2 + \omega^2 x_{q}^* x_q)\\
 	-S_E&=  -\frac{m\beta}{2}\sum_{q}x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 )
 	\end{align*}
 	The required path integral to be done is,
 	\begin{align*}
-	Z_c(\beta) &= N \int \mathcal{D}x \exp - \frac{m\beta}{2}\sum_{q}x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 ) \qq{where $ N $ is some normalization}\\
+	Z(\beta) &= N \int \mathcal{D}x \exp - \frac{m\beta}{2}\sum_{q}x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 ) \qq{where $ N $ is some normalization}\\
 	&= N \int \mathcal{D}x \exp( - m\beta \sum_{q=1}^{\infty} x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 ) - \frac{m\beta x_0^2\omega^2}{2}) \\
 	&= N \int dx_0  \exp(-\frac{m\beta x_0^2\omega^2}{2}) \cross \prod_{q=1}^{\infty} \int d x_q d x_q^* \exp -  m\beta x_{q}^* x_q   \qty(\omega_q^2 + \omega^2 ) \\
-	&= N \sqrt{\frac{2\pi}{m \beta \omega^2}} \cross \prod_{q=1}^\infty \frac{2\pi}{m \beta (\omega_q^2 + \omega^2 )}
+	&= N \sqrt{\frac{2\pi}{m \beta \omega^2}} \cross \prod_{q=1}^\infty \frac{2\pi}{m \beta (\omega_q^2 + \omega^2 )}\\
+	&= N \sqrt{\frac{2\pi}{m \beta \omega^2}} \cross \prod_{q=1}^\infty \frac{2\pi}{m \beta \dfrac{4 q^2 \pi^2}{\beta^2}\qty(1 + \qty(\frac{\beta \omega}{2q\pi})^2)}\\
+	&= N \sqrt{\frac{2\pi}{m \beta \omega^2}} \cross \dfrac{\beta \omega}{2 \pi \sinh \dfrac{\beta \omega}{2}} \cross \prod_{q=1}^\infty \frac{\beta}{2 \pi m q^2} \\
+	&= N \sqrt{\frac{\beta}{2 \pi m}}  \cross \prod_{q=1}^\infty \frac{\beta}{2 \pi m q^2} \cross \dfrac{1}{\sinh \dfrac{\beta \omega}{2}} \\
+	&= N'  \cross \dfrac{1}{\sinh \dfrac{\beta \omega}{2}}
 	\end{align*}
-	One can also calculate the quantity $ Z_{free}(\beta) $ which corresponds to $ \omega = 0 $. Following the steps above, that comes out to be,
-	\begin{equation*}
-	Z_{free}(\beta) = N \prod_{q=1}^\infty \frac{2\pi}{m \beta \omega_q^2}
-	\end{equation*}
-	Our final partition function is,
-	\begin{align*}
-	Z(\beta) = \frac{Z_c(\beta)}{Z_{free}(\beta)} = \sqrt{\frac{2\pi}{m \beta \omega^2}} \cross \prod_{q=1}^\infty \frac{\omega_q^2}{\omega_q^2 + \omega^2}
-	\end{align*}
+	As $ N' $ does not depend on $ \omega $, we can drop it altogether for computation purposes. This gives us the required result.
+	
 \end{homeworkProblem}
 %\pagebreak 	
 
