@@ -144,11 +144,67 @@
 \begin{document}
 \maketitle
 \begin{homeworkProblem}
-	content...
+	\textbf{Part (a)}\\
+	The formal definition of the functional derivative is given by,
+	
+	\begin{equation*}
+	\dfrac{\delta F[q(x)]}{\delta q(y)} = \lim\limits_{\epsilon \rightarrow 0} \dfrac{F[q(y) + \epsilon \delta (x-y)] - F[q(y)]}{\epsilon}
+	\end{equation*}
+	Using familiar notions from calculus, we can write the following
+	
+	Consider the variation of the action $ S = \int L (q,\dot{q},t)dt $,
+	\begin{align*}
+	\delta S &= \int \delta L dt\\
+	&= \int \qty(\pdv{L}{q} \delta q + \pdv{L}{\dot{q}} \delta \dot{q} )dt\\
+	&= \int \qty(\pdv{L}{q} \delta q + \dv{t}\qty(\pdv{L}{\dot{q}} \delta {q}) - \dv{t}\qty(\pdv{L}{\dot{q}}) \delta {q} )dt\\
+	&= \int \qty(\pdv{L}{q} - \dv{t}\qty(\pdv{L}{\dot{q}})) \delta {q} dt + \eval{\pdv{L}{\dot{q}} \delta {q}}_{x_1}^{x_2}
+	\end{align*}
+	As the variation at the end points in zero, the second term vanishes. The variation of the action $ \delta S $ should also be zero, and the only way this can happen is if,
+	\begin{equation*}
+	\pdv{L}{q} - \dv{t}\qty(\pdv{L}{\dot{q}}) = 0
+	\end{equation*}
+	which is the Euler-Lagrange equation.
+	
+	\textbf{Part (b)}\\
+	The Lagrangian for the linear harmonic chain can be written as follows,
+	\begin{equation*}
+	L = \sum_n \dfrac{1}{2}m \dot{x}_i^2 - \dfrac{1}{2}k (x_i - x_{i-1})^2
+	\end{equation*}
+	where the $ x_i $'s are the displacements from the mean positions of the respective particles. Lets change our notations such that $ \phi_i = x_i $. Hence,
+	\begin{equation*}
+	L = \sum_n \dfrac{1}{2}m \dot{\phi}_i^2 - \dfrac{1}{2}k (\phi_i - \phi_{i-1})^2
+	\end{equation*}
+	In the limit of separation between successive $ \phi_i $'s $ \rightarrow 0 $ and $ n \rightarrow \infty $, the potential terms becomes a spatial derivative. The whole expression can be written as,
+	\begin{equation*}
+	L =  \int dx \qty( \dfrac{1}{2}m \dot{\phi}^2(x,t) - \dfrac{1}{2}k \phi'^2(x,t) ) 
+	\end{equation*}
+	The term in the parenthesis is called the \textit{Lagrangian Density} $\mathcal{L}$. Obtaining the equations of motion is fairly straighforward by,
+	\begin{align*}
+	\partial_\mu \qty(\pdv{\mathcal{L}}{(\partial_\mu \phi)}) - \pdv{\mathcal{L}}{\phi} &= 0\\
+	m \ddot{\phi} - k \phi'' &= 0 \implies \qq{wave equation}
+	\end{align*}
 \end{homeworkProblem}
+
 \begin{homeworkProblem}
-content...
+	The idea is to write the equations of motion of this system in a combined matrix form as $ \ddot{X} = (M^{-1} V) X $. $ M $ and $ V $ can be written as follows,
+	\begin{equation*}
+	M = \mqty(\dmat{m_1,m_2,m_3}) \qq{and} V = \mqty(k_1 & -k_1 & 0 \\ -k_1 & k_1 + k_2 & -k_2 \\ 0 & -k_2 & k_2)
+	\end{equation*}
+	The normal mode frequencies are given by the eigenvalues of the matrix $ M^{-1} V $. The eigenvalues are given by,
+	\begin{align*}
+	\omega_1 &= 0 \\
+	\omega_2 &= \frac{\sqrt{\frac{k_2 m_1 m_2^2+k_1 m_3 m_2^2+k_1 m_1 m_3 m_2+k_2 m_1 m_3 m_2-\sqrt{m_2^2 \left(\left(k_1 \left(m_1+m_2\right) m_3+k_2 m_1 \left(m_2+m_3\right)\right){}^2-4 k_1 k_2 m_1 m_2 m_3 \left(m_1+m_2+m_3\right)\right)}}{m_1 m_2^2 m_3}}}{\sqrt{2}}\\
+	\omega_3 &= \frac{\sqrt{\frac{k_2 m_1 m_2^2+k_1 m_3 m_2^2+k_1 m_1 m_3 m_2+k_2 m_1 m_3 m_2+\sqrt{m_2^2 \left(\left(k_1 \left(m_1+m_2\right) m_3+k_2 m_1 \left(m_2+m_3\right)\right){}^2-4 k_1 k_2 m_1 m_2 m_3 \left(m_1+m_2+m_3\right)\right)}}{m_1 m_2^2 m_3}}}{\sqrt{2}}
+	\end{align*}
+	
+	Now that we have obtained the normal mode frequencies, let's consider a few special cases,
+	\begin{itemize}
+		\item  $ m_1 = m_2 = m_3 = m $, $ k_1 = k_2 = k $ $\rightarrow$ $ \omega_1 = 0 , \omega_2 = \sqrt{\dfrac{k}{m}}, \omega_3 = \sqrt{\dfrac{3k}{m}}$
+		\item $ m_1 = m_3 = m $, $ k_1 = k_2 = k $ $ \rightarrow$ $ \omega_1 = 0 , \omega_2 = \sqrt{\dfrac{k}{m}}, \omega_3 = \sqrt{\dfrac{k(2m + m_2)}{m m_2}} $
+	\end{itemize}
+	 Let's calculate the normal mode frequencies for CO$ _2 $. $m_O = 2.66 \cross 10^{-26} $ kg and $ m_C = 1.99 \cross 10^{-26} $ kg and $ k = 840  $ N/m. This gives $ \omega_1 = 0 , \omega_2 = 1.78 \cross 10^{14} $ s$ ^{-1} $ and $ \omega_3 = 3.41 \cross 10^{14} $ s$ ^{-1} $.
 \end{homeworkProblem}
+
 \begin{homeworkProblem}
 The Lagrangian for this system can be written as,
 \begin{equation*}
@@ -186,7 +242,11 @@ Hence, the radius vector sweeps equal areas in equal intervals of time.
 \\
 
 \textbf{Part (b)}\\
-If $  m_2 \gg m_1 $, $ \vb{R} \approx \vb{r_2}$
+If $  m_2 \gg m_1 $, $ \vb{R} \approx \vb{r_2}$, $ \mu \approx m_1 $ and the mass $ m_2  $ does not move. Using energy conservation (and  the fact that the centre of mass does not move),
+\begin{equation*}
+	\dfrac{\mu}{2} (\dot{r}^2 + r^2 \dot{\theta}^2) + V(r) = E \implies \dot{r}^2 + \dfrac{4 l^2}{r^2} = \dfrac{2}{\mu} (E - V(r))
+\end{equation*}
+$ r(t) $ will be given by the solution of this differential equation.\\
 
 \textbf{Part (c)}\\
 The Euler-Lagrange equation for the coordinate $ r $ is given by,
