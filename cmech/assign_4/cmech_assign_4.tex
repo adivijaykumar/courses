@@ -1,0 +1,248 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#3}
+\newcommand{\hmwkDueDate}{Due 5th October 2018}
+\newcommand{\hmwkClass}{Classical Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{Prof.Manas Kulkarni}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+\maketitle
+\begin{homeworkProblem}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{Part (b)}\\
+	The Lagrangian is given as,
+	\begin{equation*}
+	L = e^{\gamma t}\qty(\dfrac{m\dot{q}^2}{2} - \dfrac{k q^2}{2})
+	\end{equation*}
+	Writing down the equations of motion for hte generalized coordinate $ q $,
+	\begin{align*}
+	\derivative{t}\qty(e^{\gamma t}m \dot{q}) &= -e^{\gamma t} k {q}\\
+	\implies e^{\gamma t} \qty(\gamma m \dot{q} + m \ddot{q}) &= -e^{\gamma t} k {q}\\
+	\implies   \ddot{q} + \gamma  \dot{q}+ \dfrac{k}{m}q &= 0 
+	\end{align*}
+	This is the equation of motion for a damped harmonic oscillator. 
+	
+	Let's perform the transformation $ s = e^{\gamma t} q \implies \dot{s} = e^{\gamma t} (\gamma q + \dot{q}) = \gamma s + e^{\gamma t} \dot{q} $. Inverting these, we have the following,
+	\begin{align*}
+	q &= e^{-\gamma t} s\\
+	\dot{q} &= e^{-\gamma t}(\dot{s} - \gamma s)
+	\end{align*}
+	Substituting this back into the expression for $ L $,
+	\begin{equation*}
+	L = e^{-\gamma t}\qty(\dfrac{m\dot{s}^2}{2} + \dfrac{(m\gamma^2 - k) s^2}{2} - m\gamma s \dot{s})
+	\end{equation*}
+	Writing the equations of motion for $ s $,
+	\begin{align*}
+	\derivative{t}\qty(e^{-\gamma t}(m \dot{s} - m\gamma s)) &= -e^{-\gamma t} ((k - m\gamma^2) {s} - m\gamma \dot{s})\\
+	m \ddot{s} - m\gamma \dot{s} -\gamma (m \dot{s} - m \gamma s) &=  (k - m \gamma^2) {s} - m\gamma \dot{s}\\
+	\ddot{s} -\gamma \dot{s} + \qty(2  \gamma^2-\dfrac{k}{m}) s &=  0 
+	\end{align*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{Part (b)}\\
+	Given, $ L = L(q_i, \dot{q_i}, \ddot{q_i},t) $, and we know that $ S = \int_{t_i}^{t_f} L(q_i, \dot{q_i}, \ddot{q_i},t) dt  $. Variation of the action can be written as,
+	
+	\begin{align*}
+	\delta S &= \int_{t_i}^{t_f} \delta L dt = 0\\
+	&= \int_{t_i}^{t_f} \sum_{i} \qty(\pdv{L}{q_i} \delta q_i+ \pdv{L}{\dot{q_i}} \delta \dot{q_i} + \pdv{L}{\ddot{q_i}} \delta \ddot{q_i})dt\\
+	&= \int_{t_i}^{t_f} \sum_{i} \qty(\pdv{L}{q_i} \delta q_i+ \qty(\pdv{L}{\dot{q_i}} - \dv{t}\pdv{L}{\ddot{q_i}} ) \delta \dot{q_i} + \dv{t} \qty(\pdv{L}{\ddot{q_i}} \delta \dot{q_i}))dt\\
+	&= \int_{t_i}^{t_f} \sum_{i} \qty[ \qty{\pdv{L}{q_i} - \dv{t}\qty(\pdv{L}{\dot{q_i}} - \dv{t}\pdv{L}{\ddot{q_i}} )} \delta q_i + \dv{t}\qty(\qty(\pdv{L}{\dot{q_i}} - \dv{t}\pdv{L}{\ddot{q_i}} ) \delta {q_i}) + \dv{t} \qty(\pdv{L}{\ddot{q_i}} \delta \dot{q_i})]dt\\
+	\end{align*}
+	As the variation of $ q_i $ and $ \dot{q_i} $ at the endpoints is zero, the total derivative terms vanish. Accounting for the fact that all $ q_i $'s are independent, one can write the equation of motion as,
+	\begin{equation*}
+	\boxed{\pdv{L}{q_i} - \dv{t}\pdv{L}{\dot{q_i}} + \dv[2]{t}\pdv{L}{\ddot{q_i}} = 0}
+	\end{equation*}
+	Taking $ L = -\dfrac{m}{2}q \ddot{q} - \dfrac{k}{2}q^2$, we can write,
+	\begin{equation*}
+	-kq + \dfrac{m}{2}\ddot{q} = 0 \implies \ddot{q} - \dfrac{2k}{m}q  = 0
+	\end{equation*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	The radius of the circle $ r $ and the angle covered around the circle $ \theta $ are the generalized coordinates. The Lagrangian $ L $ can be written as,
+	\begin{equation*}
+	L =  \dfrac{m \dot{r}^2}{2} + \dfrac{m \dot{\theta}^2 r^2}{2} - mg r \cot \alpha
+	\end{equation*}
+	The equations of motion are,
+	\begin{align*}
+	r^2 \dot{\theta} &= constant = L_0\\
+	\ddot{r} &= r\dot{\theta}^2 - g\cot \alpha \implies \ddot{r} = \dfrac{L_0^2}{r^3} - g\cot \alpha
+	\end{align*}
+	
+	\textbf{Part (b)}\\
+	If $ r = r_0 $, $ \ddot{r} =0 $ and,
+	\begin{equation*}
+	L_0^2 = r_0^4 \omega^2 =   g r_0^3 \cot \alpha \implies \boxed{\omega = \sqrt{\frac{g \cot \alpha}{r_0}}} \implies L_0 = r_0^3 g \cot \alpha
+	\end{equation*}
+	
+	\textbf{Part (c)}\\
+	Substituting $ r = r_0+ \epsilon x $, $ \epsilon \ll 1 $ into the equation of motion for $ r $,
+	\begin{align*}
+	\epsilon \ddot{x} &= \dfrac{L_0^2}{(r_0 + \epsilon x)^3} - g \cot \alpha\\
+	&=\dfrac{L_0^2}{r_0^3}\qty(1 - \dfrac{3 \epsilon x}{r_0} + \ldots) - g \cot \alpha\\
+	&=\dfrac{L_0^2}{r_0^3}\qty(- \dfrac{3 \epsilon x}{r_0} + \ldots) \\
+	\end{align*}
+	Choosing only the term first order in $ \epsilon $,
+	\begin{equation*}
+	\ddot{x} = -\dfrac{3 g \cot \alpha}{r_0} x \implies \boxed{\Omega = \sqrt{\dfrac{3 g \cot \alpha}{r_0}}}
+	\end{equation*}
+	\textcolor{red}{Check if this is really correct}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Let $ \theta_1 $ and $ \theta_2 $ be the angles that the sticks make with the vertical. Each stick is of length $ 2l $. One can write the Lagrangian $ L $ of the system as follows (considering moments of inertia about the joint)
+\end{homeworkProblem}
+
+\end{document}
