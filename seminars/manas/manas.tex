@@ -1,0 +1,74 @@
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm, mathtools}
+%\usepackage{hyperref}
+\usepackage{color}
+\usepackage{jheppub}
+\usepackage[T1]{fontenc} % if needed
+
+% My Documents
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\s{\sigma}
+%\linespread{1.0}
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.8em}
+
+\title{\textbf{Aspects of non-equilibrium Physics}}
+\author{Aditya Vijaykumar}
+\affiliation{International Centre for Theoretical Sciences, Bengaluru, India.}
+\emailAdd{aditya.vijaykumar@icts.res.in}
+
+\begin{document}
+\maketitle
+
+\section{Introduction and Motivation}
+Non-equilibrium systems can be - open, closed and quenched (changing parameters of the Hamiltonian suddenly so that the system as a whole is out of equilibrium). They arise in classical (integrable models) as well as quantum systems.
+
+\textbf{(question by Junaid on nonlinear Schrodinger equation, and a long detour about that. Manas writes the Schrodinger equation with a $ \abs{\psi}^2 $ potential, and discusses a few methods of discretization of this equation. The essence of the discussion was that the nonlinear schrodinger equation can be reduced (in something called the reductive perturbation expansion) to a minimal model of the KdV equation. $ u_t = -\partial_x (\alpha u^2 + \beta u_{xx}) $). The solution to $ \beta=0 $ case is $ u(x,t) = U_0(x - u(x,t) t) $ So if we start out with lets say a Lorentzian profile, the $ u^2  $ term will cause the profile to curve to the right and steepen. But the derivative term will now convert the steepening to oscillations.) } 
+
+Classical non-equilibrium systems can be classifield as :-
+\begin{itemize}
+	\item Integrable Models
+	\item Non-integrable Models
+	\item Classical Field Theoretic systems
+\end{itemize}
+
+Quantum non-equilibrium systems :-
+\begin{itemize}
+	\item Quantum Lattice Models (Incommensurate Models)- $ H = \sum_i (a_i^\dagger a_{i+1} + \text{h.c}) \sum_i (a_i^\dagger a_{i}) $. Lets say one starts with $ \omega_i = \lambda \cos(2 \pi b i), b = 4/3 $. The model basically repeats itself after every three steps in $ i $, ie.$ i \rightarrow i + 3 $. Under this conditions this system is called a ballistic system. But if $ b = \dfrac{\sqrt{5 -1}}{2} $, this model never repeats itself. Such models are called incommensurate models. For $ \lambda < 1 $, these systems behave ballistic, but when $ \lambda > 1 $, the system is localized. The current goes down. When $ \lambda = 1 $, it's called the critical condition. Just by a model where there are no real interactions, we see a lot of different phases with respect to the parameter $ \lambda $.
+	\item 
+\end{itemize}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
