@@ -144,10 +144,71 @@
 \begin{document}
 \maketitle
 \begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	For $ m=constant $
+	\begin{align*}
+	T &= \dfrac{m \vb{v} \vdot \vb{v} }{2}\\
+	\dv{T}{t} &= m \dot{\vb{v}}  \vdot \vb{v}
+	= \vb{F} \vdot \vb{v}
+	\end{align*}
+	
+	If $ m $ varies with time,
+	\begin{align*}
+	mT &= \dfrac{m^2 \vb{v} \vdot \vb{v} }{2}\\
+	\dv{(mT)}{t} &= m^2 \dot{\vb{v}}  \vdot \vb{v} + m \dot{m} \vb{v} \vdot \vb{v}\\
+	&= (m {\vb{v}}) \vdot (m \dot{\vb{v}} + \dot{m} {\vb{v}})\\
+	\dv{(mT)}{t}&= \vb{p}\vdot \vb{F}
+	\end{align*}
+	
+	\textbf{Part (b)}
 	
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
+	Let $ R $ be the radius of the disc. The generalized coordinates for the motion are the horizontal coordinate $ x $ and angular coordinate $ \theta $. For rolling, we have,
+	\begin{equation*}
+	R \dot{\theta} = \dot{x} \implies R d \theta - dx = 0
+	\end{equation*}
+	
+	It is straightforward to see that the above equation a specific instance of an equation of the form,
+	\begin{equation*}
+	\sum_{i=1}^{n} g(x_1,x_2,\ldots, x_n) d x_i = 0
+	\end{equation*}
+	with $ x_1 = \theta, x_2 = x, g_1 = R, g_2 = -1 $.
+	\textcolor{red}{complete the problem}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	Let $ r, \theta, \phi $ be the generalized coordinates in their usual polar form, and $ l_0 $ be the equilibrium length of the spring. The Lagrangian of the problem $ L $ can be written as,
+	\begin{equation*}
+	L = \dfrac{m(\dot{r}^2 + r^2\dot{\theta}^2 + r^2 \sin^2 \theta \dot{\phi}^2)}{2} + mgr\cos \theta - \dfrac{k(r - l_0)^2}{2}
+	\end{equation*}
+	The equations of motion are,
+	\begin{align*}
+	m\ddot{r} &= mr\dot{\theta}^2 + mr \sin^2 \theta \dot{\phi}^2 + mg \cos \theta  - k(r - l_0)\\
+	m r^2 \ddot{\theta} + 2 m r \dot{r} \dot{\theta} &= mr^2 \sin \theta \cos \theta \dot{\phi}^2 - mgr \sin \theta\\
+	mr^2 \sin^2 \theta \ddot{\phi} + 2 m r \sin^2 \theta \dot{r} \dot{\phi} + 2 m r^2 \sin \theta \cos \theta \dot{\theta} \dot{\phi} &= 0
+	\end{align*}
+	Constraining the motion in a plane implies using $ \phi = constant \implies \dot{\phi} = \ddot{\phi} = 0$. \textcolor{red}{Is constraining possible?}. Our equations then reduce to,
+	\begin{align*}
+	m\ddot{r} &= mr\dot{\theta}^2 + mg \cos \theta  - k(r - l_0)\\
+	m r^2 \ddot{\theta} + 2 m r \dot{r} \dot{\theta} &= - mgr \sin \theta
+	\end{align*}
+	The equilibrium positions can be found by substituting all time derivatives of $ r $ and $ \theta $ as zero. This gives the equilibrium $ r_0 = l_0 + \dfrac{mg}{k} $ and $ \theta_0 = 0r $.
+	We need to solve the above for small stretching in $ r $ and small angular displacements $ \theta $. Let's substitute $ r = r_0 + \epsilon x $ and $ \theta = \epsilon \alpha $ in the equations. We get,
+	\begin{align*}
+	m\epsilon \ddot{x} &= m(r_0 + \epsilon x) \epsilon^2 \dot{\alpha}^2 + mg \left( 1 - \dfrac{\alpha^2}{2} \epsilon^2 + \ldots\right)   - k(\epsilon x + r_0 - l_0)\\
+	m ( r_0 + \epsilon x)^2 \epsilon \ddot{\alpha} + 2 m \epsilon^2 ( r_0 + \epsilon x) \dot{x} \dot{\alpha} &= - mg( r_0 + \epsilon x ) \left(\epsilon \alpha + \ldots \right)
+	\end{align*}
+	Using only $ \order{\epsilon} $ terms,
+	\begin{align*}
+	\ddot{x} &= -\dfrac{k}{m} x\\
+	\ddot{\alpha} &= - \dfrac{g}{r_0}\alpha 
+	\end{align*}
+	
+	\textcolor{red}{Solve numerically}
+	
 	\textbf{Part (b)}\\
 	The Lagrangian is given as,
 	\begin{equation*}
@@ -179,6 +240,22 @@
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	As given, we take $ y = at + bt^2 \implies \dot{y} = a + 2bt$. The Lagrangian $ L $ can be written as follows,
+	\begin{align*}
+	L &= \dfrac{m \dot{y}^2}{2} - mgy = \dfrac{m (a+2bt)^2}{2} - mg (at + bt^2)\\
+	&= \dfrac{ma^2 }{2}+ (2mab - mga)t + (2mb^2 - mgb)t^2
+	\end{align*}
+	Let's evaluate $ \int L dt $,
+	\begin{align*}
+	\int_0^{t_0} L dt &= \int_0^{t_0} [\dfrac{ma^2}{2} + (2mab - mga)t + (2mb^2 - mgb)t^2] dt\\
+	& = \dfrac{ma^2}{2} t_0 + \dfrac{2mab - mga}{2}t_0^2 + \dfrac{2mb^2 - mgb}{3}t_0^3\\
+	& = \dfrac{ma^2}{2} \sqrt{\dfrac{2y_0}{g}} + \dfrac{2mab - mga}{2}\dfrac{2y_0}{g} + \dfrac{2mb^2 - mgb}{3}\dfrac{2y_0}{g}\sqrt{\dfrac{2y_0}{g}}\\
+	&= 0 \impliedby \left(a=0 \qq{and} b = \dfrac{g}{2}\right)
+	\end{align*}
+	\textit{Hence Proved.}
+	\\
+	
 	\textbf{Part (b)}\\
 	Given, $ L = L(q_i, \dot{q_i}, \ddot{q_i},t) $, and we know that $ S = \int_{t_i}^{t_f} L(q_i, \dot{q_i}, \ddot{q_i},t) dt  $. Variation of the action can be written as,
 	
@@ -196,6 +273,7 @@
 	\begin{equation*}
 	-kq + \dfrac{m}{2}\ddot{q} = 0 \implies \ddot{q} - \dfrac{2k}{m}q  = 0
 	\end{equation*}
+	\textcolor{red}{Where have I seen this?}
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
@@ -203,11 +281,29 @@
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
+	The Lagrangian for the problem is,
+	\begin{equation*}
+	L = \dfrac{m(\dot{r}^2 + r^2 \dot{\theta}^2 )}{2} - V(r)
+	\end{equation*}
+	The equations of motion for this Lagrangian, with $ V(r) = -V_0 e^{-\lambda^2 r^2} $, are,
+	\begin{align*}
+	m r^2 \dot{\theta} &= constant = L_0 \qq{and}\\
+	m \ddot{r} &= m r \dot{\theta}^2 + (2 \lambda^2 r) V(r)\\
+	\implies m\ddot{r}&= \dfrac{L_0^2}{m r^3} + (2 \lambda^2 r) V(r)
+	\end{align*}
+	For stable circular orbit, $ \dot{r} = \ddot{r} = 0 $. Let $ r_0 $ be radius of stable circular orbit. We can see that $ r_0 $ will be given by the root of the equation,
+	\begin{equation*}
+	\dfrac{L_0^2}{m r_0^3} - 2 \lambda^2 r_0 V_0 e^{-\lambda^2 r_0^2} = 0\\
+	\implies {L_0^2} = 2 \lambda^2 m r_0^4 V_0 e^{-\lambda^2 r_0^2}
+	\end{equation*}
 	
-\end{homeworkProblem}
-
-\begin{homeworkProblem}
-	
+	As the factor $ e^{-\lambda^2 r_0^2} \le 1 $ for all choices of $ r $. For roots to exist, it should be the case that,
+	\begin{align*}
+	{L_0^2} &\le 2 \lambda^2 m r_0^4 V_0 \\
+	\implies L_0 &\le \sqrt{2mV_0} \lambda r_0
+	\end{align*}
+	So, $ L_0 $ cannot exceed $ \sqrt{2mV_0} \lambda r_0 $.
+	\textcolor{red}{Check this}
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
@@ -228,15 +324,16 @@
 	\end{equation*}
 	
 	\textbf{Part (c)}\\
-	Substituting $ r = r_0+ \epsilon x $, $ \epsilon \ll 1 $ into the equation of motion for $ r $,
+	
+	We consider perturbations along the surface of the cone ie $ l = r_0 \csc \alpha + \epsilon x $. This in turn corresponds to a radial perturbation of the form $ r = r_0 + \epsilon x \sin \alpha $, $ \epsilon \ll 1 $. Substituting this into the equation of motion for $ r $,
 	\begin{align*}
-	\epsilon \ddot{x} &= \dfrac{L_0^2}{(r_0 + \epsilon x)^3} - g \cot \alpha\\
-	&=\dfrac{L_0^2}{r_0^3}\qty(1 - \dfrac{3 \epsilon x}{r_0} + \ldots) - g \cot \alpha\\
-	&=\dfrac{L_0^2}{r_0^3}\qty(- \dfrac{3 \epsilon x}{r_0} + \ldots) \\
+	\epsilon \ddot{x} \sin \alpha &= \dfrac{L_0^2}{(r_0 + \epsilon x \sin \alpha)^3} - g \cot \alpha\\
+	&=\dfrac{L_0^2}{r_0^3}\qty(1 - \dfrac{3 \epsilon x \sin \alpha}{r_0} + \ldots) - g \cot \alpha\\
+	&=\dfrac{L_0^2}{r_0^3}\qty(- \dfrac{3 \epsilon x \sin \alpha}{r_0} + \ldots) \\
 	\end{align*}
 	Choosing only the term first order in $ \epsilon $,
 	\begin{equation*}
-	\ddot{x} = -\dfrac{3 g \cot \alpha}{r_0} x \implies \boxed{\Omega = \sqrt{\dfrac{3 g \cot \alpha}{r_0}}}
+	\ddot{x} = -\dfrac{3 g \cot \alpha}{r_0} x \implies \boxed{\Omega = \sqrt{\dfrac{3 g \cot \alpha	}{r_0}}}
 	\end{equation*}
 	\textcolor{red}{Check if this is really correct}
 \end{homeworkProblem}
