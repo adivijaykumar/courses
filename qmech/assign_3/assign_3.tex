@@ -1,0 +1,261 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#2}
+\newcommand{\hmwkDueDate}{Due on 4th October, 2018}
+\newcommand{\hmwkClass}{Advanced Quantum Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+\begin{homeworkProblem}
+	Let's use the follwing convention $ (\ket{l,m}) $
+	\begin{equation*}
+	\ket{2,2} = \mqty(1\\0\\0\\0\\0) \qq{and} \ket{2,1} = \mqty(0\\1\\0\\0\\0) \qq{and} \ket{2,0} = \mqty(0\\0\\1\\0\\0) \qq{and} \ket{2,-1} = \mqty(0\\0\\0\\1\\0) \qq{and} \ket{2,-2} = \mqty(0\\0\\0\\0\\1)
+	\end{equation*}
+	We know that,
+	\begin{equation*}
+	J_3 \ket{l,m} = m\ket{l,m} \qq{and} J_{\pm} \ket{l,m} = \sqrt{(l \mp m)(l\pm m + 1)} \ket{l,m\pm 1}
+	\end{equation*}
+	\begin{equation*}
+	 J_3 \ket{2,2} = 2\ket{2,2} \text{ , } J_3 \ket{2,1} = \ket{2,1} \text{ , } J_3 \ket{2,0} = 0\text{ , } J_3 \ket{2,-1} = -\ket{2,-1} \text{ , } J_3 \ket{2,-2} = -2\ket{2,-2}\\
+	\end{equation*}
+	Hence, we can see that,
+	\begin{equation*}
+	J_3 = \mqty(\dmat[0]{2,1,0,-1,-2})
+	\end{equation*}
+	We also note that,
+	\begin{equation*}
+	J_+ \ket{2,2} = 0 \text{ , } J_+ \ket{2,1} = 2 \ket{2,2} \text{ , } J_+ \ket{2,0} = \sqrt{6} \ket{2,1}\text{ , } J_+ \ket{2,-1} = \sqrt{6} \ket{2,0} \text{ , } J_+ \ket{2,-2} = 2 \ket{2,-1}\\
+	\end{equation*}
+	\begin{equation*}
+	J_- \ket{2,2} = 2 \ket{2,1} \text{ , } J_- \ket{2,1} = \sqrt{6} \ket{2,0} \text{ , } J_- \ket{2,0} = \sqrt{6} \ket{2,-1} \text{ , } J_- \ket{2,-1} = 2 \ket{2,-2} \text{ , } J_- \ket{2,-2} = 0\\
+	\end{equation*}
+	So,
+	\begin{equation*}
+	J_+ = \mqty( 0 & 2 & 0 & 0 & 0 \\ 0 & 0 & \sqrt{6} & 0 & 0 \\ 0 & 0 & 0 & \sqrt{6} & 0 \\ 0 & 0 & 0 & 0 & 2 \\ 0 & 0 & 0 & 0 & 0) \qq{and} J_- = \mqty( 0 & 0 & 0 & 0 & 0 \\ 2 & 0 & 0 & 0 & 0 \\ 0 & \sqrt{6} & 0 & 0 & 0 \\ 0 & 0 & \sqrt{6} & 0 & 0 \\ 0 & 0 & 0 & 2 & 0)
+	\end{equation*}
+	Hence,
+	\begin{equation*}
+	J_1 = \dfrac{J_+ + J_-}{2} = \dfrac{1}{2} \mqty( 0 & 2 & 0 & 0 & 0 \\ 2 & 0 & \sqrt{6} & 0 & 0 \\ 0 & \sqrt{6} & 0 & \sqrt{6} & 0 \\ 0 & 0 & \sqrt{6} & 0 & 2 \\ 0 & 0 & 0 & 2 & 0) \qq{and} J_2 = \dfrac{J_+ - J_-}{2i} = \dfrac{i}{2} \mqty( 0 & -2 & 0 & 0 & 0 \\ 2 & 0 & -\sqrt{6} & 0 & 0 \\ 0 & \sqrt{6} & 0 & -\sqrt{6} & 0 \\ 0 & 0 & \sqrt{6} & 0 & -2 \\ 0 & 0 & 0 & 2 & 0)
+	\end{equation*}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	We know that,
+	\begin{align*}
+	J_1 = \dfrac{J_+ + J_-}{2} \qq{and} J_2 = \dfrac{J_+ - J_-}{2i} \qq{and} J_{\pm} \ket{l,m} = \sqrt{(l \mp m)(l\pm m + 1)} \ket{l,m\pm 1}
+	\end{align*}
+	As successive action of the form $ J_{\pm}^\alpha \ket{l,m} $ with integral $ \alpha  > 0 $ takes a state to one with higher/lower $ m $ , we can see that $ \ev{J_\pm^\alpha}{l,m} = 0  $.
+	Lets consider $ \expval{J_1} $,
+	\begin{align*}
+	\expval{J_1} &= \ev{J_1}{l,m}\\
+	&= \dfrac{1}{2}\qty(\ev{J_+}{l,m} + \ev{J_-}{l,m})\\
+	&= 0
+	\end{align*}
+	
+	Similarly for $ \ev{J_2} $,
+	\begin{align*}
+	\expval{J_2} &= \ev{J_2}{l,m}\\
+	&= \dfrac{1}{2i}\qty(\ev{J_+}{l,m} - \ev{J_-}{l,m})\\
+	&= 0
+	\end{align*}
+	
+	Consider $ \ev{J_1^2} $ and $ \ev{J_2^2} $,
+	\begin{align*}
+	\ev{J_1^2} &= \dfrac{1}{4}(\ev{J_+^2} + \ev{J_-^2} + \acomm{J_+}{J_-}) = \dfrac{1}{4} \acomm{J_+}{J_-} \qq{and} \\
+	\ev{J_2^2} &= \dfrac{1}{-4}(\ev{J_+^2} + \ev{J_-^2} - \acomm{J_+}{J_-}) = \dfrac{1}{4} \acomm{J_+}{J_-} \implies \ev{J_1^2} = \ev{J_2^2}
+	\end{align*}
+	We know,
+	\begin{align*}
+	\ev{J^2} &= l(l+1) \\
+	\ev{J_1^2} + \ev{J_2^2} + \ev{J_3^2} &= l(l+1) \\
+	2\ev{J_1^2} + m^2 &= l(l+1) \\
+	\ev{J_1^2} = \ev{J_2^2} &= \dfrac{l(l+1) - m^2}{2}
+	\end{align*} $ $
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	Let's use the follwing convention $ (\ket{l,m}) $
+	\begin{equation*}
+	\ket{1,1} = \mqty(1\\0\\0) \qq{and} \ket{1,0} = \mqty(0\\1\\0) \qq{and} \ket{1,-1} = \mqty(0\\0\\1)
+	\end{equation*}
+	We know that $ J_\pm\ket{1,m} = \sqrt{(1 \mp m)(1 \pm m + 1)} \ket{1,m\pm 1}  $, which means,
+	\begin{align*}
+	J_+ \ket{1,1} = 0 \qq{and} J_+ \ket{1,0} = \sqrt{2} \ket{1,1} \qq{and} J_+ \ket{1,-1} = \sqrt{2} \ket{1,0} \\
+	J_- \ket{1,1} = \sqrt{2} \ket{1,0} \qq{and} J_- \ket{1,0} = \sqrt{2} \ket{1,-1} \qq{and} J_- \ket{1,-1} = 0\\
+	\end{align*}
+	Using the above relations, one can write $ J_+ $ and $ J_- $ as follows,
+	\begin{align*}
+		J_+ = \sqrt{2}\mqty(0 & 1 & 0 \\ 0 & 0 & 1 \\ 0 & 0 & 0) \qq{and} J_- = \sqrt{2} \mqty(0 & 0 & 0 \\ 1 & 0 & 0 \\ 0 & 1  & 0) \implies J_2 = \dfrac{i}{\sqrt{2}}\mqty(0 & -1 & 0 \\ 1 & 0 & -1 \\ 0 & 1  & 0)
+	\end{align*}
+	Thus, we have obtained $ J_2 $. Let's also note the following,
+	\begin{equation*}
+	J_2^2 = \dfrac{1}{2}\mqty(1 & 0 & -1\\ 0 & 2 & 0 \\ -1 & 0  & 1) \qq{and} J_2^3 = \dfrac{i}{\sqrt{2}}\mqty(0 & -1 & 0 \\ 1 & 0 & -1 \\ 0 & 1  & 0) = J_2
+	\end{equation*}
+	\begin{equation*}
+	J_2^4 = J_2^3 J_2 = J_2^2 
+	\end{equation*}
+	We can see a pattern above, which can be written in a concise form as,
+	\begin{equation*}
+	J_2^{2n-1} = J_2 \qq{and} J_2^{2n} =  J_2^2
+	\end{equation*}
+	where $ n = 1,2,3,\ldots $. Consider $ e^{iJ_2 \beta} $,
+	\begin{align*}
+	e^{-iJ_2 \beta} &= \sum_{n=0}^{\infty} \dfrac{(-i)^n \beta^n J_2^n}{n!}\\
+	&= \sum_{n=0}^{\infty} \dfrac{(-i)^{2n} \beta^{2n} J_2^{2n}}{2n!} + \sum_{n=1}^{\infty} \dfrac{(-i)^{2n-1} \beta^{2n-1} J_2^{2n-1}}{(2n-1)!}\\
+	&=1 +  \sum_{n=1}^{\infty} \dfrac{(-1)^{n} \beta^{2n} J_2^{2}}{2n!} + i \sum_{n=1}^{\infty} \dfrac{(-1)^{n} \beta^{2n-1} J_2}{(2n-1)!}\\
+	&=1 +  (1-\cos \beta)J_2^2 - i J_2 \sin \beta\\	
+	\end{align*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	
+\end{homeworkProblem}
+
+%\pagebreak 	
+
+\end{document}
