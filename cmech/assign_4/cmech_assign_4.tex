@@ -339,7 +339,35 @@
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
-	Let $ \theta_1 $ and $ \theta_2 $ be the angles that the sticks make with the vertical. Each stick is of length $ 2l $. One can write the Lagrangian $ L $ of the system as follows (considering moments of inertia about the joint)
+	Let $ \theta_1 $ and $ \theta_2 $ be the angles that the sticks make with the vertical. Each stick is of length $ 2r $. $ \theta_1 $ (lower stick) and $ \theta_2 $ (upper stick) are the generalized coordinates. The position coordinates of the lower and upper masses are,
+	\begin{equation*}
+	(x_1,y_1) = (r \sin \theta_1, r \cos \theta_1) \qq{and} (x_2,y_2) = (2r \sin \theta_1 + r \sin \theta_2, 2r \cos \theta_1 + r \cos \theta_2)
+	\end{equation*}
+	\begin{equation*}
+	\implies v_1^2 = r^2 \dot{\theta}_1^2 \qq{and} v_2^2 = 4r^2 \dot{\theta}_1^2 + r^2 \dot{\theta}_2^2 + 4r^2 \cos (\theta_1 - \theta_2) \dot{\theta}_1 \dot{\theta}_2
+	\end{equation*}
+	
+	The Lagrangian can be written as,
+	\begin{equation*}
+	L = \dfrac{ mr^2 }{2}\dot{\theta}_1^2 + \dfrac{ m(4r^2 \dot{\theta}_1^2 + r^2 \dot{\theta}_2^2 + 4r^2 \cos (\theta_1 - \theta_2) \dot{\theta}_1 \dot{\theta}_2) }{2} - mgr \cos \theta_1 - mg (2r\cos \theta_1 + r \cos \theta_2) 
+	\end{equation*}
+	The equations of motion are,
+	\begin{align*}
+	mr^2 \ddot{\theta}_1 + 4mr^2 \ddot{\theta}_1 + 2mr^2 \cos (\theta_1 - \theta_2) \ddot{\theta}_2 +  2mr^2 \cos (\theta_1 - \theta_2) \dot{\theta}_2 (\dot{\theta}_2 - \dot{\theta}_1)  =\\ - 2mr^2 \sin (\theta_1 - \theta_2)\dot{\theta}_1 \dot{\theta}_2 + mgr\sin \theta_1 + 2mgr \sin \theta_1
+	\end{align*}
+	\begin{equation*}
+	mr^2 \ddot{\theta}_2 + 2mr^2 \cos (\theta_1 - \theta_2) \ddot{\theta}_1 +  2mr^2 \cos (\theta_1 - \theta_2) \dot{\theta}_1 (\dot{\theta}_2 - \dot{\theta}_1) = 2mr^2 \sin (\theta_1 - \theta_2)\dot{\theta}_1 \dot{\theta}_2 + mgr \sin \theta_2
+	\end{equation*}
+	In the above equations of motion, we substitute, $ \theta_1 = 0, \theta_2 = \epsilon \ll 1, \dot{\theta}_1 = \dot{\theta}_2 = 0 $,
+	\begin{align*}
+	5mr^2 \ddot{\theta}_1 + 2mr^2 \ddot{\theta}_2  &= 0 \qq{and}\\
+	mr^2 \ddot{\theta}_2 + 2mr^2 \ddot{\theta}_1 &= mgr  \epsilon
+	\end{align*}
+	\begin{equation*}
+	\boxed{\ddot{\theta}_1 = -\dfrac{2g \epsilon}{r} \qq{and} \ddot{\theta}_2 = \dfrac{5g \epsilon}{r}}
+	\end{equation*}
+	
+	\textcolor{red}{check if correct}
 \end{homeworkProblem}
 
 \end{document}
