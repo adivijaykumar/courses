@@ -146,7 +146,7 @@
 \begin{document}
 
 \maketitle
-\begin{homeworkProblem}
+\begin{homeworkProblem}[1]
 	Let's use the follwing convention $ (\ket{l,m}) $
 	\begin{equation*}
 	\ket{2,2} = \mqty(1\\0\\0\\0\\0) \qq{and} \ket{2,1} = \mqty(0\\1\\0\\0\\0) \qq{and} \ket{2,0} = \mqty(0\\0\\1\\0\\0) \qq{and} \ket{2,-1} = \mqty(0\\0\\0\\1\\0) \qq{and} \ket{2,-2} = \mqty(0\\0\\0\\0\\1)
@@ -180,11 +180,33 @@
 	
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[2]
+	Given,
+	\begin{equation*}
+	U = \exp(-i \dfrac{\sigma_3 \alpha}{2}) \exp(-i \dfrac{\sigma_2 \beta}{2}) \exp(-i \dfrac{\sigma_3 \gamma}{2})
+	\end{equation*}
 	
+	Consider the trace of $ U  $,
+	\begin{align*}
+	\tr U &= \expval{U}{0} + \expval{U}{1}\\
+	&= \expval{ \exp(-i \dfrac{\sigma_3 \alpha}{2}) \exp(-i \dfrac{\sigma_2 \beta}{2}) \exp(-i \dfrac{\sigma_3 \gamma}{2})}{0} + \expval{ \exp(-i \dfrac{\sigma_3 \alpha}{2}) \exp(-i \dfrac{\sigma_2 \beta}{2}) \exp(-i \dfrac{\sigma_3 \gamma}{2})}{1}\\
+	\tr U&= e^{-i\qty(\frac{\alpha + \gamma}{2})} \expval{  \exp(-i \dfrac{\sigma_2 \beta}{2}) }{0} + e^{i\qty(\frac{\alpha + \gamma}{2})} \expval{ \exp(-i \dfrac{\sigma_2 \beta}{2}) }{1}\\
+	\end{align*}
+	We note that,
+	\begin{align*}
+	\exp(-i \dfrac{\sigma_2 \beta}{2}) &= \sum_{n=0}^\infty  \dfrac{1}{2n!} \qty(-i \dfrac{ \beta}{2})^{2n} \sigma_2^{2n} + \sum_{n=0}^\infty  \dfrac{1}{(2n+1)!} \qty(-i \dfrac{ \beta}{2})^{2n+1} \sigma_2^{2n+1}\\
+	&= \sum_{n=0}^\infty  \dfrac{(-1)^n}{2n!} \qty( \dfrac{ \beta}{2})^{2n} - \sum_{n=0}^\infty  \dfrac{(-1)^n}{(2n+1)!} \qty( \dfrac{ \beta}{2})^{2n+1} \sigma_2 \impliedby \sigma_2^{2n} = 1\\
+	\exp(-i \dfrac{\sigma_2 \beta}{2}) &= \cos \dfrac{\beta}{2} - i \sin \dfrac{\beta}{2} \sigma_2\\
+	\expval{\exp(-i \dfrac{\sigma_2 \beta}{2})}{0} &= \expval{\exp(-i \dfrac{\sigma_2 \beta}{2})}{1} = \cos \dfrac{\beta}{2}
+	\end{align*}
+	Hence, we get,
+	\begin{equation*}
+	\tr U = \cos \dfrac{\beta}{2}(e^{i\qty(\frac{\alpha + \gamma}{2})} + e^{-i\qty(\frac{\alpha + \gamma}{2})} ) = \cos \dfrac{\beta}{2}  \cos \dfrac{\alpha + \gamma}{2}
+	\end{equation*}
+	But we know that for any rotation matrix
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[3]
 	We know that,
 	\begin{align*}
 	J_1 = \dfrac{J_+ + J_-}{2} \qq{and} J_2 = \dfrac{J_+ - J_-}{2i} \qq{and} J_{\pm} \ket{l,m} = \sqrt{(l \mp m)(l\pm m + 1)} \ket{l,m\pm 1}
