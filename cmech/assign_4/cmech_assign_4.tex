@@ -143,42 +143,81 @@
 
 \begin{document}
 \maketitle
-\begin{homeworkProblem}
-	\textbf{Part (a)}\\
+\begin{homeworkProblem}[1]	\textbf{Part (a)}\\
 	For $ m=constant $
 	\begin{align*}
-	T &= \dfrac{m \vb{v} \vdot \vb{v} }{2}\\
-	\dv{T}{t} &= m \dot{\vb{v}}  \vdot \vb{v}
-	= \vb{F} \vdot \vb{v}
+	T &= \dfrac{m \va{v} \vdot \va{v} }{2}\\
+	\dv{T}{t} &= m \dot{\va{v}}  \vdot \va{v}
+	= \va{F} \vdot \va{v}
 	\end{align*}
 	
 	If $ m $ varies with time,
 	\begin{align*}
-	mT &= \dfrac{m^2 \vb{v} \vdot \vb{v} }{2}\\
-	\dv{(mT)}{t} &= m^2 \dot{\vb{v}}  \vdot \vb{v} + m \dot{m} \vb{v} \vdot \vb{v}\\
-	&= (m {\vb{v}}) \vdot (m \dot{\vb{v}} + \dot{m} {\vb{v}})\\
-	\dv{(mT)}{t}&= \vb{p}\vdot \vb{F}
+	mT &= \dfrac{m^2 \va{v} \vdot \va{v} }{2}\\
+	\dv{(mT)}{t} &= m^2 \dot{\va{v}}  \vdot \va{v} + m \dot{m} \va{v} \vdot \va{v}\\
+	&= (m {\va{v}}) \vdot (m \dot{\va{v}} + \dot{m} {\va{v}})\\
+	\dv{(mT)}{t}&= \va{p}\vdot \va{F}
 	\end{align*}
 	
-	\textbf{Part (b)}
-	
-\end{homeworkProblem}
-
-\begin{homeworkProblem}
-	Let $ R $ be the radius of the disc. The generalized coordinates for the motion are the horizontal coordinate $ x $ and angular coordinate $ \theta $. For rolling, we have,
+	\textbf{Part (b)}\\
+	We know that,
 	\begin{equation*}
-	R \dot{\theta} = \dot{x} \implies R d \theta - dx = 0
+	M_1 \dv[2]{\va{r_1}}{t} + M_2 \dv[2]{\va{r_2}}{t} = \va{F}^{ext} + \va{F}_{12}^i + \va{F}_{21}^i
+	\end{equation*}
+	where $ \va{F}^{ext} $ and $ \va{F}^i $ are the external and interaction forces respectively. But we also know that,
+	\begin{equation*}
+	M_1 \dv[2]{\va{r_1}}{t} + M_2 \dv[2]{\va{r_2}}{t} = M \dv[2]{\va{R}}{t} = \va{F}^{ext}
 	\end{equation*}
 	
-	It is straightforward to see that the above equation a specific instance of an equation of the form,
+	Comparing the preceding equations, we get,
 	\begin{equation*}
-	\sum_{i=1}^{n} g(x_1,x_2,\ldots, x_n) d x_i = 0
+	\va{F}_{12}^i + \va{F}_{21}^i = 0 \implies \va{F}_{12}^i = - \va{F}_{21}^i 
 	\end{equation*}
-	with $ x_1 = \theta, x_2 = x, g_1 = R, g_2 = -1 $.
-	\textcolor{red}{complete the problem}
+	This is the weak form of Newton's third law.
+	
+	On similar lines,
+	\begin{equation*}
+	I_1 \va{r}_1 \cross \dot{\va{p}}_1 + I_2 \va{r}_2 \cross \dot{\va{p}}_2 = \va{\tau}^{ext} + \va{\tau}_{12}^i + \va{\tau}_{21}^i \qq{and} I_1 \va{r}_1 \cross \dot{\va{p}}_1 + I_2 \va{r}_2 \cross \dot{\va{p}}_2 = I \va{R} \cross \dot{\va{p}} = \va{\tau}^{ext} 
+	\end{equation*}
+	\begin{align*}
+	\implies \va{\tau}_{12}^i + \va{\tau}_{21}^i &= 0\\
+	\va{r}_1 \cross \va{F}_{12}^i + \va{r}_2 \cross \va{F}_{21}^i &= 0 \\
+	\va{r}_1 \cross \va{F}_{12}^i - \va{r}_2 \cross \va{F}_{12}^i &= 0 \\
+	(\va{r}_1-\va{r}_2) \cross \va{F}_{12}^i  &= 0 
+	\end{align*}
+	This means that the action-reaction pair acts along the line joining the two particles. This proves the strong form of the third law.
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[2]
+	Let $ R $ be the radius of the disc. The generalized coordinates for the motion are the planar coordinates $ x , y$ and angular coordinate $ \theta $ of the disc. For rolling, we have,
+	\begin{equation*}
+	R \dot{\theta} = v 
+	\end{equation*}
+	Let's assume that the velocity vector makes an angle $ \phi $ with the positive $ x $-axis. We then have,
+	\begin{align*}
+	\dot{x} = v \cos \phi \qq{and} \dot{y} = v \sin \phi
+	&\implies \dot{x} = 	R \dot{\theta} \cos \phi \qq{and} \dot{y} = 	R \dot{\theta} \sin \phi\\
+	\therefore d{x} - 	R d{\theta} \cos \phi = 0  &\qq{and} d{y} - R d{\theta} \sin \phi = 0 \\
+	\therefore d{x} +  dy &- R (\cos \phi + \sin \phi)d\theta = 0  
+	\end{align*}
+	It is straightforward to see that the above equations are specific instances of an equation of the form,
+	\begin{equation*}
+	\sum_{i=1}^{n} g_i(x_1,x_2,\ldots, x_n) d x_i = 0
+	\end{equation*}
+	For the constraint to be holonomic there should be an integrating factor $ f = f(x,y,\theta,\phi) $ which satisfies,
+	\begin{equation*}
+	\pdv{fg_i}{x_j} = \pdv{fg_j}{x_i}
+	\end{equation*}
+	Let's say $ f(x,y,\theta,\phi)= X(x) Y(y) \Theta(\theta) \Phi(\phi) $. Consider the following,
+	\begin{align*}
+	\pdv{fg_x}{\theta} &= \pdv{fg_\theta}{x}\\
+	\dfrac{1}{f}\pdv{f}{\theta} &= -\dfrac{1}{f} R \sin \phi \pdv{f}{x}\\
+	\dfrac{1}{\Theta}\pdv{\Theta}{\theta} &= -\dfrac{1}{X} R \sin \phi \dv{X}{x}
+	\end{align*}
+	The RHS is a function of $ x $ multiplied by $ \sin \phi $, while the LHS is purely a function of $ \theta $. They can never be equal, and hence an integrating factor $ f $ never exists.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[3]
 	\textbf{Part (a)}\\
 	Let $ r, \theta, \phi $ be the generalized coordinates in their usual polar form, and $ l_0 $ be the equilibrium length of the spring. The Lagrangian of the problem $ L $ can be written as,
 	\begin{equation*}
@@ -190,12 +229,12 @@
 	m r^2 \ddot{\theta} + 2 m r \dot{r} \dot{\theta} &= mr^2 \sin \theta \cos \theta \dot{\phi}^2 - mgr \sin \theta\\
 	mr^2 \sin^2 \theta \ddot{\phi} + 2 m r \sin^2 \theta \dot{r} \dot{\phi} + 2 m r^2 \sin \theta \cos \theta \dot{\theta} \dot{\phi} &= 0
 	\end{align*}
-	Constraining the motion in a plane implies using $ \phi = constant \implies \dot{\phi} = \ddot{\phi} = 0$. \textcolor{red}{Is constraining possible?}. Our equations then reduce to,
+	Constraining the motion in a plane implies using $ \phi = constant \implies \dot{\phi} = \ddot{\phi} = 0$. \textcolor{red}{Is constraining possible? - yes, one just needs to give it initial velocity in the plane}. Our equations then reduce to,
 	\begin{align*}
 	m\ddot{r} &= mr\dot{\theta}^2 + mg \cos \theta  - k(r - l_0)\\
 	m r^2 \ddot{\theta} + 2 m r \dot{r} \dot{\theta} &= - mgr \sin \theta
 	\end{align*}
-	The equilibrium positions can be found by substituting all time derivatives of $ r $ and $ \theta $ as zero. This gives the equilibrium $ r_0 = l_0 + \dfrac{mg}{k} $ and $ \theta_0 = 0r $.
+	The equilibrium positions can be found by substituting all time derivatives of $ r $ and $ \theta $ as zero. This gives the equilibrium $ r_0 = l_0 + \dfrac{mg}{k} $ and $ \theta_0 = 0 $.
 	We need to solve the above for small stretching in $ r $ and small angular displacements $ \theta $. Let's substitute $ r = r_0 + \epsilon x $ and $ \theta = \epsilon \alpha $ in the equations. We get,
 	\begin{align*}
 	m\epsilon \ddot{x} &= m(r_0 + \epsilon x) \epsilon^2 \dot{\alpha}^2 + mg \left( 1 - \dfrac{\alpha^2}{2} \epsilon^2 + \ldots\right)   - k(\epsilon x + r_0 - l_0)\\
@@ -206,8 +245,6 @@
 	\ddot{x} &= -\dfrac{k}{m} x\\
 	\ddot{\alpha} &= - \dfrac{g}{r_0}\alpha 
 	\end{align*}
-	
-	\textcolor{red}{Solve numerically}
 	
 	\textbf{Part (b)}\\
 	The Lagrangian is given as,
@@ -239,7 +276,7 @@
 	\end{align*}
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[4]
 	\textbf{Part (a)}\\
 	As given, we take $ y = at + bt^2 \implies \dot{y} = a + 2bt$. The Lagrangian $ L $ can be written as follows,
 	\begin{align*}
@@ -256,14 +293,13 @@
 	\textit{Hence Proved.}
 	\\
 	
-	\textbf{Part (b)}\\
+	\textbf{Part (b)}
 	Given, $ L = L(q_i, \dot{q_i}, \ddot{q_i},t) $, and we know that $ S = \int_{t_i}^{t_f} L(q_i, \dot{q_i}, \ddot{q_i},t) dt  $. Variation of the action can be written as,
-	
 	\begin{align*}
 	\delta S &= \int_{t_i}^{t_f} \delta L dt = 0\\
 	&= \int_{t_i}^{t_f} \sum_{i} \qty(\pdv{L}{q_i} \delta q_i+ \pdv{L}{\dot{q_i}} \delta \dot{q_i} + \pdv{L}{\ddot{q_i}} \delta \ddot{q_i})dt\\
 	&= \int_{t_i}^{t_f} \sum_{i} \qty(\pdv{L}{q_i} \delta q_i+ \qty(\pdv{L}{\dot{q_i}} - \dv{t}\pdv{L}{\ddot{q_i}} ) \delta \dot{q_i} + \dv{t} \qty(\pdv{L}{\ddot{q_i}} \delta \dot{q_i}))dt\\
-	&= \int_{t_i}^{t_f} \sum_{i} \qty[ \qty{\pdv{L}{q_i} - \dv{t}\qty(\pdv{L}{\dot{q_i}} - \dv{t}\pdv{L}{\ddot{q_i}} )} \delta q_i + \dv{t}\qty(\qty(\pdv{L}{\dot{q_i}} - \dv{t}\pdv{L}{\ddot{q_i}} ) \delta {q_i}) + \dv{t} \qty(\pdv{L}{\ddot{q_i}} \delta \dot{q_i})]dt\\
+	&= \int_{t_i}^{t_f} \sum_{i} \qty[ \qty{\pdv{L}{q_i} - \dv{t}\qty(\pdv{L}{\dot{q_i}} - \dv{t}\pdv{L}{\ddot{q_i}} )} \delta q_i + \dv{t}\qty(\qty(\pdv{L}{\dot{q_i}} - \dv{t}\pdv{L}{\ddot{q_i}} ) \delta {q_i}) + \dv{t} \qty(\pdv{L}{\ddot{q_i}} \delta \dot{q_i})]dt
 	\end{align*}
 	As the variation of $ q_i $ and $ \dot{q_i} $ at the endpoints is zero, the total derivative terms vanish. Accounting for the fact that all $ q_i $'s are independent, one can write the equation of motion as,
 	\begin{equation*}
@@ -271,16 +307,36 @@
 	\end{equation*}
 	Taking $ L = -\dfrac{m}{2}q \ddot{q} - \dfrac{k}{2}q^2$, we can write,
 	\begin{equation*}
-	-kq + \dfrac{m}{2}\ddot{q} = 0 \implies \ddot{q} - \dfrac{2k}{m}q  = 0
+	kq + \dfrac{m}{2}\ddot{q} = 0 \implies \ddot{q} + \dfrac{2k}{m}q  = 0
 	\end{equation*}
-	\textcolor{red}{Where have I seen this?}
+	This turns out to be the equation of the simple harmonic oscillator.
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
-	
+\begin{homeworkProblem}[5]
+	In all the parts, time translation is an implied conserved quantity, and energy is the corresponding conserved quantity.\\
+	\textbf{Part (a)} -
+The potential energy in this case will only be a function of z. Hence, the $ x $ and $ y $ momenta will be conserved. 
+
+\textbf{Part (b)} -
+Let's consider the half-plane in a way that only the part with $ x>0 $ has uniform mass distribution. Here, only $ y $-translations are symmetries and Hence, only $ p_y $ will be conserved.
+
+\textbf{Part (c)} -
+An infinite cylinder possesses $ z $-translation and $ z $-rotation symmetry, and hence $ p_z $ and $ L_z $ will be conserved.
+
+\textbf{Part (d)} -
+A finite cylinder only has $ z $-rotation symmetry. So, only $ L_z $ is the conserved quantity.
+
+\textbf{Part (e)} - 
+The infinite right elliptical cylinder only has $ z $-translation symmetry. So, only $ p_z $ is the conserved quantity.
+
+\textbf{Part (f)} - 
+The dumbell only has $ z $-translation symmetry. So, only $ p_z $ is the conserved quantity.
+
+\textbf{Part (g)} - 
+The infinite helical solenoid has$ z $-translation and $ z $-rotation symmetries, and hence $ p_z$ and $ L_z $ are the conserved quantities.
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[6]
 	The Lagrangian for the problem is,
 	\begin{equation*}
 	L = \dfrac{m(\dot{r}^2 + r^2 \dot{\theta}^2 )}{2} - V(r)
@@ -296,25 +352,27 @@
 	\dfrac{L_0^2}{m r_0^3} - 2 \lambda^2 r_0 V_0 e^{-\lambda^2 r_0^2} = 0\\
 	\implies {L_0^2} = 2 \lambda^2 m r_0^4 V_0 e^{-\lambda^2 r_0^2}
 	\end{equation*}
+	Note that $ L_0^2 $ has a functional dependence on $ r_0 $ $ (\sim r_0^4 e^{-\lambda^2 r_0^2}) $. This functional dependence has a maxima at $ r_0^2 = \dfrac{2}{\lambda^2} $, where the value of the function is $\dfrac{4}{\lambda^2 e^2}$. $ L_0^2 $ should be lesser than this maximum value for it to be realizable. Hence,
+	\begin{equation*}
+	L_0^2 \le \dfrac{8mV_0}{e^2} \implies L_0 \le \dfrac{\sqrt{8mV_0}}{e}
+	\end{equation*}
+
+	So, $ L_0 $ cannot exceed $ \dfrac{\sqrt{8mV_0}}{e} $.
 	
-	As the factor $ e^{-\lambda^2 r_0^2} \le 1 $ for all choices of $ r $. For roots to exist, it should be the case that,
-	\begin{align*}
-	{L_0^2} &\le 2 \lambda^2 m r_0^4 V_0 \\
-	\implies L_0 &\le \sqrt{2mV_0} \lambda r_0
-	\end{align*}
-	So, $ L_0 $ cannot exceed $ \sqrt{2mV_0} \lambda r_0 $.
-	\textcolor{red}{Check this}
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
-	The radius of the circle $ r $ and the angle covered around the circle $ \theta $ are the generalized coordinates. The Lagrangian $ L $ can be written as,
+\begin{homeworkProblem}[7]
+	The radius of the circle $ r $ and the angle covered around the circle $ \theta $ are the generalized coordinates. The Cartesian coordinates of the particle are,
 	\begin{equation*}
-	L =  \dfrac{m \dot{r}^2}{2} + \dfrac{m \dot{\theta}^2 r^2}{2} - mg r \cot \alpha
+	x = r \cos \theta, y = r \sin \theta, z = r \cot \alpha \implies v^2 = \dot{r}^2 \csc^2 \alpha + r^2 \dot{\theta}^2
+	\end{equation*}The Lagrangian $ L $ can be written as,
+	\begin{equation*}
+	L =  \dfrac{m (\dot{r}^2 \csc^2 \alpha + r^2 \dot{\theta}^2)}{2}- mg r \cot \alpha
 	\end{equation*}
 	The equations of motion are,
 	\begin{align*}
 	r^2 \dot{\theta} &= constant = L_0\\
-	\ddot{r} &= r\dot{\theta}^2 - g\cot \alpha \implies \ddot{r} = \dfrac{L_0^2}{r^3} - g\cot \alpha
+	\ddot{r}\csc^2 \alpha &= r\dot{\theta}^2 - g\cot \alpha \implies \ddot{r} \csc^2 \alpha = \dfrac{L_0^2}{r^3} - g\cot \alpha
 	\end{align*}
 	
 	\textbf{Part (b)}\\
@@ -327,18 +385,21 @@
 	
 	We consider perturbations along the surface of the cone ie $ l = r_0 \csc \alpha + \epsilon x $. This in turn corresponds to a radial perturbation of the form $ r = r_0 + \epsilon x \sin \alpha $, $ \epsilon \ll 1 $. Substituting this into the equation of motion for $ r $,
 	\begin{align*}
-	\epsilon \ddot{x} \sin \alpha &= \dfrac{L_0^2}{(r_0 + \epsilon x \sin \alpha)^3} - g \cot \alpha\\
+	\epsilon \ddot{x} \csc \alpha &= \dfrac{L_0^2}{(r_0 + \epsilon x \sin \alpha)^3} - g \cot \alpha\\
 	&=\dfrac{L_0^2}{r_0^3}\qty(1 - \dfrac{3 \epsilon x \sin \alpha}{r_0} + \ldots) - g \cot \alpha\\
-	&=\dfrac{L_0^2}{r_0^3}\qty(- \dfrac{3 \epsilon x \sin \alpha}{r_0} + \ldots) \\
+	\epsilon \ddot{x} \csc \alpha &=\dfrac{L_0^2}{r_0^3}\qty(- \dfrac{3 \epsilon x \sin \alpha}{r_0} + \ldots) \\
 	\end{align*}
 	Choosing only the term first order in $ \epsilon $,
 	\begin{equation*}
-	\ddot{x} = -\dfrac{3 g \cot \alpha}{r_0} x \implies \boxed{\Omega = \sqrt{\dfrac{3 g \cot \alpha	}{r_0}}}
+	\ddot{x} = -\dfrac{3 g \cot \alpha}{r_0}(\sin^2 \alpha) x \implies \boxed{\Omega = \sqrt{\dfrac{3 g \cot \alpha	}{r_0}}\sin \alpha}
 	\end{equation*}
-	\textcolor{red}{Check if this is really correct}
+	For $ \Omega = \omega $, we can see that,
+	\begin{equation*}
+	\sin \alpha = \dfrac{1}{\sqrt{3}} \implies \alpha = \sin[-1](\dfrac{1}{\sqrt{3}})
+	\end{equation*}
 \end{homeworkProblem}
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[8]
 	Let $ \theta_1 $ and $ \theta_2 $ be the angles that the sticks make with the vertical. Each stick is of length $ 2r $. $ \theta_1 $ (lower stick) and $ \theta_2 $ (upper stick) are the generalized coordinates. The position coordinates of the lower and upper masses are,
 	\begin{equation*}
 	(x_1,y_1) = (r \sin \theta_1, r \cos \theta_1) \qq{and} (x_2,y_2) = (2r \sin \theta_1 + r \sin \theta_2, 2r \cos \theta_1 + r \cos \theta_2)
@@ -366,8 +427,6 @@
 	\begin{equation*}
 	\boxed{\ddot{\theta}_1 = -\dfrac{2g \epsilon}{r} \qq{and} \ddot{\theta}_2 = \dfrac{5g \epsilon}{r}}
 	\end{equation*}
-	
-	\textcolor{red}{check if correct}
 \end{homeworkProblem}
 
 \end{document}
