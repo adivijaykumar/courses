@@ -194,16 +194,17 @@
 	\end{align*}
 	We note that,
 	\begin{align*}
-	\exp(-i \dfrac{\sigma_2 \beta}{2}) &= \sum_{n=0}^\infty  \dfrac{1}{2n!} \qty(-i \dfrac{ \beta}{2})^{2n} \sigma_2^{2n} + \sum_{n=0}^\infty  \dfrac{1}{(2n+1)!} \qty(-i \dfrac{ \beta}{2})^{2n+1} \sigma_2^{2n+1}\\
-	&= \sum_{n=0}^\infty  \dfrac{(-1)^n}{2n!} \qty( \dfrac{ \beta}{2})^{2n} - \sum_{n=0}^\infty  \dfrac{(-1)^n}{(2n+1)!} \qty( \dfrac{ \beta}{2})^{2n+1} \sigma_2 \impliedby \sigma_2^{2n} = 1\\
-	\exp(-i \dfrac{\sigma_2 \beta}{2}) &= \cos \dfrac{\beta}{2} - i \sin \dfrac{\beta}{2} \sigma_2\\
-	\expval{\exp(-i \dfrac{\sigma_2 \beta}{2})}{0} &= \expval{\exp(-i \dfrac{\sigma_2 \beta}{2})}{1} = \cos \dfrac{\beta}{2}
+	\exp(-i \dfrac{(\vu{n} \vdot \va{\sigma}) \beta}{2}) &= \sum_{n=0}^\infty  \dfrac{1}{2n!} \qty(-i \dfrac{ \beta}{2})^{2n} (\vu{n} \vdot \va{\sigma})^{2n} + \sum_{n=0}^\infty  \dfrac{1}{(2n+1)!} \qty(-i \dfrac{ \beta}{2})^{2n+1} (\vu{n} \vdot \va{\sigma})^{2n+1}\\
+	&= \sum_{n=0}^\infty  \dfrac{(-1)^n}{2n!} \qty( \dfrac{ \beta}{2})^{2n} - \sum_{n=0}^\infty  \dfrac{(-1)^n}{(2n+1)!} \qty( \dfrac{ \beta}{2})^{2n+1} (\vu{n} \vdot \va{\sigma})\impliedby (\vu{n} \vdot \va{\sigma})^{2n} = 1\\
+	\exp(-i \dfrac{(\vu{n} \vdot \va{\sigma}) \beta}{2}) &= \cos \dfrac{\beta}{2} - i \sin \dfrac{\beta}{2} \vu{n} \vdot \va{\sigma}\\
+	\implies \expval{\exp(-i \dfrac{\sigma_2 \beta}{2})}{0} &= \expval{\exp(-i \dfrac{\sigma_2 \beta}{2})}{1} = \cos \dfrac{\beta}{2} \qq{and} \tr \qty[ \exp(-i \dfrac{(\vu{n} \vdot \va{\sigma}) \beta}{2})] = 2 \cos \dfrac{\beta}{2}
 	\end{align*}
 	Hence, we get,
-	\begin{equation*}
-	\tr U = \cos \dfrac{\beta}{2}(e^{i\qty(\frac{\alpha + \gamma}{2})} + e^{-i\qty(\frac{\alpha + \gamma}{2})} ) = \cos \dfrac{\beta}{2}  \cos \dfrac{\alpha + \gamma}{2}
-	\end{equation*}
-	But we know that for any rotation matrix
+	\begin{align*}
+	\tr U &= \cos \dfrac{\beta}{2}(e^{i\qty(\frac{\alpha + \gamma}{2})} + e^{-i\qty(\frac{\alpha + \gamma}{2})} ) \\
+	\cos \dfrac{\theta}{2} &= \cos \dfrac{\beta}{2}  \cos \dfrac{\alpha + \gamma}{2}
+	\end{align*}
+	$ \theta $ is given by the above equation.
 \end{homeworkProblem}
 
 \begin{homeworkProblem}[3]
@@ -270,14 +271,93 @@
 	e^{-iJ_2 \beta} &= \sum_{n=0}^{\infty} \dfrac{(-i)^n \beta^n J_2^n}{n!}\\
 	&= \sum_{n=0}^{\infty} \dfrac{(-i)^{2n} \beta^{2n} J_2^{2n}}{2n!} + \sum_{n=1}^{\infty} \dfrac{(-i)^{2n-1} \beta^{2n-1} J_2^{2n-1}}{(2n-1)!}\\
 	&=1 +  \sum_{n=1}^{\infty} \dfrac{(-1)^{n} \beta^{2n} J_2^{2}}{2n!} + i \sum_{n=1}^{\infty} \dfrac{(-1)^{n} \beta^{2n-1} J_2}{(2n-1)!}\\
-	&=1 +  (1-\cos \beta)J_2^2 - i J_2 \sin \beta\\	
+	&=1 +  (1-\cos \beta)J_2^2 - i J_2 \sin \beta
 	\end{align*}
+	\textit{Hence proved}.
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
+	\textit{Throughout the problem, we have assumed all relative phases to be $0$},
 	
-\end{homeworkProblem}
+	We denote each representation by different subscripts, an example of which is shown below,
+	\begin{equation*}
+	\ket{2,2} = \ket{1,1}_1 \otimes \ket{1,1}_2
+	\end{equation*}
+	To get other states in $ j=2 $, we define the $ J_- $ operator as follows, and apply it successively,
+	\begin{align*}
+	J_- &= J_-^{(1)} \otimes I + I \otimes J_-^{(2)}\\
+	\qq{where} J_- \ket{j,m} &= \sqrt{j(j+1) - m(m - 1)} \ket{j,m-1}
+	\end{align*}
+	Let's first consider $ \ket{2,1} $,
+	\begin{align*}
+	2\ket{2,1} &= J_- \ket{2,2}\\
+	&= J_-^{(1)} \ket{1,1}_1 \otimes \ket{1,1}_2 + \ket{1,1}_1 \otimes J_-^{(2)}\ket{1,1}_2\\
+	&= \sqrt{2} \ket{1,0}_1 \otimes \ket{1,1}_2 + \sqrt{2}  \ket{1,1}_1 \otimes \ket{1,0}_2 \\
+	\ket{2,1} &= \dfrac{\ket{1,0}_1 \otimes \ket{1,1}_2 + \ket{1,1}_1 \otimes \ket{1,0}_2}{\sqrt{2}}
+	\end{align*}
+For $ \ket{2,0} $,
+\begin{align*}
+\sqrt{6}\ket{2,0} &= J_- \ket{2,1}\\
+2\sqrt{3}\ket{2,0}&= J_-^{(1)} \ket{1,0}_1 \otimes \ket{1,1}_2 + J_-^{(1)} \ket{1,1}_1 \otimes \ket{1,0}_2 + \ket{1,0}_1 \otimes J_-^{(2)} \ket{1,1}_2 + \ket{1,1}_1 \otimes J_-^{(2)} \ket{1,0}_2\\
+&= \sqrt{2}(\ket{1,-1}_1 \otimes \ket{1,1}_2 +  \ket{1,-1}_1 \otimes \ket{1,0}_2 + \ket{1,0}_1 \otimes \ket{1,0}_2 + \ket{1,1}_1 \otimes \ket{1,-1}_2) \\
+\ket{2,0} &= \dfrac{\ket{1,-1}_1 \otimes \ket{1,1}_2 + 2 \ket{1,0}_1 \otimes \ket{1,0}_2 + \ket{1,1}_1 \otimes \ket{1,-1}_2}{\sqrt{6}}
+\end{align*}
+For $ \ket{2,-1} $,
+\begin{align*}
+\sqrt{6} \ket{2,-1} &= J_- \ket{2,0}\\
+{6} \ket{2,-1}&= J_-^{(1)} \ket{1,-1}_1 \otimes \ket{1,1}_2 + 2 J_-^{(1)} \ket{1,0}_1 \otimes \ket{1,0}_2 + J_-^{(1)} \ket{1,1}_1 \otimes \ket{1,-1}_2 +\\
+& \ket{1,-1}_1 \otimes J_-^{(2)}\ket{1,1}_2 + 2 \ket{1,0}_1 \otimes J_-^{(2)} \ket{1,0}_2 + \ket{1,1}_1 \otimes J_-^{(2)} \ket{1,-1}_2\\
+&= 3\sqrt{2}(\ket{1,-1}_1 \otimes \ket{1,0}_2 + \ket{1,0}_1 \otimes \ket{1,-1}_2 )\\
+\ket{2,-1} &= \dfrac{\ket{1,-1}_1 \otimes \ket{1,0}_2 + \ket{1,0}_1 \otimes \ket{1,-1}_2 }{\sqrt{2}}\\
+\end{align*}
+For $ \ket{2,-2} $,
+\begin{align*}
+2 \ket{2,-2} &= J_-\ket{2,-1}\\
+2\sqrt{2}\ket{2,-2} &= J_-^{(1)} \ket{1,-1}_1 \otimes \ket{1,0}_2 + J_-^{(1)} \ket{1,0}_1 \otimes \ket{1,-1}_2  + \ket{1,-1}_1 \otimes J_-^{(2)} \ket{1,0}_2 + \ket{1,0}_1 \otimes J_-^{(2)} \ket{1,-1}_2\\
+&= \sqrt{2}(\ket{1,-1}_1 \otimes \ket{1,-1}_2  + \ket{1,-1}_1 \otimes \ket{1,-1}_2)\\
+\ket{2,-2} &= \ket{1,-1}_1 \otimes \ket{1,-1}_2 
+\end{align*}
 
+We now consider $ j=1 $. The highest weight state can be written as,
+\begin{equation*}
+\ket{1,1} = a \ket{1,0}_1 \otimes \ket{1,1}_2 + b \ket{1,1}_1 \otimes \ket{1,0}_2
+\end{equation*}
+Consider acting on this state with the operator $ J_+ =  J_+^{(1)} \otimes I + I \otimes J_+^{(2)} $,
+\begin{align*}
+a J_+^{(1)} \ket{1,0}_1 \otimes \ket{1,1}_2 + b \ket{1,1}_1 \otimes J_+^{(2)} \ket{1,0}_2 = 0\\
+\implies a + b = 0
+\end{align*}
+Hence, we make a choice $ a = \dfrac{1}{\sqrt{2}}, b = - \dfrac{1}{\sqrt{2}} $,
+\begin{equation*}
+\therefore \ket{1,1} = \dfrac{1}{\sqrt{2}} \ket{1,0}_1 \otimes \ket{1,1}_2 - \dfrac{1}{\sqrt{2}} \ket{1,1}_1 \otimes \ket{1,0}_2
+\end{equation*}
+We apply a similar procedure as outlined previously for $ \ket{1,0} $
+\begin{align*}
+\sqrt{2} \ket{1,0} &= J_- \ket{1,1} \\
+2 \ket{1,0} &= J_-^{(1)} \ket{1,0}_1 \otimes \ket{1,1}_2 -  J_-^{(1)} \ket{1,1}_1 \otimes \ket{1,0}_2 + \ket{1,0}_1 \otimes  J_-^{(2)} \ket{1,1}_2 - \ket{1,1}_1 \otimes J_-^{(2)} \ket{1,0}_2\\
+&= \sqrt{2}( \ket{1,-1}_1 \otimes \ket{1,1}_2 -   \ket{1,0}_1 \otimes \ket{1,0}_2 + \ket{1,0}_1 \otimes   \ket{1,0}_2 - \ket{1,1}_1 \otimes \ket{1,-1}_2)\\
+\ket{1,0} &= \dfrac{\ket{1,-1}_1 \otimes \ket{1,1}_2  - \ket{1,1}_1 \otimes \ket{1,-1}_2}{\sqrt{2}}
+\end{align*}
+For $ \ket{1,-1} $,
+\begin{align*}
+\sqrt{2} \ket{1,-1} &= J_- \ket{1,0}\\
+2 \ket{1,-1} &=  J_-^{(1)}\ket{1,-1}_1 \otimes \ket{1,1}_2  - J_-^{(1)}\ket{1,1}_1 \otimes \ket{1,-1}_2 + \ket{1,-1}_1 \otimes  J_-^{(2)} \ket{1,1}_2  - \ket{1,1}_1 \otimes  J_-^{(2)} \ket{1,-1}_2\\
+\ket{1,-1}&=  \dfrac{- \ket{1,0}_1 \otimes \ket{1,-1}_2 + \ket{1,-1}_1 \otimes   \ket{1,0}_2 }{\sqrt{2}}
+\end{align*}
+For $ j=0 $,
+\begin{align*}
+\ket{0,0} &= a \ket{1,1}\otimes \ket{1,-1} + b \ket{1,-1}\otimes \ket{1,1} + c \ket{1,0}\otimes \ket{1,0}\\
+J_-\ket{0,0} &= a J_-^{(1)}\ket{1,1}\otimes \ket{1,-1} + b J_-^{(1)}\ket{1,-1}\otimes \ket{1,1} + c J_-^{(1)}\ket{1,0}\otimes \ket{1,0} \\&+ a \ket{1,1}\otimes J_-^{(1)} \ket{1,-1} + b \ket{1,-1}\otimes J_-^{(1)} \ket{1,1} + c \ket{1,0}\otimes J_-^{(1)}  \ket{1,0}\\
+0 &=  a \ket{1,0}\otimes \ket{1,-1} + c \ket{1,-1}\otimes \ket{1,0} + b \ket{1,-1}\otimes \ket{1,0} + c \ket{1,0}\otimes \ket{1,-1}
+\end{align*}
+\begin{equation*}
+\implies b+c =0 \qq{and} a+ c =0
+\end{equation*}
+We choose $ a=\dfrac{1}{\sqrt{3}},b=\dfrac{1}{\sqrt{3}},c=-\dfrac{1}{\sqrt{3}} $. Hence,
+\begin{equation*}
+\ket{0,0} = \dfrac{\ket{1,1}\otimes \ket{1,-1} +  \ket{1,-1}\otimes \ket{1,1} - \ket{1,0}\otimes \ket{1,0}}{\sqrt{3}}
+\end{equation*}
+\end{homeworkProblem}
 %\pagebreak 	
 
 \end{document}
