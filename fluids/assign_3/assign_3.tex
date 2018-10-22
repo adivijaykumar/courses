@@ -1,0 +1,271 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx,wrapfig,lipsum}
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#3}
+\newcommand{\hmwkDueDate}{Due on 23rd October, 2018}
+\newcommand{\hmwkClass}{Fluid Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+\textbf{Acknowledgements} -
+
+
+%\pagebreak
+\begin{homeworkProblem}[1]
+	\textbf{Part (a)}\\
+	We first write down the unsteady state Bernoulli equation,
+	\begin{align*}
+	\pdv{\phi_1}{t} + \dfrac{P_{atm}}{\rho} + \dfrac{v_1^2}{2} + gz &= \pdv{\phi_2}{t} + \dfrac{P_{atm}}{\rho} + \dfrac{v_2^2}{2}\\
+	\pdv{v_1}{t} + v_1 \pdv{v_1}{z} + g &= \pdv{v_2}{t} + v_2 \pdv{v_2}{z}
+	\end{align*}
+	where we have taken a partial derivative with respect to $ y $ in going from the first to the second step.
+	The continuity equation tells us,
+	\begin{equation*}
+	A_1 v_1 = A v_2 \implies A_1 \pdv{v_1}{t} = A \pdv{v_2}{t}
+	\end{equation*}
+	If we assume, $ A_1 \gg A $, 
+	From the geometry of the cone, we have,
+	\begin{align*}
+	r_1 &= r_2 +z \tan \alpha\\
+	\pi r_1^2 &= \pi r_2^2 + \pi z^2 \tan^2 \alpha + 2\pi r_2 z \tan \alpha\\
+	A_1 &= A + \pi z^2 \tan^2 \alpha + 2 \sqrt{A \pi } z \tan \alpha
+	\end{align*}
+	From this and the continuity equation, we get,
+	\begin{align*}
+	v_2 &= \qty(1 + \dfrac{\pi z^2 \tan^2 \alpha}{A} + 2 \sqrt{\dfrac{A}{\pi}} z \tan \alpha) v_1\\
+	\pdv{v_2}{t} &= \qty(1 + \dfrac{\pi z^2 \tan^2 \alpha}{A} + 2 \sqrt{\dfrac{A}{\pi}} z \tan \alpha) \pdv{v_1}{t} + \qty(\dfrac{2 \pi z \tan^2 \alpha}{A} + 2 \sqrt{\dfrac{A}{\pi}} \tan \alpha) v_1^2\\
+	&\approx \qty(\dfrac{2 \pi z \tan^2 \alpha}{A} + 2 \sqrt{\dfrac{A}{\pi}} \tan \alpha) v_1^2
+	\end{align*}
+	
+	\textbf{Part (b)}\\
+	From steady state Bernoulli equation,
+	\begin{equation*}
+	\dfrac{v_1^2}{2} + gz =  \dfrac{u_1^2}{2} \qq{and} \dfrac{v_2^2}{2} + gz =  \dfrac{u_2^2}{2}
+	\end{equation*}
+	From continuity equation,
+	\begin{equation*}
+	A_1 v_1 = A u_1 \qq{and} A_2 v_2 = A u_2
+	\end{equation*}
+	
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[2]
+	We first write the Bernoulli equation for between the point where water leaves the tap $ (z_1=0) $ and a point distance $ h $ below $ (z_2=-h) $,
+	\begin{equation*}
+	\dfrac{P_0 }{\rho} + \dfrac{v_1^2}{2} = \dfrac{P_0 }{\rho} + \dfrac{v_2^2}{2} - gh  \implies \dfrac{v_2^2}{v_1^2} = 1 + \dfrac{2gh}{v_1^2}
+	\end{equation*}
+	The continuity equation gives,
+	\begin{equation*}
+	\pi r_1^2 v_1 = \pi r_2^2 v_2 \implies \dfrac{v_2}{v_1} = \dfrac{r_1^2}{r_2^2}
+	\end{equation*}
+	Using the above two equations, we get,
+	\begin{equation*}
+	\dfrac{r_1^4}{r_2^4} = 1 + \dfrac{2gh}{v_1^2} \implies \boxed{\dfrac{R_0^4}{r^4} = 1 + \dfrac{2gH}{v_0^2}}
+	\end{equation*}
+	where $ r $ is the cross-sectional radius at height $ H $ below the tap, and $ R_0 $ and $ v_0 $ and the cross-sectional radius and velocity of the water the moment it leaves the tap.
+	
+\end{homeworkProblem}
+
+
+
+
+
+
+
+\begin{homeworkProblem}[3]
+	We work in cylindrical coordinates. The assumption of laminar flow $ \implies u_r = u_\phi = 0 $. The assumption of axisymmetry $ \implies u_z = u_z(r, z) $ The continuity condition $ \div{\va{u}} = 0$ gives,
+	\begin{equation*}
+	\pdv{u_z}{z} = 0 \implies u_z = u_z(r)
+	\end{equation*}
+	We now proceed and write the Navier-Stokes equation in cylindrical coordinates component-wise,
+	\begin{align*}
+	0 &= -\dfrac{1}{\rho}\pdv{P}{r}\\
+	0 &= -\dfrac{1}{\rho r}\pdv{P}{\phi}\\
+	0 &= -\dfrac{1}{\rho}\pdv{P}{z} + \nu \dfrac{1}{r} \pdv{r} \qty(r \pdv{u_z}{r})
+	\end{align*}
+	We can see from the first two equations that $ P = P(z) $. In the third equation, since the first term on the RHS depends only on $ z $ and the second term depends only on $ r $, we say that each of the terms should be constants. We get,
+	\begin{align*}
+	 \dfrac{1}{r} \dv{r} \qty(r \dv{u_z}{r}) &= \dfrac{1}{\mu}\dv{P}{z} = constant\\
+	 \dv{r} \qty(r \dv{u_z}{r}) &= \dfrac{r}{\mu}\dv{P}{z}\\
+	 \implies r \dv{u_z}{r} &= \dfrac{r^2}{2\mu}\dv{P}{z} + A\\
+	 \implies \dv{u_z}{r} &= \dfrac{r}{2\mu}\dv{P}{z} + \dfrac{A}{r}\\
+	 \implies {u_z} &= \dfrac{r^2}{4\mu}\dv{P}{z} + A \ln r + B\\
+	\end{align*}
+	We need the flow to be well-defined at $ r=0 $. As it stands, for non-zero $ A $, the flow will not be well-defined for $ r=0 $, which is undesirable. Hence, $ A=0 $.
+	
+	If $ R $ is the radius of the pipe, and the pipe is not moving, we get $ u_z(R) = 0 $, which means,
+	\begin{equation*}
+	0 = \dfrac{R^2}{4\mu}\dv{P}{z} + B \implies B = - \dfrac{R^2}{4\mu}\dv{P}{z}
+	\end{equation*}
+	So the final answer is,
+	\begin{equation*}
+	u_z = \dfrac{1}{4 \mu} \dv{P}{z} (r^2 - R^2) 
+	\end{equation*}
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[4]
+	
+\end{homeworkProblem}
+
+
+\end{document}
