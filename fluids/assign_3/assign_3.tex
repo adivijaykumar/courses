@@ -146,46 +146,64 @@
 \begin{document}
 
 \maketitle
-\textbf{Acknowledgements} -
+\textbf{Acknowledgements} - I thank Saumav Kapoor for discussions.
 
 
 %\pagebreak
 \begin{homeworkProblem}[1]
 	\textbf{Part (a)}\\
-	We first write down the unsteady state Bernoulli equation,
+	The unsteady state Bernoulli equation tells us that,
 	\begin{align*}
-	\pdv{\phi_1}{t} + \dfrac{P_{atm}}{\rho} + \dfrac{v_1^2}{2} + gz &= \pdv{\phi_2}{t} + \dfrac{P_{atm}}{\rho} + \dfrac{v_2^2}{2}\\
-	\pdv{v_1}{t} + v_1 \pdv{v_1}{z} + g &= \pdv{v_2}{t} + v_2 \pdv{v_2}{z}
+	\pdv{\phi}{t} + \dfrac{P_{atm}}{\rho} + \dfrac{v^2}{2} + gz &= constant\\
+	\pdv{v}{t} + v\pdv{v}{y} + g &= 0
 	\end{align*}
-	where we have taken a partial derivative with respect to $ y $ in going from the first to the second step.
-	The continuity equation tells us,
-	\begin{equation*}
-	A_1 v_1 = A v_2 \implies A_1 \pdv{v_1}{t} = A \pdv{v_2}{t}
-	\end{equation*}
-	If we assume, $ A_1 \gg A $, 
+	where we have differentiated with $ y $ going from the first to the second line.
+	
 	From the geometry of the cone, we have,
 	\begin{align*}
-	r_1 &= r_2 +z \tan \alpha\\
-	\pi r_1^2 &= \pi r_2^2 + \pi z^2 \tan^2 \alpha + 2\pi r_2 z \tan \alpha\\
-	A_1 &= A + \pi z^2 \tan^2 \alpha + 2 \sqrt{A \pi } z \tan \alpha
-	\end{align*}
+	r_1 &= r_0 +y \tan \alpha\\
+	\pi r_1^2 &= \pi r_0^2 + \pi y^2 \tan^2 \alpha + 2\pi r_0 y \tan \alpha\\
+	A_1 &= \pi r_0^2 + \pi y^2 \tan^2 \alpha + 2 \sqrt{A \pi } y \tan \alpha	\end{align*}
 	From this and the continuity equation, we get,
-	\begin{align*}
-	v_2 &= \qty(1 + \dfrac{\pi z^2 \tan^2 \alpha}{A} + 2 \sqrt{\dfrac{A}{\pi}} z \tan \alpha) v_1\\
-	\pdv{v_2}{t} &= \qty(1 + \dfrac{\pi z^2 \tan^2 \alpha}{A} + 2 \sqrt{\dfrac{A}{\pi}} z \tan \alpha) \pdv{v_1}{t} + \qty(\dfrac{2 \pi z \tan^2 \alpha}{A} + 2 \sqrt{\dfrac{A}{\pi}} \tan \alpha) v_1^2\\
-	&\approx \qty(\dfrac{2 \pi z \tan^2 \alpha}{A} + 2 \sqrt{\dfrac{A}{\pi}} \tan \alpha) v_1^2
-	\end{align*}
-	
-	\textbf{Part (b)}\\
-	From steady state Bernoulli equation,
-	\begin{equation*}
-	\dfrac{v_1^2}{2} + gz =  \dfrac{u_1^2}{2} \qq{and} \dfrac{v_2^2}{2} + gz =  \dfrac{u_2^2}{2}
-	\end{equation*}
-	From continuity equation,
-	\begin{equation*}
-	A_1 v_1 = A u_1 \qq{and} A_2 v_2 = A u_2
-	\end{equation*}
-	
+\begin{align*}
+v = \dfrac{r_0^2}{\beta^2}v_0 \qq{, } \beta^2 = r_0^2 +  y^2 \tan^2 \alpha + 2 r_0 y \tan \alpha
+\end{align*}
+Substituting back into earlier equation,
+\begin{equation*}
+\dfrac{r_0^2}{\beta^2}\pdv{v_0}{t} - \dfrac{r_0^2}{\beta^2} v_0^2 \dfrac{r_0^2}{\beta^4} (2y \tan \alpha + 2 r_0 \tan \alpha) + g = 0
+\end{equation*}
+The above equation holds for all $ y $ and specifically $ y=0 $. Let's put $ y=0$ and $ \beta^2 = r_0^2 $,
+\begin{equation*}
+	\pdv{v_0}{t} - \dfrac{2}{r_0} v_0^2 \tan \alpha + g = 0
+\end{equation*}
+Solving this gives,
+\begin{equation*}
+v_0 = \sqrt{\dfrac{gr_0}{2 \tan \alpha}} \coth\qty( \sqrt{\dfrac{2g\tan \alpha}{r_0}}t + C)
+\end{equation*}
+All that is left is to evaluate the constant $ C $.
+
+We go back to the continuity equation, which says,
+\begin{equation*}
+\pi (y + y_0)^2 v(y,t) \tan^2 \alpha = K(t) \implies v(y,t) = \dfrac{K(t)}{\pi (y+y_0)^2  \tan^2 \alpha } \implies \phi(y,t) = -\dfrac{K(t)}{\pi (y+y_0) \tan^2 \alpha} 
+\end{equation*}
+Writing Bernoulli between points $ y=h $ and $ y=r_0 \tan \alpha $,
+\begin{align*}
+	-\dfrac{K'}{\pi (h+y_0) \tan^2 \alpha} + \dfrac{K^2}{2\pi^2 \tan^4 \alpha h^4} + gh &= -\dfrac{K'}{\pi (y_0) \tan^2 \alpha} + \dfrac{K^2}{2\pi^2 \tan^4 \alpha r_0^4}
+\end{align*}
+Substituting $ K(t) = v_0 \pi r_0^2 \tan^2 \alpha $, we can get an expression for the constant $ C $ in terms of height $ h $.
+
+
+
+\textbf{Part (b)}\\
+We know that,
+\begin{equation*}
+\dv{V}{t} = Q \implies t = \int \dfrac{dV}{Q}
+\end{equation*}
+\begin{align*}
+\therefore t_1  =  \int \dfrac{dV_1}{Q_1} &\qq{ } t_2  =  \int \dfrac{dV_2}{Q_2}\\
+t_1  =  \int \dfrac{\pi h^2 dh}{A_1 \sqrt{2gh}} &\qq{ } t_2  =  \int \dfrac{\pi h^2 dh}{A_2 \sqrt{2gh}}\\
+t_1 - t_2  = \qty(\dfrac{1}{A_1} - \dfrac{1}{A_2})&\int \dfrac{\pi h^2 dh}{\sqrt{2gh}} \implies \qq{tank with larger base area will drain faster}
+\end{align*}
 \end{homeworkProblem}
 
 
@@ -264,8 +282,87 @@
 
 
 \begin{homeworkProblem}[4]
+	We solve the problem for a two-dimensional jet. The orthogonal directions are taken to be $ x $ and $ y $. We assume that steady state.
 	
+	The Continuity equation gives us,
+	\begin{equation*}
+	\pdv{u}{x} + \pdv{v}{y} = 0 \implies u\pdv{u}{x} + u\pdv{v}{y} = 0 
+	\end{equation*}
+	The $ x $-component of the Navier-Stokes gives us,
+	\begin{equation}
+	u \pdv{u}{x} + v \pdv{u}{y} = \nu \pdv[2]{u}{y}
+	\label{xns}
+	\end{equation}
+	
+	Adding up the two equations, one has,
+	\begin{align*}
+		2u \pdv{u}{x} + v \pdv{u}{y} + u \pdv{v}{y}  &= \nu \pdv[2]{u}{y}\\
+		\pdv{(u^2)}{x} + \pdv{(uv)}{y} &= \nu \pdv[2]{u}{y}
+	\end{align*}
+	Integrating both sides with respect to $ y $,
+	\begin{equation*}
+	\pdv{x} \int_{-\infty}^{\infty} u^2 dy + \eval{uv}_{-\infty}^{\infty} = \nu \eval{\pdv{u}{y}}_{-\infty}^\infty
+	\end{equation*}
+	We now would like to impose boundary conditions. The velocity is purely along the $ x $-axis at $ y = 0 $. As $ y \rightarrow \pm \infty $, both $ u \rightarrow 0  $ and $ v $ $ \rightarrow 0 $, and so do their derivatives.
+	
+	We then have,
+	\begin{equation}
+	\pdv{x} \int_{-\infty}^{\infty} u^2 dy = 0 \implies \int_{-\infty}^{\infty} u^2 dy = constant = M
+	\label{conserv}
+	\end{equation}
+	We now try to guess the form of the similarity solution for this problem. Let's assume,
+	\begin{equation}
+	x \rightarrow \lambda^a x' \qq{ } y \rightarrow \lambda^b y' \qq{ } \psi \rightarrow \lambda^c \psi'
+	\label{ansatz}
+	\end{equation}
+	Using the fact that $ u = \psi_y $ and $ v = -\psi_x $, one can write (\ref{xns}) as,
+	\begin{equation}
+	\psi_y \psi_{xy} - \psi_{x}\psi_{yy} = \nu \psi_{yyy}
+	\label{psixns}
+	\end{equation}
+	and (\ref{conserv}) as,
+	\begin{equation}
+	\int_{-\infty}^{\infty} \psi_y^2 dy = M
+	\label{psiconserv}
+	\end{equation}
+	Substituting (\ref{ansatz}) into (\ref{psixns}) and (\ref{psiconserv}), we get,
+	\begin{align*}
+	2c - 2b - a &= c - 3b \implies a = b + c \qq{and} \\
+	2(c-b) + b &= 0 \implies b = 2c
+	\end{align*}
+	Solving which we get,
+	\begin{equation*}
+	b = \dfrac{2a}{3} \qq{ } c = \dfrac{a}{3}
+	\end{equation*}
+	and the final form being,
+	\begin{equation*}
+		x \rightarrow \lambda^a x' \qq{ } y \rightarrow \lambda^{2a/3} y' \qq{ } \psi \rightarrow \lambda^{a/3} \psi'
+	\end{equation*}
+	This suggests that,
+	\begin{equation*}
+	\dfrac{\psi }{ x^{1/3} }\sim f\qty(\dfrac{y}{x^{2/3}}) \implies \psi = A x^{1/3}f(\eta)
+	\end{equation*}
+	where $ \eta = \dfrac{y}{x^{2/3}}$. We note the following,
+	\begin{align*}
+	\psi_y &= A x^{1/3}f'(\eta) \dv{\eta}{y} \\
+	&= A x^{-1/3}f'\\
+	\psi_x &= \dfrac{A}{3}x^{-2/3}f(\eta) + A x^{1/3}f'(\eta)\dv{\eta}{x}\\
+	&=\dfrac{A}{3}x^{-2/3}f(\eta) - \dfrac{2A}{3} x^{-2/3}f'(\eta)\eta\\
+	&= \dfrac{Ax^{-2/3}}{3}(-2 \eta f'+f)\\
+	\psi_{xy} &= \dfrac{Ax^{-4/3}}{3}(-2 \eta f'' - f')\\
+	\psi_{yy} &=  A x^{-1}f''\\
+	\psi_{yyy} &=  A x^{-5/3}f'''
+	\end{align*}
+	Putting all this into (\ref{psixns}), we get,
+	\begin{equation*}
+	-f'(-2 \eta f''+f') - (-2 \eta f'+f)f'' = \dfrac{3\nu}{A} f''' \implies \dfrac{3\nu}{A} f''' + f'^2 + f''f = 0
+	\end{equation*}
+	If we set $ A =  \nu $ (we can always do that since it is an arbitrary constant), we get our final answer,
+	\begin{equation*}
+	3 f''' + f'^2 + f''f = 0
+	\end{equation*}
 \end{homeworkProblem}
+
 
 
 \end{document}
