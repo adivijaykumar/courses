@@ -149,7 +149,32 @@
 
 
 \begin{homeworkProblem}[1]
-	content...
+	For the topspin, there will be a corresponding downward force $ \va{L} $ on the ball (assumed to be a cylinder) given by,
+	\begin{equation*}
+	\va{L} = - \rho V \Gamma \vu{y}
+	\end{equation*}
+	where $ \rho $ is the density of air and $ \Gamma $ is the circulation strength.
+	
+	The maximum velocity that can be imparted to the ball is $ V $, and hence the maximum angular velocity imparted is $\frac{V}{R}$, where $ R $ is the radius. So one can find the maximum value of circulation (and consequently maximum lift) from,
+	\begin{equation*}
+	\dfrac{V}{R} = \dfrac{\Gamma}{2 \pi R^2} \implies \Gamma = {2 \pi R V} \implies \va{L} = -2 \pi \rho R V^2 \vu{y}
+	\end{equation*}
+	
+	We have assumed here that velocity of the player's hand is completely imparted to the ball.
+	
+	The total force $ \va{F} $ and acceleration $ \va{a} $ acting on the ball is (neglecting air drag),
+	\begin{equation*}
+	\va{F} = -(mg + 2 \pi \rho R V^2)\vu{y} \implies \va{a} =  -\qty(g + \dfrac{2 \pi \rho R V^2}{m})\vu{y} 
+	\end{equation*}
+	
+	The problem now becomes that of projective motion. If the table is assumed to be at $ y=0 $, and the initial position of the ball is $ (0,H) $, the coordinates $ x $ and $ y $ are given by,
+	\begin{equation*}
+	x = Vt \qq{,} y = H - \dfrac{1}{2}\qty(g + \dfrac{2 \pi \rho R V^2}{m})t^2
+	\end{equation*}
+	Note that these formulae for $ x $ and $ y $ are valid only till the time $T$ that the ball first hits the table,
+	\begin{equation*}
+	 H - \dfrac{1}{2}\qty(g + \dfrac{2 \pi \rho R V^2}{m})T^2 = 0 \implies T = \sqrt{\dfrac{2Hm}{mg + 2 \pi \rho R V^2}}
+	\end{equation*}
 \end{homeworkProblem}
 
 
@@ -193,6 +218,13 @@
 	&\sim \eval{\dfrac{k^{1-n}}{1-n}}_{\infty}
 	\end{align*}
 	As the RHS of (\ref{ekkin}) is finite, it follows from above that $ n > 1 $. We now substitute our ansatz into (\ref{wkt}),
+	\begin{align*}
+	S_2 (l) &\sim \int_{0}^{\infty} e^{i kl} k^{-n} dk\\
+	&\sim \int_{0}^{\infty} e^{i x} (x)^{-n} l^n \dfrac{dx}{l} \impliedby \qq{substituting} x = kl\\
+	S_2 (l) &\sim \qty[\int_{0}^{\infty} e^{i x} (x)^{-n} dx] l^{n-1}
+	\end{align*}
+	
+	This tells us that $ E(k) \sim k^{-n} \iff S_2(l) \sim l^{n-1}$. In class it was discussed that $ S_2(l) \sim l^{2/3}$ which from the above analysis implies $E(k) \sim k^{-5/3}$. The latter was the expression of the energy spectrum discussed in class.
 	
 \end{homeworkProblem}
 
@@ -215,7 +247,10 @@
 
 
 \begin{homeworkProblem}[3]
-	
+	As the depth and the width for all three streams is the same and constant, we expect that at the source on top of the mountain, the volume flow gets divided equally between the streams.
+	\begin{equation*}
+	P_{atm} + \dfrac{Q^2}{18 A^2} + gH = P_{atm} + \dfrac{Q^2}{18 A^2} + gH 
+	\end{equation*}
 \end{homeworkProblem}
 
 
