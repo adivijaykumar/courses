@@ -1,0 +1,309 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#4}
+\newcommand{\hmwkDueDate}{Due on 8th November, 2018}
+\newcommand{\hmwkClass}{Advanced Quantum Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+\begin{homeworkProblem}[1]
+	
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[2]
+	\textbf{Part (a)}\\
+	From the form of the Hamiltonian, we can see that the energy will have the form,
+	\begin{equation*}
+	E_{n_x,n_y} = (n_x + 0.5 + n_y + 0.5)\omega = (n_x + n_y + 1) \omega
+	\end{equation*}
+	The three lowest lying states are,
+	\begin{align*}
+	n_x = 0 \qq{,} n_y= 0 &\implies E_{00}^{(0)} = \omega\\
+	n_x = 1 \qq{,} n_y= 0 &\implies E_{10}^{(0)} = 2 \omega\\
+	n_x = 0 \qq{,} n_y= 1 &\implies E_{01}^{(0)} = 2 \omega
+	\end{align*}
+	\textbf{Part (b)}\\
+	Let's denote states by $ \ket{n_x n_y} $. $ x $ and $ y $ can be written in terms of corresponding creation and annhilation operators as follows,
+	\begin{equation*}
+	x = \dfrac{1}{\sqrt{2m\omega}}(a_x + a_x^\dagger) \qq{and} y = \dfrac{1}{\sqrt{2m\omega}}(a_y + a_y^\dagger)
+	\end{equation*}
+	The perturbation is $ V = \lambda m \omega^2 x y $. Consider $ \mel{q_x q_y}{V}{n_x n_y} $	
+	\begin{align*}
+	\mel{q_x q_y}{V}{n_x n_y} &= \lambda m \omega^2\qty( \mel{q_x q_y}{a_x a_y}{n_x n_y} + \mel{q_x q_y}{a_x a_y^\dagger}{n_x n_y} + \mel{q_x q_y}{a_x^\dagger a_y ^\dagger}{n_x n_y} + \mel{q_x q_y}{a_x^\dagger a_y}{n_x n_y})\\
+	&= \lambda m \omega^2( \sqrt{n_x n_y}\delta_{q_x,n_{x} -1} \delta_{q_y,n_{y} -1} + \sqrt{n_x (n_y+1)}\delta_{q_x,n_{x} -1} \delta_{q_y,n_{y} +1}\\
+	& \qq{ }+ \sqrt{(n_x+1) (n_y+1)}\delta_{q_x,n_{x} +1} \delta_{q_y,n_{y} +1} + \sqrt{(n_x+1) (n_y)}\delta_{q_x,n_{x} +1} \delta_{q_y,n_{y}-1})\\
+	\implies \ev{V}{n_xn_y} &= 0 \implies E_{n_x n_y}^{(1)} =0
+	\end{align*}
+	This means that there will be no energy shift at the first order in $ \lambda $ for any state under consideration. We now proceed to calculate $ \ket{n_x n_y^{(1)}} $,
+	\begin{align*}
+	 \ket{00^{(1)}} &= \sum_{(q_x,q_y)\ne(0,0)} \dfrac{\mel{q_x q_y}{V}{00}}{E_{00}^{(0)} - E_{q_x q_y}^{(0) }}\ket{q_xq_y}\\
+	 &= \lambda m \omega^2 \sum_{(q_x,q_y)\ne(0,0)} \dfrac{ \delta_{q_x,1} \delta_{q_y,1}}{E_{00}^{(0)} - E_{q_x q_y}^{(0) }}\ket{q_xq_y}\\
+	 \ket{00^{(1)}}&= -\dfrac{\lambda m \omega}{2}\ket{11}
+	\end{align*}
+	
+	\begin{align*}
+	\ket{10^{(1)}} &= \sum_{(q_x,q_y)\ne(1,0)} \dfrac{\mel{q_x q_y}{V}{10}}{E_{10}^{(0)} - E_{q_x q_y}^{(0) }}\ket{q_xq_y}\\
+	&= \lambda m \omega^2 \sum_{(q_x,q_y)\ne(0,0)} \dfrac{ \delta_{q_x,1} \delta_{q_y,1}}{E_{00}^{(0)} - E_{q_x q_y}^{(0) }}\ket{q_xq_y}\\
+	\ket{10^{(1)}}&= -\dfrac{\lambda m \omega}{2}\ket{11}
+	\end{align*}
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[3]
+	
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[4]
+	content...
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[5]
+	Let $ L^2 = L_x^2 + L_y^2 + L_z^2 $. We work in the basis of states $ \ket{l,m} $ such that $ L^2 \ket{l,m} = l(l+1)\ket{l,m} $ and $ L_z \ket{l,m} = m \ket{l,m} $. The Hamiltonian then is,
+	\begin{equation*}
+	H = H_0 + \lambda V = AL^2 + BL_z + \lambda C L_y
+	\end{equation*}
+	The eigenstates of $ H_0 $ are,
+	\begin{equation*}
+	H_0 \ket{l,m} = \qty(Al(l+1) + Bm)\ket{l,m} = E_{lm}\ket{l,m}
+	\end{equation*}
+	The first order energy shift is given by,
+	\begin{align*}
+	\Delta^{(1)} &= \ev{V}{l,m}\\
+	&= C \ev{L_y}{l,m}\\
+	&= \dfrac{C}{2i} \ev{L_+ - L_-}{l,m}\\
+	\Delta^{(1)} & = 0
+	\end{align*}
+	So we need to find out the higher order energy shifts.
+	\begin{align*}
+	\ket{\psi_{lm}^{(1)}} &= \dfrac{C}{2i}\sum_{l'm' \ne lm}\dfrac{\mel{l'm'}{L_+ - L_-}{lm}}{E_{lm} - E_{l'm'}}\ket{l'm'}\\
+	&= \dfrac{C}{2i}\sum_{l'm' \ne lm}\dfrac{\sqrt{(l-m)(l+m+1)}\delta_{l,l'} \delta_{m+1,m'}\ket{l'm'} - \sqrt{(l+m)(l-m+1)}\delta_{l,l'} \delta_{m-1,m'}\ket{l'm'}}{E_{lm} - E_{l'm'}} \\
+	\ket{\psi_{lm}^{(1)}}&= \dfrac{Ci}{2B} \qty[{\sqrt{(l-m)(l+m+1)}\ket{l,m+1} }+  \sqrt{(l+m)(l-m+1)}\ket{l,m-1}]
+	\end{align*}
+	\begin{align*}
+	\Delta^{(2)} &= \dfrac{C}{2i}\mel{l,m}{L_+ - L_-}{\psi_{lm}^{(1)}}\\
+	&= -\dfrac{C^2}{4B}\qty[\sqrt{(l-m)(l+m+1)(l+m-1)(l-m+2)} + \sqrt{(l+m)(l-m+1)(l-m+1)(l+m)}]
+	\end{align*}
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[6]
+	The Hamiltonian to deal with is,
+	\begin{equation*}
+	H = \dfrac{p^2}{2m} + \dfrac{m\omega^2}{2}x^2
+	\end{equation*}
+	and the given trial wavefunction is,
+	\begin{equation*}
+	\psi_\beta(x) = N e^{-\beta\abs{x}}
+	\end{equation*}
+	where $ N $ is some normalization.
+	Let's calculate $ \expval{H}{\psi_\beta} $,
+	\begin{align*}
+	\expval{H}{\psi_\beta} &= N^2 \int_{-\infty}^{\infty} e^{-2\beta\abs{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx\\
+	&=  2N^2 \int_{0}^{\infty} e^{-2\beta{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx\\
+	&=  2N^2 \qty[\int_{0}^{\infty} e^{-2\beta{x}}\qty(-\dfrac{1}{2m})\beta^2dx + \int_{0}^{\infty}\dfrac{m\omega^2}{2}x^2dx]\\
+	&=  2N^2 \qty[-\dfrac{\beta}{4m} +  \dfrac{m\omega^2 }{8 \beta^3}]\\
+	\end{align*}
+	
+	\begin{align*}
+	N^2 \int_{-\infty}^{\infty}e^{-2\beta\abs{x}} = 1\\
+	N^2 = \beta
+	\end{align*}
+	
+	\begin{equation*}
+	\expval{H}{\psi_\beta}  = -\dfrac{\beta^2}{2m} +  \dfrac{m\omega^2 }{4 \beta^2}
+	\end{equation*}
+\end{homeworkProblem}
+\end{document}
