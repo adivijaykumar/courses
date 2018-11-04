@@ -1,0 +1,229 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage{amssymb}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#5}
+\newcommand{\hmwkDueDate}{Due 6th November 2018}
+\newcommand{\hmwkClass}{Classical Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{Prof.Manas Kulkarni}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+\maketitle
+
+\begin{homeworkProblem}[1]
+	
+\end{homeworkProblem}	
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[2]
+	Let $ f(q_i,t) $ be a function such that $ L'(q_i,\dot{q}_i,t) = L(q_i,\dot{q}_i,t) + \dv{f}{t} $. We have seen that the equations of motion remain unchanged by this addition.
+	
+	Let's first calculate the canonical momenta $ p'_i $,
+	\begin{equation*}
+	p'_i = \pdv{L'}{\dot{q}_i} = \pdv{L}{\dot{q}_i} + \pdv{\dot{q}_i}\qty(\dv{f}{t}) 	=   p_i + \pdv{\dot{q}_i}\qty(\dv{f}{t}) 
+	\end{equation*}
+	Let's calculate the Hamiltonian $ H'(q_i,p_i,t)  $,
+	\begin{align*}
+	H'(q_i,p_i,t) &= \sum_{i}\qty(p_i + \pdv{\dot{q}_i}\qty(\dv{f}{t}) )\dot{q}_i - L'\\
+	&=  \sum_{i} p_i \dot{q}_i - L + \sum_{i} \dot{q}_i \pdv{\dot{q}_i}\qty(\dv{f}{t}) - \dv{f(q_i,t)}{t}\\
+	H'(q_i,p_i,t)&= H(q_i,p_i,t)  + \sum_{i} \dot{q}_i \pdv{\dot{q}_i}\qty(\dv{f}{t})- \dv{f(q_i,t)}{t}
+	\end{align*}
+	
+	The equations of motion for $ H' $ are,
+	\begin{align*}
+	\pdv{H'}{q_j} = \pdv{H}{q_i} + \sum_{i} \dot{q_j}\pdv{}{\dot{q}_i}{q_i} \qty(\dv{f}{t})
+	\end{align*}
+	
+	\textbf{Part (b)}\\
+	Given that,
+	\begin{align*}
+	L &= -mc^2 \sqrt{1 - \dfrac{{v}^2}{c^2}} - e \phi + \dfrac{e}{c} \va{v}\vdot \va{A}\\
+	&= -mc^2 \sqrt{1 - \dfrac{\dot{x}^2 + \dot{y}^2 + \dot{z}^2}{c^2}} - e \phi + \dfrac{e}{c} (\dot{x} A_x + \dot{y} A_y + \dot{z} A_z)\\
+	&= -\dfrac{m(c^2 - \dot{x}^2 + \dot{y}^2 + \dot{z}^2)}{\sqrt{1 - \dfrac{v^2}{c^2}}} - e \phi + \dfrac{e}{c} (\dot{x} A_x + \dot{y} A_y + \dot{z} A_z)
+	\end{align*}
+	We first write the canonical momenta,
+	\begin{equation*}
+	p_x = \pdv{L}{\dot{x}} = -mc^2 \dfrac{\qty(\dfrac{-2\dot{x}}{c^2})}{2\sqrt{1 - \dfrac{{v}^2}{c^2}}} + \dfrac{e}{c}A_x = \dfrac{{m\dot{x}}}{\sqrt{1 - \dfrac{{v}^2}{c^2}}} + \dfrac{e}{c}A_x
+	\end{equation*}
+	Similarly,
+	\begin{equation*}
+	p_y = \dfrac{{m\dot{y}}}{\sqrt{1 - \dfrac{{v}^2}{c^2}}} + \dfrac{e}{c}A_y \qq{and} p_z = \dfrac{{m\dot{z}}}{\sqrt{1 - \dfrac{{v}^2}{c^2}}} + \dfrac{e}{c}A_z
+	\end{equation*}
+	From the formulae of the canonical momenta, one can see that,
+	\begin{align*}
+	H &= p_x \dot{x} + p_y \dot{y} + p_z \dot{z} - L\\
+	&=  \dfrac{{m(\dot{x}^2 + \dot{y}^2 + \dot{z}^2})}{\sqrt{1 - \dfrac{{v}^2}{c^2}}} + \dfrac{e}{c} (\dot{x} A_x + \dot{y} A_y + \dot{z} A_z) + \dfrac{m(c^2 - \dot{x}^2 + \dot{y}^2 + \dot{z}^2)}{\sqrt{1 - \dfrac{v^2}{c^2}}} + e \phi - \dfrac{e}{c} (\dot{x} A_x + \dot{y} A_y + \dot{z} A_z)\\
+	H &= \dfrac{mc^2}{\sqrt{1 - \dfrac{{v}^2}{c^2}}} + e\phi = T+V
+	\end{align*}
+	
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+\end{document}
