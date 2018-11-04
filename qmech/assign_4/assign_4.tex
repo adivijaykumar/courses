@@ -146,8 +146,37 @@
 \begin{document}
 
 \maketitle
-\begin{homeworkProblem}[1]
+	Let Hamiltonian $ H = H_0  + \lambda V$, $ H_0\ket{n^{0}} = E_n^{0}\ket{n^{0}}  $, $ H\ket{n} = E_n \ket{n} $. Let $ \Delta_n = E_n - E_n^{0} $ and $ \phi_n = 1 - \ket{n^{0}}\bra{n^{0}} $ be the projector onto the orthogonal space of $ \ket{n^{0}} $. $ \ket{n} $ and $ \Delta_n $ are given by,
+
+	\begin{equation*}
+	\ket{n} =\ket{n^{0}} + \dfrac{ \phi_n (\lambda V - \Delta_n)\ket{n}}{E_n^{0} - H_0} = \ket{n^{0}} +\sum_{k\ne n} \dfrac{ \lambda \mel{k^0}{V}{n} - \Delta_n \ip{k^{0}}{n}}{E_n^{0} - E_k^{0}}\ket{k^{0}} \qq{and} \Delta_n = \lambda \mel{n^{0}}{V}{n}
+	\end{equation*}	
+	We work with normalization $ \ip{n}{n^0} = 1 \implies \ip{n^j}{n^0} = 0 \qq{;} j\ne0$. 
+	We assume the following,
+	\begin{equation*}
+	\Delta_n = \lambda \Delta^{1}_n + \lambda^2 \Delta_n^2 + \ldots \qq{and} \ket{n} = \ket{n^{0}} +  \lambda \ket{n^{1}} + \lambda^2 \ket{n^{2}} + \ldots
+	\end{equation*}
 	
+	Putting these into the equations for $ \ket{n} $ and $ \Delta_{n} $ and equating order by order, we get,
+	\begin{align}
+	\Delta_n^{1} &= \ev{V}{n^0} \label{1}\\
+	\ket{n^1} &= \sum_{k\ne n} \dfrac{ \mel{k^0}{V}{n^0} }{E_n^{0} - E_k^{0}}\ket{k^{0}}  \label{2}\\
+	\Delta_n^2 &= \sum_{k\ne n} \dfrac{ \abs{\mel{k^0}{V}{n^0}}^2 }{E_n^{0} - E_k^{0}}\ket{k^{0}}  \label{3}\\
+	\ket{n^2} &= \sum_{k\ne n} \dfrac{ \mel{k^0}{V}{n^1} - \Delta_n^1 \ip{k^{0}}{n^1}}{E_n^{0} - E_k^{0}}\ket{k^{0}} 
+	\label{4}
+	\end{align}
+\begin{homeworkProblem}[1]
+	We note that,
+	\begin{align*}
+	\ip{E_n}{E_n} &= \ip{E_n}{E_n^0} + \lambda\qty(\ip{E_n^1}{E_n^0} + \ip{E_n^0}{E_n^1})  + \lambda^2 \qty(\ip{E_n^2}{E_n^0} + \ip{E_n^0}{E_n^2} + \ip{E_n^1}{E_n^1}) \\
+	&= 1 + \lambda^2 \qty(\ip{E_n^1}{E_n^1})
+	\end{align*}
+	One needs to find the following,
+	\begin{align*}
+	\dfrac{\ip{E_n^0}{E_n}}{\sqrt{\ip{E_n^1}{E_n^1}}} &= \dfrac{1}{\sqrt{1 + \lambda^2 \qty(\ip{E_n^1}{E_n^1})}}\\
+	&= 1 - \dfrac{\lambda^2}{2}\sum_{k\ne n} \dfrac{\abs{\mel{E_k^0}{V}{E_n^0} }^2}{(E_n^{0} - E_k^{0})^2}
+	\end{align*}
+	where we have used (\ref{2}) in going to the last step. Hence, the required probability is $  1 - \dfrac{\lambda^2}{2}\sum_{k\ne n} \dfrac{\abs{\mel{E_k^0}{V}{E_n^0} }^2}{(E_n^{0} - E_k^{0})^2} $.
 \end{homeworkProblem}
 
 
@@ -204,7 +233,18 @@
 
 
 \begin{homeworkProblem}[3]
+	We first note that $ x^2 - y^2 = r^2 \sin^2 \theta \cos 2 \phi$ when expressed in polar coordinates, and also the following eigenstates $ \psi_{n,l,m} $ of the hydrogen atom,
+	\begin{equation*}
+	\psi_{2,1,\pm 1}(r,\theta,\phi) = \dfrac{1}{8\sqrt{\pi}a_0^{5/2}}r e^{-\frac{2r}{a_0}} \sin\theta e^{\pm i\phi} \qq{and} \psi_{2,1,0}(r,\theta,\phi) = \dfrac{\sqrt{2}}{8\sqrt{\pi}a_0^{5/2}}r e^{-\frac{2r}{a_0}} \cos\theta
+	\end{equation*}
+	The perturbing Hamiltonian is $ V = \lambda (x^2 - y^2) = \lambda r^2 \sin^2 \theta \cos 2 \phi = \lambda V' $
 	
+	The first order correction for $ m=\pm 1 $ is given by,
+	\begin{align*}
+	\Delta_{\pm 1} &= -\int_{0}^{2\pi} \int_{0}^{\pi} \int_{0}^{\infty}\psi_{2,1,\pm 1}^* \psi_{2,1,\pm 1} V' r^2 d(\cos \theta) dr d\theta d\phi\\
+	&= -\dfrac{1}{64\pi a_0^{5}}\int_{0}^{2\pi} \cos 2 \phi d\phi\int_{0}^{\pi} \sin^4 \theta d(cos\theta) \int_{0}^{\infty}r^6 e^{-\frac{4r}{a_0}}dr
+	&= 0
+	\end{align*}
 \end{homeworkProblem}
 
 
@@ -247,23 +287,28 @@
 	\begin{equation*}
 	H_0 \ket{l,m} = \qty(Al(l+1) + Bm)\ket{l,m} = E_{lm}\ket{l,m}
 	\end{equation*}
+	
+	For future use, let's evaluate $ \mel{l',m'}{V}{l,m} $, 
+	\begin{align*}
+	\mel{l',m'}{V}{l,m} &= C \mel{l',m'}{L_y}{l,m}\\
+	&= \dfrac{C}{2i} \mel{l',m'}{L_+ - L_-}{l,m}\\
+	&= \dfrac{C}{2i} \qty(\sqrt{l(l+1) - m(m+1)} \delta_{l',l} \delta_{m',m+1} - \sqrt{l(l+1) - m(m-1)} \delta_{l',l} \delta_{m',m-1})\\
+	\abs{\mel{l',m'}{V}{l,m}}^2 &=  \dfrac{C^2}{4} \qty([{l(l+1) - m(m+1)} ]\delta_{l',l} \delta_{m',m+1} + [{l(l+1) - m(m-1)}] \delta_{l',l} \delta_{m',m-1})
+	\end{align*}
 	The first order energy shift is given by,
 	\begin{align*}
-	\Delta^{(1)} &= \ev{V}{l,m}\\
-	&= C \ev{L_y}{l,m}\\
-	&= \dfrac{C}{2i} \ev{L_+ - L_-}{l,m}\\
-	\Delta^{(1)} & = 0
+	\Delta_{lm}^{(1)} &= \ev{V}{l,m}\\
+	&=  \dfrac{C}{2i} \qty(\sqrt{l(l+1) - m(m+1)} \delta_{l,l} \delta_{m,m+1} - \sqrt{l(l+1) - m(m-1)} \delta_{l,l} \delta_{m,m-1})\\
+	\Delta_{lm}^{(1)} & = 0
 	\end{align*}
-	So we need to find out the higher order energy shifts.
+	Then one needs to find higher order energy shifts. Considering $ \Delta_{lm}^2$ and using (\ref{3}),
 	\begin{align*}
-	\ket{\psi_{lm}^{(1)}} &= \dfrac{C}{2i}\sum_{l'm' \ne lm}\dfrac{\mel{l'm'}{L_+ - L_-}{lm}}{E_{lm} - E_{l'm'}}\ket{l'm'}\\
-	&= \dfrac{C}{2i}\sum_{l'm' \ne lm}\dfrac{\sqrt{(l-m)(l+m+1)}\delta_{l,l'} \delta_{m+1,m'}\ket{l'm'} - \sqrt{(l+m)(l-m+1)}\delta_{l,l'} \delta_{m-1,m'}\ket{l'm'}}{E_{lm} - E_{l'm'}} \\
-	\ket{\psi_{lm}^{(1)}}&= \dfrac{Ci}{2B} \qty[{\sqrt{(l-m)(l+m+1)}\ket{l,m+1} }+  \sqrt{(l+m)(l-m+1)}\ket{l,m-1}]
+	\Delta_{lm}^2 &= \sum_{l\ne l', m\ne m'}\dfrac{ \abs{\mel{l',m'}{V}{l,m}}^2}{E_{lm} - E_{l'm'}}\\
+	 &= \dfrac{C^2}{4} \sum_{l\ne l', m\ne m'}\dfrac{\qty([{l(l+1) - m(m+1)} ]\delta_{l',l} \delta_{m',m+1} + [{l(l+1) - m(m-1)}] \delta_{l',l} \delta_{m',m-1})}{Al(l+1) + Bm - Al'(l'+1) - Bm'}\\
+	 &= \dfrac{C^2}{4}\qty( \dfrac{-[{l(l+1) - m(m+1)}]}{B} + \dfrac{[{l(l+1) - m(m - 1)}]}{B} )\\
+	 &= \dfrac{mc^2}{2B}
 	\end{align*}
-	\begin{align*}
-	\Delta^{(2)} &= \dfrac{C}{2i}\mel{l,m}{L_+ - L_-}{\psi_{lm}^{(1)}}\\
-	&= -\dfrac{C^2}{4B}\qty[\sqrt{(l-m)(l+m+1)(l+m-1)(l-m+2)} + \sqrt{(l+m)(l-m+1)(l-m+1)(l+m)}]
-	\end{align*}
+	
 \end{homeworkProblem}
 
 
@@ -292,9 +337,8 @@
 	Let's calculate $ \expval{H}{\psi_\beta} $,
 	\begin{align*}
 	\expval{H}{\psi_\beta} &= N^2 \int_{-\infty}^{\infty} e^{-2\beta\abs{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx\\
-	&=  2N^2 \int_{0}^{\infty} e^{-2\beta{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx\\
-	&=  2N^2 \qty[\int_{0}^{\infty} e^{-2\beta{x}}\qty(-\dfrac{1}{2m})\beta^2dx + \int_{0}^{\infty}\dfrac{m\omega^2}{2}x^2dx]\\
-	&=  2N^2 \qty[-\dfrac{\beta}{4m} +  \dfrac{m\omega^2 }{8 \beta^3}]\\
+	&=  \lim\limits_{\epsilon \rightarrow 0} N^2\qty[ 2\int_{\epsilon}^{\infty} e^{-2\beta{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx + \int_{-\epsilon}^{\epsilon} e^{-2\beta\abs{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx]\\
+	&=  N^2\qty[ \qty(-\dfrac{\beta}{2m} + \dfrac{m \omega^2}{4\beta^3})+ \lim\limits_{\epsilon \rightarrow 0}\int_{-\epsilon}^{\epsilon} e^{-2\beta\abs{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx]\\
 	\end{align*}
 	
 	\begin{align*}
