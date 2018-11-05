@@ -173,7 +173,7 @@
 	\end{align*}
 	One needs to find the following,
 	\begin{align*}
-	\dfrac{\ip{E_n^0}{E_n}}{\sqrt{\ip{E_n^1}{E_n^1}}} &= \dfrac{1}{\sqrt{1 + \lambda^2 \qty(\ip{E_n^1}{E_n^1})}}\\
+	\dfrac{\ip{E_n^0}{E_n}}{\sqrt{\ip{E_n}{E_n}\ip{E_n^0}{E_n^0}}} &= \dfrac{1}{\sqrt{1 + \lambda^2 \qty(\ip{E_n^1}{E_n^1})}}\\
 	&= 1 - \dfrac{\lambda^2}{2}\sum_{k\ne n} \dfrac{\abs{\mel{E_k^0}{V}{E_n^0} }^2}{(E_n^{0} - E_k^{0})^2}
 	\end{align*}
 	where we have used (\ref{2}) in going to the last step. Hence, the required probability is $  1 - \dfrac{\lambda^2}{2}\sum_{k\ne n} \dfrac{\abs{\mel{E_k^0}{V}{E_n^0} }^2}{(E_n^{0} - E_k^{0})^2} $.
@@ -198,31 +198,54 @@
 	n_x = 1 \qq{,} n_y= 0 &\implies E_{10}^{(0)} = 2 \omega\\
 	n_x = 0 \qq{,} n_y= 1 &\implies E_{01}^{(0)} = 2 \omega
 	\end{align*}
+	We see that there is a double-degeneracy with energy $ 2\omega $.
+	\\
+	
 	\textbf{Part (b)}\\
 	Let's denote states by $ \ket{n_x n_y} $. $ x $ and $ y $ can be written in terms of corresponding creation and annhilation operators as follows,
 	\begin{equation*}
 	x = \dfrac{1}{\sqrt{2m\omega}}(a_x + a_x^\dagger) \qq{and} y = \dfrac{1}{\sqrt{2m\omega}}(a_y + a_y^\dagger)
 	\end{equation*}
-	The perturbation is $ V = \lambda m \omega^2 x y $. Consider $ \mel{q_x q_y}{V}{n_x n_y} $	
+	The perturbation is $ V = \lambda m \omega^2 x y $. Let's denote the $m$-th order energy shift by $ \Delta^m_{n_x n_y} $. Let's first consider $ \ket{00} $. The zeroth order energy eigenstate is given by,
+	\begin{equation*}
+	\psi_{00}^0 = \psi_0 (x) \psi_0 (y) = \sqrt{\dfrac{m\omega}{\pi}} e^{-\frac{m\omega}{2}(x^2 + y^2)}
+	\end{equation*}
+	Consider $\Delta^1_{00} $,
 	\begin{align*}
-	\mel{q_x q_y}{V}{n_x n_y} &= \lambda m \omega^2\qty( \mel{q_x q_y}{a_x a_y}{n_x n_y} + \mel{q_x q_y}{a_x a_y^\dagger}{n_x n_y} + \mel{q_x q_y}{a_x^\dagger a_y ^\dagger}{n_x n_y} + \mel{q_x q_y}{a_x^\dagger a_y}{n_x n_y})\\
-	&= \lambda m \omega^2( \sqrt{n_x n_y}\delta_{q_x,n_{x} -1} \delta_{q_y,n_{y} -1} + \sqrt{n_x (n_y+1)}\delta_{q_x,n_{x} -1} \delta_{q_y,n_{y} +1}\\
-	& \qq{ }+ \sqrt{(n_x+1) (n_y+1)}\delta_{q_x,n_{x} +1} \delta_{q_y,n_{y} +1} + \sqrt{(n_x+1) (n_y)}\delta_{q_x,n_{x} +1} \delta_{q_y,n_{y}-1})\\
-	\implies \ev{V}{n_xn_y} &= 0 \implies E_{n_x n_y}^{(1)} =0
+	\Delta^1_{00} &= \ev{V}{00}\\
+	&= \dfrac{m\omega^2}{2m\omega} \qty( \ev{a_x a_y}{00} + \ev{a_x a_y^\dagger}{00} + \ev{a_x^\dagger a_y ^\dagger}{00} + \ev{a_x^\dagger a_y}{00})\\
+	\Delta^1_{00} &= 0
 	\end{align*}
-	This means that there will be no energy shift at the first order in $ \lambda $ for any state under consideration. We now proceed to calculate $ \ket{n_x n_y^{(1)}} $,
+	The states $ \ket{10} $ and $ \ket{01} $ are degenerate, and hence we need to apply degenerate perturbation formalism. For this, we construct the matrix elements of $ V $ between the degenerate states. As we have seen in the $ \ket{00} $ case, the operator $ xy $ changes a given state to one which has at least one of the quantum numbers different (by 1). Hence $\ev{V}{01} = \ev{V}{10} = 0$. We proceed to calculate $ \mel{01}{V}{10} $,
 	\begin{align*}
-	 \ket{00^{(1)}} &= \sum_{(q_x,q_y)\ne(0,0)} \dfrac{\mel{q_x q_y}{V}{00}}{E_{00}^{(0)} - E_{q_x q_y}^{(0) }}\ket{q_xq_y}\\
-	 &= \lambda m \omega^2 \sum_{(q_x,q_y)\ne(0,0)} \dfrac{ \delta_{q_x,1} \delta_{q_y,1}}{E_{00}^{(0)} - E_{q_x q_y}^{(0) }}\ket{q_xq_y}\\
-	 \ket{00^{(1)}}&= -\dfrac{\lambda m \omega}{2}\ket{11}
+	\mel{01}{V}{10} &= \dfrac{\lambda m\omega^2}{2m \omega} \qty(\mel{01}{a_x a_y}{10} + \mel{01}{a_x a_y^\dagger}{10} + \mel{01}{a_x^\dagger a_y ^\dagger}{10} + \mel{01}{a_x^\dagger a_y}{10})\\
+	&= \dfrac{\lambda \omega }{2}\qty(0+ 1+ 0 + 0)\\
+	\mel{01}{V}{10} &= \dfrac{\lambda \omega }{2}\\
+	\implies \mel{10}{V}{01} &= \dfrac{\lambda \omega }{2}\\
+	\therefore V &= \dfrac{\lambda \omega }{2} \mqty(\admat[0]{1,1})
 	\end{align*}
-	
+
+	The eigenvalues of the above matrix are $ \pm \dfrac{\lambda \omega }{2} \implies E = 2\omega \pm \lambda \dfrac{\omega}{2}$ with eigenstates $ \dfrac{1}{\sqrt{2}}(\ket{10} \pm \ket{01}) $
+	\\
+	\textbf{Part (c)}\\
+	The aim is to now solve for the Hamiltonian exactly.
 	\begin{align*}
-	\ket{10^{(1)}} &= \sum_{(q_x,q_y)\ne(1,0)} \dfrac{\mel{q_x q_y}{V}{10}}{E_{10}^{(0)} - E_{q_x q_y}^{(0) }}\ket{q_xq_y}\\
-	&= \lambda m \omega^2 \sum_{(q_x,q_y)\ne(0,0)} \dfrac{ \delta_{q_x,1} \delta_{q_y,1}}{E_{00}^{(0)} - E_{q_x q_y}^{(0) }}\ket{q_xq_y}\\
-	\ket{10^{(1)}}&= -\dfrac{\lambda m \omega}{2}\ket{11}
+	H &= \dfrac{p_x^2}{2m} + \dfrac{p_y^2}{2m} + \dfrac{m\omega^2}{2}(x^2 + y^2 + 2\lambda xy)\\
+	&= \dfrac{p_x^2}{2m} + \dfrac{p_y^2}{2m} + \dfrac{m\omega^2}{4}((x+ y )^2 + (x-y)^2+ \lambda[(x+y)^2 - (x-y)^2])\\
+	&= \dfrac{p_x^2}{2m} + \dfrac{p_y^2}{2m} + \dfrac{m\omega^2}{2}\qty[\qty(\dfrac{x+ y }{\sqrt{2}})^2(1+\lambda) + \qty(\dfrac{x-y}{\sqrt{2}})^2(1-\lambda)]
 	\end{align*}
-\end{homeworkProblem}
+	Let $ \alpha = \dfrac{x+ y }{\sqrt{2}} $ and $ \beta = \dfrac{x - y }{\sqrt{2}} $. We can see that $ \dot{\alpha}^2 + \dot{\beta}^2 = \dot{x}^2 + \dot{y}^2 \implies p_\alpha^2 + p_\beta^2 = p_x^2 + p_y^2$. In the new coordinates, the Hamiltonian is,
+	\begin{equation*}
+	H = \dfrac{p_\alpha^2}{2m} + \dfrac{m(\omega\sqrt{1+\lambda})^2}{2}\alpha^2 +  \dfrac{p_\beta^2}{2m} + \dfrac{m(\omega\sqrt{1- \lambda})^2}{2}\beta^2
+	\end{equation*}
+	We have essentially decoupled the Hamiltonian into two harmonic oscillators of frequencies $ \omega_1 = \omega\sqrt{1+\lambda} $ and $ \omega_2 = \omega\sqrt{1 - \lambda} $. The three lowest energies are,
+	\begin{align*}
+	\dfrac{\omega(\sqrt{1+\lambda} + \sqrt{1 - \lambda})}{2} &= \omega + \order{\lambda^2}\\
+	\dfrac{\omega(3\sqrt{1+\lambda} + \sqrt{1 - \lambda})}{2} &= 2\omega +  \lambda \dfrac{\omega}{2} + \order{\lambda^2}\\
+	\dfrac{\omega(\sqrt{1+\lambda} + 3\sqrt{1 - \lambda})}{2} &= 2\omega - \lambda \dfrac{\omega}{2} + \order{\lambda^2}
+	\end{align*}
+	We see that the above values match with those calculated from perturbation theory.
+	\end{homeworkProblem}
 
 
 
@@ -233,21 +256,25 @@
 
 
 \begin{homeworkProblem}[3]
-	We first note that $ x^2 - y^2 = r^2 \sin^2 \theta \cos 2 \phi$ when expressed in polar coordinates, and also the following eigenstates $ \psi_{n,l,m} $ of the hydrogen atom,
+	We first note that $ x^2 - y^2 = r^2 \sin^2 \theta \cos 2 \phi = r^2 \sin^2 \theta \dfrac{e^{2i\phi} + e^{-2i\phi}}{2}$ when expressed in polar coordinates. As we are dealing with states that differ only in their $ m $ values, we label the states as $ \ket{m} $. We note the following eigenstates $ \psi_{n,l,m} $ of the hydrogen atom,
 	\begin{equation*}
-	\psi_{2,1,\pm 1}(r,\theta,\phi) = \dfrac{1}{8\sqrt{\pi}a_0^{5/2}}r e^{-\frac{2r}{a_0}} \sin\theta e^{\pm i\phi} \qq{and} \psi_{2,1,0}(r,\theta,\phi) = \dfrac{\sqrt{2}}{8\sqrt{\pi}a_0^{5/2}}r e^{-\frac{2r}{a_0}} \cos\theta
+	\psi_{2,1,\pm 1}(r,\theta,\phi) = \ket{\pm 1} = \dfrac{1}{8\sqrt{\pi}a_0^{5/2}}r e^{-\frac{2r}{a_0}} \sin\theta e^{\pm i\phi} \qq{and} \psi_{2,1,0}(r,\theta,\phi) = \ket{0} = \dfrac{\sqrt{2}}{8\sqrt{\pi}a_0^{5/2}}r e^{-\frac{2r}{a_0}} \cos\theta
 	\end{equation*}
-	The perturbing Hamiltonian is $ V = \lambda (x^2 - y^2) = \lambda r^2 \sin^2 \theta \cos 2 \phi = \lambda V' $
-	
-	The first order correction for $ m=\pm 1 $ is given by,
+	The above eigenstates are degenerate. The perturbing Hamiltonian is $ V = \lambda (x^2 - y^2) = \lambda r^2 \sin^2 \theta \cos 2 \phi = \lambda V' $. As we are dealing with states that differ only in their $ m $ values, we label the states as $ \ket{m} $. As in the previous problem, we proceed to construct the matrix elements of $ V' $. In each element $ \mel{p}{V}{q} $, the $ \phi $ integral will be $ \sim \int_{0}^{2\pi} e^{i(q - p)\phi} (e^{2i\phi} + e^{-2i\phi}) d\phi$. We can see that this integral will be zero unless $ q - p = \pm 2 $. Hence, only terms where $ p -q = \pm 2 $ will contribute, ie $ p=1, q = -1 $ and $ p=-1 , q=1 $. Let's evaluate $ \mel{-1}{V'}{1} $,
 	\begin{align*}
-	\Delta_{\pm 1} &= -\int_{0}^{2\pi} \int_{0}^{\pi} \int_{0}^{\infty}\psi_{2,1,\pm 1}^* \psi_{2,1,\pm 1} V' r^2 d(\cos \theta) dr d\theta d\phi\\
-	&= -\dfrac{1}{64\pi a_0^{5}}\int_{0}^{2\pi} \cos 2 \phi d\phi\int_{0}^{\pi} \sin^4 \theta d(cos\theta) \int_{0}^{\infty}r^6 e^{-\frac{4r}{a_0}}dr
-	&= 0
+	\mel{-1}{V'}{1} &= -\dfrac{1}{64\pi a_0^{5}} \int_{0}^{2\pi} \dfrac{e^{4i\phi} + 1}{2} d\phi\int_{0}^{\pi} \sin^4 \theta d(\cos\theta) \int_{0}^{\infty}r^6 e^{-\frac{4r}{a_0}}dr\\
+	&= -\dfrac{1}{64\pi a_0^{5}} (\pi) \int_{0}^{\pi}  (1 - \cos^2\theta)^2  d(\cos\theta) \int_{-\infty}^0 \qty(\dfrac{a_0}{4})^7t^6 e^{t}dr \qq{ } \qty(\impliedby t = - \dfrac{4r}{a_0})\\
+	&= -\dfrac{1}{64\pi a_0^{5}} (\pi) \int_{0}^{\pi} (\cos^4 \theta - 2 \cos^2 \theta + 1)  d(\cos\theta) \qty[\qty(\dfrac{a_0}{4})^7 6!] \qq{ } \\
+	&= -\dfrac{ a_0^{2}}{64} \qty(\dfrac{-2}{5} + \dfrac{4}{3} - 2 ) \qty[\qty(\dfrac{45}{2^{10}})] = \dfrac{ a_0^{2}}{64} \qty(\dfrac{16}{15}) \qty[\qty(\dfrac{45}{2^{10}})] = \dfrac{3}{2^{12}}a_0^2 = \alpha
 	\end{align*}
+	\begin{equation*}
+	\therefore \mel{-1}{V'}{1} = \mel{-1}{V'}{1} = \alpha  = \dfrac{3}{2^{12}}a_0^2
+	\end{equation*}
+	\begin{equation*}
+	V' = \mqty(0 & 0 & \alpha\\0 & 0 & 0 \\\alpha & 0 & 0)
+	\end{equation*}
+	The eigenvalues of $ V' $ are $ 0 $, $ \pm \alpha $ and the corresponding eigenstates are $ \ket{0} $, $ \dfrac{\ket{1} \pm \ket{-1}}{\sqrt{2}} $ respectively. So the first order energy shifts are $ 0 $, $ \pm \alpha $.
 \end{homeworkProblem}
-
-
 
 
 
@@ -260,7 +287,13 @@
 
 
 \begin{homeworkProblem}[4]
-	content...
+	\begin{equation*}
+	H = \mqty(E_1 & 0 & \lambda a\\ 0 & E_1 & \lambda b \\ \lambda a^* & \lambda b^* & E_2) = \underbrace{\mqty(\dmat[0]{E_1, E_1, E_2})}_{H_0} + \lambda \underbrace{\mqty(0 & 0 & a\\ 0 & 0 &  b \\  a^* &  b^* & 0)}_V
+	\end{equation*}
+	$ H $ has the following three eigenvalues.
+	\begin{align*}
+	\dfrac{{E_1}+{E_2}}{2} \pm \sqrt{\lambda^2 \left(a^2+b^2\right)+\qty(\dfrac{{E_1}-{E_2}}{2})^2} \qq{and} E_1
+	\end{align*}
 \end{homeworkProblem}
 
 
