@@ -146,10 +146,13 @@
 \begin{document}
 
 \maketitle
+(\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury, Biprarshi Chakraborty and Junaid Majeed for discussions.)
+\\
+
 	Let Hamiltonian $ H = H_0  + \lambda V$, $ H_0\ket{n^{0}} = E_n^{0}\ket{n^{0}}  $, $ H\ket{n} = E_n \ket{n} $. Let $ \Delta_n = E_n - E_n^{0} $ and $ \phi_n = 1 - \ket{n^{0}}\bra{n^{0}} $ be the projector onto the orthogonal space of $ \ket{n^{0}} $. $ \ket{n} $ and $ \Delta_n $ are given by,
 
 	\begin{equation*}
-	\ket{n} =\ket{n^{0}} + \dfrac{ \phi_n (\lambda V - \Delta_n)\ket{n}}{E_n^{0} - H_0} = \ket{n^{0}} +\sum_{k\ne n} \dfrac{ \lambda \mel{k^0}{V}{n} - \Delta_n \ip{k^{0}}{n}}{E_n^{0} - E_k^{0}}\ket{k^{0}} \qq{and} \Delta_n = \lambda \mel{n^{0}}{V}{n}
+	\ket{n} =\ket{n^{0}} + \dfrac{ \phi_n (\lambda V - \Delta_n)\ket{n}}{E_n^{0} - H_0} = \ket{n^{0}} +\sum_{k\ne n} \dfrac{ \lambda \mel{k^0}{V}{n} - \Delta_n \ip{k^{0}}{n}}{E_n^{0} - E_k^{0}}\ket{k^{0}} \qq{and} \Delta_n = \lambda \mel{n^{0}}{V}{n} 
 	\end{equation*}	
 	We work with normalization $ \ip{n}{n^0} = 1 \implies \ip{n^j}{n^0} = 0 \qq{;} j\ne0$. 
 	We assume the following,
@@ -161,7 +164,7 @@
 	\begin{align}
 	\Delta_n^{1} &= \ev{V}{n^0} \label{1}\\
 	\ket{n^1} &= \sum_{k\ne n} \dfrac{ \mel{k^0}{V}{n^0} }{E_n^{0} - E_k^{0}}\ket{k^{0}}  \label{2}\\
-	\Delta_n^2 &= \sum_{k\ne n} \dfrac{ \abs{\mel{k^0}{V}{n^0}}^2 }{E_n^{0} - E_k^{0}}\ket{k^{0}}  \label{3}\\
+	\Delta_n^2 &= \sum_{k\ne n} \dfrac{ \abs{\mel{k^0}{V}{n^0}}^2 }{E_n^{0} - E_k^{0}}  \label{3}\\
 	\ket{n^2} &= \sum_{k\ne n} \dfrac{ \mel{k^0}{V}{n^1} - \Delta_n^1 \ip{k^{0}}{n^1}}{E_n^{0} - E_k^{0}}\ket{k^{0}} 
 	\label{4}
 	\end{align}
@@ -292,8 +295,47 @@
 	\end{equation*}
 	$ H $ has the following three eigenvalues.
 	\begin{align*}
-	\dfrac{{E_1}+{E_2}}{2} \pm \sqrt{\lambda^2 \left(a^2+b^2\right)+\qty(\dfrac{{E_1}-{E_2}}{2})^2} \qq{and} E_1
+	\dfrac{{E_1}+{E_2}}{2} \pm \sqrt{\lambda^2 \left(a^2+b^2\right)+\qty(\dfrac{{E_1}-{E_2}}{2})^2} \qq{and} E_1\\
+	\implies \approx E_1 + \lambda^2 \dfrac{\abs{a}^2 + \abs{b}^2}{E_1 - E_2} \qq{and} \approx E_2 - \lambda^2 \dfrac{\abs{a}^2 + \abs{b}^2}{E_1 - E_2} \qq{and} E_1
 	\end{align*}
+	We also notice that $ H_0 $ has a two-fold degeneracy with energy $ E_1 $, corresponding to the eigenstates $ \ket{0} = \mqty[1 & 0 & 0]^T $ and $ \ket{1} = \mqty[0 & 1 & 0]^T $, as well as energy eigenstate $ \ket{0} = \mqty[0 & 0 & 1]^T  $ with energy $ E_2 $. We also note that the block in $ V $ corresponding to these eigenstates in made up of zeros, hence there is no hope of breaking the degeneracy at first order in perturbation theory.
+	
+	Now we know that provided we choose the correct basis, $ \Delta_n^2 = \mel{n^1}{V}{n^0} $. For this, let's calculate the first order perturbed eigenstate. We have $ (H_0 + \lambda V) \ket{l_i} = E_{d_i} \ket{l_i}$. Substitute $ \ket{l_i} = \ket{l_i^0} + \lambda \ket{l_i^1} + \ldots $ (where $ \ket{l_i} = c_0\ket{0} + c_1 \ket{1} $) and $  E_{d_i} = E_1 +  \lambda E_{d_i}^1 + \ldots$. At first order, the equation then becomes,
+	\begin{equation*}
+	H_0 \ket{l_i^1} + V \ket{l_i^0} = E_1 \ket{l_i^1} + E_{d_i}^1 \ket{l_i^0}
+	\end{equation*}
+	But as degeneracy is not removed as first order, $ E_{d_i}^1 = 0 $. Taking the inner product with $ l_i^{0} $
+	\begin{equation*}
+	V \ket{l_i^0} = (E_1 - H_0) \ket{l_i^1} 
+	\end{equation*}
+	Taking the inner product with $ \bra{l_i^0} $, we get that $ \ev{V}{{l_i^0}}  = 0 \implies$ that $ V \ket{l_i^0} $ has no component along $ \ket{l_i^0} $. Then we can write,
+	\begin{equation*}
+	\ket{l_i^1} =  \dfrac{1}{E_1 - H_0} V\ket{l_i^0} \implies \mel{l_i^1}{V}{l_i^0} = \ev{V\dfrac{1}{E_1 - H_0} V}{l_i^0}
+	\end{equation*}
+	Now all that is left to do is diagonalize $G = V\dfrac{1}{E_1 - H_0} V$. We note,
+	\begin{equation*}
+	V \ket{0} = a^* \ket{2} \qq{and} V \ket{1} = b^* \ket{2}
+	\end{equation*}
+	We can use these to construct the matrix elements,
+	\begin{align*}
+	\mel{0}{G}{0} &= \abs{a}^2 \ev{\dfrac{1}{E_1 - H_0}}{2} =\dfrac{ \abs{a}^2 }{E_1 - E_2}\\
+	\mel{0}{G}{1} = \dfrac{ab^*}{E_1 - E_2} &\qq{ } \mel{1}{G}{1} = \dfrac{\abs{b}^2}{E_1 - E_2} \qq{ } \mel{1}{G}{0} = \dfrac{a^* b}{E_1 - E_2}\\
+	\therefore G &= \dfrac{1}{E_1-E_2}\mqty(\abs{a}^2 & ab^*\\ a^*b & \abs{b}^2)
+	\end{align*}
+	The eigenvalues of $ G $ are $ 0 $ and $ \dfrac{\abs{a}^2 + \abs{b}^2}{E_1 - E_2}  $ and the corresponding eigenstates are $ \dfrac{-b \ket{0} + a \ket{1}}{\sqrt{\abs{a}^2 + \abs{b}^2}} $ and $ \dfrac{a \ket{0} + b\ket{1}}{\sqrt{\abs{a}^2 + \abs{b}^2}} $. 
+	
+	We now look at the state with energy $ E_2 $. The second order perturbed energy for this case is straighforward,
+	\begin{equation*}
+	\Delta^2  =\dfrac{ \abs{\mel{0}{V}{2}}^2  + \abs{\mel{1}{V}{2}}^2}{E_2 - E_1} = - \dfrac{\abs{a}^2 + \abs{b}^2}{E_1 - E_2}
+	\end{equation*}
+	
+	So then, the final energies upto second order in $ \lambda $ are,
+	\begin{equation*}
+	 E_1 \qq{,} E_1 + \lambda^2 \dfrac{\abs{a}^2 + \abs{b}^2}{E_1 - E_2} \qq{and} E_2 - \lambda^2 \dfrac{\abs{a}^2 + \abs{b}^2}{E_1 - E_2}
+	\end{equation*}
+	which is commensurate with the actual eigenvalues upto second order.
+	￼
+	
 \end{homeworkProblem}
 
 
@@ -339,7 +381,7 @@
 	\Delta_{lm}^2 &= \sum_{l\ne l', m\ne m'}\dfrac{ \abs{\mel{l',m'}{V}{l,m}}^2}{E_{lm} - E_{l'm'}}\\
 	 &= \dfrac{C^2}{4} \sum_{l\ne l', m\ne m'}\dfrac{\qty([{l(l+1) - m(m+1)} ]\delta_{l',l} \delta_{m',m+1} + [{l(l+1) - m(m-1)}] \delta_{l',l} \delta_{m',m-1})}{Al(l+1) + Bm - Al'(l'+1) - Bm'}\\
 	 &= \dfrac{C^2}{4}\qty( \dfrac{-[{l(l+1) - m(m+1)}]}{B} + \dfrac{[{l(l+1) - m(m - 1)}]}{B} )\\
-	 &= \dfrac{mc^2}{2B}
+	 &= \dfrac{C^2m}{2B}
 	\end{align*}
 	
 \end{homeworkProblem}
@@ -366,21 +408,34 @@
 	\begin{equation*}
 	\psi_\beta(x) = N e^{-\beta\abs{x}}
 	\end{equation*}
-	where $ N $ is some normalization.
+	where $ N $ is some normalization. We first calculate $ \pdv[2]{\psi_\beta}{x}$,
+	\begin{align*}
+	\pdv[2]{\psi_\beta}{x} &=N \pdv{x}\qty(\pdv{e^{-\beta \abs{x}}}{x})\\
+	&=-\beta N\pdv{x}\qty(\dfrac{x}{\abs{x}}e^{-\beta \abs{x}})\\
+	&= N\qty(\beta^2e^{-\beta \abs{x}} -\dfrac{\beta}{\abs{x}}e^{-\beta \abs{x}} + \dfrac{\beta x}{x^2}e^{-\beta \abs{x}})
+	\end{align*}
 	Let's calculate $ \expval{H}{\psi_\beta} $,
 	\begin{align*}
-	\expval{H}{\psi_\beta} &= N^2 \int_{-\infty}^{\infty} e^{-2\beta\abs{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx\\
-	&=  \lim\limits_{\epsilon \rightarrow 0} N^2\qty[ 2\int_{\epsilon}^{\infty} e^{-2\beta{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx + \int_{-\epsilon}^{\epsilon} e^{-2\beta\abs{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx]\\
-	&=  N^2\qty[ \qty(-\dfrac{\beta}{2m} + \dfrac{m \omega^2}{4\beta^3})+ \lim\limits_{\epsilon \rightarrow 0}\int_{-\epsilon}^{\epsilon} e^{-2\beta\abs{x}}\qty(-\dfrac{1}{2m}\beta^2 + \dfrac{m\omega^2}{2}x^2)dx]\\
+	\expval{H}{\psi_\beta} &= N^2 \int_{-\infty}^{\infty} e^{-\beta\abs{x}} \qty(-\dfrac{1}{2m}\pdv[2]{x}+ \dfrac{m\omega^2}{2}x^2)e^{-\beta\abs{x}}dx\\
+	&=  \lim\limits_{\epsilon \rightarrow 0} N^2 \qty[ 2 \int_{\epsilon}^{\infty}  e^{-\beta x} \qty(-\dfrac{1}{2m}\pdv[2]{x}+ \dfrac{m\omega^2}{2}x^2) e^{-\beta x } dx + \int_{-\epsilon}^{\epsilon}  e^{-\beta\abs{x}} \qty(-\dfrac{1}{2m}\pdv[2]{x}+ \dfrac{m\omega^2}{2}x^2)e^{-\beta\abs{x}} dx]\\
+	&=  \lim\limits_{\epsilon \rightarrow 0} N^2 \left[ 2 \int_{\epsilon}^{\infty}  e^{-2\beta x} \qty(-\dfrac{\beta^2}{2m} + \dfrac{m\omega^2}{2}x^2) dx - \int_{-\epsilon}^{\epsilon}  e^{-\beta\abs{x}} \qty(\dfrac{1}{2m}\pdv[2]{x} ) e^{-\beta\abs{x}} dx  + \int_{-\epsilon}^{\epsilon}  e^{-2\beta\abs{x}} \qty(\dfrac{m\omega^2}{2}x^2) dx \right]
 	\end{align*}
-	
+	The last integral goes to zero as $ \epsilon \rightarrow 0 $. The second integral transforms into an integral only over the double derivative, since $  e^{-\beta\abs{x}} $ is almost constant from $ -\epsilon $ to $ \epsilon $. Then,
 	\begin{align*}
-	N^2 \int_{-\infty}^{\infty}e^{-2\beta\abs{x}} = 1\\
-	N^2 = \beta
+	\expval{H}{\psi_\beta} &=  N^2 \left[ \qty(-\dfrac{\beta}{2m} + \dfrac{m\omega^2}{4\beta^3})-  \lim\limits_{\epsilon \rightarrow 0} \dfrac{e^{-\beta\abs{x}}}{2m} \eval{\qty(\pdv{x} e^{-\beta\abs{x}})}_{-\epsilon}^{\epsilon}  \right]\\
+	&=  N^2 \left[ \qty(-\dfrac{\beta}{2m} + \dfrac{m\omega^2}{4\beta^3})+ \dfrac{\beta}{m} \right]\\
+	&=  N^2 \qty[\dfrac{\beta}{2m} + \dfrac{m\omega^2}{4\beta^3}]
 	\end{align*}
-	
-	\begin{equation*}
-	\expval{H}{\psi_\beta}  = -\dfrac{\beta^2}{2m} +  \dfrac{m\omega^2 }{4 \beta^2}
-	\end{equation*}
+	We need to also fix the normalization,
+	\begin{align*}
+	N^2 \int_{-\infty}^{\infty}e^{-2\beta\abs{x}} = 1 \implies N^2 = \beta
+	\end{align*}
+	Hence,
+	\begin{align*}
+	\expval{H}{\psi_\beta} = &\ev{H} = \dfrac{\beta^2}{2m} +  \dfrac{m\omega^2 }{4 \beta^2}\\
+	\eval{\dv{\ev{H}}{\beta}}_{\beta_0} = 0 \implies \dfrac{\beta_0}{m} - \dfrac{m\omega^2}{2\beta_0^3} = 0 \implies \beta_0 & = \pm \qty(\dfrac{m^2\omega^2}{2})^{1/4} \implies \ev{H}_{min} = \dfrac{\omega}{2\sqrt{2}} + \dfrac{\omega}{2\sqrt{2}} = \dfrac{\omega}{\sqrt{2}}
+	\end{align*}
+	Hence the ground state energy has an estimate of $ \dfrac{\omega}{\sqrt{2}} $ (which clearly is off from the actual value by a factor of $\dfrac{1}{\sqrt{2}}$ ).
 \end{homeworkProblem}
+
 \end{document}
