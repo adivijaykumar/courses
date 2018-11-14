@@ -194,18 +194,24 @@
 		\end{align*}
 		As velocity is radial, the streamlines are also radial straight lines passing through the origin. The slope of such straight lines is $ \dfrac{y}{x} = - \dfrac{1}{m} $. Hence the streamlines and lines of constant $ \psi $ are perpendicular.
 		
-		\item For point vortex, $ \va{u} = \dfrac{\Gamma}{2 \pi r} \vu{\theta} $. This means,
+		\item For point vortex, $ \va{u} = \dfrac{\Gamma}{2 \pi r} \vu{\theta} = \dfrac{ -\Gamma y}{2 \pi (x^2 + y^2)} \vu{x} + \dfrac{ \Gamma x}{2 \pi (x^2 + y^2)} \vu{y} $. This means,
 		\begin{equation*}
-		\phi = \int \pdv{\phi}{r} dr + \int \dfrac{1}{r} \pdv{\phi}{\theta} d\theta  = \dfrac{\Gamma \theta}{2 \pi r} +  constant
+		\phi =  \dfrac{\Gamma}{2 \pi} \tan^{-1} \dfrac{y}{x} \qq{and} \psi = - \dfrac{\Gamma}{2 \pi} \ln r
 		\end{equation*}
 		For lines of constant $ \phi $,
 		\begin{align*}
-		\dfrac{\Gamma \theta}{2 \pi r}  &= C_1\\
-		\implies r \dv{\theta}{x} - \theta \dv{r}{x} &= 0\\
-		\implies  \dfrac{1}{r}\qty(x \dv{y}{x} - y) - \dfrac{\theta}{r} \qty(x + y \dv{y}{x} ) &= 0\\
-		\implies \dv{y}{x} &= \dfrac{y + \theta x}{x - \theta y}
+		\dfrac{\Gamma}{2 \pi} \tan^{-1} \dfrac{y}{x} &= C_1\\
+		\implies \dfrac{y}{x} &= constant = m_1\\
+		\implies  \dv{y}{x} &= m_1
 		\end{align*}
-		where $ \theta = \tan^{-1}\dfrac{y}{x} $. 
+		For lines of constant $ \psi $,
+		\begin{align*}
+		\dfrac{\Gamma}{2 \pi} \ln r &= C_2\\
+		\implies r &= constant\\
+		\implies  x^2 + y^2 &= constant\\
+		\implies \dv{y}{x} &= - \dfrac{x}{y} = - \dfrac{1}{m_1}
+		\end{align*}
+		Hence proved.
 	\end{itemize}
 	
 \end{homeworkProblem}
@@ -256,7 +262,40 @@
 
 
 \begin{homeworkProblem}[4]
+	\begin{figure}[h!]
+		\centering
+		\includegraphics[scale=0.09]{q2.jpg}
+	\end{figure}
+	Let's first find the potential. As described in Problem 1, $ \phi = \dfrac{q_s}{2 \pi} \ln r $. So for this problem,
+	\begin{align*}
+	\phi &= -\dfrac{q_s}{4 \pi} \ln [(x - \epsilon/2)^2 + y^2] + \dfrac{q_s}{4 \pi} \ln [(x + \epsilon/2)^2 + y^2] \\
+	&= \dfrac{q_s}{4 \pi} \ln \dfrac{(x + \epsilon/2)^2 + y^2}{(x - \epsilon/2)^2 + y^2}\\
+	&= \dfrac{q_s}{4 \pi} \ln \dfrac{1 + \epsilon x / r^2 }{1 - \epsilon x /r^2 }\\
+	&= \dfrac{q_s}{4 \pi} \ln ({1 + 2\epsilon x / r^2 })\\
+	\phi &= \dfrac{q_s \epsilon \cos \theta}{2 \pi r}
+	\end{align*}
 	
+	Hence, the velocity profile is,
+	\begin{equation*}
+	\va{u} = -\dfrac{q_s \epsilon \cos \theta}{2 \pi r^2} \vu{r} - \dfrac{q_s \epsilon \sin \theta}{2 \pi r^2} \vu{\theta}
+	\end{equation*}
+	For the streamlines, we note that for a single point source at origin, \begin{align*}
+	u = \dfrac{q_s x}{2 \pi (x^2 + y^2)} &\qq{and} v = \dfrac{q_s y}{2 \pi (x^2 + y^2)}\\
+	\therefore \psi &= \dfrac{q_s}{2 \pi} \tan^{-1} \dfrac{y}{x}
+	\end{align*}
+	Hence, for this problem,
+	\begin{align*}
+	\psi &= -\dfrac{q_s}{2 \pi} \tan^{-1} \dfrac{y}{x - \epsilon/2} + \dfrac{q_s}{2 \pi} \tan^{-1} \dfrac{y}{x + \epsilon/2}\\
+	&= \dfrac{q_s}{2 \pi} \qty(\tan^{-1} \dfrac{y}{x + \epsilon/2} - \tan^{-1} \dfrac{y}{x - \epsilon/2} )\\
+	&= \dfrac{q_s}{2 \pi} \tan^{-1} \dfrac{y(x - \epsilon/2 - x - \epsilon/2) }{x^2 + y^2}\\
+	&= \dfrac{q_s}{2 \pi} \tan^{-1} \dfrac{-y\epsilon}{r^2}\\
+	\psi &= - \dfrac{q_s}{2 \pi} \dfrac{\sin \theta}{r}
+	\end{align*}
+	
+	\begin{equation*}
+	\psi = - \dfrac{q_s}{2 \pi} \dfrac{\sin \theta}{r} = constant \implies \dfrac{\sin \theta}{r } = \dfrac{y}{x^2 + y^2} = \dfrac{1}{2C} \implies x^2 + (y - C)^2 = C^2
+	\end{equation*}
+	which is the equation of a circle with centre at $ (0,C) $ and radius $ C $.
 \end{homeworkProblem}
 
 \end{document}
