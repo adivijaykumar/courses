@@ -151,4 +151,70 @@
 \end{homeworkProblem}
 
 
+
+
+
+
+\begin{homeworkProblem}[2]
+	Transformations of coordinates $ (q,p,t) \rightarrow (Q,P,t)$ which preserves the form of Hamilton's equations are called canonical transformations. So, by definition,
+	\begin{equation*}
+	\dot{p} = \pdv{H}{q} \qq{,} \dot{q} = - \pdv{H}{p} \qq{and} \dot{P} = \pdv{K}{Q} \qq{,} \dot{Q} = -\pdv{K}{P}
+	\end{equation*}
+	The definition also implies that,
+	\begin{align*}
+	\delta(p \dot{q} - H) = 0 &\qq{and} \delta(P \dot{Q} - K) = 0\\
+	\lambda(p \dot{q} - H) &= P \dot{Q} - K + \dv{F}{t}
+	\end{align*}
+	We deal with the $ \lambda = 1 $ case. The $ \dv{F}{t} $ term comes from the fact that Lagrangians are not unique and we can always add a total time derivative term without changing the equations of motion. If the above condition is satisfied, the transformation $ (q,p,t) \rightarrow (Q,P,t)$ is guaranteed to be canonical, and the function $ F $ is called a generating function. We deal with four classes of generating functions case-by-case,
+	\begin{itemize}
+		\item $ F = F_1 (q,Q,t) $,
+		\begin{equation*}
+		p \dot{q} - H = P \dot{Q} - K + \dv{F_1}{t} = P \dot{Q} - K + \pdv{F_1}{q}\dot{q} + \pdv{F_1}{Q}\dot{Q} + \pdv{F_1}{t}
+		\end{equation*}
+		As $ q $ and $ Q $ are independent, the coefficients should vanishh independently, such that $ K = H + \pdv{F_1}{t} $. This implies,
+		\begin{equation*}
+		\pdv{F_1}{q} = p \qq{and} \pdv{F_1}{Q} = -P
+		\end{equation*}
+		
+		\item $ F = F_2 (q,P,t) - QP$,
+		\begin{equation*}
+		p \dot{q} - H = P \dot{Q} - K + \dv{F_2}{t} - \dv{(QP)}{t} = P \dot{Q} - K + \pdv{F_2}{q}\dot{q} + \pdv{F_2}{P}\dot{P} + \pdv{F_2}{t} - P \dot{Q} - Q \dot{P}
+		\end{equation*}
+		\begin{equation*}
+		\implies \pdv{F_2}{q} = p \qq{and} \pdv{F_2}{P} = Q
+		\end{equation*}
+		\item $ F = F_3 (p,Q,t) + qp$,
+		\begin{equation*}
+		p \dot{q} - H = P \dot{Q} - K + \dv{F_3}{t} + \dv{(qp)}{t} = P \dot{Q} - K + \pdv{F_3}{Q}\dot{Q} + \pdv{F_3}{p}\dot{p} + \pdv{F_3}{t} + p \dot{q} + q \dot{p}
+		\end{equation*}
+		\begin{equation*}
+		\implies \pdv{F_3}{Q} = -P \qq{and} \pdv{F_2}{p} = -q
+		\end{equation*}
+		\item $ F = F_4 (p,P,t) + qp - QP$,
+		\begin{equation*}
+		p \dot{q} - H = P \dot{Q} - K + \dv{F_4}{t} + \dv{(qp - QP)}{t} = P \dot{Q} - K + \pdv{F_4}{P}\dot{P} + \pdv{F_4}{p}\dot{p} + \pdv{F_4}{t} + p \dot{q} + q \dot{p} - P \dot{Q} - Q \dot{P}
+		\end{equation*}
+		\begin{equation*}
+		\implies \pdv{F_4}{P} = Q \qq{and} \pdv{F_4}{p} = -q
+		\end{equation*}
+	\end{itemize}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[3]
+	We are given the Hamiltonian and generating function,
+	\begin{equation*}
+	H = \dfrac{p^2}{2} + \dfrac{\omega^2 x^2 }{2} + \alpha x^3 + \beta x p^2 \qq{and} \phi = xP + ax^2 P + bP^3
+	\end{equation*}
+	$ \phi = \phi (x,P) $. For $ \phi $ to be a canonical transformation,
+	\begin{align*}
+	\pdv{\phi}{x} = p &\qq{and} \pdv{\phi}{P} = Q\\
+	\implies P + 2 a x P = p &\qq{and} x + ax^2 + 3b P^2 = Q \\
+	\implies P = \dfrac{p}{1 + 2 ax } &\qq{and} Q = x + ax^2 + \dfrac{3bp^2}{(1 + 2ax)^2}
+	\end{align*}
+	We know that,
+	\begin{align*}
+	p \dot{x} - H  &= P \dot{Q} - K + \dv{\phi}{t}\\
+	p \dot{x} -  \dfrac{p^2}{2} + \dfrac{\omega^2 x^2 }{2} + \alpha x^3 + \beta x p^2 &= P \dot{Q} - K + (P + 2axP)\dot{x} + (x + ax^2 + 3bP^2)\dot{P}
+	\end{align*}
+\end{homeworkProblem}
 \end{document}
