@@ -217,4 +217,64 @@
 	p \dot{x} -  \dfrac{p^2}{2} + \dfrac{\omega^2 x^2 }{2} + \alpha x^3 + \beta x p^2 &= P \dot{Q} - K + (P + 2axP)\dot{x} + (x + ax^2 + 3bP^2)\dot{P}
 	\end{align*}
 \end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[4]
+	We first note that,
+	\begin{equation*}
+	y = x^2 \implies \dot{y} = 2 x \dot{x}
+	\end{equation*}
+	and write down the Lagrangian and Hamiltonian of the system,
+	\begin{align*}
+	L &= \dfrac{m \dot{x}^2}{2} + \dfrac{m \dot{y}^2}{2} - mgy \\
+	L &= \dfrac{m \dot{x}^2}{2} + {2m  x^2 \dot{x}^2 } - mgx^2\\
+	\implies p = m \dot{x} + 4 mx^2 \dot{x} &\implies  \dot{x} = \dfrac{p}{m(1 + 4x^2)}
+	\end{align*}
+	Thus, we can write the Hamiltonian as,
+	\begin{align*}
+	H(x,p) &= \dfrac{p^2}{m(1 + 4x^2)} - \dfrac{m}{2}(1 + 4x^2)\dfrac{p^2}{m^2 (1 + 4x^2)^2} + mg x^2\\
+	H(x,p) &= \dfrac{p^2}{2m(1 + 4x^2)} + mgx^2
+	\end{align*} 
+	The Hamilton-Jacobi equation is given by,
+	\begin{equation*}
+	\dfrac{1}{2m(1 + 4x^2)}\qty(\pdv{S}{x})^2 + mgx^2 + \pdv{S}{t} = 0 
+	\end{equation*}
+	Substituting $ S = W(x) - Et $, we get,
+	\begin{align*}
+	\dfrac{1}{2m(1 + 4x^2)}\qty(\dv{W}{x})^2 + mgx^2 - E = 0
+	\implies \dv{W}{x} = \sqrt{2m(E - mgx^2)(1 + 4x^2)}
+	\end{align*}
+	
+	\textbf{Part (b)}\\
+	We first note that,
+	\begin{equation*}
+	z = \dfrac{\xi^2 - \eta^2}{2} \qq{,} \rho = \eta \xi \qq{,} \psi = \phi \implies \dot{z} = \xi \dot{\xi} - \eta \dot{\eta} \qq{,} \dot{\rho} = \eta \dot{\xi} + \xi \dot{\eta} \qq{,} \dot{\phi} = \dot{\psi}
+	\end{equation*}
+	We first write down the Lagrangian and canonical momenta,
+	\begin{align*}
+	L &= \dfrac{m (\dot{\rho}^2 + \rho^2 \dot{\phi}^2 + \dot{z}^2)}{2} - \dfrac{k}{\rho} + Fz\\
+	&= \dfrac{m ( \eta^2 \dot{\xi}^2 + \xi^2 \dot{\eta}^2+ 2 \eta \xi \dot{\eta} \dot{\xi} + \eta^2 \xi^2 \dot{\psi}^2 + \xi^2 \dot{\xi}^2 - 2 \xi \dot{\xi} \eta \dot{\eta} + \eta^2 \dot{\eta}^2 )}{2} - \dfrac{k}{\xi \eta} + F\dfrac{\xi^2 - \eta^2}{2}\\
+	L&= m\dfrac{(\eta^2 + \xi^2)( \dot{\xi}^2 + \dot{\eta}^2)+ \eta^2 \xi^2 \dot{\psi}^2}{2} - \dfrac{k}{\xi \eta} + F\dfrac{\xi^2 - \eta^2}{2}\\
+	\implies &p_\xi = m (\eta^2 + \xi^2) \dot{\xi} \qq{,} p_\eta = m (\eta^2 + \xi^2) \dot{\eta} \qq{,} p_\psi = m \eta^2 \xi^2 \dot{\psi}\\
+	\implies H &= \dfrac{p_\xi^2 + p_\eta^2}{2 m(\eta^2 + \xi^2)} + \dfrac{p_\psi^2}{2m \eta^2 \xi^2} + \dfrac{k}{\xi \eta} - F\dfrac{\xi^2 - \eta^2}{2}
+	\end{align*}
+	
+	Let's apply the transformations given in the problem
+	We can now write down the Hamilton-Jacobi equation as,
+	\begin{equation*}
+	\pdv{S}{t} +  \dfrac{1}{2 m(\eta^2 + \xi^2)} \qty[\qty(\pdv{S}{\xi})^2 + \qty(\pdv{S}{\eta})^2 ]+ \dfrac{1}{2m \eta^2 \xi^2} \qty(\pdv{S}{\psi})^2 + \dfrac{k}{\xi \eta} - F\dfrac{\xi^2 - \eta^2}{2} = 0
+	\end{equation*}
+\end{homeworkProblem}
+
+
 \end{document}
