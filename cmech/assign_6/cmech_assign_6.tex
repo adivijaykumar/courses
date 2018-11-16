@@ -209,7 +209,7 @@
 	\begin{align*}
 	\pdv{\phi}{x} = p &\qq{and} \pdv{\phi}{P} = Q\\
 	\implies P + 2 a x P = p &\qq{and} x + ax^2 + 3b P^2 = Q \\
-	\implies P = \dfrac{p}{1 + 2 ax } &\qq{and} Q = x + ax^2 + \dfrac{3bp^2}{(1 + 2ax)^2}
+	\implies P + 2 a x P = p &\qq{and} \dfrac{-1 \pm \sqrt{1 + 4a(Q - 3bP^2)}}{2a}= x \\
 	\end{align*}
 	We know that,
 	\begin{align*}
@@ -251,10 +251,14 @@
 	\end{equation*}
 	Substituting $ S = W(x) - Et $, we get,
 	\begin{align*}
-	\dfrac{1}{2m(1 + 4x^2)}\qty(\dv{W}{x})^2 + mgx^2 - E = 0
-	\implies \dv{W}{x} = \sqrt{2m(E - mgx^2)(1 + 4x^2)}
+	\dfrac{1}{2m(1 + 4x^2)}\qty(\dv{W}{x})^2 + &mgx^2 - E = 0
+	\implies \dv{W}{x} = \sqrt{2m(E - mgx^2)(1 + 4x^2)}\\
+	\implies S &= \int dx \sqrt{2m(E - mgx^2)(1 + 4x^2)} - Et
 	\end{align*}
-	
+	We know that $ \pdv{S}{E} = \alpha t + \beta $ for constants $ \alpha $ and $ \beta $. Hence the equation of motion is,
+	\begin{equation*}
+	\sqrt{\dfrac{m(1+4x^2)}{2(E - mgx^2)}} - E = \alpha t + \beta
+	\end{equation*}
 	\textbf{Part (b)}\\
 	We first note that,
 	\begin{equation*}
@@ -262,17 +266,21 @@
 	\end{equation*}
 	We first write down the Lagrangian and canonical momenta,
 	\begin{align*}
-	L &= \dfrac{m (\dot{\rho}^2 + \rho^2 \dot{\phi}^2 + \dot{z}^2)}{2} - \dfrac{k}{\rho} + Fz\\
-	&= \dfrac{m ( \eta^2 \dot{\xi}^2 + \xi^2 \dot{\eta}^2+ 2 \eta \xi \dot{\eta} \dot{\xi} + \eta^2 \xi^2 \dot{\psi}^2 + \xi^2 \dot{\xi}^2 - 2 \xi \dot{\xi} \eta \dot{\eta} + \eta^2 \dot{\eta}^2 )}{2} - \dfrac{k}{\xi \eta} + F\dfrac{\xi^2 - \eta^2}{2}\\
-	L&= m\dfrac{(\eta^2 + \xi^2)( \dot{\xi}^2 + \dot{\eta}^2)+ \eta^2 \xi^2 \dot{\psi}^2}{2} - \dfrac{k}{\xi \eta} + F\dfrac{\xi^2 - \eta^2}{2}\\
+	L &= \dfrac{m (\dot{\rho}^2 + \rho^2 \dot{\phi}^2 + \dot{z}^2)}{2} - \dfrac{k}{\sqrt{\rho^2 + z^2} } + Fz\\
+	&= \dfrac{m ( \eta^2 \dot{\xi}^2 + \xi^2 \dot{\eta}^2+ 2 \eta \xi \dot{\eta} \dot{\xi} + \eta^2 \xi^2 \dot{\psi}^2 + \xi^2 \dot{\xi}^2 - 2 \xi \dot{\xi} \eta \dot{\eta} + \eta^2 \dot{\eta}^2 )}{2} - \dfrac{k}{\sqrt{\qty(\dfrac{\xi^2 - \eta^2}{2})^2 + \eta^2 \xi^2}} + F\dfrac{\xi^2 - \eta^2}{2}\\
+	L&= m\dfrac{(\eta^2 + \xi^2)( \dot{\xi}^2 + \dot{\eta}^2)+ \eta^2 \xi^2 \dot{\psi}^2}{2} - \dfrac{2k}{\eta^2 + \xi^2} + F\dfrac{\xi^2 - \eta^2}{2}\\
 	\implies &p_\xi = m (\eta^2 + \xi^2) \dot{\xi} \qq{,} p_\eta = m (\eta^2 + \xi^2) \dot{\eta} \qq{,} p_\psi = m \eta^2 \xi^2 \dot{\psi}\\
-	\implies H &= \dfrac{p_\xi^2 + p_\eta^2}{2 m(\eta^2 + \xi^2)} + \dfrac{p_\psi^2}{2m \eta^2 \xi^2} + \dfrac{k}{\xi \eta} - F\dfrac{\xi^2 - \eta^2}{2}
+	\implies H &= \dfrac{p_\xi^2 + p_\eta^2}{2 m(\eta^2 + \xi^2)} + \dfrac{p_\psi^2}{2m \eta^2 \xi^2} +\dfrac{2k}{\eta^2 + \xi^2}  - F\dfrac{\xi^2 - \eta^2}{2}
 	\end{align*}
 	
 	Let's apply the transformations given in the problem
 	We can now write down the Hamilton-Jacobi equation as,
 	\begin{equation*}
-	\pdv{S}{t} +  \dfrac{1}{2 m(\eta^2 + \xi^2)} \qty[\qty(\pdv{S}{\xi})^2 + \qty(\pdv{S}{\eta})^2 ]+ \dfrac{1}{2m \eta^2 \xi^2} \qty(\pdv{S}{\psi})^2 + \dfrac{k}{\xi \eta} - F\dfrac{\xi^2 - \eta^2}{2} = 0
+	\pdv{S}{t} +  \dfrac{1}{2 m(\eta^2 + \xi^2)} \qty[\qty(\pdv{S}{\xi})^2 + \qty(\pdv{S}{\eta})^2 ]+ \dfrac{1}{2m \eta^2 \xi^2} \qty(\pdv{S}{\psi})^2 + \dfrac{2k}{\eta^2 + \xi^2}  - F\dfrac{\xi^2 - \eta^2}{2} = 0
+	\end{equation*}
+	Multiply the equation by $ 2m(\eta^2 + \xi^2) $,
+	\begin{equation*}
+	2m(\eta^2 + \xi^2)\pdv{S}{t} + \qty(\pdv{S}{\xi})^2 + \qty(\pdv{S}{\eta})^2 + \qty(\dfrac{1}{ \eta^2} + \dfrac{1}{\xi^2}) \qty(\pdv{S}{\psi})^2 + 4mk  - Fm ({\xi^4 - \eta^4} )= 0
 	\end{equation*}
 \end{homeworkProblem}
 
