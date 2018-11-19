@@ -1,0 +1,254 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#5}
+\newcommand{\hmwkDueDate}{Due on 20th November, 2018}
+\newcommand{\hmwkClass}{Advanced Quantum Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury, Biprarshi Chakraborty and Junaid Majeed for discussions.)
+\\
+
+\begin{homeworkProblem}
+	
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[5]
+	We first note for $ \ket{\psi_I(t)} = \sum_{n} {c_n(t) \ket{\alpha_n}} $
+	\begin{align*}
+	i \pdv{\ket{\psi_I}}{t} &= i \pdv{(e^{iH_0t} \ket{\psi_S})}{t} \\
+	&= i \qty[e^{iH_0t}\pdv{\ket{\psi_S}}{t}  + iH_0 e^{iH_0t} \ket{\psi_S}]\\
+	&= -e^{iH_0t} (H_0 + V) \ket{\psi_S} - H_0 e^{iH_0t} \ket{\psi_S}\\
+	&=e^{iH_0t}  V \ket{\psi_S}\\
+	i \pdv{\ket{\psi_I}}{t} &= V_I \ket{\psi_I}\\
+	i \pdv{\ip{\alpha_n}{\psi_I}}{t} &=  \mel{\alpha_n}{V_I}{\psi_I}\\
+	\dot{c_n} &= -i  \mel{\alpha_n}{V_I}{\psi_I}\\
+	\dot{c_n} &= -i  \mel{\alpha_n}{V}{\alpha_m} e^{i{(E_n - E_m)t}} c_m
+	\end{align*}
+	So for the given problem, we have
+	\begin{align*}
+	\ket{\psi_I(t)} &=  {c_1(t) \ket{1} + c_2(t) e^{iEt} \ket{2}}	\\
+	\dot{c_1} = -i V_{11} c_1 - i V_{12} e^{-iEt} c_2 = - i \gamma e^{i (\omega-E) t} c_2  &\qq{and} \dot{c_2} = -i V_{21}  e^{iEt}  c_1 - i V_{22}c_2 = -i \gamma e^{i(E-\omega)t} c_1
+	\end{align*} 
+	To solve the above equations, we make the substitution $  c_1 = b_1 e^{i\Delta t} $ and $c_2 = b_2 e^{-i \Delta t}  $, where $ 2 \Delta = \omega - E$. We then have the equations in terms of $ b $'s,
+	\begin{equation*}
+	i \dot{b_1} = \Delta b_1 + \gamma b_2 \qq{and} i \dot{b_2} = 
+	\gamma b_1 - \Delta b_2
+	\end{equation*}
+	These are coupled equations, and we can solve these by making the substitution $ b_1 = A e^{i \Omega t} $ and $  b_2 = B e^{i \Omega t} $. We then have,
+	\begin{align*}
+	- A \Omega = \Delta A + \gamma B &\qq{and} - B \Omega = \gamma A - \Delta B \\
+	\qq{For non-trivial solutions,} -\dfrac{\gamma}{\Delta + \Omega} &= \dfrac{\Delta - \Omega}{\gamma} \implies \Omega = \pm \sqrt{\gamma^2 + \Delta^2} = \pm \Omega_0\\
+	\implies c_1 = A_1 e^{i(\Delta + \Omega_0)t} + A_2 e^{i(\Delta - \Omega_0)t} &\qq{and}  c_2 = B_1 e^{i(-\Delta + \Omega_0)t} + B_2 e^{i(-\Delta - \Omega_0)t}
+	\end{align*}
+	We are told that at $ t=0 $, the system is in state $ \ket{1} \implies c_1(0) = 0, c_2(0) = 1 \implies A_1 = - A_2, B_1 = 1 - B_2$. We also know for a fact that $ \abs{c_1(0)}^2 + \abs{c_2(0)}^2  = 1$
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
