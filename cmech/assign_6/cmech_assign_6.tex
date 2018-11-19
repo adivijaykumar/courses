@@ -198,7 +198,133 @@
 		\implies \pdv{F_4}{P} = Q \qq{and} \pdv{F_4}{p} = -q
 		\end{equation*}
 	\end{itemize}
+
+	\textbf{Part (b)}\\
+	We first use the Poisson Bracket invariance approach. We are given,
+	\begin{equation*}
+	Q_1 = q_1 \qq{,} Q_2 = p_2 \qq{,} P_1 = p_1 - 2 p_2 \qq{,} P_2 = -2 q_1 - q_2
+	\end{equation*}
+	Consider $ \pb{Q_1}{Q_2} $,
+	\begin{align*}
+	\pb{Q_1}{Q_2} &= \sum_{i =1}^{2} \pdv{Q_1}{q_i} \pdv{Q_2}{p_i} - \pdv{Q_1}{p_i} \pdv{Q_2}{q_i} = 0 \\
+	\pb{P_1}{P_2} &= \sum_{i =1}^{2} \pdv{P_1}{q_i} \pdv{P_2}{p_i} - \pdv{P_1}{p_i} \pdv{P_2}{q_i} =  - \pdv{P_1}{p_1} \pdv{P_2}{q_1} - \pdv{P_1}{p_2} \pdv{P_2}{q_2} = 2-2 = 0   \\
+	\pb{Q_1}{P_2} &= \sum_{i =1}^{2} \pdv{Q_1}{q_i} \pdv{P_2}{p_i} - \pdv{Q_1}{p_i} \pdv{P_2}{q_i} =   \pdv{Q_1}{q_1} \pdv{P_2}{p_1} = 0 \\
+	\pb{Q_2}{P_1} &= \sum_{i =1}^{2} \pdv{Q_2}{q_i} \pdv{P_1}{p_i} - \pdv{Q_2}{p_i} \pdv{P_1}{q_i} =  - \pdv{Q_2}{p_2} \pdv{P_1}{q_2} = 0\\
+	\pb{Q_1}{P_1} &= \sum_{i =1}^{2} \pdv{Q_1}{q_i} \pdv{P_1}{p_i} - \pdv{Q_1}{p_i} \pdv{P_1}{q_i} =  \pdv{Q_1}{q_1} \pdv{P_1}{p_1}  = 1\\
+	\pb{Q_2}{P_2} &= \sum_{i =1}^{2} \pdv{Q_2}{q_i} \pdv{P_2}{p_i} - \pdv{Q_2}{p_i} \pdv{P_2}{q_i} = - \pdv{Q_2}{p_2} \pdv{P_2}{q_2}  = 1
+	\end{align*}
+	Hence, as $ \pb{Q_i}{P_j} = \delta_{ij}, \pb{Q_i}{Q_j} = 0,  \pb{P_i}{P_j}  = 0$, the transformation is canonical. We now use the symplectic approach. If we denote $ X = \mqty[Q_1 & Q_2  & P_1 & P_2]^T, x = \mqty[q_1 & q_2  & p_1 & p_2]^T  $, then $ X = Mx $ where $ M $ is the transformation matrix. From the definitions of the $ X $, we can see that,
+	\begin{equation*}
+	M = \left(
+	\begin{array}{cccc}
+	1 & 0 & 0 & 0 \\
+	0 & 0 &0 & 1 \\
+	0 & 0 & 1 & -2 \\
+	-2 & -1 & 0 & 0 \\
+	\end{array}
+	\right)
+	\end{equation*}
+	For the transformation to be a canonical transformation, $ M^T J M = J $, where,
+	\begin{align*}
+	J &= \left(
+	\begin{array}{cccc}
+	0 & 0 & 1 & 0 \\
+	0 & 0 &0 & 1 \\
+	-1 & 0 & 0 & 0 \\
+	0 & -1 & 0 & 0 \\
+	\end{array}
+	\right)
+	\end{align*}
+	\begin{align*}
+	M^T J M &= \left(
+	\begin{array}{cccc}
+	1 & 0 & 0 & 0 \\
+	0 & 0 &0 & 1 \\
+	0 & 0 & 1 & -2 \\
+	-2 & -1 & 0 & 0 \\
+	\end{array}
+	\right) \left(
+	\begin{array}{cccc}
+	0 & 0 & 1 & 0 \\
+	0 & 0 &0 & 1 \\
+	-1 & 0 & 0 & 0 \\
+	0 & -1 & 0 & 0 \\
+	\end{array}
+	\right) \left(
+	\begin{array}{cccc}
+	1 & 0 & 0 & 0 \\
+	0 & 0 &0 & 1 \\
+	0 & 0 & 1 & -2 \\
+	-2 & -1 & 0 & 0 \\
+	\end{array}
+	\right) \\
+	&= \left(
+	\begin{array}{cccc}
+	0 & 0 & 1 & 0 \\
+	0 & -1 &0 & 0 \\
+	-1 & 2 & 0 & 1 \\
+	0 & 0 & -2 & 0 \\
+	\end{array}
+	\right)
+	\left(
+	\begin{array}{cccc}
+	1 & 0 & 0 & 0 \\
+	0 & 0 &0 & 1 \\
+	0 & 0 & 1 & -2 \\
+	-2 & -1 & 0 & 0 \\
+	\end{array}
+	\right) \\
+	M^T J M &= \left(
+	\begin{array}{cccc}
+	0 & 0 & 1 & 0 \\
+	0 & 0 &0 & 1 \\
+	-1 & 0 & 0 & 0 \\
+	0 & -1 & 0 & 0 \\
+	\end{array}
+	\right) = J
+	\end{align*}
+	Hence, it is a canonical transformation.\\
+	\textbf{Part (c)}
+	\begin{align*}
+	l_i &= \epsilon_{i j k} x_j p_k \qq{using the Einstein summation convention}
+	\end{align*}
+	We now note the following,
+	\begin{align*}
+	\pb{l_i}{l_j} &= \epsilon_{i a b} \epsilon_{j m n} \pb{x_a p_b}{x_m p_n} \\
+	&= \epsilon_{i a b} \epsilon_{j m n} \pb{x_a p_b}{x_m p_n}\\
+	&= \epsilon_{i a b} \epsilon_{j m n} (\pb{x_a }{ p_n} x_m p_b + \pb{p_b}{x_m} x_a p_n)\\
+	&= \epsilon_{i a b} \epsilon_{j m n} ( \delta_{an} x_m p_b - \delta_{bm} x_a p_n) \\
+	&= \epsilon_{i n b} \epsilon_{j m n} x_m p_b - \epsilon_{i a m} \epsilon_{j m n}  x_a p_n \\
+	&= - \epsilon_{i b n} \epsilon_{j m n} x_m p_b + \epsilon_{i m a} \epsilon_{j m n}  x_a p_n \\
+	&= - (\delta_{ij} \delta_{bm} - \delta_{im} \delta_{j b}) x_m p_b + (\delta_{ij} \delta_{an} - \delta_{aj} \delta_{in}) x_a p_n \\
+	&= - \delta_{ij}  x_b p_b  + x_i p_j + \delta_{ij}  x_a p_a  -  x_j p_i \\
+	&= + x_i p_j -  x_j p_i \\
+	\pb{l_i}{l_j} &= \epsilon_{i j k} l_k
+	\end{align*}
+	\begin{align*}
+	\pb{x_i}{l_j} &= \epsilon_{j m n} \pb{x_i}{ x_m p_n}\\
+	&= \epsilon_{j m n} x_m  \pb{x_i}{ p_n}\\
+	&= \epsilon_{j m n} x_m  \delta_{in}\\
+	\pb{x_i}{l_j} &= \epsilon_{i j m} x_m 
+	\end{align*}
+	\begin{align*}
+	\pb{p_i}{l_j} &= \epsilon_{j m n} \pb{p_i}{ x_m p_n}\\
+	&= \epsilon_{j m n} p_n  \pb{p_i}{ x_m}\\
+	&= -\epsilon_{j m n} p_n  \delta_{im}\\
+	\pb{p_i}{l_j}&= \epsilon_{i j n} p_n
+	\end{align*}
 \end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
 
 \begin{homeworkProblem}[3]
 	We are given the Hamiltonian and generating function,
@@ -209,13 +335,60 @@
 	\begin{align*}
 	\pdv{\phi}{x} = p &\qq{and} \pdv{\phi}{P} = Q\\
 	\implies P + 2 a x P = p &\qq{and} x + ax^2 + 3b P^2 = Q \\
-	\implies P + 2 a x P = p &\qq{and} \dfrac{-1 \pm \sqrt{1 + 4a(Q - 3bP^2)}}{2a}= x \\
+	\implies P \sqrt{-12 a b P^2+4 a Q+1} = p &\qq{and}\frac{\sqrt{-12 a b P^2+4 a Q+1}-1}{2 a} = x
 	\end{align*}
-	We know that,
+	where we have only considered the $ x $ root with positive sign before the discriminant. Then,
 	\begin{align*}
-	p \dot{x} - H  &= P \dot{Q} - K + \dv{\phi}{t}\\
-	p \dot{x} -  \dfrac{p^2}{2} + \dfrac{\omega^2 x^2 }{2} + \alpha x^3 + \beta x p^2 &= P \dot{Q} - K + (P + 2axP)\dot{x} + (x + ax^2 + 3bP^2)\dot{P}
+	K(Q, P) &= \frac{\alpha  \left(\sqrt{-12 a b P^2+4 a Q+1}-1\right)^3}{8 a^3}+\frac{\omega ^2 \left(\sqrt{-12 a b P^2+4 a Q+1}-1\right)^2}{8 a^2} \\
+	&+\frac{\beta  P^2 \left(-12 a b P^2+4 a Q+1\right) \left(\sqrt{-12 a b P^2+4 a Q+1}-1\right)}{2 a}+ \frac{1}{2} P^2 \left(-12 a b P^2+4 a Q+1\right)
 	\end{align*}
+	Expanding the above upto third order, we have,
+	\begin{align*}
+	K(Q, P) &= Q^3 \left(P^2 \left(-30 a^2 b \omega ^2-2 a^2 \beta +36 \alpha  a b\right)-a \omega ^2+\alpha \right)+Q^2 \left(P^2 \left(9 a b \omega ^2+3 a \beta -9 \alpha  b\right)+\frac{\omega ^2}{2}\right)\\&+P^2 Q \left(2 a-3 b \omega ^2+\beta \right)+\frac{P^2}{2}
+	\end{align*}
+	As anharmonic terms of third order should not be present, we can see from above that,
+	\begin{equation*}
+	- a \omega^2 + \alpha = 0 \qq{and} 2 a-3 b \omega ^2+\beta = 0 \implies a = \dfrac{\alpha}{\omega^2} \qq{and} b = \dfrac{1}{3 \omega^2} \qty(\dfrac{2 \alpha}{\omega^2} + \beta)
+	\end{equation*}
+	Now we need to find $ \dot{x} $. From Hamilton's equation of motion we have,
+	\begin{equation*}
+	\dot{x} = \pdv{H}{p} = p (1 + 2 \beta x) = 
+	\end{equation*}
+	
+	\textbf{Part (b)}\\
+	\begin{itemize}
+		\item $ \phi(\va{r}, \va{P}) = (\va{r} \cdot \va{P}) + (\delta \va{a} \cdot \va{P}) $
+		This looks like $ F_2 (q,P) $. From the results of Problem 2, we can then write,
+		\begin{align*}
+		\pdv{\Phi}{r} = p_r = P_r \qq{,} \pdv{\Phi}{\theta} = p_\theta =0 \qq{,} \pdv{\Phi}{\phi} = p_\phi = 0 \\
+		\pdv{\Phi}{P_r} = Q_r =  r + \delta a_x\qq{,} \pdv{\Phi}{P_\theta} = Q_\theta = \delta a_\theta \qq{,} \pdv{\Phi}{P_\phi} = Q_\phi = \delta a_\phi
+		\end{align*}
+		as $  r + \delta a = Q $, it is evident that the transformation is a translation by constant, as the momentum remains the same but the coordinates get shifted by a constant amount.
+		
+		\item $ \Phi(\va{r}, \va{P}) = (\va{r} \cdot \va{P}) + (\delta \psi \cdot \va{r} \cross \va{P}) $
+		
+		\item $ \Phi = qP + \delta \tau H(q,p,t) $
+		This looks like $ F_2 $ again. We write,
+		\begin{align*}
+		\pdv{\Phi}{q} &= P + \delta \tau (-\dot{p}) = p \qq{and}\\
+		 \pdv{\Phi}{P} &= q + \delta \tau \pdv{H}{P}\\
+		  &=  q + \delta \tau \pdv{H}{P} \\
+		  &=  q + \delta \tau \qty( \pdv{H}{p} \pdv{p}{P} + \pdv{H}{q} \pdv{q}{P} ) \\
+		  &=  q + \delta \tau \qty( \dot{q} (1 - \delta \tau \dot{p}) )\\
+		  Q & \approx q + \delta \tau \dot{q}
+		\end{align*}
+		\begin{equation*}
+		\therefore Q \approx q + \delta \tau \dot{q} \qq{and} P \approx p +  \delta \tau \dot{p}
+		\end{equation*}
+		So the canonical transformation just corresponds to time translation by parameter $ d\tau $.
+		
+		\item  $  \Phi = \va{r} \cdot \va{P} + (r^2 + P^2)\delta a  $
+		\begin{align*}
+		\pdv{\Phi}{r} = P_r + 2 r \delta a \implies P_r = p_r - 2 r \delta a \\
+		\pdv{\Phi}{P} = r + 2 P \delta a \implies Q = r + 2 P \delta a 
+		\end{align*}
+		This is equivalent to rotation in the phase space by amount $ 2 \delta a $
+	\end{itemize}
 \end{homeworkProblem}
 
 
