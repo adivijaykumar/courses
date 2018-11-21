@@ -145,9 +145,24 @@
 \maketitle
 
 \begin{homeworkProblem}[1]
-	Liouville Theorem states that in a Hamiltonian system, the phase space density is constant in time.
+	Liouville Theorem states that in a Hamiltonian system, the total phase space volume is constant in time.
 	
-	Let our system consist of $ N $ points $ (q_k, p_k) $ in a $ 2N $ dimensional phase space.
+	Let our system consist of $ N $ points $ (q_k, p_k) $ in a $ 2N $ dimensional phase space. The volume of the phase space is,
+	\begin{equation*}
+	V = \prod_{i} d q_i \qq{and} \tilde{V} = \prod_{i} d \tilde{q}_i 
+	\end{equation*}
+	where the tilded coordinates represents the volume at a later time. We know from Hamilton's equations,
+	\begin{equation*}
+	\tilde{q}_i = q_i + \pdv{H}{p_i} dt \qq{and} \tilde{p}_i = p_i - \pdv{H}{q_i} dt
+	\end{equation*}
+	We know for a fact that the volume transformation is related as follows,
+	\begin{align*}
+	\tilde{V} &= \det(J) V \\
+	J &= \mqty[\pdv{\tilde{q}_i}{q_j} & \pdv{\tilde{q}_i}{p_j} \\ \pdv{\tilde{p}_i}{q_j} & \pdv{\tilde{p}_i}{q_j}]\\
+	J &= \mqty[1 + \pdv[2]{H}{q_j}{p_i} dt & \pdv[2]{H}{p_i} dt \\ -\pdv[2]{H}{q_j} dt & 1 - \pdv[2]{H}{p_j}{q_j} dt] \\
+	\det(J) &= 1 + \order{dt^2}
+	\end{align*}
+	Hence upto first order, $ \tilde{V} = V$. Hence proved. (files for the next part are attached)
 \end{homeworkProblem}
 
 
@@ -351,13 +366,18 @@
 	- a \omega^2 + \alpha = 0 \qq{and} 2 a-3 b \omega ^2+\beta = 0 \implies a = \dfrac{\alpha}{\omega^2} \qq{and} b = \dfrac{1}{3 \omega^2} \qty(\dfrac{2 \alpha}{\omega^2} + \beta)
 	\end{equation*}
 	Now we need to find $ \dot{x} $. From Hamilton's equation of motion we have,
-	\begin{equation*}
-	\dot{x} = \pdv{H}{p} = p (1 + 2 \beta x) = 
-	\end{equation*}
+	\begin{align*}
+	\dot{x} = \pdv{H}{p} = p (1 + 2 \beta x) \implies p = \dfrac{\dot{x}}{1 + 2 \beta x} \\
+	\dot{p} = -\dfrac{2 \beta \dot{x}^2 - \ddot{x} (1 + 2 \beta x) }{(1 + 2 \beta x)^2} = -\pdv{H}{x} = -\omega^2 x - 3 \alpha x^2 - \beta p^2\\
+	\implies -{2 \beta \dot{x}^2 - \ddot{x} (1 + 2 \beta x) } = -(\omega^2 x - 3 \alpha x^2) (1 + 2 \beta x)^2 - \beta \dot{x}^2 \\
+	\implies {\ddot{x} (1 + 2 \beta x) -\beta \dot{x}^2 } + (\omega^2 x - 3 \alpha x^2) (1 + 2 \beta x)^2 = 0
+	\end{align*}
+	$ x(t) $ will be given by the solution of this equation.
+	
 	
 	\textbf{Part (b)}\\
 	\begin{itemize}
-		\item $ \phi(\va{r}, \va{P}) = (\va{r} \cdot \va{P}) + (\delta \va{a} \cdot \va{P}) $
+		\item $ \phi(\va{r}, \va{P}) = (\va{r} \cdot \va{P}) + (\delta \va{a} \cdot \va{P}) $\\
 		This looks like $ F_2 (q,P) $. From the results of Problem 2, we can then write,
 		\begin{align*}
 		\pdv{\Phi}{r} = p_r = P_r \qq{,} \pdv{\Phi}{\theta} = p_\theta =0 \qq{,} \pdv{\Phi}{\phi} = p_\phi = 0 \\
@@ -365,9 +385,17 @@
 		\end{align*}
 		as $  r + \delta a = Q $, it is evident that the transformation is a translation by constant, as the momentum remains the same but the coordinates get shifted by a constant amount.
 		
-		\item $ \Phi(\va{r}, \va{P}) = (\va{r} \cdot \va{P}) + (\delta \psi \cdot \va{r} \cross \va{P}) $
+		\item $ \Phi(\va{r}, \va{P}) = (\va{r} \cdot \va{P}) + (\va{\delta \psi} \cdot \va{r} \cross \va{P}) $ \\
+		This looks like $ F_2 $ too. We have,
+		\begin{equation*}
+		p \cdot \delta \psi = \qty(\dv{\Phi}{r} = P + \pdv{(\va{\delta \psi} \cdot \va{r} \cross \va{P})}{r})\cdot \delta \psi =  P\cdot \delta \psi + \pdv{(\va{r} \cdot \va{P} \cross \va{\delta \psi})}{r} \cdot \delta \psi= P \delta \psi 
+		\end{equation*}
+		\begin{equation*}
+		Q = \pdv{\Phi}{p} = r +  r \delta \psi 
+		\end{equation*}
+		The above transformations look like rotations in the phase plane.
 		
-		\item $ \Phi = qP + \delta \tau H(q,p,t) $
+		\item $ \Phi = qP + \delta \tau H(q,p,t) $\\
 		This looks like $ F_2 $ again. We write,
 		\begin{align*}
 		\pdv{\Phi}{q} &= P + \delta \tau (-\dot{p}) = p \qq{and}\\
@@ -451,10 +479,19 @@
 	\begin{equation*}
 	\pdv{S}{t} +  \dfrac{1}{2 m(\eta^2 + \xi^2)} \qty[\qty(\pdv{S}{\xi})^2 + \qty(\pdv{S}{\eta})^2 ]+ \dfrac{1}{2m \eta^2 \xi^2} \qty(\pdv{S}{\psi})^2 + \dfrac{2k}{\eta^2 + \xi^2}  - F\dfrac{\xi^2 - \eta^2}{2} = 0
 	\end{equation*}
-	Multiply the equation by $ 2m(\eta^2 + \xi^2) $,
+	We now make the substitution $  S = S_1(\xi) + S_2(\eta) + S_3(\psi) - Et $. We then have,
 	\begin{equation*}
-	2m(\eta^2 + \xi^2)\pdv{S}{t} + \qty(\pdv{S}{\xi})^2 + \qty(\pdv{S}{\eta})^2 + \qty(\dfrac{1}{ \eta^2} + \dfrac{1}{\xi^2}) \qty(\pdv{S}{\psi})^2 + 4mk  - Fm ({\xi^4 - \eta^4} )= 0
+	  \dfrac{1}{2 m(\eta^2 + \xi^2)} \qty[\qty(\dv{S_1}{\xi})^2 + \qty(\dv{S_2}{\eta})^2 ]+ \dfrac{1}{2m \eta^2 \xi^2} \qty(\dv{S_3}{\psi})^2 + \dfrac{2k}{\eta^2 + \xi^2}  - F\dfrac{\xi^2 - \eta^2}{2} = E
 	\end{equation*}
+	Out of the four terms above, we see that only the third terms depends on $ \psi $. As the RHS is a constant, the dependence on $ \psi $ also should vanish. This means,
+	\begin{equation*}
+	\qty(\dv{S_3}{\psi})^2 = \beta_1^2
+	\end{equation*}
+	Making the above substitution, multiplying the equation by $ 2m(\eta^2 + \xi^2) $, and collecting terms, we get,
+	\begin{equation*}
+	\qty[-2m \eta^2 E + \qty(\dv{S_2}{\eta})^2 + \dfrac{\beta_1^2}{ \eta^2} + Fm \eta^4] + \qty[-2m\xi^2 E + \qty(\pdv{S}{\xi})^2 + \dfrac{\beta_1^2}{ \xi^2} - Fm \xi^4] + 4mk = 0
+	\end{equation*}
+	We can see from the above form that the equation has become completely separable in the new coordinates.
 \end{homeworkProblem}
 
 
