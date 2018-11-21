@@ -160,8 +160,17 @@
 
 
 
-\begin{homeworkProblem}
-	content...
+\begin{homeworkProblem}[2]
+	We don't need to apply any perturbation theory in this problem, and it can be solved exactly. The Hamiltonian is $ H = \lambda S_1 \cdot S_2 = \lambda( S^2 - S_1^2 - S_2^2 ) $. We consider the action of the Hamiltonian on the singlet state $ \ket{0 0} = \dfrac{\ket{+ -} - \ket{- +}}{\sqrt{2}} $ and $ \ket{1 0 }  = \dfrac{\ket{+ -} + \ket{- +}}{\sqrt{2}} $. We know $ S^2 \ket{00} = 0  $ and $ S^2 \ket{10} = \ket{10} $. Initially the system is in $ \ket{+-} = \dfrac{\ket{00} + \ket{10}}{\sqrt{2}} $. Then we know, by the usual rules of time-evolution,
+	\begin{align*}
+	\ket{\psi_f(t)} = e^{i H t} \ket{+-} &= \dfrac{e^{i\lambda t/4}}{\sqrt{2}} \ket{10} + \dfrac{e^{-i3\lambda t/4}}{\sqrt{2}} \ket{00}\\
+	&= \qty(\dfrac{e^{i\lambda t/4}  +{e^{-i3\lambda t/4}}}{2}) \ket{+-} + \qty(\dfrac{e^{i\lambda t/4}  - {e^{-i3\lambda t/4}}}{2}) \ket{-+}\\
+	\implies \abs{\ip{+-}{{\psi_f(t)}}}^2 &= \abs{\qty(\dfrac{e^{i\lambda t/4}  +{e^{-i3\lambda t/4}}}{2})}^2  = \dfrac{1 + \cos \lambda t}{2} =  P(\ket{+-})\\
+	\implies \abs{\ip{-+}{{\psi_f(t)}}}^2 &= \abs{\qty(\dfrac{e^{i\lambda t/4}  - {e^{-i3\lambda t/4}}}{2})}^2  = \dfrac{1 - \cos \lambda t}{2} = P(\ket{-+})\\
+	\implies \abs{\ip{++}{{\psi_f(t)}}}^2 &= 0 =  P(\ket{++})\\
+	\implies \abs{\ip{--}{{\psi_f(t)}}}^2 &= 0 =  P(\ket{--})
+	\end{align*}
+	where $ P(\ket{}) $ denotes probability of initial state to be in state $ \ket{} $.
 \end{homeworkProblem}
 
 
@@ -173,8 +182,17 @@
 
 
 
-\begin{homeworkProblem}
-	content...
+\begin{homeworkProblem}[3]
+	From $ (5.7.17) $ of Sakurai, we have the relations, (with $ \ket{i,t_0;t} = \sum c_n(t) \ket{n} $)
+	\begin{equation*}
+	c_n^0 (t) = \delta_{ni} \qq{,} c_n^1 (t) = -i \int_{t_0}^{t} e^{i \omega_{ni} t'} V_{ni}(t') dt' \qq{,} c_n^2 (t) = - \sum_m \int_{t_0}^t dt' \int_{t_0}^{t'}  e^{i \omega_{nm} t'} V_{nm}(t')  e^{i \omega_{mi} t''} V_{mi}(t'')   dt''
+	\end{equation*}
+	For our problem, we have $ V = \lambda \delta (x - vt) $. We insert $ 1 = \int dx \ket{x} \bra{x} $ such that $ V_{ni}(t) = \int V(t) u_i^* (x) u_n (x) dx $. We have initial state $ u_i (x) $ and final state $ u_f(x) $. Hence, we can write the above coefficients as,
+	\begin{align*}
+	c_f^1 (t) &= -i  \int_{-\infty}^{\infty} dx \int_{0}^{t} dt' e^{i (E_i - E_f) t'} \delta(x - vt') u_i^* (x) u_n (x)  \\
+	 &= -i \int_{-\infty}^{\infty} dx  e^{i (E_i - E_f) x/v}  u_i^* (x) u_n (x) 
+	\end{align*}
+	Hence the probability is just $ \abs{c_f^1}^2 $
 \end{homeworkProblem}
 
 
