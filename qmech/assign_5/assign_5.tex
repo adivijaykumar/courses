@@ -149,8 +149,36 @@
 (\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury, Biprarshi Chakraborty and Junaid Majeed for discussions.)
 \\
 
-\begin{homeworkProblem}
+\begin{homeworkProblem}[1]
+	\textbf{Part (a)}\\
+	We first note that,
+	\begin{align*}
+	\lambda e^{-t/\tau} \mel{n}{x^2}{m} &= \lambda e^{-t/\tau}  \mel{n}{\dfrac{(a_+ + a_-)^2}{2m\omega}}{m} \\
+	&=\lambda e^{-t/\tau}  \mel{n}{\dfrac{a_+^2 + a_-^2 + a_+ a_- + a_- a_+}{2m\omega}}{m}\\
+	&= \lambda e^{-t/\tau} \dfrac{1}{2 m \omega} \qty[\sqrt{(m+1)(m+2)} \delta_{n,m+2} + \sqrt{m(m-1)} \delta_{n, m-2} + (2m-1) \delta_{n,m}]
+	\end{align*}
+	As is evident from above, a state $ \ket{m} $ can transition into  $ \ket{m}, \ket{m+2}, \ket{m-2} $ and no other states under a potential with spatial dependence that goes as $ x^2 $. In general, the $ k $-th order coefficient $ c^k_n(t) $ will have $ k $ terms of the form $ \mel{.}{x^2}{.} $. If we start out with ground state $ \ket{0} $, the final state will have contributions from the following states order by order
+	\begin{align*}
+	\order{\lambda} &\rightarrow \ket{0}, \ket{2} \\
+	\order{\lambda^2} &\rightarrow \ket{0}, \ket{2}, \ket{4} \\
+	\order{\lambda^3} &\rightarrow \ket{0}, \ket{2}, \ket{4}, \ket{6} \\ 
+	\therefore \order{\lambda^k} &\rightarrow \ket{0}, \ket{2}, \ket{4}, \ldots \ket{2k}
+	\end{align*}
+	Hence, we see that the $ \ket{n} $ as mentioned in the question should be such that $ n $ is even, and the leading order contribution to the probability will $ \sim (\lambda^{n/2})^2 \sim \lambda^n $.\\
 	
+	\textbf{Part (b)}\\
+	As described above, upto $ \order{\lambda^2} $ in probability (ie upto $ \order{\lambda} $ in the coefficients), $ \ket{2} $ is the only excited state that can be reached. From $ (5.7.17) $ of Sakurai, we have the relations, (with $ \ket{i,t_0;t} = \sum c_n(t) \ket{n} $)
+	\begin{equation*}
+	c_n^0 (t) = \delta_{ni} \qq{,} c_n^1 (t) = -i \int_{t_0}^{t} e^{i \omega_{ni} t'} V_{ni}(t') dt'
+	\end{equation*}
+	Let's calculate $ c_n^1 (t) $,
+	\begin{align*}
+	c_n^1 (t) &=  -i \lambda \int_{0}^{t} e^{i n \omega t'} \mel{n}{ x^2}{0} e^{-t'/\tau} dt' \\
+	&= \dfrac{-i \lambda}{2 m \omega} (\sqrt{2} \delta_{n,2} + \delta_{n,0}) \int_{0}^{t} e^{i n \omega t'}  e^{-t'/\tau} dt'\\
+	c_n^1 (t) &= \dfrac{-i \lambda}{2 m \omega} (\sqrt{2} \delta_{n,2} + \delta_{n,0} )\dfrac{e^{i n \omega t}  e^{-t/\tau} - 1}{i n \omega - 1/\tau} \\
+	\implies c_2^1 (t) &= \dfrac{-i \lambda }{\sqrt{2} m \omega}  \dfrac{e^{2 i \omega t}  e^{-t/\tau} - 1}{2 i \omega - 1/\tau} \implies  \abs{c_2^1 (t)}^2 = \dfrac{\lambda^2 }{{2} m^2 \omega^2}  \dfrac{ e^{-2t/\tau} + 1 - 2 e^{-t / \tau } \cos 2 \omega t}{4 \omega^2 + 1/\tau^2} 
+	\end{align*}
+	$ \abs{c_2^1}^2 $ is the required probability.
 \end{homeworkProblem}
 
 
@@ -185,12 +213,12 @@
 \begin{homeworkProblem}[3]
 	From $ (5.7.17) $ of Sakurai, we have the relations, (with $ \ket{i,t_0;t} = \sum c_n(t) \ket{n} $)
 	\begin{equation*}
-	c_n^0 (t) = \delta_{ni} \qq{,} c_n^1 (t) = -i \int_{t_0}^{t} e^{i \omega_{ni} t'} V_{ni}(t') dt' \qq{,} c_n^2 (t) = - \sum_m \int_{t_0}^t dt' \int_{t_0}^{t'}  e^{i \omega_{nm} t'} V_{nm}(t')  e^{i \omega_{mi} t''} V_{mi}(t'')   dt''
+	c_n^0 (t) = \delta_{ni} \qq{,} c_n^1 (t) = -i \int_{t_0}^{t} e^{i \omega_{ni} t'} V_{ni}(t') dt' 
 	\end{equation*}
 	For our problem, we have $ V = \lambda \delta (x - vt) $. We insert $ 1 = \int dx \ket{x} \bra{x} $ such that $ V_{ni}(t) = \int V(t) u_i^* (x) u_n (x) dx $. We have initial state $ u_i (x) $ and final state $ u_f(x) $. Hence, we can write the above coefficients as,
 	\begin{align*}
-	c_f^1 (t) &= -i  \int_{-\infty}^{\infty} dx \int_{0}^{t} dt' e^{i (E_i - E_f) t'} \delta(x - vt') u_i^* (x) u_n (x)  \\
-	 &= -i \int_{-\infty}^{\infty} dx  e^{i (E_i - E_f) x/v}  u_i^* (x) u_n (x) 
+	c_f^1 (t) &= -i \lambda \int_{-\infty}^{\infty} dx \int_{0}^{t} dt' e^{i (E_i - E_f) t'} \delta(x - vt') u_i^* (x) u_f (x)  \\
+	 &= -i \lambda \int_{-\infty}^{\infty} dx  e^{i (E_i - E_f) x/v}  u_i^* (x) u_f (x) 
 	\end{align*}
 	Hence the probability is just $ \abs{c_f^1}^2 $
 \end{homeworkProblem}
@@ -254,10 +282,12 @@
 	\qq{For non-trivial solutions,} -\dfrac{\gamma}{\Delta + \Omega} &= \dfrac{\Delta - \Omega}{\gamma} \implies \Omega = \pm \sqrt{\gamma^2 + \Delta^2} = \pm \Omega_0\\
 	\implies c_1 = A_1 e^{i(\Delta + \Omega_0)t} + A_2 e^{i(\Delta - \Omega_0)t} &\qq{and}  c_2 = B_1 e^{i(-\Delta + \Omega_0)t} + B_2 e^{i(-\Delta - \Omega_0)t}
 	\end{align*}
-	We are told that at $ t=0 $, the system is in state $ \ket{1} \implies c_1(0) = 0, c_2(0) = 1 \implies A_1 = - A_2, B_1 = 1 - B_2$. We also know for a fact that $ \abs{c_1(0)}^2 + \abs{c_2(0)}^2  = 1$. Using all these facts, we can write
-	\begin{equation*}
-	4 A_1^2 \cos^2 \Omega t + 4 (B_1^2 - B_1) \sin^2 \Omega t + 1 = 1
-	\end{equation*}
+	We are told that at $ t=0 $, the system is in state $ \ket{1} \implies c_1(0) = 0, c_2(0) = 1 \implies A_1 = - A_2, B_1 = 1 - B_2$. We also know that $ \dot{c}_2(0) = - i \gamma c_1 (0) $ and $ \dot{c}_1(0) = - i \gamma c_2 (0)  $ which means,
+	\begin{align*}
+	i(\Delta - \Omega_0) B_1 - i(\Delta + \Omega_0) (1 - B_1) = 0 &\implies B_1 = \dfrac{\Delta + \Omega_0}{2 \Delta} \qq{and}  B_2 = \dfrac{\Delta - \Omega_0}{2 \Delta} \\
+	 A_1 i( \Delta + \Omega_0 - \Delta + \Omega_0)  = -i \gamma &\implies A_1 = \dfrac{ -i \gamma}{2 \Omega_0} \qq{and} A_2 = \dfrac{ i \gamma}{2 \Omega_0} \\
+	 \implies c_1 = \dfrac{ -i \gamma}{2 \Omega_0}  e^{i(\Delta + \Omega_0)t} + \dfrac{ i \gamma}{2 \Omega_0} e^{i(\Delta - \Omega_0)t} &\qq{and}  c_2 = \dfrac{\Delta + \Omega_0}{2 \Delta}  e^{i(-\Delta + \Omega_0)t} + \dfrac{\Delta - \Omega_0}{2 \Delta} e^{i(-\Delta - \Omega_0)t}
+	\end{align*}
 \end{homeworkProblem}
 
 
