@@ -146,7 +146,7 @@
 \begin{document}
 
 \maketitle
-(\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury, Biprarshi Chakraborty and Junaid Majeed for discussions.)
+(\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury, Sarthak Duary and Junaid Majeed for discussions.)
 \\
 
 \begin{homeworkProblem}[1]
@@ -189,7 +189,8 @@
 
 
 \begin{homeworkProblem}[2]
-	We don't need to apply any perturbation theory in this problem, and it can be solved exactly. The Hamiltonian is $ H = \lambda S_1 \cdot S_2 = \lambda( S^2 - S_1^2 - S_2^2 ) $. We consider the action of the Hamiltonian on the singlet state $ \ket{0 0} = \dfrac{\ket{+ -} - \ket{- +}}{\sqrt{2}} $ and $ \ket{1 0 }  = \dfrac{\ket{+ -} + \ket{- +}}{\sqrt{2}} $. We know $ S^2 \ket{00} = 0  $ and $ S^2 \ket{10} = \ket{10} $. Initially the system is in $ \ket{+-} = \dfrac{\ket{00} + \ket{10}}{\sqrt{2}} $. Then we know, by the usual rules of time-evolution,
+	
+	We don't need to apply any perturbation theory in this problem, and it can be solved exactly. The Hamiltonian is $ H = \lambda S_1 \cdot S_2 = \lambda( S^2 - S_1^2 - S_2^2 ) $. We consider the action of the Hamiltonian on the singlet state $ \ket{0 0} = \dfrac{\ket{+ -} - \ket{- +}}{\sqrt{2}}$ and $ \ket{1 0 }  = \dfrac{\ket{+ -} + \ket{- +}}{\sqrt{2}} $. We know $ H \ket{00} = -3\lambda /4 \ket{00}  $ and $ S^2 \ket{10} = \lambda/4 \ket{10} $. Initially the system is in $ \ket{+-} = \dfrac{\ket{00} + \ket{10}}{\sqrt{2}} $. Then we know, by the usual rules of time-evolution,
 	\begin{align*}
 	\ket{\psi_f(t)} = e^{i H t} \ket{+-} &= \dfrac{e^{i\lambda t/4}}{\sqrt{2}} \ket{10} + \dfrac{e^{-i3\lambda t/4}}{\sqrt{2}} \ket{00}\\
 	&= \qty(\dfrac{e^{i\lambda t/4}  +{e^{-i3\lambda t/4}}}{2}) \ket{+-} + \qty(\dfrac{e^{i\lambda t/4}  - {e^{-i3\lambda t/4}}}{2}) \ket{-+}\\
@@ -211,6 +212,7 @@
 
 
 \begin{homeworkProblem}[3]
+	\textbf{Part (a)}\\
 	From $ (5.7.17) $ of Sakurai, we have the relations, (with $ \ket{i,t_0;t} = \sum c_n(t) \ket{n} $)
 	\begin{equation*}
 	c_n^0 (t) = \delta_{ni} \qq{,} c_n^1 (t) = -i \int_{t_0}^{t} e^{i \omega_{ni} t'} V_{ni}(t') dt' 
@@ -221,6 +223,18 @@
 	 &= -i \lambda \int_{-\infty}^{\infty} dx  e^{i (E_i - E_f) x/v}  u_i^* (x) u_f (x) 
 	\end{align*}
 	Hence the probability is just $ \abs{c_f^1}^2 $
+	
+	\textbf{Part (b)}\\
+	We now write,
+	\begin{equation*}
+	\delta(x-vt) = \dfrac{1}{2 \pi v} \int_{- \infty}^{\infty} d\omega  e^{i\omega (x/v - t)}
+	\end{equation*}
+	\begin{align*}
+	\therefore c_f^1 (t) &= -i \lambda \int_{-\infty}^{\infty} dx \int_{0}^{t} dt' e^{i (E_i - E_f) t'} \dfrac{1}{2 \pi v} \int_{- \infty}^{\infty} d\omega  e^{i\omega (x/v - t')} u_i^* (x) u_f (x)  \\
+	&= \dfrac{-i \lambda}{2 \pi v} \int_{-\infty}^{\infty} dx \int_{0}^{t} dt' e^{i (E_{if} - \omega) t'}  \int_{- \infty}^{\infty} d\omega  e^{i\omega x/v} u_i^* (x) u_f (x)  \\
+	&=  \dfrac{-i \lambda}{2 \pi v} \int_{-\infty}^{\infty} dx \int_{- \infty}^{\infty} d\omega \delta(E_{fi} - \omega)  e^{i\omega x/v } u_i^* (x) u_f (x)4
+	\end{align*}
+	Integrating the above will give us the same expression as that is Part (a). We notice that there is this $ \delta (E_{fi} - \omega) $ term, which basically ensures energy conservation.
 \end{homeworkProblem}
 
 
@@ -236,8 +250,19 @@
 
 
 
-\begin{homeworkProblem}
-	content...
+\begin{homeworkProblem}[4]
+	The ground state wavefunction for a hydrogen-like atom is given by,
+	\begin{equation*}
+	\ket{0_Z} = \dfrac{1}{\sqrt{\pi}} \qty(\dfrac{Z}{a_0})^{3/2} e^{-Zr/a_0}
+	\end{equation*}
+	We need to find $ \abs{\ip{0_2}{0_1}}^2 $,
+	\begin{align*}
+	\ip{0_2}{0_1} &= \dfrac{1}{\pi} \qty(\dfrac{2}{a_0^2})^{3/2} \int_{0}^{2\pi} d \phi \int_{0}^{\pi} -d(\cos\theta)  \int_{0}^{\infty} dr r^2 e^{-3r/a_0} \\
+	&= \dfrac{1}{\pi} \qty(\dfrac{2}{a_0^2})^{3/2} (4 \pi) \qty(\dfrac{2 a_0^3}{27})\\
+	\ip{0_2}{0_1} &= \sqrt{8} \dfrac{8}{27}\\
+	\implies \abs{\ip{0_2}{0_1}}^2 &\approx 0.7
+	\end{align*}
+	So, the probability is close to $ 0.7 $.
 \end{homeworkProblem}
 
 
@@ -255,12 +280,16 @@
 
 
 \begin{homeworkProblem}[5]
+	\textbf{Part (a)}\\
 	We first note for $ \ket{\psi_I(t)} = \sum_{n} {c_n(t) \ket{\alpha_n}} $
 	\begin{align*}
 	i \pdv{\ket{\psi_I}}{t} &= i \pdv{(e^{iH_0t} \ket{\psi_S})}{t} \\
 	&= i \qty[e^{iH_0t}\pdv{\ket{\psi_S}}{t}  + iH_0 e^{iH_0t} \ket{\psi_S}]\\
 	&= -e^{iH_0t} (H_0 + V) \ket{\psi_S} - H_0 e^{iH_0t} \ket{\psi_S}\\
 	&=e^{iH_0t}  V \ket{\psi_S}\\
+	\end{align*}
+	
+	\begin{align*}
 	i \pdv{\ket{\psi_I}}{t} &= V_I \ket{\psi_I}\\
 	i \pdv{\ip{\alpha_n}{\psi_I}}{t} &=  \mel{\alpha_n}{V_I}{\psi_I}\\
 	\dot{c_n} &= -i  \mel{\alpha_n}{V_I}{\psi_I}\\
@@ -282,12 +311,38 @@
 	\qq{For non-trivial solutions,} -\dfrac{\gamma}{\Delta + \Omega} &= \dfrac{\Delta - \Omega}{\gamma} \implies \Omega = \pm \sqrt{\gamma^2 + \Delta^2} = \pm \Omega_0\\
 	\implies c_1 = A_1 e^{i(\Delta + \Omega_0)t} + A_2 e^{i(\Delta - \Omega_0)t} &\qq{and}  c_2 = B_1 e^{i(-\Delta + \Omega_0)t} + B_2 e^{i(-\Delta - \Omega_0)t}
 	\end{align*}
-	We are told that at $ t=0 $, the system is in state $ \ket{1} \implies c_1(0) = 0, c_2(0) = 1 \implies A_1 = - A_2, B_1 = 1 - B_2$. We also know that $ \dot{c}_2(0) = - i \gamma c_1 (0) $ and $ \dot{c}_1(0) = - i \gamma c_2 (0)  $ which means,
+	We are told that at $ t=0 $, the system is in state $ \ket{1} \implies c_1(0) = 1, c_2(0) = 0 \implies A_1 = 1 - A_2, B_1 = - B_2$. We also know that $ \dot{c}_2(0) = - i \gamma c_1 (0) $ and $ \dot{c}_1(0) = - i \gamma c_2 (0)  $ which means,
 	\begin{align*}
-	i(\Delta - \Omega_0) B_1 - i(\Delta + \Omega_0) (1 - B_1) = 0 &\implies B_1 = \dfrac{\Delta + \Omega_0}{2 \Delta} \qq{and}  B_2 = \dfrac{\Delta - \Omega_0}{2 \Delta} \\
-	 A_1 i( \Delta + \Omega_0 - \Delta + \Omega_0)  = -i \gamma &\implies A_1 = \dfrac{ -i \gamma}{2 \Omega_0} \qq{and} A_2 = \dfrac{ i \gamma}{2 \Omega_0} \\
-	 \implies c_1 = \dfrac{ -i \gamma}{2 \Omega_0}  e^{i(\Delta + \Omega_0)t} + \dfrac{ i \gamma}{2 \Omega_0} e^{i(\Delta - \Omega_0)t} &\qq{and}  c_2 = \dfrac{\Delta + \Omega_0}{2 \Delta}  e^{i(-\Delta + \Omega_0)t} + \dfrac{\Delta - \Omega_0}{2 \Delta} e^{i(-\Delta - \Omega_0)t}
+	-i (1-A_1) \Omega_0 +i A_1 \Omega_0 +i \Delta =0 &\implies A_1 = \frac{\Omega_0 -\Delta }{2 \Omega_0 } \qq{and}  A_2 = -\frac{\Omega_0 -\Delta }{2 \Omega_0 }\\
+	2 i B_1 \Omega_0 =-i \gamma &\implies B_1 = -\frac{\gamma }{2 \Omega_0 } \qq{and} B_2 = 1 + \frac{\gamma }{2 \Omega_0 } \\
+	 \implies c_1 =  \frac{\Omega_0 -\Delta }{2 \Omega_0 } e^{i(\Delta + \Omega_0)t} -\frac{\Omega_0 -\Delta }{2 \Omega_0 } e^{i(\Delta - \Omega_0)t} &\qq{and}  c_2 = -\frac{\gamma }{2 \Omega_0 }  e^{i(-\Delta + \Omega_0)t} + \qty(1 + \frac{\gamma }{2 \Omega_0 }) e^{i(-\Delta - \Omega_0)t}
 	\end{align*}
+	where $ \Delta = \dfrac{\omega - E}{2} $ and $ \Omega_0 = \sqrt{\gamma^2 + \Delta^2} $\\. We calculate $ \abs{c_2(t)}^2 $ using Mathematica, and we get,
+	\begin{equation*}
+	 \abs{c_2(t)}^2 = \frac{\gamma ^2 \sin ^2(t \Omega_0 )}{\Omega_0 ^2} \qq{and}	\abs{c_1(t)}^2 = 1 - \frac{\gamma ^2 \sin ^2(t \Omega_0 )}{\Omega_0 ^2}
+	 \end{equation*}
+	\textbf{Part (b)}\\
+	To prove to all orders in perturbation, we consider $ \omega = E \implies \Omega_0 = \gamma \implies \abs{c_2(t)}^2 = {\sin ^2(t \gamma)} $. From the Dyson series, we have,
+	\begin{equation*}
+	c_2^n (t) =  \bra{2} (-i)^n \int_{0}^{t} dt' \ldots \int_{0}^{t^{(n-1)}} dt^n V_I (t') \ldots V_I(t^{(n)}) \ket{1}
+	\end{equation*}
+	Inserting a complete set of state before each $ V_I $
+	\begin{equation*}
+	c_2^n (t) =  \bra{2} (-i)^n \int_{0}^{t} dt' \ldots \int_{0}^{t^{(n-1)}}  dt^n V_I (t') (\ket{1} \bra{1} + \ket{2} \bra{2}) \ldots  (\ket{1} \bra{1} + \ket{2} \bra{2}) V_I(t^{(n)}) \ket{1}
+	\end{equation*}
+	There is a constraint that the initial state should be $ \ket{1} $ and the final state should be $  \ket{2} $. Since, $  \ket{1} \rightarrow \ket{2} $ and $  \ket{2} \rightarrow \ket{1} $ at each application of $ V_I $, terms with even $ n $ will vanish. For terms with odd $ n $, let's first consider $ n=3 $
+	\begin{align*}
+	c_2^3 (t) &=   (-i)^3 \int_{0}^{t} dt' \int_{0}^{t'} dt'' \int_{0}^{t''} dt'''  \mel{2}{V_I(t')}{1} \mel{1}{V_I(t'')}{2} \mel{2}{V_I(t''')}{1} \\
+	&=   (-i)^3 \int_{0}^{t} dt' \int_{0}^{t'} dt'' \int_{0}^{t''} dt'''  \mel{2}{V_I(t')}{1} \mel{1}{V_I(t'')}{2} \mel{2}{V_I(t''')}{1}\\
+	&=   (-i\gamma)^3 \int_{0}^{t} dt' \int_{0}^{t'} dt'' \int_{0}^{t''} dt'''  e^{iEt'} \mel{2}{V(t')}{1} e^{iEt''} \mel{1}{V(t'')}{2} e^{iEt''} \mel{2}{V(t''')}{1} \\
+	&=   (-i \gamma)^3 \int_{0}^{t} dt' \int_{0}^{t'} dt'' \int_{0}^{t''} dt'''  e^{iEt'} e^{-iEt'}  e^{iEt''}  e^{-iEt''}  e^{iEt''} e^{-iEt''} \\
+	&=   (-i \gamma)^3 \dfrac{t^3}{3!} 
+	\end{align*}
+	We see that because $ \omega = E $, all the matrix elements become independent of $ t $, and we get a very simple answer for $ c_2^n = (-i \gamma)^n \dfrac{t^n}{n!}  $. Hence,
+	\begin{equation*}
+	c_2 (t) = \sum_{\qq{odd n}}(-i \gamma)^n \dfrac{t^n}{n!} = -i \sin t \gamma  \implies  \abs{c_2(t)}^2  = \sin^2 t \gamma
+	\end{equation*}
+	Hence the formula is verified.
 \end{homeworkProblem}
 
 
