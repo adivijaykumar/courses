@@ -1,0 +1,352 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#6}
+\newcommand{\hmwkDueDate}{Due on 28th November, 2018}
+\newcommand{\hmwkClass}{Advanced Quantum Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury, Sarthak Duary and Junaid Majeed for discussions.)
+\\
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[1]
+	We first lay out our notation. From the Lippmann-Schwinger equation, we know,
+	\begin{equation*}
+	\psi(\vb{r}) = e^{i \vb{k} \cdot \vb{r}} +  \dfrac{e^{i k r}}{r} \underbrace{\qty[\qty(\dfrac{-m}{2 \pi}) \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) \psi (\vb{r'})]}_{f(\vb{k},\vb{k'})} 
+	\end{equation*}
+	To solve this order by order, we use the ansatz $ \psi(\vb{r}) = e^{i \vb{k} \cdot \vb{r}}  + \sum_{n = 1}^{\infty} \phi_n(\vb{r})$. Substituting in the above equation, we get the recurrence relation,
+	\begin{align*}
+	\phi_{n+1}(\vb{r}) &= \qty(\dfrac{-m}{2 \pi})   \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'})\phi_n(\vb{r})\\
+	\qq{in particular} \phi_{1}(\vb{r}) &= \qty(\dfrac{-m}{2 \pi}) \dfrac{e^{i k r}}{r} \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) e^{i \vb{k} \cdot \vb{r'}} = \qty(\dfrac{-m}{2 \pi}) \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r'}} V(\vb{r'}) \\
+	\qq{and} \phi_2(\vb{r}) &= \qty(\dfrac{-m}{2 \pi})^2 \dfrac{e^{i k r}}{r} \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) \int d^3 \vb{r''} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r''}} V(\vb{r''})
+	\end{align*}
+	In the Born approximation, one sets $ \psi(\vb{r}) = e^{i \vb{k} \cdot \vb{r}}  + \phi_1 (\vb{r}) \implies f^{(1)}(\vb{k},\vb{k'}) = \qty(\dfrac{-m}{2 \pi}) \int d^3 \vb{r'} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r'}} V(\vb{r'}) $
+	
+	\begin{align*}
+	\dv{\sigma}{\Omega} &= \abs{f^{(1)} (\vb{k},\vb{k'})}^2 \\
+	&= \dfrac{m^2}{4 \pi^2} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'}) e^{-i \vb{k'} \cdot \vb{x}} e^{i \vb{k} \cdot \vb{x}} e^{-i \vb{k} \cdot \vb{x'}} e^{i \vb{k'} \cdot \vb{x}}\\
+	\dv{\sigma}{\Omega} &= \dfrac{m^2}{4 \pi^2} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'}) e^{i (\vb{k} - \vb{k'}) \cdot (\vb{x} - \vb{x'})} 
+	\end{align*}
+	The total cross-section $ \sigma_{T} $ can be obtained by integrating over outgoing momenta and averaging over ingoing momenta.
+	
+	\begin{align*}
+	\implies \sigma_T  &= \dfrac{m^2}{4 \pi^2} \int d^3 \vb{x}  d^3 \vb{x'} \dfrac{d \Omega_{\vb{k}}}{4 \pi} d \Omega_{\vb{k'}} V(\vb{x}) V(\vb{x'}) e^{i (\vb{k}) \cdot (\vb{x} - \vb{x'})}  e^{i (-\vb{k'}) \cdot (\vb{x} - \vb{x'})}   \\
+	&= \dfrac{m^2}{4 \pi^2} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'})\int_{0}^{2 \pi} \dfrac{d\phi_{\vb{k}}}{4 \pi} \int_{-1}^{1}  d (\cos \theta_{\vb{k}}) e^{i \abs{\vb{k}} \abs{\vb{x} - \vb{x'}} \cos \theta_{\vb{k}}}  \int_{0}^{2 \pi} d\phi_{\vb{k'}} \int_{-1}^{1}  d (\cos \theta_{\vb{k'}}) e^{-i \abs{\vb{k'}} \abs{\vb{x} - \vb{x'}} \cos \theta_{\vb{k'}}} 
+	\end{align*}
+	\begin{align*}
+	\sigma_T &= \dfrac{m^2}{4 \pi} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'}) \dfrac{e^{i k \abs{\vb{x} - \vb{x'}}} - e^{-i k \abs{\vb{x} - \vb{x'}} }}{i k \abs{\vb{x} - \vb{x'}}} \cross  \dfrac{e^{-i k \abs{\vb{x} - \vb{x'}}} - e^{i k \abs{\vb{x} - \vb{x'}} }}{-i k \abs{\vb{x} - \vb{x'}}} \impliedby (\abs{\vb{k}} = \abs{\vb{k'}} = k) \\
+	&= \dfrac{m^2}{4 \pi} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'})   \dfrac{2 \sin  k \abs{\vb{x} - \vb{x'}} }{k \abs{\vb{x} - \vb{x'}}} \cross \dfrac{2 \sin  k \abs{\vb{x} - \vb{x'}} }{k \abs{\vb{x} - \vb{x'}}} \\
+	\sigma_{T} &= \dfrac{m^2}{ \pi} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'})   \dfrac{ \sin^2  k \abs{\vb{x} - \vb{x'}} }{k^2 \abs{\vb{x} - \vb{x'}}^2}
+	\end{align*}
+	
+	By considering terms upto second order in the potential and writing $ \psi(\vb{r}) = e^{i \vb{k} \cdot \vb{r}}  + \phi_1 (\vb{r}) + \phi_2 (\vb{r}) $, we get,
+	\begin{align*}
+	f^{(2)}(\vb{k},\vb{k'}) &= \qty(\dfrac{-m}{2 \pi}) \int d^3 \vb{r'} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r'}} V(\vb{r'}) + \qty(\dfrac{-m}{2 \pi})^2 \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) \int d^3 \vb{r''} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r''}} V(\vb{r''})\\
+	f^{(2)}(\vb{k},\vb{k}) &= \qty(\dfrac{-m}{2 \pi}) \int d^3 \vb{r'} V(\vb{r'}) + \qty(\dfrac{-m}{2 \pi})^2 \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{-i \vb{k} \cdot \vb{r'}} V(\vb{r'}) \int d^3 \vb{r''}  V(\vb{r''})\\
+	\Im f^{(2)}(\vb{k},\vb{k}) &= \qty(\dfrac{m^2}{4 \pi^2}) \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'}  d^3 \vb{r''} V(\vb{r'}) V(\vb{r''}) \dfrac{e^{-i \vb{k} \cdot \vb{r'}} - e^{i \vb{k} \cdot \vb{r'}}}{2i}
+	\end{align*} 
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	If $ \rho $ is the density matrix of a pure state, we know that $ \rho^2 = \rho \implies \log \rho^2 = \log \rho \implies 2 \log \rho - \log \rho = 0 \implies \log \rho = 0 \implies \rho \log \rho  = 0 \implies S = - \Tr(\rho \log \rho) = 0 $  \\
+	
+	\textbf{Part (b)}\\
+	We know that $ \Tr \rho = 1 $ and that $ \rho $ is positive semi-definite $ \implies \lambda_i \le 1 $, where $ \lambda_i $ are the eigenvalues. In the basis where the density matrix in diagonal, $ \lambda_i $'s are the diagonal elements.
+	\begin{equation*}
+	\Tr \rho = \sum_{i=1}^{d} \lambda_i = 1 \qq{and} -\Tr \rho \log \rho = \sum_{i=1}^{d} \lambda_i \log \dfrac{1}{\lambda_i} = \sum_{i=1}^{d}  \log \dfrac{1}{\lambda_i^{\lambda_i}} = \log \prod_{i=1}^d\dfrac{1}{  \lambda_i^{\lambda_i}}
+	\end{equation*}
+	The  Arithmetic Mean (AM) - Geometric Mean (GM) inequality with weights \footnote{https://www.jstor.org/stable/24340414} says that for non-negative numbers $ n_i $ and non-negative weights $ w_i $, the following holds
+	\begin{equation*} 
+	\dfrac{\sum_{i} w_i n_i}{\sum_{i} w_i} \ge 
+	\qty(\prod_{i=1} n_i^{w_i})^{\frac{1}{\sum_{i} w_i}}
+	\end{equation*}
+	Using $	n_i = \dfrac{1}{\lambda_i}$ and $ w_i = \lambda_i $,
+	\begin{align*}
+	\dfrac{\sum_{i=1}^d \lambda_i \frac{1}{\lambda_i}}{\sum_{i}^d \lambda_i} &\ge 
+	\qty(\prod_{i=1}  \frac{1}{\lambda_i^{\lambda_i}})^{\frac{1}{\sum_{i}^d \lambda_i}} \\
+	\implies \prod_{i=1}  \frac{1}{\lambda_i^{\lambda_i}} &\le  d \\
+	\implies \log \prod_{i=1}  \frac{1}{\lambda_i^{\lambda_i}} &\le  \log d \\
+	\implies S \le \log d
+	\end{align*}
+	Hence the maximum value of $ S $ is $ \log d $.
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[5]
+	Given,
+	\begin{align*}
+	\ket{\psi} &= \kappa \sum_E e^{- \frac{\beta E}{2}} \ket{E} \ket{\tilde{E}}\\
+	\implies \ip{\psi}{\psi} &= \kappa^2 \sum_{E,E'} e^{- \frac{\beta (E + E')}{2}} \ip{E}{E'}  \ip{\tilde{E}}{\tilde{E'}}\\
+	\implies 1 &= \kappa^2 \sum_{E,E'} e^{- \frac{\beta (E + E')}{2}} \delta_{E,E'}\\
+	\implies \kappa &= \qty(\dfrac{1}{\sum_E e^{-{\beta E}}})^{1/2}
+	\end{align*}
+	
+	The density matrix corresponding to $ \ket{\psi} $ is,
+	\begin{align*}
+	\rho &= \op{\psi}{\psi}\\
+	&= \kappa^2 \sum_{E,E'} e^{- \frac{\beta (E + E')}{2}} \ket{E} \ket{\tilde{E}} \bra{E'} \bra{\tilde{E'}}
+	\end{align*}
+	
+	We need to find $ \rho_1 = \Tr_2 \rho = \ev{\rho}{\tilde{E}} $,
+	\begin{align*}
+	\rho_1  &= \kappa^2 \sum_{E,E'} e^{- \frac{\beta (E + E')}{2}} \ket{E} \ip{\tilde{E}}{\tilde{E}} \bra{E'} \ip{\tilde{E'}}{\tilde{E}} \\
+	&= \kappa^2 \sum_{E,E'} e^{- \frac{\beta (E + E')}{2}} \ket{E} \bra{E'} \delta_{E,E'}\\
+	\rho_1 &= {\sum_{E} \kappa^2 e^{- {\beta E}} \ket{E} \bra{E}}
+	\end{align*}
+	We see that $ \rho_1 $ is diagonal in the energy basis. Hence, taking the trace of a function of $ \rho_1 $ is straightforward,
+	\begin{align*}
+	S = -\Tr \rho_1 \log \rho_1 = {\sum_{E} \kappa^2 e^{- {\beta E}}(-\beta E + \log \kappa^2)}
+	\end{align*}
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+\end{document}
