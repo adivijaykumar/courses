@@ -157,16 +157,74 @@
 
 
 
+
+
+
 \begin{homeworkProblem}[1]
+	The wave equation can be written as,
+	\begin{align*}
+	\pdv[2]{f}{t} &= c^2 \laplacian{f} \\
+	\implies \pdv[2]{f}{t} &= c^2 \qty[\dfrac{1}{r}\pdv{r} \qty(r \pdv{f}{r}) + \dfrac{1}{r^2} \pdv[2]{f}{\theta} ]
+	\end{align*}
+	We write $ f(r, \theta, t)  = R(r) \Theta(\theta) T(t)$. We then have,
+	\begin{equation*}
+	\dfrac{1}{T}\dv[2]{T}{t} = c^2 \qty[\dfrac{1}{Rr} \dv{r} \qty(r \dv{R}{r}) + \dfrac{1}{r^2 \Theta} \dv[2]{\Theta}{\theta} ] = constant = - \lambda^2
+	\end{equation*}
+	where $ - \lambda^2 $ comes from the fact that LHS is only dependent on $ t $, and the RHS does not depend on $ t $. Let's look at the RHS. 
+	\begin{align*}
+	c^2 \qty[\dfrac{1}{Rr} \dv{r} \qty(r \dv{R}{r}) + \dfrac{1}{r^2 \Theta} \dv[2]{\Theta}{\theta} ] &= -\lambda^2 \\
+	\implies \dfrac{r}{R} \dv{r} \qty(r \dv{R}{r}) + \dfrac{1}{\Theta} \dv[2]{\Theta}{\theta}  &= -\dfrac{\lambda^2 r^2}{c^2}\\
+	\implies \dv[2]{\Theta}{\theta} = - \mu^2 \Theta \qq{and} \dfrac{r}{R} \dv{r} \qty(r \dv{R}{r}) &= - \dfrac{\lambda^2 r^2}{c^2} + \mu^2	\\
+	\implies \Theta =A  e^{i \mu \theta} + B e^{-i \mu \theta} \qq{and} {r R''(r)+R'(r)} + &\qty(\frac{\lambda ^2 r^2}{c^2} - \mu^2) R(r) = 0 \\
+	\implies \Theta =A  e^{i \mu \theta} + B e^{-i \mu \theta} \qq{and} R &= C J_\mu \qty(\frac{\lambda R}{c})
+	\end{align*}
+	So $ \mu, \lambda $ are the required quantum numbers.
+	\\
+	
+	\textbf{Part (b)}\\
+	We have to find $ G(\vb{x},\vb{x'}) $. We know that the Green's function in momentum space is $ \tilde{G}(\vb{p}) = \dfrac{1}{E - p^2/2m} $
+	
+	\begin{align*}
+	\therefore  G(\vb{x},\vb{x'})  &= \mel{\vb{x}}{\tilde{G}(\vb{p})}{\vb{x'}} \\
+	&= \int \dfrac{d^2 \vb{p'}}{(2\pi)^2} \dfrac{d^2 \vb{p}}{(2\pi)^2}  \ip{\vb{x}}{\vb{p}}  \mel{\vb{p}}{\tilde{G}(\vb{p})}{\vb{p'}} \ip{\vb{p'}}{\vb{x'}}\\
+	&= \int \dfrac{d^2 \vb{p'}}{(2\pi)^2} \dfrac{d^2 \vb{p}}{(2\pi)^2}  \ip{\vb{x}}{\vb{p}}  \dfrac{1}{E - p^2/2m} \delta_{\vb{p},\vb{p'}} \ip{\vb{p'}}{\vb{x'}}
+	\end{align*}
+	
+	\begin{align*}
+	G(\vb{x},\vb{x'})   &= \int  \dfrac{d^2 \vb{p}}{(2\pi)^2}  \ip{\vb{x}}{\vb{p}}  \dfrac{1}{E - p^2/2m}  \ip{\vb{p}}{\vb{x'}}\\
+	&= \int  \dfrac{d^2 \vb{p}}{(2\pi)^2}  e^{i \vb{p} \cdot (\vb{x} - \vb{x'})}  \dfrac{1}{E - p^2/2m}\\
+	&= \dfrac{1}{4 \pi^2} \int_0^\infty  p dp  \int_{-1}^1 d(\cos \theta) e^{i p \abs{\vb{x} - \vb{x'}}}  \dfrac{1}{E - p^2/2m}\\
+	&= \dfrac{2m}{4 \pi^2} \int_0^\infty  p dp  \int_{-1}^1 d(\cos \theta) e^{i p \abs{\vb{x} - \vb{x'}} \cos \theta}  \dfrac{1}{2mE - p^2}\\
+	&=\dfrac{2m}{4 \pi^2} \int_0^\infty  p dp \dfrac{ e^{i p \abs{\vb{x} - \vb{x'}} } - e^{-i p \abs{\vb{x} - \vb{x'} }}}{i \abs{\vb{x} - \vb{x'} }}  \dfrac{1}{2mE - p^2}\\
+	&= \dfrac{2m i}{4 \pi^2  \abs{\vb{x} - \vb{x'} }} \int_{-\infty}^\infty  p dp  e^{i p \abs{\vb{x} - \vb{x'}} } \dfrac{1}{ p^2  - 2 m E - i \epsilon} \\
+	&= \dfrac{2m i}{4 \pi^2  \abs{\vb{x} - \vb{x'} }} ( \pi i) e^{i k \abs{\vb{x} - \vb{x'}}} \\
+	G(\vb{x},\vb{x'})  &= - \dfrac{m  e^{i k \abs{\vb{x} - \vb{x'}}} }{2 \pi  \abs{\vb{x} - \vb{x'} }}
+	\end{align*}
+	The integration is exactly the same as the contour integral which was described in class, and so is the Green's function.
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}[2]
 	We first lay out our notation. From the Lippmann-Schwinger equation, we know,
 	\begin{equation*}
 	\psi(\vb{r}) = e^{i \vb{k} \cdot \vb{r}} +  \dfrac{e^{i k r}}{r} \underbrace{\qty[\qty(\dfrac{-m}{2 \pi}) \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) \psi (\vb{r'})]}_{f(\vb{k},\vb{k'})} 
 	\end{equation*}
 	To solve this order by order, we use the ansatz $ \psi(\vb{r}) = e^{i \vb{k} \cdot \vb{r}}  + \sum_{n = 1}^{\infty} \phi_n(\vb{r})$. Substituting in the above equation, we get the recurrence relation,
 	\begin{align*}
-	\phi_{n+1}(\vb{r}) &= \qty(\dfrac{-m}{2 \pi})   \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'})\phi_n(\vb{r})\\
-	\qq{in particular} \phi_{1}(\vb{r}) &= \qty(\dfrac{-m}{2 \pi}) \dfrac{e^{i k r}}{r} \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) e^{i \vb{k} \cdot \vb{r'}} = \qty(\dfrac{-m}{2 \pi}) \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r'}} V(\vb{r'}) \\
-	\qq{and} \phi_2(\vb{r}) &= \qty(\dfrac{-m}{2 \pi})^2 \dfrac{e^{i k r}}{r} \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) \int d^3 \vb{r''} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r''}} V(\vb{r''})
+	\phi_{n+1}(\vb{r}) &=   \int d^3 \vb{r'} G_0^+ (k,\vb{r} - \vb{r'}) V(\vb{r'})\phi_n(\vb{r})\\
+	\qq{in particular} \phi_{1}(\vb{r}) &= \qty(\dfrac{-m}{2 \pi}) \dfrac{e^{i k r}}{r} \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) e^{i \vb{k} \cdot \vb{r'}} = \qty(\dfrac{-m}{2 \pi}) \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r'}} V(\vb{r'}) 
 	\end{align*}
 	In the Born approximation, one sets $ \psi(\vb{r}) = e^{i \vb{k} \cdot \vb{r}}  + \phi_1 (\vb{r}) \implies f^{(1)}(\vb{k},\vb{k'}) = \qty(\dfrac{-m}{2 \pi}) \int d^3 \vb{r'} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r'}} V(\vb{r'}) $
 	
@@ -186,13 +244,18 @@
 	&= \dfrac{m^2}{4 \pi} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'})   \dfrac{2 \sin  k \abs{\vb{x} - \vb{x'}} }{k \abs{\vb{x} - \vb{x'}}} \cross \dfrac{2 \sin  k \abs{\vb{x} - \vb{x'}} }{k \abs{\vb{x} - \vb{x'}}} \\
 	\sigma_{T} &= \dfrac{m^2}{ \pi} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'})   \dfrac{ \sin^2  k \abs{\vb{x} - \vb{x'}} }{k^2 \abs{\vb{x} - \vb{x'}}^2}
 	\end{align*}
-	
-	By considering terms upto second order in the potential and writing $ \psi(\vb{r}) = e^{i \vb{k} \cdot \vb{r}}  + \phi_1 (\vb{r}) + \phi_2 (\vb{r}) $, we get,
-	\begin{align*}
-	f^{(2)}(\vb{k},\vb{k'}) &= \qty(\dfrac{-m}{2 \pi}) \int d^3 \vb{r'} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r'}} V(\vb{r'}) + \qty(\dfrac{-m}{2 \pi})^2 \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{-i k \vu{r} \cdot \vb{r'}} V(\vb{r'}) \int d^3 \vb{r''} e^{i (\vb{k} - \vb{k'}) \cdot \vb{r''}} V(\vb{r''})\\
-	f^{(2)}(\vb{k},\vb{k}) &= \qty(\dfrac{-m}{2 \pi}) \int d^3 \vb{r'} V(\vb{r'}) + \qty(\dfrac{-m}{2 \pi})^2 \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'} e^{-i \vb{k} \cdot \vb{r'}} V(\vb{r'}) \int d^3 \vb{r''}  V(\vb{r''})\\
-	\Im f^{(2)}(\vb{k},\vb{k}) &= \qty(\dfrac{m^2}{4 \pi^2}) \dfrac{e^{i k r}}{r}  \int d^3 \vb{r'}  d^3 \vb{r''} V(\vb{r'}) V(\vb{r''}) \dfrac{e^{-i \vb{k} \cdot \vb{r'}} - e^{i \vb{k} \cdot \vb{r'}}}{2i}
-	\end{align*} 
+	 The optical theorem tells us,
+	 \begin{equation*}
+	 \sigma_T = \dfrac{4 \pi}{k} 	\Im f(\vb{k}, \vb{k}) = - \dfrac{2 m L^3}{k}  \Im \mel{\vb{k}}{T}{\vb{k}} 
+	 \end{equation*}
+	 Upto first order the imaginary part is zero. Hence,
+	 \begin{align*}
+	 \sigma_T &=  - \dfrac{2 m L^3}{k}  \Im \mel{\vb{k}}{V \dfrac{1}{E -  H_0 + i \epsilon} V}{\vb{k}} \\
+	 &=  - \dfrac{2 m L^3}{k}  \Im \int d^3 \vb{x} d^3 \vb{x'}  \mel{\vb{k}}{V}{\vb{x}} \mel{\vb{x}}{ \dfrac{1}{E -  H_0 + i \epsilon} }{\vb{x'}} \mel{\vb{x'}}{V}{\vb{k}} \\
+	 &=  - \dfrac{2 m }{k}  \Im \int d^3 \vb{x} d^3 \vb{x'}  V(\vb{x}) V(\vb{x'})  e^{-i \vb{k} \cdot (\vb{x} - \vb{x'})} \qty(\dfrac{-m}{2 \pi})  \dfrac{e^{i k \abs{\vb{x} - \vb{x'} }}}{\abs{\vb{x} - \vb{x'} }}\\
+	 &=  - \dfrac{2 m }{k}  \Im \int d^3 \vb{x} d^3 \vb{x'}  V(\vb{x}) V(\vb{x'})  e^{-i \vb{k} \cdot (\vb{x} - \vb{x'})} \qty(\dfrac{-m}{2 \pi})  \dfrac{e^{i k \abs{\vb{x} - \vb{x'} }}}{\abs{\vb{x} - \vb{x'} }}\\
+	 &= \dfrac{m^2}{ \pi} \int d^3 \vb{x}  d^3 \vb{x'} V(\vb{x}) V(\vb{x'})   \dfrac{ \sin^2  k \abs{\vb{x} - \vb{x'}} }{k^2 \abs{\vb{x} - \vb{x'}}^2}
+	 \end{align*}
 \end{homeworkProblem}
 
 
@@ -201,21 +264,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-\begin{homeworkProblem}
-	content...
-\end{homeworkProblem}
 
 
 
