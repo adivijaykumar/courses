@@ -288,7 +288,24 @@
 
 
 \begin{homeworkProblem}
-	content...
+	From equation $ (6.4.54) $ of Sakurai, we have,
+	\begin{equation*}
+	\tan \delta_l = \dfrac{k R j'_l(kR)  - \beta_l j_l(kR)}{kR n'_l(kR) - \beta_ln_l (kR)} \qq{where} \beta_l = \eval{\qty(\dfrac{r}{A_l} \dv{A_l}{r})}_{r = R}
+	\end{equation*}
+	Here, $ j_l $ and $ n_l $ are the spherical Bessel function, and $ A_l $ is the solution to the wave equation in the region $ r >R $.
+	
+	From Sakurai $ (6.4.55) $, we have, for $ r<R $ and $ u_l(r) = r A_l(r) $
+	\begin{equation*}
+	\dv[2]{u_l}{r} + \qty(k^2 - 2mV_0	 - \dfrac{l(l+1)}{r^2}) u_l = 0
+	\end{equation*}
+	Solving the above differential equation in Mathematica, we get,
+	\begin{equation*}
+	u_l(r) = c_1 \sqrt{r} j_{\frac{1}{2} (2 l+1)}\left(-i r \sqrt{2 \text{mV}_0-k^2}\right)+c_2 \sqrt{r} n_{\frac{1}{2} (2 l+1)}\left(-i r \sqrt{2 \text{mV}_0-k^2}\right)
+	\end{equation*}
+	The above solution is subject to boundary condition $ u_l(0) = 0 $. From the properties of Bessel functions, we know that this can only be possible when $ l=0 $. Then, using $ l=0 $ and applying $ u_0(0) = 0 $,
+	\begin{equation*}
+	A_0(r) = \frac{i \sqrt{\frac{2}{\pi }} c_1 \sinh \left(x \sqrt{2 \text{mV}_0-k^2}\right)}{x \sqrt{-i \sqrt{2 \text{mV}_0-k^2}}} \implies \beta_0(r) = \dfrac{r}{A_0} \dv{A_0}{r} = r \sqrt{2 \text{mV}_0-k^2} \coth \left(r \sqrt{2 \text{mV}_0-k^2}\right) - 1
+	\end{equation*}
 \end{homeworkProblem}
 
 
@@ -368,7 +385,7 @@
 	\ket{\psi} &= \kappa \sum_E e^{- \frac{\beta E}{2}} \ket{E} \ket{\tilde{E}}\\
 	\implies \ip{\psi}{\psi} &= \kappa^2 \sum_{E,E'} e^{- \frac{\beta (E + E')}{2}} \ip{E}{E'}  \ip{\tilde{E}}{\tilde{E'}}\\
 	\implies 1 &= \kappa^2 \sum_{E,E'} e^{- \frac{\beta (E + E')}{2}} \delta_{E,E'}\\
-	\implies \kappa &= \qty(\dfrac{1}{\sum_E e^{-{\beta E}}})^{1/2}
+	\implies \kappa &= \qty(\dfrac{1}{\sum_E e^{-{\beta E}}})^{1/2} = \dfrac{1}{\sqrt{Z(\beta)}}
 	\end{align*}
 	
 	The density matrix corresponding to $ \ket{\psi} $ is,
@@ -385,8 +402,11 @@
 	\end{align*}
 	We see that $ \rho_1 $ is diagonal in the energy basis. Hence, taking the trace of a function of $ \rho_1 $ is straightforward,
 	\begin{align*}
-	S = -\Tr \rho_1 \log \rho_1 = {\sum_{E} \kappa^2 e^{- {\beta E}}(-\beta E + \log \kappa^2)}
-	\end{align*}
+	S = -\Tr \rho_1 \log \rho_1 &= {\sum_{E} \dfrac{e^{-\beta E}}{Z} (\log Z + \beta E)}\\
+	&=  {\sum_{E} \dfrac{e^{-\beta E}}{Z} \beta( E - F)}\\
+	&\sim S_{th}
+	\end{align*} 
+	where $ S_{th} $ is the thermal entropy of the system.
 \end{homeworkProblem}
 
 
