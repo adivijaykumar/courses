@@ -1,0 +1,231 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#1}
+\newcommand{\hmwkDueDate}{Due on 28th November, 2018}
+\newcommand{\hmwkClass}{Advanced Statistical Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury, Sarthak Duary and Junaid Majeed for discussions.)
+\\
+
+
+\begin{homeworkProblem}[1]
+	\textbf{Part (a)}\\
+	Given that 
+	\begin{align*}
+	X &= \dfrac{\sum_{i=1}^N X_i}{\sigma \sqrt{N}} \\
+	\ev{X} &= \dfrac{\sum_{i=1}^N \ev{X_i}}{\sigma \sqrt{N}} = \dfrac{\sum_{i=1}^N 0}{\sigma \sqrt{N}} = 0\\
+	\sqrt{\ev{X^2}} &= \dfrac{\sqrt{\sum_{i=1}^N \sum_{j=1}^N \ev{X_i X_j}}}{\sigma \sqrt{N}} \\ 
+	&=  \dfrac{\sqrt{\sum_{i=1}^N \sum_{j=1}^N \ev{X_i^2} \delta_{ij}}}{\sigma \sqrt{N}} \impliedby \qq{independent variables, hence covariance is zero}\\
+	&= \dfrac{\sqrt{\sum_{i=1}^N\sigma^2 }}{\sigma \sqrt{N}}\\
+	\sigma_X &= \dfrac{\sqrt{N \sigma^2 }}{\sigma \sqrt{N}} = 1
+	\end{align*}
+	
+	\textbf{Part (d)}\\
+	In our case, in time interval $ dt $, the walker can go left with probability $ \alpha dt$, right with probability $ \alpha dt$ and can stay at the same position with probability $ 1 - 2 \alpha dt $. So then, at position $ i $ and time $ t + dt $,
+	\begin{align*}
+	P(i, t + dt) = P(i,t) (1 - 2 \alpha dt) + (P(i+1,t) + P(i-1,t)) \alpha dt\\
+	\dfrac{P(i, t + dt) - P(i,t)}{dt} = - 2 P(i,t) \alpha   + (P(i+1,t) + P(i-1,t)) \alpha 
+	\end{align*}
+	
+	\textbf{Part (e)}\\
+	Let's say the random walker takes $ x $ steps rightward and $ y $ steps leftward. For this walker to be at $ r $ after $ N $ steps, $ x + y = N $ and $ x-y = r $ $ \implies x = \dfrac{N+r}{2} $ and $ y = \dfrac{N - r}{2} $. The probability $ P(r,N) $ is then,
+	\begin{align*}
+	P(r,N) &= {N \choose r} \dfrac{1}{2^{x}} \dfrac{1}{2^{y}} \\
+	&= {N \choose x} \dfrac{1}{2^{N}}
+	\end{align*} 
+	
+	For very large $ N $,
+	\begin{align*}
+	{n \choose x} = \dfrac{N!}{x! y!} &= \dfrac{N!}{\qty(\dfrac{N+r}{2})!\qty(\dfrac{N-r}{2})!}\\
+	&=\dfrac{e^{-N} N^N}{(N+r)^{(N+r)/2} (N-r)^{(N-r)/2} 2^{-N} e^{-N}}\\
+	&= \dfrac{N^N}{(1+r/N)^{(N+r)/2} (1-r/N)^{(N-r)/2} 2^{-N} N^N }\\
+	P(r,N) &= \dfrac{1}{(1+r/N)^{(N+r)/2} (1-r/N)^{(N-r)/2}}\\
+	P(r,N) &= [{(1+r/N)^{(1+r/N)} (1-r/N)^{(1-r/N)}}]^{-N/2}
+	\end{align*}
+	Comparing with the form $ P(r,N) = e^{-N \phi(r/N)} $, we get,
+	\begin{equation*}
+	\phi(x) =\dfrac{ (1+x) \ln (1+x) + (1 -x ) \ln (1-x)}{2}
+	\end{equation*}
+	
+\end{homeworkProblem}
+
+
+
+
+
+
+
+\begin{homeworkProblem}[2]
+	\textbf{Part (a)}\\
+	For constant number of particles, 
+	\begin{equation*}
+	dU = -PdV + TdS + hdM
+	\end{equation*}
+	The enthalpy $ E $ is defined as $E = U + PV$,
+	\begin{align*}
+	dE &= dU + PdV + VdP = -PdV + TdS + hdM + PdV + VdP \\
+	&=  TdS + hdM  + VdP
+	\end{align*}
+	The Helmholtz Potential $ A $ is defined as $A = U - TS$,
+	\begin{align*}
+	dA &= dU - TdS - SdT  = -PdV + TdS + hdM - TdS - SdT  \\
+	&= -PdV + hdM  - SdT 
+	\end{align*}
+	The Gibbs Potential $ G = E - TS $, 
+	\begin{align*}
+	dG &=  TdS + hdM  + VdP - TdS - SdT\\
+	&=   hdM  + VdP - SdT
+	\end{align*}
+	As all the quantities are related by Legendre Transforms, knowledge of one of the quantities is enough to calculate all the others.
+	
+	\textbf{Part (b)}\\
+	$ C_x $ and $ \kappa_x $ are defined as follows,
+	\begin{equation*}
+	C_x = \eval{\dv{Q}{T}}_{x = const.} \qq{} \kappa_x = -\eval{\dfrac{1}{V}\dv{V}{P}}_{x = const.}
+	\end{equation*}
+\end{homeworkProblem}
+
+\end{document}
