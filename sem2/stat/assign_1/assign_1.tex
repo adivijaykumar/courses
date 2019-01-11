@@ -97,7 +97,7 @@
 %
 
 \newcommand{\hmwkTitle}{Assignment\ \#1}
-\newcommand{\hmwkDueDate}{Due on 28th November, 2018}
+\newcommand{\hmwkDueDate}{Due on 18th January, 2019}
 \newcommand{\hmwkClass}{Advanced Statistical Mechanics}
 \newcommand{\hmwkClassTime}{}
 \newcommand{\hmwkClassInstructor}{}
@@ -147,9 +147,7 @@
 \begin{document}
 
 \maketitle
-(\textbf{Acknowledgements} - I would like to thank Chandramouli Chowdhury, Sarthak Duary and Junaid Majeed for discussions.)
-\\
-
+(\textbf{Acknowledgements} - I would like to thank Aditya Sharma and Junaid Majeed for discussions.)
 
 \begin{homeworkProblem}[1]
 	\textbf{Part (a)}\\
@@ -228,4 +226,27 @@
 	\end{equation*}
 \end{homeworkProblem}
 
+\begin{homeworkProblem}
+	Given $ S_{Gibbs} = - \sum_a p_\alpha \log p_\alpha $, which we have to maximize under $ \sum_\alpha p_\alpha = 1 $. We use the method of Lagrange multipliers, $ f(p_\alpha) = - \sum_a p_\alpha \log p_\alpha + \lambda (\sum_\alpha p_\alpha - 1) $,
+	\begin{align*}
+	\dv{f}{p_\gamma} &= - \log p_\gamma - 1 + \lambda = 0 \\
+	\implies \lambda &= 1 + \log p_\gamma \implies p_\gamma = constant = \dfrac{1}{N} 
+	\end{align*}
+	where $ N $ is the number of microstates. Hence, we have shown that the all microstates are equally likely in microcanonical ensemble.
+	
+	Similarly, we proceed to carry out the calculation for canonical ensemble and grand canonical ensemble. In this case, $ f(p_\alpha) = - \sum_a p_\alpha \log p_\alpha + \lambda_1 (\sum_\alpha p_\alpha - 1) +  \lambda_2 (\sum_\alpha p_\alpha E_\alpha - \ev{E}) $,
+	\begin{align*}
+	\dv{f}{p_\gamma} &= - \log p_\gamma - 1 + \lambda_1 + \lambda_2 E_\gamma = 0\\
+	\implies p_\gamma &= \exp(\lambda_1 - 1) \exp(\lambda_2 E_\gamma)
+	\end{align*}
+	which is the expression for probability in the canonical ensemble \textit{ie}. some normalization times $ \exp(\beta E_\gamma) $.
+	
+	For the grand canonical ensemble, $ f(p_\alpha) = - \sum_a p_\alpha \log p_\alpha + \lambda_1 (\sum_\alpha p_\alpha - 1) +  \lambda_2 \qty(\sum_\alpha p_\alpha E_\alpha - \ev{E}) +\lambda_3 (\sum_\alpha N_\alpha p_\alpha - \ev{N})$,
+	\begin{align*}
+	\dv{f}{p_\gamma} &= - \log p_\gamma - 1 + \lambda_1 + \lambda_2 E_\gamma + \lambda_3 N_\gamma = 0\\
+	\implies p_\gamma &= \exp(\lambda_1 - 1) \exp(\lambda_2 E_\gamma + \lambda_3 N_\gamma)
+	\end{align*}
+	which is the expression for probability in the canonical ensemble \textit{ie}. some normalization times $ \exp(\beta E_\gamma + \mu N_\gamma) $.
+	
+\end{homeworkProblem}
 \end{document}

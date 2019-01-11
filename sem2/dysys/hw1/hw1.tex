@@ -1,0 +1,182 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ \#1}
+\newcommand{\hmwkDueDate}{Due on 14th January, 2019}
+\newcommand{\hmwkClass}{Dynamical Systems}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Divya Jagannathan for discussions.)
+\\
+
+\begin{homeworkProblem}
+	\begin{equation}
+	\dot{x} = x^{1/3} \implies \dfrac{dx}{x^{1/3}} = dt \implies \dfrac{2}{3} \qty(x^{2/3} - x_0^{2/3}) = t \implies x(t) = \qty(x_0^{2/3} + \dfrac{3}{2}t)^{3/2}
+	\label{eq1}
+	\end{equation}
+	For $ x_0 = 0 $, we have $ x(t) = \qty(\dfrac{3t}{2})^{3/2} $. As the function $ f(y) = y^{3/2} $ is only defined for $ y \ge 0 $, this solution has maximum interval of existence $ t \in [0, \infty)$. For $ x_0 = 0 $, we also have the trivial solution $ x(t) = 0 $ which has maximum interval of existence $ t \in (-\infty, \infty) $. So there are at least two distinct solutions for $ x_0=0 $. One can also imagine patching up the above solutions at origin and forming other possible solutions.
+	\\
+	
+	For the case where $ x_0 \ne 0 $, we are only left with [\ref{eq1}]. As $ x_0^{2/3} > 0, \forall x_0 \ne 0 $, the maximal interval of existence for $ x(t) $ is $ [0,\infty) $.
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	\begin{align*}
+	\dot{x} = x ( x^2 - 1) \\
+	\therefore \dfrac{dx}{x ( x-1 )(x+1)} = dt\\
+	\therefore - \dfrac{dx}{x} +\dfrac{1}{2}\qty[\dfrac{dx}{x+1} + \dfrac{dx}{x-1}] = dt\\
+	\therefore \dfrac{1}{2} \log \dfrac{x+1}{x-1} - \log x = - \dfrac{1}{2} \log \dfrac{x_0 +1}{x_0 -1} + \log x_0 + t 
+	\end{align*}
+\end{homeworkProblem}
+
+\end{document}
