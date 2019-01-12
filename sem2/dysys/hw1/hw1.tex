@@ -171,12 +171,21 @@
 
 \begin{homeworkProblem}
 	\textbf{Part (a)}\\
+	\begin{equation*}
+	\dot{x} = x ( x^2 - 1)
+	\end{equation*}
+	For $ x_0 = 0,1,-1 $, $ x(t) = 0, 1, -1 $ respectively is a solution.
 	\begin{align*}
-	\dot{x} = x ( x^2 - 1) \\
-	\therefore \dfrac{dx}{x ( x-1 )(x+1)} = dt\\
-	\therefore - \dfrac{dx}{x} +\dfrac{1}{2}\qty[\dfrac{dx}{x+1} + \dfrac{dx}{x-1}] = dt\\
-	\therefore \dfrac{1}{2} \log \dfrac{x+1}{x-1} - \log x = - \dfrac{1}{2} \log \dfrac{x_0 +1}{x_0 -1} + \log x_0 + t 
+	\therefore \dfrac{dx}{x ( x-1 )(x+1)} &= dt\\
+	\therefore - \dfrac{dx}{x} +\dfrac{1}{2}\qty[\dfrac{dx}{x+1} + \dfrac{dx}{x-1}] &= dt\\
+	\therefore \dfrac{1}{2} \log \dfrac{x+1}{x-1} - \log x &= - \dfrac{1}{2} \log \dfrac{x_0 +1}{x_0 -1} + \log x_0 + t \\
+	\therefore \dfrac{1}{2} \log \dfrac{x+1}{x^2(x-1)}  &= - \dfrac{1}{2} \log \dfrac{x_0^2(x_0 +1)}{x_0 -1} + t 
 	\end{align*}
+	
+	For the problem to have the above solution, one must have,
+	\begin{equation*}
+	\dfrac{x_0 +1}{x_0 -1} > 0 \implies x_0 > 1 \qq{or} x_0 < -1 
+	\end{equation*}
 \end{homeworkProblem}
 
 \end{document}
