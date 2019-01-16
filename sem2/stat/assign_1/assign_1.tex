@@ -224,7 +224,22 @@
 	\begin{equation*}
 	C_x = \eval{\dv{Q}{T}}_{x = const.} \qq{} \kappa_x = -\eval{\dfrac{1}{V}\dv{V}{P}}_{x = const.}
 	\end{equation*}
+	Consider the following,
+	\begin{align*}
+	C_P = T \eval{\dv{S}{T}}_{P = const} = -T \pdv[2]{G}{T} \implies \pdv[2]{G}{T} < 0 \implies G(T) \text{ is concave}\\
+	C_V = T \eval{\dv{S}{T}}_{V = const} = -T \pdv[2]{A}{T} \implies \pdv[2]{A}{T} < 0 \implies A(T) \text{ is concave}\\
+	\kappa_T = -\eval{\dfrac{1}{V}\dv{V}{P}}_{T = const.} = -\dfrac{1}{V} \pdv[2]{G}{P} \implies \pdv[2]{G}{P} < 0 \implies G(P) \text{ is concave}\\
+	\kappa_T = -\eval{\dfrac{1}{V}\dv{V}{P}}_{T = const.} = \dfrac{1}{V} \dfrac{1}{\pdv[2]{A}{V} }\implies \pdv[2]{A}{V} > 0 \implies A(V) \text{ is convex}\\
+	\end{align*}
 \end{homeworkProblem}
+
+
+
+
+
+
+
+
 
 \begin{homeworkProblem}
 	Given $ S_{Gibbs} = - \sum_a p_\alpha \log p_\alpha $, which we have to maximize under $ \sum_\alpha p_\alpha = 1 $. We use the method of Lagrange multipliers, $ f(p_\alpha) = - \sum_a p_\alpha \log p_\alpha + \lambda (\sum_\alpha p_\alpha - 1) $,
@@ -248,5 +263,12 @@
 	\end{align*}
 	which is the expression for probability in the canonical ensemble \textit{ie}. some normalization times $ \exp(\beta E_\gamma + \mu N_\gamma) $.
 	
+	\textbf{Part (b)}\\
+	We first write down the partition function for a classical ideal gas,
+	\begin{align*}
+	Z &= \dfrac{1}{h^{3N} N!} \prod_{i=1}^{N} \int d^3q_i d^3 p_i \exp(-\beta p_i^2/2m)\\
+	&= \dfrac{1}{h^{3N} N!} \prod_{i=1}^{N} V \qty(\dfrac{2 \pi m}{\beta})^{3/2}\\
+	&= \dfrac{ V^N}{h^{3N} N!} \qty(\dfrac{2 \pi m}{\beta})^{3N/2}
+	\end{align*}
 \end{homeworkProblem}
 \end{document}
