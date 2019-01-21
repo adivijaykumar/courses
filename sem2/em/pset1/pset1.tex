@@ -1,0 +1,417 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Pset\ \#1}
+\newcommand{\hmwkDueDate}{Due on 18th January, 2019}
+\newcommand{\hmwkClass}{Electromagnetism}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Junaid Majeed for discussions.)
+\\
+\begin{homeworkProblem}
+	
+	\textbf{Part (a)}\\
+	
+	\begin{itemize}
+		\item $ \delta_i^i = \delta_1^1 + \delta_2^2 + \delta_3^3 = 3$.
+		\item $ \delta^{ij} \epsilon_{ijk} = \epsilon_{iik} = 0 $
+		\item $ \epsilon^{ijk} \epsilon_{mjk} =  3(\delta^i_m \delta^j_j - \delta^j_m \delta^i_j) =  9 \delta^i_m  - 3 \delta^i_m = 6 \delta^i_m $
+		\item $ \epsilon^{ijk} \epsilon_{ijk} =  \delta^i_i \delta^j_j - \delta^j_i \delta^i_j =  3^2 -3 = 6  $
+	\end{itemize}
+
+	\textbf{Part (b)}
+	\begin{align*}
+	B^i = \epsilon^{ijk} \partial_j A_k &\implies \epsilon_{ijk} B^k =  \epsilon_{ijk} \epsilon^{kab} \partial_a A_b \\
+	&\implies \epsilon_{ijk} B^k =  \epsilon_{ijk} \epsilon^{abk} \partial_a A_b\\
+	&\implies \epsilon_{ijk} B^k = (\delta_i^a \delta_j^b - \delta_i^b \delta_j^a) \partial_a A_b\\
+	&\implies \epsilon_{ijk} B^k = \partial_i A_j - \partial_j A_i\\
+	\end{align*}
+	
+	\textbf{Part (c)}
+		\begin{align*}
+		[\curl{(\va{A} \cross \va{B})}]_i &= \epsilon_{ijk} \partial_j (\va{A} \cross \va{B})_k\\ 
+		&= \epsilon_{ijk} \partial_j \epsilon_{k a b} A_a B_b\\
+		&= \epsilon_{ijk} \epsilon_{a b k} \partial_j  A_a B_b\\
+		&= (\delta_{ia} \delta_{jb} - \delta_{ib} \delta_{ja}) \partial_j  A_a B_b\\
+		&= \partial_j  A_i B_j - \partial_j  A_j B_i  \\
+		&=  A_i \partial_j  B_j + B_j \partial_j  A_i - B_i \partial_j  A_j -A_j \partial_j   B_i   \\
+		[\curl{(\va{A} \cross \va{B})}]_i&= [\va{A} (\div{\va{B}})]_i + [(\va{B} \vdot \grad) \va{A}]_i - [\va{B} (\div{\va{A}})]_i - [(\va{A} \vdot \grad) \va{B}]_i 
+		\end{align*}
+		Hence Proved.
+		\begin{align*}
+		[\va{A} \cross (\curl{\va{B}})]_i &= \epsilon_{ijk} A_j (\curl{\va{B}})_k\\
+		&= \epsilon_{ijk} A_j \epsilon_{k a b} \partial_{a} B_b\\
+		&=  (\delta_{ia} \delta_{jb} - \delta_{ib} \delta_{ja}) A_j  \partial_{a} B_b\\
+		[\va{A} \cross (\curl{\va{B}})]_i &=  A_b  \partial_{i} B_b -  A_j  \partial_{j} B_i\\
+		[\va{B} \cross (\curl{\va{A}})]_i &=  B_b  \partial_{i} A_b -  B_j  \partial_{j} A_i
+		\end{align*}
+		
+		\begin{align*}
+		[\va{A} \cross (\curl{\va{B}})]_i + [\va{B} \cross (\curl{\va{A}})]_i &=  A_b  \partial_{i} B_b -  A_j  \partial_{j} B_i +  B_b  \partial_{i} A_b -  B_j  \partial_{j} A_i\\
+		&=  \partial_{i}A_b  B_b -  A_j  \partial_{j} B_i -  B_j  \partial_{j} A_i\\
+		[\va{A} \cross (\curl{\va{B}})]_i + [\va{B} \cross (\curl{\va{A}})]_i &= [\grad{(\va{A} \vdot \va{B})}]_i - [(\va{A} \vdot \grad) \va{B}]_i - [(\va{B} \vdot \grad) \va{A}]_i\\
+		[\grad{(\va{A} \vdot \va{B})}]_i &= [\va{A} \cross (\curl{\va{B}})]_i + [\va{B} \cross (\curl{\va{A}})]_i  + [(\va{A} \vdot \grad) \va{B}]_i + [(\va{B} \vdot \grad) \va{A}]_i
+		\end{align*}
+		Hence Proved.
+		\begin{align*}
+		[\curl{(\curl{\va{A}})}]_i &= \epsilon_{ijk} \partial_j (\curl{\va{A}})_k\\
+		&= \epsilon_{ijk} \partial_j \epsilon_{k a b} \partial_a A_b\\
+		&= \epsilon_{ijk} \epsilon_{abk}  \partial_j \partial_a A_b \\
+		&= (\delta_{ia} \delta_{jb} - \delta_{ib} \delta_{ja})  \partial_j \partial_a A_b \\
+		&= \partial_j \partial_i A_j - \partial_j \partial_j A_i \\
+		[\curl{(\curl{\va{A}})}]_i &= [\grad{(\div{\va{A}})}]_i - [\laplacian{\va{A}}]_i
+		\end{align*}
+		Hence Proved.
+\end{homeworkProblem}
+
+
+
+
+
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	Consider $ (\va{A}\vdot \va{dl}) \wedge (\va{B} \vdot \va{dl}) $,
+	\begin{align*}
+	(\va{A}\vdot \va{dl}) \wedge (\va{B} \vdot \va{dl}) &=  (A_x \dd{x} + A_y \dd{y} + A_z \dd{z}) \wedge (B_x \dd{x} + B_y \dd{y} + B_z \dd{z})\\
+	&=  (A_x B_y - A_y B_x) \dd{x} \dd{y} + (A_y B_z - A_z B_y) \dd{y} \dd{z} + (A_z B_x - A_x B_z) \dd{z} \dd{x} \\
+	&=  (A_x B_y - A_y B_x) \dd{x} \dd{y} + (A_y B_z - A_z B_y) \dd{y} \dd{z} + (A_z B_x - A_x B_z) \dd{z} \dd{x}\\
+	&= (\va{A} \cross \va{B}) \vdot \va{\dd{a}}
+	\end{align*}
+	
+	\begin{align*}
+	(\va{A}\vdot \va{dl}) \wedge (\va{B} \vdot \va{dl}) \wedge (\va{C}\vdot \va{dl})  &=  (A_x \dd{x} + A_y \dd{y} + A_z \dd{z}) \wedge (B_x \dd{x} + B_y \dd{y} + B_z \dd{z}) \wedge (C_x \dd{x} + C_y \dd{y} + C_z \dd{z}) \\
+	&= (A_x B_y C_z - A_x B_z C_y + A_y B_z C_x - A_y B_x C_z + A_z B_x C_y - A_z B_y C_x) \dd{x} \dd{y} \dd{z}\\
+	&= \qty[(A_x B_y - A_y B_z) C_z - (A_x B_z - A_z B_x) C_y + (A_y B_z - A_z B_y) C_x] \dd{x} \dd{y} \dd{z}\\
+	&= (\va{A} \cross \va{B}) \vdot \va{C} \dd{\forall}
+	\end{align*}
+	
+	Consider spherical coordinates first,
+	\begin{align*}
+	(\va{A}\vdot \va{dl}) \wedge (\va{B} \vdot \va{dl}) &= (A_r \dd r + A_\theta r \dd \theta + A_\phi r \sin \theta \dd \phi  ) \wedge (B_r \dd r + B_\theta r \dd \theta + B_\phi r \sin \theta \dd \phi  )\\
+	&= (A_r B_\theta - A_\theta B_r)r \dd{r} \dd{\theta} + (A_\theta B_\phi - A_\phi B_\theta ) r^2 \sin \theta \dd{\theta} \dd{\phi} + (-A_\phi B_r + A_r B_\phi) r \sin \theta \dd{\phi} \dd{r}
+	\end{align*}
+	Comparing with the expression for $ (\va{A} \cross \va{B}) \vdot \va{\dd{a}} $, one gets,
+	\begin{equation*}
+	\va{\dd{a}} = r^2 \sin \theta \dd{\theta} \dd{\phi}  \vu{r}  + r \sin \theta \dd{\phi} \dd{r} \vu{\theta} + r \dd{r} \dd{\theta} \vu{\phi} 
+	\end{equation*}
+	Similarly,
+	\begin{align*}
+	(\va{A}\vdot \va{dl}) \wedge (\va{B} \vdot \va{dl}) \wedge (\va{C} \vdot \va{dl}) &= (\va{A}\vdot \va{dl}) \wedge (\va{B} \vdot \va{dl}) \wedge (C_r \dd r + C_\theta r \dd \theta + C_\phi r \sin \theta \dd \phi  )\\
+	&= [C_\phi (A_r B_\theta - A_\theta B_r) + C_r (A_\theta B_\phi - A_\phi B_\theta ) + C_\theta (-A_\phi B_r + A_r B_\phi)]r^2 \sin\theta \dd{r} \dd{\theta} \dd{\phi} 
+	\end{align*}
+	\begin{equation*}
+	\therefore \dd{\forall} = r^2 \sin\theta \dd{r} \dd{\theta} \dd{\phi}
+	\end{equation*}
+	We repeat the same exercise for cylindrical coordinates,
+	\begin{align*}
+	(\va{A}\vdot \va{dl}) \wedge (\va{B} \vdot \va{dl}) &= (A_s \dd{s} + A_\phi s \dd{\phi} + A_z \dd{z}) \wedge (B_s \dd{s} + B_\phi s \dd{\phi} + B_z \dd{z})\\
+	&= (A_s B_\phi - A_\phi B_s ) s \dd{s} \dd{\phi} + (A_z B_s - A_s B_z) \dd{s} \dd{z} + (A_\phi B_z - A_z B_\phi) s \dd{\phi} \dd{z}
+	\end{align*}
+	\begin{equation*}
+	\therefore \va{\dd{a}} =  s \dd{s} \dd{\phi} \vu{z} + \dd{s} \dd{z} \vu{\phi} + s \dd{\phi} \dd{z} \vu{s}
+	\end{equation*}
+	\begin{align*}
+	(\va{A}\vdot \va{dl}) \wedge (\va{B} \vdot \va{dl}) \wedge (\va{C} \vdot \va{dl}) &= [C_z(A_s B_\phi - A_\phi B_s ) + C_\phi (A_z B_s - A_s B_z) + C_s (A_\phi B_z - A_z B_\phi) ]s \dd{s} \dd{\phi} \dd{z}
+	\end{align*}
+	\begin{equation*}
+	\therefore \dd{\forall} = s \dd{s} \dd{\phi} \dd{z}
+	\end{equation*}
+	\textbf{Part (b)}\\
+	\begin{align*}
+	(\dd x  + \dd y - \dd z) \wedge (\dd x + \dd y + \dd z) &= \dd x \wedge \dd y + \dd x \wedge \dd z + \dd y \wedge \dd x + \dd y \wedge \dd z - \dd z \wedge \dd x - \dd z \wedge \dd y \\
+	&= \dd{x} \dd{y} - \dd{z} \dd{x} - \dd{x} \dd{y} + \dd{y} \dd{z} - \dd{z} \dd{x} + \dd{y} \dd{z}\\
+	&=  2 (\dd{y} \dd{z} - \dd{z} \dd{x})
+	\end{align*}
+	\begin{align*}
+	[(x-y) \dd{x} + (x+y) \dd{y} + z \dd{z}] \wedge [(x-y) \dd{x} + (x+y) \dd{y}] &= (x^2 - y^2 ) \dd{x} \wedge \dd{y} + (x^2 - y^2 ) \dd{y} \wedge \dd{x}\\
+	& + z(x-y) \dd{z} \wedge \dd{x} + z(x+y) \dd{z} \wedge \dd{y}\\
+	&= z(x-y) \dd{z} \dd{x} - z(x+y) \dd{y} \dd{z}
+	\end{align*}
+	
+	\textbf{Part (c)}\\
+	Let $ \omega $ be the 2-form in $ R^4 $. The general expression for $ \omega $ is,
+	\begin{equation*}
+	\omega = \sum_{i\ne j} a_{ij} \dd{x^i} \wedge \dd{x^j}
+	\end{equation*}
+	We need to look for a 2-form that satisfies $ \omega \wedge \omega = 0 $,
+	\begin{align*}
+	\omega \wedge \omega &= \sum_{i\ne j} a_{ij} \dd{x^i} \wedge \dd{x^j} \wedge \sum_{m\ne n} a_{mn} \dd{x^m} \wedge \dd{x^n}\\
+	&= (a_{12} - a_{21}) \dd{x_1} \wedge \dd{x_2} + (a_{23} - a_{32}) \dd{x_2} \wedge \dd{x_3} + (a_{34} - a_{43}) \dd{x_3} \wedge \dd{x_4} + (a_{24} - a_{42}) \dd{x_2} \wedge \dd{x_4}\\ &+ (a_{13} - a_{31}) \dd{x_1} \wedge \dd{x_3} + (a_{14} - a_{41}) \dd{x_1} \wedge \dd{x_4}\\
+	&= b_{12} \dd{x_1} \wedge \dd{x_2} + b_{23} \dd{x_2} \wedge \dd{x_3} + b_{34} \dd{x_3} \wedge \dd{x_4} + b_{13} \dd{x_1} \wedge \dd{x_3} + b_{14} \dd{x_1} \wedge \dd{x_4} + b_{24} \dd{x_2} \wedge \dd{x_4}
+	\end{align*}
+	\begin{equation*}
+	\omega \wedge \omega = 0 \implies b_{12} b_{34} - b_{13} b_{24} + b_{14} b_{23} = 0
+	\end{equation*}
+	The above expression reminds us of the determinant of a $ 3 \cross 3 $ matrix where,
+	\begin{align*}
+	b_{ij} = x_i y_j - x_j y_i &\implies a_{ij} = x_i y_j \qq{(by comparison)}\\
+	\therefore \omega &= \sum_{i\ne j} x_i y_j \dd{x^i} \wedge \dd{x^j}\\
+	&=  \sum_{i\ne j} x_i \dd{x^i} \wedge y_j  \dd{x^j}\\
+	\omega &=  \sum_{i, j} x_i \dd{x^i} \wedge y_j  \dd{x^j}
+	\end{align*}
+	Hence proved that $ \omega $ can be written as the wedge product of two $1$-forms.
+\end{homeworkProblem}
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	Given,
+	\begin{align*}
+	\Omega	&=  \dfrac{1}{p!} \Omega_{i_1 i_2 \ldots i_m \ldots i_{p}} \dd{x}^{i_1} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_m} \ldots \dd{x}^{i_{p}}\\
+	&=  \dfrac{1}{p!} \Omega_{i_m i_2 \ldots i_1 \ldots i_{p}} \dd{x}^{i_m} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_1} \ldots \dd{x}^{i_{p}}\\
+	&=  - \dfrac{1}{p!} \Omega_{i_m i_2 \ldots i_1 \ldots i_{p}} \dd{x}^{i_1} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_m} \ldots \dd{x}^{i_{p}}\\
+	\implies \Omega_{i_m i_2 \ldots i_1 \ldots i_{p}} &= -\Omega_{i_1 i_2 \ldots i_m \ldots i_{p+1}} \dd{x}^{i_1} \implies \qq{antisymmetric} 
+	\end{align*}
+	\begin{align*}
+	d\Omega &= \dfrac{1}{p!} d \Omega_{i_1 i_2 \ldots i_m \ldots i_{p}} \dd{x}^{i_1} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_m} \ldots \dd{x}^{i_{p}}\\
+	&= \dfrac{1}{p!} \qty(\partial_{k} \Omega_{i_1 i_2 \ldots i_m \ldots i_{p}} \dd{x}^{i_k} ) \wedge \dd{x}^{i_1} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_m} \ldots \dd{x}^{i_{p}}\\
+	&= \dfrac{1}{p!} \qty(\partial_{k} \Omega_{i_1 i_2 \ldots i_m \ldots i_{p+1}} \dd{x}^{i_k} ) \wedge \dd{x}^{i_1} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_m} \ldots \dd{x}^{i_{p+1}}
+	\end{align*}
+	Where in the last step, we have assumed that $ x_{i_k} $ is not in the wedge products to the right of the brackets. Now, we need to shift the $ \dd x^{i_{k}} $ to it's position in the serial order. This will require us to do neighbouring flips $ k-1 $ times. Then,
+	\begin{align*}
+	d\Omega &= (-1 )^{(k-1)p} \dfrac{1}{p!} \partial_{k} \Omega_{i_1 i_2 \ldots i_m \ldots i_{p+1}}  \dd{x}^{i_1} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_m} \ldots \dd{x}^{i_{p+1}}
+	\end{align*}
+	We can permute the indices $ p+1 $ times and add them, so as to get,
+	\begin{align*}
+	(p+1) \dd \Omega &= \dfrac{1}{p!} (\dd \Omega)_{i_1 i_2 \ldots i_m \ldots i_{p+1}}  \dd{x}^{i_1} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_m} \ldots \dd{x}^{i_{p+1}}\\
+	\dd \Omega &= \dfrac{1}{(p+1)!} (\dd \Omega)_{i_1 i_2 \ldots i_m \ldots i_{p+1}}  \dd{x}^{i_1} \wedge \dd{x}^{i_2} \ldots \wedge \dd{x}^{i_m} \ldots \dd{x}^{i_{p+1}}
+	\end{align*}
+	
+	As the wedge products are antisymmetric under the exchange of indices, the only way that LHS can be invariant is if $ (\dd \Omega)_{i_1 i_2 \ldots i_m \ldots i_{p+1}} $ is also  antisymmetric in the exchange of indices.
+\end{homeworkProblem}
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	\begin{align*}
+	\int_C x^3 \dd{x} + \int_C \qty(\dfrac{x^3 }{3} + x y^2)\dd{y} &= \int_{x^2 + y^2 \le 4} \qty[-\pdv{x^3}{y} + \pdv{x} \qty({\dfrac{x^3}{3}} + xy^2 )] \dd{x} \dd{y}\\
+	&= \int_{x^2 + y^2 \le 4} \qty[x^2 + y^2] \dd{x} \dd{y}\\
+	&= \int_{0}^{2} r^3 \dd{r}  \int_0^{2 \pi} \dd{\theta}\\
+	&= 8 \pi
+	\end{align*}
+	
+	
+	
+	
+	
+	\textbf{Part (b)}\\
+	The generalized Stokes Theorem tells us,
+	\begin{align*}
+	\int_\Gamma \dd{\omega} &= \int_{\partial \Gamma} \omega \\ 
+	\int_\Gamma \dd{(z^2 \dd{x} \wedge \dd{y})} &= \int_{\partial \Gamma} z^2 \dd{x} \wedge \dd{y}\\
+	\int_\Gamma (2z \dd{z} \wedge \dd{x} \wedge \dd{y}) &= \int_{\partial \Gamma} z^2 \dd{x} \wedge \dd{y}\\
+	 \int_0^1 \rho \dd{\rho} \int_{0}^{2 \pi} \dd{\phi} \int_{0}^{1} 2z  \dd{z} &= \int_{\partial \Gamma} z^2 \dd{x} \wedge \dd{y}\\
+	\int_{\partial \Gamma} z^2 \dd{x} \wedge \dd{y} &= \pi
+	\end{align*}
+	
+	
+	
+	
+	
+	
+	
+	\textbf{Part (c)}\\
+	For spherical coordinates,
+	\begin{equation*}
+	\va{\dd{a}} = r^2 \sin \theta \dd{\theta} \dd{\phi}  \vu{r}  + r \sin \theta \dd{\phi} \dd{r} \vu{\theta} + r \dd{r} \dd{\theta} \vu{\phi} 
+	\end{equation*}
+	\begin{align*}
+	\dd{(\va{A} \vdot \va{dl})} &= \dd{(A_r \dd r + A_\theta r \dd \theta + A_\phi r \sin \theta \dd \phi  )}\\
+	&= - \partial_\theta A_r \dd{r} \dd{\theta} + \partial_\phi A_r \dd{\phi} \dd{r} + \qty(r \partial_r A_\theta + A_\theta) \dd{r} \dd{\theta} - r \partial_\phi A_\theta \dd{\theta} \dd{\phi} - \sin \theta (r \partial_r A_\phi + A_\phi) \dd{\phi} \dd{r} \\&\qq{ }+ r(A_\phi \cos \theta + \partial_\theta \sin \theta) \dd{\theta} \dd{\phi}\\
+	&= (- \partial_\theta A_r + \qty(r \partial_r A_\theta + A_\theta)) \dd{r} \dd{\theta} + [\partial_\phi A_r - \sin \theta (r \partial_r A_\phi + A_\phi) ]\dd{\phi} \dd{r} + [r(A_\phi \cos \theta + \partial_\theta \sin \theta)  - r \partial_\phi A_\theta] \dd{\theta} \dd{\phi}
+	\end{align*}
+	
+	Comparing with $ \curl{\va{A}} \vdot \dd{\va{a}} $, we get,
+	\begin{equation*}
+	\curl{\va{A}} = \dfrac{1}{\sin \theta}[(A_\phi \cos \theta + \partial_\theta \sin \theta)  -  \partial_\phi A_\theta] \vu{r}+ \dfrac{1}{r \sin \theta}[\partial_\phi A_r - \sin \theta (r \partial_r A_\phi + A_\phi) ] \vu{\theta} + \dfrac{1}{r}(- \partial_\theta A_r + \qty(r \partial_r A_\theta + A_\theta)) \vu{\phi}  
+	\end{equation*}
+	
+	\begin{align*}
+	\dd{(\va{B} \vdot \va{\dd{a}})} &= \dd{(B_r r^2 \sin \theta \dd{\theta} \dd{\phi} + B_\theta r \sin \theta \dd{\phi} \dd{r} + B_\phi r \dd{r} \dd{\theta})}\\
+	&= [\partial_r (B_r r^2 \sin \theta) + \partial_\theta ( B_\theta r \sin \theta ) + \partial_\phi(B_\phi r)]  r^2 \sin \theta \dd{r} \dd{\theta} \dd{\phi}\\
+	\implies \div{\va{B}} &= \partial_r (B_r r^2 \sin \theta) + \partial_\theta ( B_\theta r \sin \theta ) + \partial_\phi(B_\phi r)
+	\end{align*}
+	
+	For cylindrical coordinates,
+	\begin{equation*}
+	\va{\dd{a}} =  s \dd{s} \dd{\phi} \vu{z} + \dd{s} \dd{z} \vu{\phi} + s \dd{\phi} \dd{z} \vu{s}
+	\end{equation*}
+	
+	\begin{align*}
+	\dd{(\va{A} \vdot \va{dl})} &= \dd{(A_s \dd s + A_\phi s \dd \phi + A_z \dd z)}\\
+	&= (A_\phi + s \partial_s A_\phi - \partial_\phi A_s ) \dd{s} \dd{\phi}  + (s \partial_z A_\phi - \partial_\phi A_z ) \dd{\phi} \dd{z} + (\partial_z A_s - \partial_s A_z) \dd{z} \dd{s}
+	\end{align*}
+	Comparing with $ \curl{\va{A}} \vdot \dd{\va{a}} $, we get,
+	\begin{equation*}
+	\curl{\va{A}} = \dfrac{1}{s}(s \partial_z A_\phi - \partial_\phi A_z )  \vu{s} + (\partial_z A_s - \partial_s A_z) \vu{\phi} + \dfrac{1}{2} (A_\phi + s \partial_s A_\phi - \partial_\phi A_s ) \vu{z}
+	\end{equation*}
+	
+	\begin{align*}
+	\dd{(\va{B} \vdot \va{\dd{a}})} &= \dd{(B_z s \dd{s} \dd{\phi}  + B_\phi \dd s \dd z + B_s s \dd{\phi} \dd{z})}\\
+	&= [\partial_z B_z + \dfrac{1}{s} \partial_\phi B_\phi + \dfrac{1}{s}\partial_s (B_s s)] s \dd s \dd z \dd \phi\\
+	\implies \div{\va{B}} &=  \partial_z B_z + \dfrac{1}{s} \partial_\phi B_\phi + \dfrac{1}{s}\partial_s (B_s s)
+	\end{align*}
+\end{homeworkProblem}
+\end{document}
