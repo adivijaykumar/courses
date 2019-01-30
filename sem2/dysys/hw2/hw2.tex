@@ -1,0 +1,223 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ \#1}
+\newcommand{\hmwkDueDate}{Due on 14th January, 2019}
+\newcommand{\hmwkClass}{Dynamical Systems}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Divya Jagannathan for discussions.)
+\\
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	Consider first the set $ E_u $. Any vector in this said would be given by $ V = \sum_i C_j w_j $, where $ w_j $ is a generalized eigenvector of this set. We know,
+	\begin{equation*}
+	(A - \lambda I)^m w_j = 0 
+	\end{equation*}  
+	for some $ m $. This also means that,
+	\begin{equation*}
+	(A - \lambda I) w_j = W_j \implies A w_j = \lambda w_j + W_j
+	\end{equation*}
+	where $ W_j \in \ker((A - \lambda I)^{m-1})$. Hence $ A w_j  \in E_u $. This also means that $ A^k w_j \in E_u $ for any whole number $ k $, which in turn means that, in general, $\sum_{k} c_k A^k w_j \in E_u$.
+	
+	Consider,
+	\begin{align*}
+	e^{At} V = \sum_{i,k} C_j \dfrac{t^k A^k}{k!} w_j \in E_u
+	\end{align*}
+	Hence Proved that $ E_u $ is an invariant subspace. The argument follows similarly for $ E_s, E_c $.	
+	
+	If $ \alpha_j, \beta_j, \gamma_j $ are all eigenvectors as defined below, the most general solution of the system in given by,
+	\begin{align*}
+	\sum_{j} C_j w_j  &= \sum_{j, \alpha_j \in E_u} M_j \alpha_j + \sum_{j, \beta_j \in E_s} N_j \beta_j + \sum_{j, \gamma_j \in E_c} K_j \gamma_j\\
+	\implies R^d &= E_u \oplus E_s \oplus E_c
+	\end{align*}
+	
+	\textbf{Part (b)}\\
+	For $x_0= \sum_{j} C_j w_j, w_j \in E_s $, $ e^{At}x_0 = \sum_{j}  C_j w_j e^{a_j t} e^{ i b_j t}, a_j < 0$. Hence, we can say,
+	\begin{align*}
+	\lim\limits_{t \rightarrow \infty } e^{At}x_0 &= \sum_{j}   C_j w_j \lim\limits_{t \rightarrow \infty } e^{a_j t} e^{ i b_j t} = 0 \\
+	\lim\limits_{t \rightarrow - \infty } \abs{ e^{At}x_0 } &= \lim\limits_{t \rightarrow - \infty }  \abs{\sum_{j}   C_j w_j e^{a_j t} e^{ i b_j t}} = \infty
+	\end{align*}
+	
+	\textbf{Part (c)}\\
+	For $x_0= \sum_{j} C_j w_j, w_j \in E_u $, $ e^{At}x_0 = \sum_{j}  C_j w_j e^{a_j t} e^{ i b_j t}, a_j > 0$. Hence, we can say,
+	\begin{align*}
+	\lim\limits_{t \rightarrow -\infty } e^{At}x_0 &= \sum_{j}   C_j w_j \lim\limits_{t \rightarrow - \infty } e^{a_j t} e^{ i b_j t} = 0 \\
+	\lim\limits_{t \rightarrow  \infty } \abs{ e^{At}x_0 } &= \lim\limits_{t \rightarrow  \infty }  \abs{\sum_{j}   C_j w_j e^{a_j t} e^{ i b_j t}} = \infty
+	\end{align*}
+	
+	\textbf{Part (d)}\\
+	For $x_0= \sum_{j} C_j w_j, w_j \in E_s $, $ e^{At}x_0 = \sum_{j}  C_j w_j e^{a_j t} e^{ i b_j t}, a_j < 0$. Hence, we can say,
+	
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	
+	\textbf{Part (b)}\\
+	As we are working with linear systems, any linear combination of the solutions will be linear too. We know that the columns of the fundamental matrix $ X $ are solutions to the ODE, and that they span the solution space. Right multiplying $ X $ with a constant, non-singular matrix $ C $ will give us a matrix which will have linear combination of the columns of $ X $ (ie the solutions to the ODE) according to the entries in $ C $. Due to the condition of non-singularity, this new matrix will also have linearly independent columns. Hence, the new matrix $ Y(t) = X(t) C $ will have columns which are solutions to the ODE and also span the solution space. Hence Proved.
+	
+	 Left multiplying $ X $ with a constant, non-singular matrix $ B $ will give us a matrix which will have linear combination of the \textit{rows} of $ X $ (which are not the solutions to the ODE) according to the entries in $ B $. This means that $ B X $ will not, in general, be a fundamental matrix for the system. Of course, $ BX $ can be a fundamental matrix if the rows of $ X $ are indeed solutions to the system, ie. if $ X^T = X $.
+	\\
+	
+	\textbf{Part (c)}\\
+	From the fact that $ X_1, X_2 $ are fundamental matrices and from the previous part, we can make the following statement,
+	\begin{equation*}
+	X_2(t) = X_1(t) C 
+	\end{equation*}
+	where $ C $ is a non-singular matrix.
+	
+	Consider,
+	\begin{align*}
+	X_2(t + \omega) &= X_2(t) B_2\\
+	X_1(t + \omega) C &= X_2(t) B_2\\
+	X_1(t) B_1 C &= X_1(t)  C B_2\\	
+	\implies B_1 &= C B_2 C^{-1}
+	\end{align*} 
+	where inverses could be taken in the last step only because the matrices are known to be nonsingular. Hence proved that $ B_1, B_2 $ are similar.
+\end{homeworkProblem}
+\end{document}
