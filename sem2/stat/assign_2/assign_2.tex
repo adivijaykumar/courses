@@ -1,0 +1,212 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#2}
+\newcommand{\hmwkDueDate}{Due on 4th February, 2019}
+\newcommand{\hmwkClass}{Advanced Statistical Mechanics}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Aditya Sharma and Junaid Majeed for discussions.)
+
+\begin{homeworkProblem}[1]
+	The two-particle Virial Coefficient $ b_2 $ is given by,
+	\begin{align*}
+	b_2 &= \int \dd^d \va{q}_1 \dd^d \va{q}_2 U(\va{q}_1  - \va{q}_2) \\
+	&= A S_{d-1}^2 \int \dd q_1  \dd{q_2}  q_1^{d-1} q_2^{d-1}  \dfrac{1}{\abs{q_1 - q_2}^\sigma}
+	\end{align*}
+\end{homeworkProblem}
+
+
+
+\begin{homeworkProblem}[2]
+	\textcolor{red}{Do Part (a)}\\
+	\textbf{Part (b)}\\
+	Let's denote the Vandermonde determinant by $ D_n $,
+	\begin{align*}
+	D_n = \mdet{1  & x_1 & x_1^2 & \ldots & x_1^{n-1}\\ 1  & x_2 & x_2^2 & \ldots & x_2^{n-1} \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 1  & x_n & x_n^2 & \ldots & x_n^{n-1}}
+	\end{align*}
+	We prove the required statement by using row and column operations. We first use $ R_n \rightarrow R_n - R_{n-1}, n=2,3 \ldots, n $. We then have,
+	\begin{align*}
+	D_n = \mdet{1  & x_1 & x_1^2 & \ldots & x_1^{n-1}\\ 0  & x_2 - x_1 & x_2^2 - x_1^2 & \ldots & x_2^{n-1} - x_1^{n-1} \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 0  & x_n - x_{1} & x_n^2 - x_{1}^2 & \ldots & x_n^{n-1} - x_{1}^{n-1}}
+	\end{align*}
+	We now proceed to make the topmost row elements $ 0 $, save for the first element.
+	We use $ C_n \rightarrow C_n - x_1 C_{n-1}, n=2,3 \ldots, n $,
+	
+	\begin{align*}
+	D_n &= \mdet{1  & 0 & 0& \ldots & 0\\ 0  & x_2 - x_1 & x_2(x_2 - x_1) & \ldots & x_2^{n-2}(x_2 - x_1) \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 0  & x_n - x_{1} & x_n(x_n - x_{1}) & \ldots & x_n^{n-2}(x_n - x_{1}) } \\
+	&=\mdet{ x_2 - x_1 & x_2(x_2 - x_1) & \ldots & x_2^{n-2}(x_2 - x_1) \\ \vdots & \vdots & \vdots & \vdots & \vdots \\  x_n - x_{1} & x_n(x_n - x_{1}) & \ldots & x_n^{n-2}(x_n - x_{1}) } \\
+	&=\qty(\prod_{i=2}^{n} x_i - x_{1}) \mdet{1  & x_2 & x_2^2 & \ldots & x_2^{n-2}\\ 1  & x_3 & x_3^2 & \ldots & x_3^{n-2} \\ \vdots & \vdots & \vdots & \vdots & \vdots \\ 1  & x_n & x_n^2 & \ldots & x_n^{n-2}} \\
+	\end{align*}
+	
+	\begin{align*}
+	\implies D_n &= \qty(\prod_{i=2}^{n} x_i - x_{1}) D_{n-1} \\
+	D_n &= \qty(\prod_{i=2}^{n} x_i - x_{1}) \qty(\prod_{i=3}^{n-1} x_i - x_{2}) D_{n-2}\\
+	&=  \qty(\prod_{i=2}^{n} x_i - x_{1}) \qty(\prod_{i=3}^{n-1} x_i - x_{2}) \ldots D_2\\
+	D_n &= \prod_{1\le j<i \le n} x_i - x_j
+	\end{align*}
+	Hence Proved.
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[4]
+	For $ N  $ particles in a harmonic trap,
+	\begin{align*}
+	\psi(x_1, x_2 , \ldots x_N) = \dfrac{1}{\sqrt{N!}} \det\phi_j (x_j) = \dfrac{1}{N!} \det A_{ij}  \\
+	\qq{where} \phi_i(x) = \qty(\dfrac{a^2}{\pi})^{1/4} \dfrac{1}{\sqrt{2^i i!}} H_i(a x) e^{-a^2 x^2/2} \qq{,} a^2 = \dfrac{m \omega}{\hbar}
+	\end{align*}
+	
+	The probability density is,
+	\begin{align*}
+	P(\{ x_i\}) &= \dfrac{1}{N!} \det A^T A  = \dfrac{1}{N!} \det K
+	\end{align*}
+	We define the average number density as,
+	\begin{align*}
+	\ev{\rho(x)} &= \sum_i \ev{\dfrac{1}{N} \delta (x- x_i)}\\
+	&= \dfrac{1}{N}  \sum_i \int \prod_j \dd{x_j} \delta (x- x_i) \dfrac{1}{N!} \det K
+	\end{align*}
+\end{homeworkProblem}
+
+
+\end{document}
+

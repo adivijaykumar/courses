@@ -1,0 +1,215 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Pset\ \#2}
+\newcommand{\hmwkDueDate}{Due on 6th February, 2019}
+\newcommand{\hmwkClass}{Electromagnetism}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Junaid Majeed for discussions.)
+\\
+
+\begin{homeworkProblem}
+	\textbf{Zangwill - Problem} 24.1\\
+	\textbf{Part (a)}
+	Given, 
+	\begin{align*}
+	\pdv{F_i}{\dot{r}_j} &= - \pdv{F_j}{\dot{r}_i} \\
+	\implies \pdv[2]{F_i}{\dot{r}_j}{\dot{r}_k} &= - \pdv{F_j}{\dot{r}_i}{\dot{r}_k}\\
+	\pdv[2]{F_i}{\dot{r}_k}{\dot{r}_j}&= - \pdv{F_j}{\dot{r}_k}{\dot{r}_i}\\
+	-\pdv[2]{F_k}{\dot{r}_i}{\dot{r}_j} &=  \pdv{F_k}{\dot{r}_j}{\dot{r}_i}\\
+	\implies  \pdv{F_k}{\dot{r}_j}{\dot{r}_i} &=0
+	\end{align*}
+	From Hemholtz first relation, we know that integrating the above equation should give us an object which is antisymmetric under the exchange of indices. We can take this into account by introducing our friendly neighbourhood antisymmetric object, namely the \textit{Levi-Civita symbol}.
+	\begin{equation*}
+	\implies \pdv{F_i}{\dot{r}_j} =  \epsilon_{ijk} Q_k (\vb{r},t) \implies F_i = \epsilon_{ijk} Q_k (\vb{r},t) \dot{r}_j + P(\vb{r}, t)
+	\end{equation*}
+	Hence proved.
+	\\
+	
+	\textbf{Part (b)}
+	The second Helmholtz relation says,
+	\begin{align*}
+	\pdv{F_i}{r_j} - \pdv{F_j}{r_i} &= \dfrac{1}{2} \dv{t} \qty(\pdv{F_i}{\dot{r}_j} - \pdv{F_j}{\dot{r}_i} )\\
+	\pdv{P_i}{r_j} - \pdv{P_j}{r_i} + \epsilon_{ijk} \qty(\pdv{Q_k}{r_j} + \pdv{Q_k}{r_i})  &=\dv{t} (\epsilon_{ijk} Q_k(\vb{r},t) )\\
+	\pdv{P_i}{r_j} - \pdv{P_j}{r_i} + \epsilon_{ijk} \qty(\pdv{Q_k}{r_j} + \pdv{Q_k}{r_i})  &=\epsilon_{ijk} \qty(\pdv{Q_k}{t} + \pdv{Q_k}{r_a}\dot{r}_a)\\
+	\end{align*}
+	As we can see, there are no terms involving $ \dot{r}_a $ on the LHS. Hence, the term involving $ \dot{r}_a $ on the RHS should be zero!
+	\begin{equation*}
+	\implies \pdv{Q_k}{r_a}\dot{r}_a = \grad{Q} = 0
+	\end{equation*}
+	Next, we multiply both sides of the equation with $ \epsilon_{lmk} $, and use the fact that $ \epsilon_{lmk} \epsilon_{ijk} = (\delta_{li} \delta_{mj} - \delta_{lj} \delta_{mi}) $,
+	\begin{align*}
+	\epsilon_{lmk} \qty(\pdv{P_i}{r_j} - \pdv{P_j}{r_i}) + (\delta_{li} \delta_{mj} - \delta_{lj} \delta_{mi}) \qty(\pdv{Q_k}{r_j} + \pdv{Q_k}{r_i})  &= (\delta_{li} \delta_{mj} - \delta_{lj} \delta_{mi})  \qty(\pdv{Q_k}{t} )\\
+	\epsilon_{lmk} \qty(\pdv{P_i}{r_j} - \pdv{P_j}{r_i}) +  \qty(\pdv{Q_k}{r_m} + \pdv{Q_k}{r_l} - \pdv{Q_k}{r_l} - \pdv{Q_k}{r_m})  &=  \qty(\pdv{Q_k}{t} )\\
+	\therefore \epsilon_{lmk} \qty(\pdv{P_i}{r_j} - \pdv{P_j}{r_i})  &=  \qty(\pdv{Q_k}{t} )\\
+	\therefore \curl{P} &= \pdv{Q}{t}
+	\end{align*}
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}[2]
+	\textbf{Part (a)}\\
+	Given that,
+	\begin{align*}
+	L_D &= \sum_a \qty(\dfrac{1}{2} m_a \va{u}_a^2 + \dfrac{1}{8c^2} m_a \va{u}_a^4 ) + \sum_a \sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{8 \pi \epsilon_0 r_{ab}} + \dfrac{q_a q_b}{16 \pi \epsilon_0 c^2 r_{ab}} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) )]   \\
+	\implies \pdv{L_D}{\va{u}_a}  &= \qty( m_a \va{u}_a+ \dfrac{1}{2c^2} m_a \va{u}_a^2 \va{u}_a ) + \sum_{b\ne a} \qty[\dfrac{q_a q_b}{16 \pi \epsilon_0 c^2 r_{ab}} \qty(  2 \va{u}_b + 2 \vu{r}_{ab} (\va{u}_b \vdot \vu{r}_{ab}) )]  \\
+	  \pdv{L_D}{\va{u}_a}  &= \dfrac{1}{c^2} \qty( m_a c^2+ \dfrac{1}{2} m_a \va{u}_a^2   )\va{u}_a  +q_a   \underbrace{ \sum_{b\ne a} \qty[\dfrac{q_b}{8 \pi \epsilon_0 c^2 r_{ab}} \qty(  \va{u}_b + \vu{r}_{ab} (\va{u}_b \vdot \vu{r}_{ab}) )]}_{\va{A}_a}
+	\end{align*}
+	which is the required form.
+	
+	\textbf{Part (b)}\\
+	
+	\textbf{Part (c)}\\
+	Consider,
+	\begin{align*}
+	\pdv{r_{ab}}{\va{r}_a} &= \pdv{\sqrt{(\va{r}_a - \va{r}_b)\vdot (\va{r}_a - \va{r}_b)}}{\va{r}_a} = \dfrac{-2 }{2 r_{ab}} (\va{r}_a - \va{r}_b) = -\vu{r}_{ab} \qq{and} \\
+	\pdv{\vu{r}_{ab}}{\va{r}_a} &= \pdv{(\va{r}_{ab}/r_{ab})}{\va{r}_a} = \dfrac{1}{r_{ab}}  + \dfrac{\va{r}_{ab} \vdot \vu{r}_{ab}}{r_{ab}^2} = \dfrac{2}{r_{ab}}
+	\end{align*}
+	\begin{align*}
+	\implies \pdv{L_D}{\va{r}_a} =  \sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{8 \pi \epsilon_0 r_{ab}^2} \vu{r}_{ab} + \dfrac{q_a q_b \vu{r}_{ab}}{16 \pi \epsilon_0 c^2 r_{ab}^2} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) ) + \dfrac{q_a q_b}{16 \pi \epsilon_0 c^2 r_{ab}} \qty( (\va{u}_a \vdot \vu{r}_{ab}^2) (\va{u}_b \vdot \vu{r}_{ab}) )]   
+	\end{align*}
+	
+\end{homeworkProblem}
+\end{document}
