@@ -1,0 +1,77 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm, mathtools}
+%\usepackage{hyperref}
+\usepackage{color}
+\usepackage{jheppub}
+\usepackage[T1]{fontenc} % if needed
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+%\linespread{1.0}
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.8em}
+
+\title{\textbf{Methods for Data}}
+\author{Aditya Vijaykumar}
+\affiliation{International Centre for Theoretical Sciences, Bengaluru, India.}
+\emailAdd{aditya.vijaykumar@icts.res.in}
+\abstract{}
+
+\begin{document}
+\maketitle
+\section{A Few Basics}
+
+Physicists believe in a \textit{cause and effect} philosophy of the world. If we are given a fair coin, we can assign equal probabilities to \textit{head} and \textit{tail} and predict the outcomes given the number of times the coin is tossed. We could deal with unfair coins equally well, and given the properties of the unfair coin  (\textit{ie.} probabilities of landing heads/tails/neither) are specified, we can make deductions about the outcomes of our \textit{experiment}.
+
+But, generally, we have information about the observed effects, from which we are supposed to ascertain what models/scenarios these effects would have arisen from. Consider tossing a single coin ten times. The nature of the coin is not specified, but we find that all ten times the coin lands heads up. Are we to believe that the coin is \textit{biased}? Not quite. The most one can do is make some inference based on the data and our prior knowledge (\textit{ie}. we say that the coin is \textit{most likely} biased), adding a caveat that we reserve the right to alter our result if new information pops up in the future (\textit{ie.} we have the data from more tosses of the same coin).
+
+This makes the whole problem of \textit{data analysis} open-ended. Through this exploration, we hope to understand the mathematical rules governing the analyses.
+
+\subsection{Operations on Probabilities}
+All the definitions of probability made below are with respect to some background information denoted by $ I $.
+\begin{itemize}
+	\item \textbf{Sum Rule} - Probability of an X being true and that of it being false should add up to 1.
+	\begin{equation*}
+	P(X | I) + P (\overline{X} | I) = 1
+	\end{equation*}
+	\item \textbf{Product Rule} - Probability of both $ X $ and $ Y $ being true should be the product of probability of $ Y $ being true and the probability of $ X $ being true given $ Y $ is true.
+	\begin{equation*}
+	P(X,Y| I) = P(X|Y,I) \cross P(Y|I) = P(Y|X,I) \cross P(X|I)
+	\end{equation*}
+	The symmetry property of the AND operation on $ X $ and $ Y $ means that we can interchange $ X $ and $ Y $ on the LHS.
+	\item \textbf{Bayes' Theorem} - The probability of $ X $ conditioned on $ Y $ is proportional to the probability of $ Y $ conditioned on $ X $.
+	\begin{equation*}
+	P(X|Y,I)  =\dfrac{ P(Y|X,I) \cross P(X|I)}{P(Y|I)}
+	\end{equation*}
+	The proof follows from the second and third expressions in the product rule. The magic of Bayes' theorem becomes evident when we replace $ X $ with \textit{hypothesis} and $ Y $ with \textit{data}.
+	\begin{equation*}
+	\underbrace{P(hypothesis|data,I)}_{\text{posterior}} \propto \underbrace{ P(data|hypothesis,I)}_{\text{likelihood}} \cross \underbrace{ P(data|hypothesis,I)}_{\text{prior}}
+	\end{equation*}
+	The statement of the Bayes' theorem now becomes a powerful tool for inversion! Some definitions follow,
+	\begin{itemize}
+		\item \textbf{Prior} - This encodes our degree of ignorance about the hypothesis before we have even touched the data.
+		\item \textbf{Likelihood Function} - This encodes how well data agrees with a particular model (\textit{Details Later}).
+		\item \textbf{Posterior} - This gives us the degree of knowledge of the truth of the model in light of the data.
+		\item  \textbf{Evidence} - $ P(data| I) $ which we omitted while writing the expression of the Bayes' theorem. In most cases, it will remain a proportionality constant.
+	\end{itemize}
+
+	\item \textbf{Marginalization} - The probability of $ X $ is the same as the probability of $ X $ given $ Y_k $, summed over all $ k $. Here, $ \{Y_k\} $ is the set of all possibilities in $ Y $.
+	\begin{equation*}
+	P(X| I) = \sum_k P(X|Y_k, I)
+	\end{equation*}
+	A continuous, integral form of the equation can be written as follows,
+	\begin{equation*}
+	P(X|I) = \int_{-\infty}^\infty P(X,Y|I) \dd{Y} 
+	\end{equation*}
+\end{itemize}
+\end{document}

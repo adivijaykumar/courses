@@ -203,7 +203,12 @@
 	We define the average number density as,
 	\begin{align*}
 	\ev{\rho(x)} &= \sum_i \ev{\dfrac{1}{N} \delta (x- x_i)}\\
-	&= \dfrac{1}{N}  \sum_i \int \prod_j \dd{x_j} \delta (x- x_i) \dfrac{1}{N!} \det K
+	&= \dfrac{1}{N}  \sum_i \int \prod_j \dd{x_j} \delta (x- x_i) P(\{x_k\})
+	\end{align*}
+	Let's have a closer look at the integral above. The integral over the delta function with replace the $ x_i $ in $ P(\{x_k\}) $ with $ x $. Expanding the sum over $ i $ will give us $ N $ terms, each having one argument replaced by $ x $. But we know that $ P(x_1, x_2) = P(x_2, x_1)$, and hence we can relabel the terms in the summation, and get the following expression,
+	\begin{align*}
+	\ev{\rho(x)} &= \int \prod_{j=1}^{N-1} \dd{x_j}  P(x, x_1, x_2 , \ldots, x_{N-1})\\
+	&= \int \prod_{j=1}^{N-1} \dd{x_j} \dfrac{1}{N!} \det K
 	\end{align*}
 \end{homeworkProblem}
 
