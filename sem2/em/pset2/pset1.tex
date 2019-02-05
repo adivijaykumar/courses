@@ -7,10 +7,11 @@
 \usepackage{amssymb}
 \usepackage{amsfonts}
 \usepackage{tikz}
-\usepackage{physics}
+%\usepackage{physics}
 \usepackage[plain]{algorithm}
 \usepackage{algpseudocode}
 \usepackage{hyperref}
+\usepackage[arrowdel]{physics}
 
 \usetikzlibrary{automata,positioning}
 
@@ -186,6 +187,67 @@
 	\therefore \epsilon_{lmk} \qty(\pdv{P_i}{r_j} - \pdv{P_j}{r_i})  &=  \qty(\pdv{Q_k}{t} )\\
 	\therefore \curl{P} &= \pdv{Q}{t}
 	\end{align*}
+	
+	\textbf{Zangwill - Problem} 24.2\\
+	\textbf{Part (a)}\\
+	\begin{align*}
+	H(r,p) &= \dfrac{p^2}{2m} + g(r) + p^2 f(r) = \qty(\dfrac{1 + 2 fm}{2m}) p^2 + g(r)\\
+	\implies \dot{r} &= \pdv{H}{p} = \dfrac{p}{m} + 2p f(r) \\
+	\implies p &= \dfrac{m \dot{r}}{1 + 2 fm}
+	\end{align*}
+	\begin{equation*}
+	\therefore L(r, \dot r) = \dfrac{m \dot{r}^2}{1 + 2 fm} - \dfrac{m \dot{r}^2}{2(1 + 2 fm)} - g(r) = \dfrac{m \dot{r}^2}{2(1 + 2 fm)} - g(r)
+	\end{equation*}
+	\textbf{Part (b)}\\
+	We write the Euler Lagrange equations for this Lagrangian,
+	\begin{align*}
+	\dv{t} \qty(\dfrac{m \dot{r}}{1 + 2 fm}) + \pdv{g}{r} &= 0  \\
+	\dfrac{m \ddot{r}}{1 + 2 fm} - \dfrac{m \dot{r}}{(1 + 2 fm)^2} \dot{r} \dv{f}{r} + \dv{g}{r}&= 0 \\
+	{m \ddot{r}} - \dfrac{m \dot{r}^2}{(1 + 2 fm)} \dv{f}{r} + (1 + 2 fm)\dv{g}{r}&= 0
+	\end{align*}
+	As one can see from the above equation, the force depends on $ \ddot{r}, \dot{r}, f , g $.
+	\\
+	
+	\textbf{Zangwill - Problem} 24.4\\
+	Let's first work with $ c=1 $. We shall restore the factors of $ c $ at the end.
+	\begin{align*}
+	S &= - m\int \dd{s} - g \int \dd{s} \phi (\va{r}(s))\\
+	&= - m\int \dd{t} \dv{s}{t} - g \int \dd{t} \dv{s}{t} \phi (\va{r}(s))\\
+	S &= \int - \dfrac{m}{\gamma} \dd{t} +  \int \dfrac{- g \phi}{\gamma } \dd{t} 
+	\end{align*}
+	From the above form of action $ S $, the Lagrangian is evidently,
+	\begin{equation*}
+	L = - \dfrac{m + g \phi}{\gamma} \qq{where} \gamma = \dfrac{1}{\sqrt{1 - \va{v} \vdot \va{v}}} =  \dfrac{1}{\sqrt{1 - \dot{\va{r}} \vdot\dot{\va{r}} }}
+	\end{equation*}
+	\begin{align*}
+	\therefore \dv{t} \qty( \pdv{L}{\dot{\va{r}}}) &= \pdv{L}{\va{r}} \\
+	\dv{(m + g \phi) \gamma \dot{\va{r}}}{t} &= - \dfrac{g \grad{\phi}}{\gamma}
+	\end{align*}
+	Restoring the factors of $ c $,
+	\begin{equation*}
+	\dv{(m + g \phi/c) \gamma \dot{\va{r}}}{t} = - \dfrac{g c \grad{\phi}}{\gamma}
+	\end{equation*}
+	This differs from the electric field force equation, and has an extra term on the left (second term).
+	\\
+	
+	\textbf{Zangwill - Problem} 24.11\\
+	
+	
+	\textbf{Zangwill - Problem} 24.12\\
+	\begin{equation*}
+	L = \va{j} \vdot \va{A} - \rho \phi - \dfrac{1}{2} \epsilon_0 (\va{E}^2 - c^2 \va{B}^2 ) - \epsilon_0 \va{E} \vdot (
+	\grad{\phi} + \dot{\va{A}} ) - \epsilon_0 c^2 \va{B} \vdot (\curl{\va{A}})
+	\end{equation*}
+	\begin{align*}
+	\pdv{L}{\va{E}} = - \epsilon_0 \va{E} - \epsilon_0  (\grad{\phi} + \dot{\va{A}} ) &\qq{,} \pdv{L}{\dot{\va{E}}} = 0 \implies \va{E} = -\grad{\phi} - \dot{\va{A}} \\
+	\pdv{L}{\va{B}} = \epsilon_0 c^2 \va{B} - \epsilon_0 c^2 \curl{\va{A}} &\qq{,}  \pdv{L}{\dot{\va{B}}} = 0 \implies \va{B} = \curl{\va{A}}\\
+	\pdv{L}{\phi} = - \rho - \epsilon_0 \pdv{\va{E} \vdot \grad{\phi}}{\phi} =  - \rho + \epsilon_0 \div{\va{E}} &\qq{,} \pdv{L}{\dot{\phi}} = 0 \implies \div{\va{E}} = \dfrac{\rho}{\epsilon_0} \\
+	\pdv{L}{\va{A}} = \va{j}  -\epsilon_0 c^2  \pdv{\va{B} \vdot (\curl{\va{A}})}{\va{A}} =  \va{j}  -\epsilon_0 c^2 & \pdv{(\va{A} \vdot (\curl{\va{B}}) + \div{\va{A} \cross \va{B}} )}{\va{A} } = \va{j} -\epsilon_0 c^2 \curl{\va{B}}\\
+	\pdv{L}{\dot{\va{A}}} = - \epsilon_0 \va{E} &\implies \curl{B} = \dfrac{\va{j}}{\epsilon_0 c^2} + \dfrac{1}{c^2} \dot{\va{E}}
+	\end{align*}
+	The first two equations can be rewritten as $ \div{B} = 0 $ and $ \curl{E} = - \pdv{\va{B}}{t} $. Hence we have all the Maxwell equations.
+	
+	\textcolor{red}{Primary Constraints?}
 \end{homeworkProblem}
 
 
@@ -195,7 +257,7 @@
 	\begin{align*}
 	L_D &= \sum_a \qty(\dfrac{1}{2} m_a \va{u}_a^2 + \dfrac{1}{8c^2} m_a \va{u}_a^4 ) + \sum_a \sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{8 \pi \epsilon_0 r_{ab}} + \dfrac{q_a q_b}{16 \pi \epsilon_0 c^2 r_{ab}} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) )]   \\
 	\implies \pdv{L_D}{\va{u}_a}  &= \qty( m_a \va{u}_a+ \dfrac{1}{2c^2} m_a \va{u}_a^2 \va{u}_a ) + \sum_{b\ne a} \qty[\dfrac{q_a q_b}{16 \pi \epsilon_0 c^2 r_{ab}} \qty(  2 \va{u}_b + 2 \vu{r}_{ab} (\va{u}_b \vdot \vu{r}_{ab}) )]  \\
-	  \pdv{L_D}{\va{u}_a}  &= \dfrac{1}{c^2} \qty( m_a c^2+ \dfrac{1}{2} m_a \va{u}_a^2   )\va{u}_a  +q_a   \underbrace{ \sum_{b\ne a} \qty[\dfrac{q_b}{8 \pi \epsilon_0 c^2 r_{ab}} \qty(  \va{u}_b + \vu{r}_{ab} (\va{u}_b \vdot \vu{r}_{ab}) )]}_{\va{A}_a}
+	  \pdv{L_D}{\va{u}_a}  &= \underbrace{ \sum_{b\ne a} \qty[\dfrac{q_b}{8 \pi \epsilon_0 c^2 r_{ab}} \qty(  \va{u}_b + \vu{r}_{ab} (\va{u}_b \vdot \vu{r}_{ab}) )]}_{\va{p}_a^{kin}}  +q_a   \underbrace{ \sum_{b\ne a} \qty[\dfrac{q_b}{8 \pi \epsilon_0 c^2 r_{ab}} \qty(  \va{u}_b + \vu{r}_{ab} (\va{u}_b \vdot \vu{r}_{ab}) )]}_{\va{A}_a}
 	\end{align*}
 	which is the required form.
 	
@@ -204,12 +266,25 @@
 	\textbf{Part (c)}\\
 	Consider,
 	\begin{align*}
-	\pdv{r_{ab}}{\va{r}_a} &= \pdv{\sqrt{(\va{r}_a - \va{r}_b)\vdot (\va{r}_a - \va{r}_b)}}{\va{r}_a} = \dfrac{-2 }{2 r_{ab}} (\va{r}_a - \va{r}_b) = -\vu{r}_{ab} \qq{and} \\
-	\pdv{\vu{r}_{ab}}{\va{r}_a} &= \pdv{(\va{r}_{ab}/r_{ab})}{\va{r}_a} = \dfrac{1}{r_{ab}}  + \dfrac{\va{r}_{ab} \vdot \vu{r}_{ab}}{r_{ab}^2} = \dfrac{2}{r_{ab}}
+	\pdv{r_{ab}}{\va{r}_a} &= \pdv{\sqrt{(\va{r}_a - \va{r}_b)\vdot (\va{r}_a - \va{r}_b)}}{\va{r}_a} = \dfrac{2 }{2 r_{ab}} (\va{r}_a - \va{r}_b) = \vu{r}_{ab} \qq{and} \\
+	\pdv{\vu{r}_{ab}}{\va{r}_a} &= \pdv{(\va{r}_{ab}/r_{ab})}{\va{r}_a} = \dfrac{1}{r_{ab}}  - \dfrac{\va{r}_{ab} \vdot \vu{r}_{ab}}{r_{ab}^2} = 0
 	\end{align*}
 	\begin{align*}
-	\implies \pdv{L_D}{\va{r}_a} =  \sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{8 \pi \epsilon_0 r_{ab}^2} \vu{r}_{ab} + \dfrac{q_a q_b \vu{r}_{ab}}{16 \pi \epsilon_0 c^2 r_{ab}^2} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) ) + \dfrac{q_a q_b}{16 \pi \epsilon_0 c^2 r_{ab}} \qty( (\va{u}_a \vdot \vu{r}_{ab}^2) (\va{u}_b \vdot \vu{r}_{ab}) )]   
-	\end{align*}
+	\implies \pdv{L_D}{\va{r}_a} &=  \sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{8 \pi \epsilon_0 r_{ab}^2} \vu{r}_{ab} + \dfrac{q_a q_b \vu{r}_{ab}}{16 \pi \epsilon_0 c^2 r_{ab}^2} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) )]    \\
+	-q_a \pdv{\va{r}_a} (\phi_a - \va{u}_a \vdot \va{A}_a ) &=  \sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{4 \pi \epsilon_0 r_{ab}^2} \vu{r}_{ab} + \dfrac{q_a q_b \vu{r}_{ab}}{8 \pi \epsilon_0 c^2 r_{ab}^2} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) )]   \\
+	\implies \pdv{L_D}{\va{r}_a} &= -q_a \pdv{\va{r}_a} (\phi_a - \va{u}_a \vdot \va{A}_a ) = -q_a \grad_a{\phi_a}  + q_a \grad_a{(\va{u}_a \vdot \va{A}_a)}
+	\end{align*} 
 	
+	\textbf{Part (d)}\\
+	We write our equations of motion,
+	\begin{align*}
+	\dv{t} \qty(\pdv{L_D}{\va{u}_a} ) &= \pdv{L_D}{\va{r}_a} \\
+	\dv{\va{p}_a^{kin}}{t} + q_a \dot{\va{A}}_a &= -q_a \grad_a{\phi_a}  + q_a \grad_a{(\va{u}_a \vdot \va{A}_a)}
+	\end{align*}
+	Using $ \grad{(\va{a} \vdot \va{b}) } = (\va{a} \vdot \grad) \va{b} + (\va{b} \vdot \grad) \va{a} + \va{a} \cross \curl{\va{b}} +  \va{b} \cross \curl{\va{a}}   $,
+	\begin{align*}
+	\dv{\va{p}_a^{kin}}{t} + q_a \partial_t\va{A}_a + q_a ( \va{u}_a \vdot \grad_a )\va{A}_a &= -q_a \grad_a{\phi_a}  + q_a ((\va{u}_a \vdot \grad_a) \va{A}_a + (\va{A}_a \vdot \grad_a) \va{u}_a + \va{u}_a \cross \curl{\va{A}_a} +  \va{A}_a \cross \curl{\va{u}_a } ) \\
+	\dv{\va{p}_a^{kin}}{t} + q_a \partial_t\va{A}_a &= -q_a \grad_a{\phi_a}  + q_a ((\va{u}_a \vdot \grad_a) \va{A}_a + (\va{A}_a \vdot \grad_a) \va{u}_a + \va{u}_a \cross \curl{\va{A}_a} +  \va{A}_a \cross \curl{\va{u}_a } )
+	\end{align*}
 \end{homeworkProblem}
 \end{document}
