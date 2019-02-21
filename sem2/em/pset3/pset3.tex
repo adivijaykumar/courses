@@ -1,0 +1,290 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+%\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+\usepackage[arrowdel]{physics}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Pset\ \#2}
+\newcommand{\hmwkDueDate}{Due on 6th February, 2019}
+\newcommand{\hmwkClass}{Electromagnetism}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Junaid Majeed for discussions.)
+\\
+
+\begin{homeworkProblem}[1]
+	Consider, with $ \psi^R_G (r) = \dfrac{1}{(2\pi)^{d/2} R^d} \exp(- \dfrac{r^2}{2 R^2}) $,
+	\begin{align*}
+	\dfrac{1}{R} \pdv{\psi^R_G}{R} &= \dfrac{1}{R}  \dfrac{1}{(2\pi)^{d/2} R^d} \exp(- \dfrac{r^2}{2 R^2}) \qty[\dfrac{-d}{R} - \dfrac{-2 r^2}{2 R^3} ] \\
+	\dfrac{1}{R} \pdv{\psi^R_G}{R} &= \dfrac{\psi^R_G(r)}{R^2} \qty[-d + \dfrac{ r^2}{ R^2} ]
+	\end{align*}
+	Now consider,
+	\begin{align*}
+	\laplacian{\psi^R_G} &= \dfrac{1}{r^{d-1}} \pdv{r}(r^{d-1} \pdv{\psi^R_G}{r}) \\
+	&= \pdv[2]{\psi^R_G}{r} + \dfrac{d-1}{r} \pdv{\psi^R_G}{r} \\
+	&= -\dfrac{\psi_G^R}{R^2} + \dfrac{r^2}{R^4} \psi_G^R + \dfrac{d-1}{r} \qty(\dfrac{-r}{R^2}) \psi_G^R\\
+	\laplacian{\psi^R_G} &= \dfrac{\psi^R_G(r)}{R^2} \qty[-d + \dfrac{ r^2}{ R^2} ] = \dfrac{1}{R} \pdv{\psi^R_G}{R}
+	\end{align*}
+	
+	Consider now Green's vector field,
+	\begin{align*}
+	\va{G}[\psi_G^R, \phi_\lambda] &= \psi_G^R \grad \phi_\lambda - \phi_\lambda \grad{\psi_G^R} \\
+	\implies \div{\va{G}} &= \psi_G^R \laplacian{\phi_\lambda} - \phi_\lambda \laplacian{\psi_G^R} \\
+	\int \dd^d \va{r} (\div{\va{G}}) &=\int \dd^d{\va{r} } ( \psi_G^R \laplacian{\phi_\lambda} - \phi_\lambda \laplacian{\psi_G^R}) \\
+	\int_{S_{d-1}} \va{G} \cdot \dd{\va{a}} &=\int \dd^d{\va{r} } ( \psi_G^R \laplacian{\phi_\lambda} - \phi_\lambda \laplacian{\psi_G^R}) \\
+	\implies 0 &= \int \dd^d{\va{r} } ( \psi_G^R \laplacian{\phi_\lambda} - \phi_\lambda \laplacian{\psi_G^R}) 
+	\end{align*}
+	From the above manipulations, we can see that,
+	\begin{align*}
+	\int \dd^d{\va{r} } (\psi_G^R \laplacian{\phi_\lambda} - \phi_\lambda \laplacian{\psi_G^R} ) &= 0 \\
+	\int \dd^d{\va{r} } \qty(\psi_G^R \lambda {\phi_\lambda} - \phi_\lambda \dfrac{1}{R} \pdv{\psi^R_G}{R} ) &= 0\\
+	\implies \lambda \int \dd^d{\va{r} } \qty(\psi_G^R  {\phi_\lambda}) &= \dfrac{1}{R} \pdv{R} \int \dd^d{\va{r} } \phi_\lambda  {\psi^R_G} \\
+	\implies  \int \dd^d{\va{r} } \phi_\lambda  {\psi^R_G} = C \exp(\dfrac{\lambda R^2}{2})
+	\end{align*}
+	Good, so now we have got an expression for the gaussian average. All that is left is to figure out the parameter $ C $. For this we note that the Gaussian distribution approaches a Dirac delta function as $ R \rightarrow 0 $, and then write,
+	\begin{align*}
+	\int \dd^d{\va{r} } \phi_\lambda \lim\limits_{R \rightarrow 0} {\psi^R_G (\va{r} - \va{r}_0)} &= C \lim\limits_{R \rightarrow 0}  \exp(\dfrac{\lambda R^2}{2}) \\
+	\int \dd^d{\va{r} } \phi_\lambda {\delta (\va{r} - \va{r}_0)} &= C \\
+	\implies C &= \phi_\lambda(\va{r}_0)
+	\end{align*} 
+	\begin{equation*}
+	\implies \boxed{\int \dd^d{\va{r} } \ \phi_\lambda(\va{r})  {\psi^R_G} (\va{r} - \va{r}_0) = \phi_\lambda(\va{r}_0) \exp(\dfrac{\lambda R^2}{2})}
+	\end{equation*}
+	
+	\textbf{Part (b)}\\
+	\begin{align*}
+	\implies \int \dd^d{\va{r} } \ \phi_\lambda(\va{r})  \dfrac{1}{(2\pi)^{d/2} R^d} \exp(- \dfrac{\abs{\va{r} - \va{r}_0}^2}{2 R^2})   &= \phi_\lambda(\va{r}_0) \exp(\dfrac{\lambda R^2}{2}) \\
+	\implies \int \dd^d{\va{r} } \ \phi_\lambda(\va{r})  \dfrac{1}{(2\pi)^{d/2} R^d} \exp(- \dfrac{r^2}{2 R^2}) \exp(- \dfrac{r_0^2}{2 R^2}) \exp(\dfrac{\va{r}_0 \vdot \va{r}}{R^2})   &= \phi_\lambda(\va{r}_0) \exp(\dfrac{\lambda R^2}{2}) \\
+	\implies \int \dd^d{\va{r} } \ \phi_\lambda(\va{r}) \psi_G^R(\va{r}) \exp(- \dfrac{r_0^2}{2 R^2}) \exp(\dfrac{\va{r}_0 \vdot \va{r}}{R^2})   &= \phi_\lambda(\va{r}_0) \exp(\dfrac{\lambda R^2}{2})
+	\end{align*}
+	Taking averages over $ \va{r}_0 $ and noting that $ \kappa = \dfrac{r}{R^2} $,
+	\begin{equation*}
+	 \int \dd^d{\va{r} } \ \phi_\lambda(\va{r}) \psi_G^R(\va{r}) \exp(- \dfrac{r_0^2}{2 R^2}) I_0 \qty(d;  \dfrac{r}{R^2} r_0)  = \ev{\phi_\lambda(\va{r}_0)} \exp(\dfrac{\lambda R^2}{2})
+	\end{equation*}
+	Now, let's make the substitution, $ r_0 = \kappa R^2 $ and $ \phi_\lambda (r) = J_0(d; k r) \implies \lambda = - k^2$
+	\begin{align*}
+	\int \dd^d{\va{r} } \ J_0(d; k r) \psi_G^R(\va{r}) \exp(- \dfrac{\kappa^2 R^2}{2}) I_0 \qty(d;  \kappa r)  &= \ev{J_0(d; k r_0)} \exp(-\dfrac{k^2 R^2}{2}) \\
+	\int \dd^d{\va{r} } \ J_0(d; k r) I_0 \qty(d;  \kappa r)  \psi_G^R(\va{r})  &= J_0(d; k \kappa R^2)\exp(\dfrac{(\kappa^2 - k^2)R^2}{2})
+	\end{align*}
+	Similarly, taking $ \phi_\lambda (r) = I_0(d; \kappa' r) \implies \lambda = \kappa'^2$,
+	\begin{align*}
+	\int \dd^d{\va{r} } \ I_0(d; \kappa' r) \psi_G^R(\va{r}) \exp(- \dfrac{\kappa^2 R^2}{2}) I_0 \qty(d;  \kappa r)  &= \ev{I_0(d; \kappa' r_0)} \exp(\dfrac{\kappa'^2 R^2}{2}) \\
+	\int \dd^d{\va{r} } \ I_0(d; \kappa' r) I_0 \qty(d;  \kappa r)  \psi_G^R(\va{r})  &= I_0(d; \kappa' \kappa R^2) \exp(\dfrac{(\kappa^2 + \kappa'^2)R^2}{2})
+	\end{align*}
+	Now, let's make the substitution, $ r_0 = i k_2 R^2 $ and $ \phi_\lambda (r) = J_0(d; k_1 r) \implies \lambda = - k_1^2$,
+	\begin{align*}
+	\int \dd^d{\va{r} } \ J_0(d; k_1 r) \psi_G^R(\va{r}) \exp( \dfrac{k_2^2 R^2}{2}) I_0 \qty(d; i k_2 r)  &= \ev{J_0(d; i k_1 k_2 R^2)} \exp(-\dfrac{k_1^2 R^2}{2}) \\
+	\int \dd^d{\va{r} } \ J_0(d; k_1 r)  J_0 \qty(d;  k_2 r) \psi_G^R(\va{r})  &= I_0(d; k_1 k_2 R^2)\exp(-\dfrac{(k_1^2 + k_2^2) R^2}{2})
+	\end{align*}
+	
+	\textbf{Part (c)}\\
+	\textbf{Part (d)}\\
+	Consider, 
+	\begin{equation*}
+	I = \int_0^\infty \dfrac{\dd{R}}{R^{2 \Delta +1 }}  \exp(-\dfrac{r^2}{2 R^2})
+	\end{equation*}
+	Substitute $ R^2 = \dfrac{r^2}{2 u} \implies \dd{u} = - \dfrac{r^2}{R^3} \dd{R} \implies \dd{R} = - \dfrac{r\dd{u}}{ (2u)^{3/2}}$ ,
+	\begin{align*}
+	I &= \int_0^\infty  \dfrac{r \dd{u}}{ (2u)^{3/2}} \qty(\dfrac{2u}{r^2})^{\Delta + 1/2}  \exp(-u) \\
+	&= \dfrac{2^{\Delta - 1}}{r^\Delta} \int_0^\infty  \dd{u} {u}^{\Delta -1}  \exp(-u) \\
+	&= \dfrac{2^{\Delta - 1}}{r^\Delta} \Gamma(\Delta) \qq{;} \qq{for} \Delta > 1
+	\end{align*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[2]
+	\textbf{Part (a)}\\
+	We know,
+	\begin{align*}
+	I_0(d;x) &= \sum_{m=0}^{\infty} \dfrac{\Gamma(d/2)}{m! \ \Gamma(d/2 + m)} \dfrac{x^{2m}}{2^{2m}} \\
+	\dfrac{x^2}{d^2} I_0(d + 2; x) &= \sum_{m=0}^{\infty} \dfrac{\Gamma(d/2 + 1)}{m! \ \Gamma(d/2 + m + 1)} \dfrac{x^{2m + 2}}{2^{2m}} \\
+	&= \sum_{m=0}^{\infty} \dfrac{\Gamma(d/2) \vdot d/2}{m! \ \Gamma(d/2 + m + 1)} \dfrac{x^{2m + 2}}{2^{2m + 2}} \dfrac{2^2}{d^2} \\
+	\dfrac{x^2}{d^2} I_0(d + 2;x) &= \dfrac{2}{d} \sum_{m=0}^{\infty} \dfrac{\Gamma(d/2) }{m! \ \Gamma(d/2 + m + 1)} \dfrac{x^{2m + 2}}{2^{2m + 2}}
+	\end{align*}
+	Let's proceed and take the derivative,
+	\begin{align*}
+	\dfrac{x}{d} \dv{x} I_0(d;x) &= \dfrac{x}{d}  \sum_{m=0}^{\infty} \dfrac{\Gamma(d/2)}{m! \ \Gamma(d/2 + m)} \dv{x} \qty(\dfrac{x^{2m}}{2^{2m}}) \\
+	&= \dfrac{1}{d}  \sum_{m=1}^{\infty} \dfrac{\Gamma(d/2)}{m! \ \Gamma(d/2 + m)}  \dfrac{(2m) x^{2m}}{2^{2m}} \\
+	&=  \dfrac{1}{d}  \sum_{m=0}^{\infty} \dfrac{\Gamma(d/2)}{(m+1)! \ \Gamma(d/2 + m + 1)}  \dfrac{2(m+1) x^{2m + 2}}{2^{2m + 2}} \impliedby (m \rightarrow m+	1) \\
+	\dfrac{x}{d} \dv{x} I_0(d;x) &=  \dfrac{2}{d}  \sum_{m=0}^{\infty} \dfrac{\Gamma(d/2)}{m! \ \Gamma(d/2 + m + 1)}  \dfrac{ x^{2m + 2}}{2^{2m + 2}} 
+	\end{align*}
+	Let's now consider the third part,
+	\begin{align*}
+	I_0(d-2;x) - I_0(d,x) &= \sum_{m=0}^{\infty} \qty[ \dfrac{\Gamma(d/2 - 1)}{ \ \Gamma(d/2 + m -1 )} - \dfrac{\Gamma(d/2)}{\ \Gamma(d/2 + m)} ] \dfrac{x^{2m}}{m! \ 2^{2m}} \\
+	&= \sum_{m=1}^{\infty} \qty[ \dfrac{\Gamma(d/2 - 1)}{ \ \Gamma(d/2 + m -1 )} - \dfrac{\Gamma(d/2)}{\ \Gamma(d/2 + m)} ] \dfrac{x^{2m}}{m! \ 2^{2m}} \\
+	&= \sum_{m=0}^{\infty} \qty[ \dfrac{\Gamma(d/2 - 1)}{ \ \Gamma(d/2 + m )} - \dfrac{\Gamma(d/2)}{\ \Gamma(d/2 + m + 1)} ] \dfrac{x^{2m+2}}{(m+1)! \ 2^{2m}} \\
+	&= \sum_{m=0}^{\infty} \qty[\dfrac{\Gamma(d/2)}{\ \Gamma(d/2 + m + 1)}  \dfrac{ (d/2 + m )}{(d/2 - 1)} - \dfrac{\Gamma(d/2)}{\ \Gamma(d/2 + m + 1)} ] \dfrac{x^{2m+2}}{(m+1)! \ 2^{2m}} \\
+	&= \sum_{m=0}^{\infty} \qty[ \dfrac{2(m+1)}{d-2} ] \dfrac{\Gamma(d/2)}{\ \Gamma(d/2 + m + 1)} \dfrac{x^{2m+2}}{(m+1)! \ 2^{2m}} \\
+	&= \dfrac{2}{d-2} \sum_{m=0}^{\infty}  \dfrac{\Gamma(d/2)}{\ \Gamma(d/2 + m + 1)} \dfrac{x^{2m+2}}{m! \ 2^{2m}} \\
+	\dfrac{d - 2}{d}(I_0(d-2;x) - I_0(d,x)) &=  \dfrac{2}{d}  \sum_{m=0}^{\infty} \dfrac{\Gamma(d/2)}{m! \ \Gamma(d/2 + m + 1)}  \dfrac{ x^{2m + 2}}{2^{2m + 2}}
+	\end{align*}
+	\begin{equation*}
+	\implies \boxed{ \dfrac{x}{d} \dv{x} I_0(d;x) = \dfrac{x^2}{d^2} I_0(d + 2; x) = \dfrac{d - 2}{d}\qty[ I_0(d-2;x) - I_0(d,x)] }
+	\end{equation*}
+	
+	\textbf{Part (b)}\\
+	Schafli's contour integral is given by,
+	\begin{equation*}
+	I_0(d;x) = \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2)}{z^{d/2}} \exp(z + \dfrac{x^2}{4z})
+	\end{equation*}
+	where the contour $ \mathcal{C} = C[-\infty - i0, 0+, -\infty + i0] $.
+	\begin{align*}
+	\dfrac{x}{d} \dv{x} I_0(d;x) &= \oint_\mathcal{C} \dfrac{x}{d} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2)}{z^{d/2}} \dfrac{x}{2z} \exp(z + \dfrac{x^2}{4z}) \\
+	&= \dfrac{x^2}{d^2}\oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{(d/2) \cdot \Gamma(d/2)}{z^{(d+2)/2}}  \exp(z + \dfrac{x^2}{4z}) \\
+	&= \dfrac{x^2}{d^2}\oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{ \Gamma((d+2)/2)}{z^{(d+2)/2}}  \exp(z + \dfrac{x^2}{4z})\\
+	\implies \dfrac{x}{d} \dv{x} I_0(d;x) &= \dfrac{x^2}{d^2} I_0(d + 2; x)
+	\end{align*}	
+	\begin{align*}
+	 I_0(d-2;x) - I_0(d,x) &= \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \qty[\dfrac{\Gamma(d/2 - 1)}{z^{d/2 -1}} - \dfrac{\Gamma(d/2)}{z^{d/2}}] \exp(z + \dfrac{x^2}{4z})\\
+	 &= 
+	\end{align*}
+	
+	\textbf{Part (c)}\\
+	We are given,
+	\begin{align*}
+	I_0(d;x) &\approx \dfrac{e^x}{\abs{S^{d-1}}} \qty(\dfrac{2\pi}{x})^{\frac{d-1}{2}} \sum_{n=0}^{\infty} \dfrac{(-1)^n \Gamma(\frac{d-1}{2} + n)}{(2x)^n n! \ \Gamma(\frac{d-1}{2} -n )} \\
+	\implies \dfrac{x}{d} \dv{x} I_0(d;x) &\approx \dfrac{x}{d} \qty[\dfrac{e^x}{\abs{S^{d-1}}}  \qty(\dfrac{2\pi}{x})^{\frac{d-1}{2}} \sum_{n=0}^{\infty} \dfrac{(-1)^n \Gamma(\frac{d-1}{2} + n)}{(2x)^n n! \ \Gamma(\frac{d-1}{2} -n )} ]
+	\end{align*}
+\end{homeworkProblem}
+
+
+
+\end{document}

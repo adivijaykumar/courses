@@ -180,9 +180,9 @@
 	\begin{equation*}
 	\implies \pdv{Q_k}{r_a}\dot{r}_a = \grad{Q} = 0
 	\end{equation*}
-	Next, we multiply both sides of the equation with $ \epsilon_{lmk} $, and use the fact that $ \epsilon_{lmk} \epsilon_{ijk} = (\delta_{li} \delta_{mj} - \delta_{lj} \delta_{mi}) $,
+	Next, we multiply both sides of the equation with $ \epsilon_{l j i} $, and use the fact that $ \epsilon_{lmk} \epsilon_{ijk} = (\delta_{li} \delta_{mj} - \delta_{lj} \delta_{mi}) $,
 	\begin{align*}
-	\epsilon_{lmk} \qty(\pdv{P_i}{r_j} - \pdv{P_j}{r_i}) + (\delta_{li} \delta_{mj} - \delta_{lj} \delta_{mi}) \qty(\pdv{Q_k}{r_j} + \pdv{Q_k}{r_i})  &= (\delta_{li} \delta_{mj} - \delta_{lj} \delta_{mi})  \qty(\pdv{Q_k}{t} )\\
+	\epsilon_{l j i} \qty(\pdv{P_i}{r_j} - \pdv{P_j}{r_i}) + \epsilon_{l j i}\epsilon_{ijk}  \qty(\pdv{Q_k}{r_j} + \pdv{Q_k}{r_i})  &= \epsilon_{l j i} \epsilon_{ijk}  \qty(\pdv{Q_k}{t} )\\
 	\epsilon_{lmk} \qty(\pdv{P_i}{r_j} - \pdv{P_j}{r_i}) +  \qty(\pdv{Q_k}{r_m} + \pdv{Q_k}{r_l} - \pdv{Q_k}{r_l} - \pdv{Q_k}{r_m})  &=  \qty(\pdv{Q_k}{t} )\\
 	\therefore \epsilon_{lmk} \qty(\pdv{P_i}{r_j} - \pdv{P_j}{r_i})  &=  \qty(\pdv{Q_k}{t} )\\
 	\therefore \curl{P} &= \pdv{Q}{t}
@@ -231,7 +231,20 @@
 	\\
 	
 	\textbf{Zangwill - Problem} 24.11\\
-	
+	\begin{equation*}
+	L_{CS} = \int \dd^3 r [\rho \phi - \va{j} \vdot \va{A} + 1/2 \{\epsilon_0 (\va{E}^2 - c^2 \va{B}^2) - \phi  (\va{d} \vdot \va{B}/c) + \va{d} \vdot (\va{A} \cross \va{E}/c) + d_0 \va{A} \vdot \va{B}  \}]
+	\end{equation*}
+	It is given that the Lagrangian remains invariant under usual gauge tranformations $ \phi \rightarrow \phi + \partial_t {\lambda} $ and $ \va{A} \rightarrow \va{A} - \grad{\lambda} $. Hence,
+	\begin{align*}
+	L'_{CS} - L_{CS} = \int \dd^3 r [ \rho \partial_t \lambda + \va{j} \vdot \grad{\lambda} + 1/2(- \va{d} \vdot (\grad{\lambda} \cross \va{E}/c) - d_0 \grad{\lambda} \vdot \va{B} - \partial_t \lambda (\va{d} \vdot \va{B}/c)  )] \\
+	= \int \dd^3 r [ \partial_t(\rho \lambda) - \lambda \partial_t \rho + \div{(\lambda \va{j})} - \lambda \div{\va{j}} + 1/2(- \va{d} \vdot (\grad{\lambda} \cross \va{E}/c) - d_0 \grad{\lambda} \vdot \va{B} - \partial_t \lambda (\va{d} \vdot \va{B}/c)  )]
+	\end{align*}
+	The first four terms above vanish in the integral - the first and the third because they are boundary terms and the other two because of conservation.
+	\begin{align*}
+	L'_{CS} - L_{CS} &= \int \dd^3 r [ 1/2(- \va{d} \vdot (\grad{\lambda} \cross \va{E}/c) - d_0 \grad{\lambda} \vdot \va{B} - \partial_t \lambda (\va{d} \vdot \va{B}/c)  )] \\
+	L'_{CS} - L_{CS} &= \int \dd^3 r [ 1/2(\va{d} \vdot \lambda/c \curl{\va{E}}  - d_0 \div{\lambda \va{B}} + d_0 \lambda \div{\va{B}}  - \partial_t [\lambda (\va{d} \vdot \va{B}/c) )] + \lambda/c(\partial_t\va{d} \vdot \va{B} + \partial_t\va{B} \vdot \va{d})] \\
+	&= \int \dd^3 r [ 1/2(- \va{d} \vdot\curl{(\lambda \va{E}/c)} + \lambda\va{d} \vdot\curl{( \va{E}/c)}  + d_0 \lambda \div{\va{B}} - d_0 \div - \partial_t \lambda (\va{d} \vdot \va{B}/c)  )]
+	\end{align*}
 	
 	\textbf{Zangwill - Problem} 24.12\\
 	\begin{equation*}
@@ -247,7 +260,7 @@
 	\end{align*}
 	The first two equations can be rewritten as $ \div{B} = 0 $ and $ \curl{E} = - \pdv{\va{B}}{t} $. Hence we have all the Maxwell equations.
 	
-	\textcolor{red}{Primary Constraints?}
+	There are 7 primary constraints (whose momenta vanish).
 \end{homeworkProblem}
 
 
@@ -270,10 +283,11 @@
 	\pdv{\vu{r}_{ab}}{\va{r}_a} &= \pdv{(\va{r}_{ab}/r_{ab})}{\va{r}_a} = \dfrac{1}{r_{ab}}  - \dfrac{\va{r}_{ab} \vdot \vu{r}_{ab}}{r_{ab}^2} = 0
 	\end{align*}
 	\begin{align*}
-	\implies \pdv{L_D}{\va{r}_a} &=  \sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{8 \pi \epsilon_0 r_{ab}^2} \vu{r}_{ab} + \dfrac{q_a q_b \vu{r}_{ab}}{16 \pi \epsilon_0 c^2 r_{ab}^2} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) )]    \\
+	\implies \pdv{L_D}{\va{r}_a} &=  2\sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{8 \pi \epsilon_0 r_{ab}^2} \vu{r}_{ab} + \dfrac{q_a q_b \vu{r}_{ab}}{16 \pi \epsilon_0 c^2 r_{ab}^2} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) )]    \\
 	-q_a \pdv{\va{r}_a} (\phi_a - \va{u}_a \vdot \va{A}_a ) &=  \sum_{b\ne a} \qty[ - \dfrac{q_a q_b}{4 \pi \epsilon_0 r_{ab}^2} \vu{r}_{ab} + \dfrac{q_a q_b \vu{r}_{ab}}{8 \pi \epsilon_0 c^2 r_{ab}^2} \qty( \va{u}_a \vdot \va{u}_b + (\va{u}_a \vdot \vu{r}_{ab}) (\va{u}_b \vdot \vu{r}_{ab}) )]   \\
 	\implies \pdv{L_D}{\va{r}_a} &= -q_a \pdv{\va{r}_a} (\phi_a - \va{u}_a \vdot \va{A}_a ) = -q_a \grad_a{\phi_a}  + q_a \grad_a{(\va{u}_a \vdot \va{A}_a)}
-	\end{align*} 
+	\end{align*}
+	Note that, in the first expression, there is an extra factor of $ 2 $ due to the summation over $ a $.
 	
 	\textbf{Part (d)}\\
 	We write our equations of motion,
@@ -281,10 +295,93 @@
 	\dv{t} \qty(\pdv{L_D}{\va{u}_a} ) &= \pdv{L_D}{\va{r}_a} \\
 	\dv{\va{p}_a^{kin}}{t} + q_a \dot{\va{A}}_a &= -q_a \grad_a{\phi_a}  + q_a \grad_a{(\va{u}_a \vdot \va{A}_a)}
 	\end{align*}
-	Using $ \grad{(\va{a} \vdot \va{b}) } = (\va{a} \vdot \grad) \va{b} + (\va{b} \vdot \grad) \va{a} + \va{a} \cross \curl{\va{b}} +  \va{b} \cross \curl{\va{a}}   $,
+	Using $ \grad{(\va{a} \vdot \va{b}) } = (\va{a} \vdot \grad) \va{b} + (\va{b} \vdot \grad) \va{a} + \va{a} \cross (\curl{\va{b}}) +  \va{b} \cross (\curl{\va{a}} )  $,
 	\begin{align*}
-	\dv{\va{p}_a^{kin}}{t} + q_a \partial_t\va{A}_a + q_a ( \va{u}_a \vdot \grad_a )\va{A}_a &= -q_a \grad_a{\phi_a}  + q_a ((\va{u}_a \vdot \grad_a) \va{A}_a + (\va{A}_a \vdot \grad_a) \va{u}_a + \va{u}_a \cross \curl{\va{A}_a} +  \va{A}_a \cross \curl{\va{u}_a } ) \\
-	\dv{\va{p}_a^{kin}}{t} + q_a \partial_t\va{A}_a &= -q_a \grad_a{\phi_a}  + q_a ((\va{u}_a \vdot \grad_a) \va{A}_a + (\va{A}_a \vdot \grad_a) \va{u}_a + \va{u}_a \cross \curl{\va{A}_a} +  \va{A}_a \cross \curl{\va{u}_a } )
+	\dv{\va{p}_a^{kin}}{t} + q_a \partial_t\va{A}_a + q_a ( \va{u}_a \vdot \grad_a )\va{A}_a &= -q_a \grad_a{\phi_a}  + q_a ((\va{u}_a \vdot \grad_a) \va{A}_a + (\va{A}_a \vdot \grad_a) \va{u}_a + \va{u}_a \cross (\curl{\va{A}_a}) +  \va{A}_a \cross (\curl{\va{u}_a }) ) \\
+	\dv{\va{p}_a^{kin}}{t} + q_a \partial_t\va{A}_a &= -q_a \grad_a{\phi_a}  + q_a ((\va{u}_a \vdot \grad_a) \va{A}_a + (\va{A}_a \vdot \grad_a) \va{u}_a + \va{u}_a \cross (\curl{\va{A}_a}) +  \va{A}_a \cross (\curl{\va{u}_a }) )
 	\end{align*}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	\begin{equation*}
+	L_{BI} = \dfrac{B_0^2}{\mu_0} - \dfrac{B_0}{\mu_0} \sqrt{B_0^2 + \va{B}^2 - \dfrac{1}{c^2} \va{E}^2  - \dfrac{(\va{E} \vdot \va{B})^2}{(cB_0)^2}}
+	\end{equation*}
+	We know that,
+	\begin{align*}
+	\va{D} = \pdv{L_{BI}}{\va{E}} &= - \dfrac{B_0}{2\mu_0} \dfrac{-\dfrac{2 \va{E}}{c^2} - \dfrac{2(\va{E}\vdot \va{B}) \va{B}}{c^2 B_0^2}}{\sqrt{B_0^2 + \va{B}^2 - \dfrac{1}{c^2} \va{E}^2  - \dfrac{(\va{E} \vdot \va{B})^2}{(cB_0)^2}}} \\
+	\implies c\va{D} &=  \dfrac{B_0}{\mu_0 c} \dfrac{{ \va{E}} + \dfrac{(\va{E}\vdot \va{B}) \va{B}}{ B_0^2}}{\sqrt{B_0^2 + \va{B}^2 - \dfrac{1}{c^2} \va{E}^2  - \dfrac{(\va{E} \vdot \va{B})^2}{(cB_0)^2}}} \\
+	\implies c\va{D}&= \eta_E (\va{E} + \alpha c \va{B})
+	\end{align*}
+	\begin{align*}
+	\va{H} = -\pdv{L_{BI}}{\va{B}} &=  \dfrac{B_0}{2 \mu_0} \dfrac{{2 \va{B} - \dfrac{2  (\va{E} \vdot \va{B}) \va{E}}{(cB_0)^2}}}{\sqrt{B_0^2 + \va{B}^2 - \dfrac{1}{c^2} \va{E}^2  - \dfrac{(\va{E} \vdot \va{B})^2}{(cB_0)^2}}} \\
+	\va{H} &= \dfrac{B_0}{ \mu_0 c} \dfrac{{ c\va{B} - \dfrac{  (\va{E} \vdot \va{B}) \va{E}}{cB_0^2}}}{\sqrt{B_0^2 + \va{B}^2 - \dfrac{1}{c^2} \va{E}^2  - \dfrac{(\va{E} \vdot \va{B})^2}{(cB_0)^2}}}\\
+	\implies \va{H} &= \eta_E(c \va{B} - \alpha \va{E})
+ 	\end{align*}
+ 	From the above expressions, one can write,
+ 	\begin{align*}
+ 	c \va{D} \vdot \va{H} &= \eta_E^2 [- \alpha\va{E}^2 + \alpha c^2 \va{B}^2 + (1 - \alpha^2 )c \va{E} \vdot \va{B}] \\
+ 	&= \eta_E^2 [- \alpha\va{E}^2 + \alpha c^2 \va{B}^2 + (1 - \alpha^2 )c^2 \alpha B_0^2 ]\\
+ 	&= \eta_E^2 (c^2 \alpha B_0^2 )\qty[- \dfrac{\va{E}^2 }{c^2 B_0^2}+  \dfrac{\va{B}^2 }{B_0^2}+ (1 - \alpha^2 )]\\
+ 	c \va{D} \vdot \va{H} &= \eta_E^2 \va{E} \vdot \va{B} c \dfrac{1}{\eta_E^2 (\mu_0 c)^2}\\
+ 	\implies  (\mu_0 c)^2 \va{D} \vdot \va{H} &=\va{E} \vdot \va{B} \\
+ 	\implies \alpha &= \dfrac{(\mu_0 c)^2 \va{D} \vdot \va{H}}{c B_0^2}
+ 	\end{align*} 	
+ 	\textbf{Part (b)}\\
+ 	\begin{align*}
+ 	\va{D}^2 - \dfrac{1}{c^2} \va{H}^2 &= \dfrac{\eta_E^2}{c^2} (\va{E}^2 + \alpha^2 c^2 \va{B}^2 + 2 \alpha c \va{E} \vdot \va{B} - c^2 \va{B}^2 - \alpha^2 \va{E}^2 + 2 \alpha c \va{E} \vdot \va{B}) \\
+ 	&= \dfrac{\eta_E^2}{c^2} ((1- \alpha^2)(\va{E}^2 - c^2 \va{B}^2) + 4 \alpha^2 c^2 B_0^2 )
+ 	\end{align*}
+ 	But we know,
+ 	\begin{align*}
+ 	\eta_E = \dfrac{1}{ \mu_0 c} \dfrac{1}{\sqrt{1 - \alpha^2 + \dfrac{1}{B_0^2} \qty(\va{B}^2 - \dfrac{1}{c^2} \va{E}^2)}} \implies B_0^2 \qty(\dfrac{1}{(\mu_0 c)^2 \eta_E^2} + \alpha^2 -1) = \qty(\va{B}^2 - \dfrac{1}{c^2} \va{E}^2) \\
+ 	\eta_H = \dfrac{\mu_0 c}{\sqrt{1 - \alpha^2 + \qty(\dfrac{\mu_0 c}{B_0})^2 \qty(\va{D}^2 - \dfrac{1}{c^2} \va{H}^2)}} \implies \qty[ \qty(\dfrac{\mu_0c}{\eta_H})^2 + \alpha^2 -1 ] \qty(\dfrac{B_0}{\mu_0 c})^2 = \va{D}^2 - \dfrac{1}{c^2} \va{H}^2 
+ 	\end{align*}
+ 	Hence, we can rewrite the expression as,
+ 	\begin{align*}
+	 \qty[ \qty(\dfrac{\mu_0c}{\eta_H})^2 + \alpha^2 -1 ] \qty(\dfrac{B_0}{\mu_0 c})^2  &= - {\eta_E^2} \qty((1- \alpha^2) \qty[ B_0^2 \qty(\dfrac{1}{(\mu_0 c)^2 \eta_E^2} + \alpha^2 -1)] + 4 \alpha^2 c^2 B_0^2 ) \\
+	 \qty(\dfrac{\mu_0c}{\eta_H})^2 + \alpha^2 -1   &=  (\alpha^2 - 1) \qty[ {1} + {\eta_E^2}(\mu_0 c)^2 (\alpha^2 -1)] - 4 \alpha^2 c^2 {\eta_E^2} (\mu_0 c)^2 \\
+	  \qty(\dfrac{\mu_0c}{\eta_H})^2   &= (\mu_0 c)^2 (\alpha^2 - 1)  {\eta_E^2} (\alpha^2 -1) - 4 \alpha^2 c^2 {\eta_E^2} \\
+	   \qty(\dfrac{1}{\eta_H})^2   &=  {\eta_E^2} \qty[(\alpha^2 - 1)^2  - {4 \alpha^2 c^2 }] = \eta_E^2 (\alpha^2 + 1)^2
+ 	\end{align*}
+ 	\begin{equation*}
+ 	\qq{Hence,} \eta_E \eta_H (1 + \alpha^2) = 1
+ 	\end{equation*}
+ 	We know, 
+ 	\begin{equation*}
+ 	\va{H} = \eta_E(c \va{B} - \alpha \va{E}) \qq{and} c\va{D} = \eta_E (\va{E} + \alpha c \va{B})
+ 	\end{equation*}
+ 	Hence,
+ 	\begin{align*}
+ 	\alpha c \va{D} + \va{H} = \eta_E c ( 1 + \alpha^2 ) \va{B} &\implies \va{B} = {\eta_H} \qty({\alpha  \va{D} + \dfrac{\va{H}}{c}}) \\
+ 	c \va{D} - \alpha \va{H} = \eta_E (1 + \alpha^2 ) \va{E} &\implies \va{E} = \eta_H (c \va{D} - \alpha \va{H})
+ 	\end{align*}
+ 	Applying $ \dfrac{\va{E}}{\mu_0 c} \leftrightarrow \va{H}$ and $ \dfrac{\va{B}}{\mu_0 c} \leftrightarrow \va{D} $, we have,
+ 	\begin{align*}
+ 	\eta_H = \dfrac{\mu_0 c}{\sqrt{1 - \alpha^2 + \qty(\dfrac{1}{B_0})^2 \qty(\va{B}^2 - \dfrac{1}{c^2} \va{E}^2)}} &= (\mu_0 c)^2 \eta_E\\
+ 	\dfrac{\va{E}}{\mu_0 c} = \eta_E(\mu_0 c^2 \va{D} - \alpha \mu_0 c \va{H}) &\implies \va{E} = (\mu_0 c)^2 \eta_E(c \va{D} - \alpha \va{H}) = \eta_H (c \va{D} - \alpha \va{H}) \\
+ 	c\dfrac{\va{B}}{\mu_0 c} = \eta_E (\mu_0 c) (\va{H} + \alpha c \va{D}) &\implies \va{B} = {\eta_H} \qty({\alpha  \va{D} + \dfrac{\va{H}}{c}}) \\
+ 	 \mu_0 c \va{D} = {\eta_H} \dfrac{1}{\mu_0 c} \qty({\alpha  \va{B} + \dfrac{\va{E}}{c}}) &\implies c\va{D} = \eta_E (\va{E} + \alpha c \va{B})\\
+ 	 \mu_0 c \va{H} = \dfrac{\eta_H}{\mu_0 c} (c \va{B} - \alpha \va{E}) &\implies \va{H} = \eta_E(c \va{B} - \alpha \va{E})
+ 	\end{align*}
+ 	Thus, we have shown that BI theory has a duality transformation.
+ 	
+ 	\textbf{Part (c)}\\
+	\begin{align*}
+	\delta  L_{BI} =& - \dfrac{B_0}{2\mu_0} \dfrac{1}{\sqrt{B_0^2 + \va{B}^2 - \dfrac{1}{c^2} \va{E}^2  - \dfrac{(\va{E} \vdot \va{B})^2}{(cB_0)^2}}} \qty(2 \va{B} \vdot \delta \va{B} - \dfrac{2 \va{E} \vdot \delta \va{E}}{c^2} - \dfrac{2 \va{E} \vdot \va{B}}{(cB_0)^2} (\va{B} \vdot \delta \va{E} + \va{E} \vdot \delta \va{B})) \\
+	&= c \eta_E (\va{E} \vdot \delta \va{E} ) = - \div{\qty(\eta_E \dfrac{\va{E}}{c} \delta \phi)} - \partial_t \qty(\eta_E \dfrac{\va{E}}{c} \vdot \delta \va{A}) + \div{\qty(\eta_E \dfrac{\va{E}}{c})} + \partial_t \qty{\eta_E \dfrac{\va{E}}{c}} \vdot \delta \va{A}
+	\end{align*}
+	\begin{align*}
+	c \eta_E (\va{E} \vdot \delta \va{E} ) &= - \div{\qty(\eta_E \dfrac{\va{E}}{c} \delta \phi)} - \partial_t \qty(\eta_E \dfrac{\va{E}}{c} \vdot \delta \va{A}) + \div{\qty(\eta_E \dfrac{\va{E}}{c})} + \partial_t \qty{\eta_E \dfrac{\va{E}}{c}} \vdot \delta \va{A} \\
+	-c \eta_E (\va{B} \vdot \delta \va{B} ) &= \div{(c \eta_E \va{B} \cross \delta \va{A})}  = \delta \va{A} \vdot \curl{c \eta_E \va{B}}\\
+	\eta_E\alpha \va{E} \vdot \delta \va{B} &= \eta_E \alpha \va{E} \vdot \curl{\delta \va{A}} - \delta \va{A} \vdot \curl{(c \eta_E \va{B})}\\
+	\eta_E\alpha \va{B} \vdot \delta \va{E} &= - \div{(\eta_E \alpha \va{E} \cross \delta \va{A})} - \partial_t (\eta_E \alpha \va{B} \vdot \delta \va{A})
+	\end{align*}
+	
+ 	\textbf{Part (d)}\\
+ 	Including the point charge,
+ 	\begin{equation*}
+ 	L = \dfrac{B_0^2}{\mu_0} - \dfrac{B_0}{2\mu_0} \sqrt{B_0^2 + \va{B}^2 - \dfrac{1}{c^2} \va{E}^2  - \dfrac{(\va{E} \vdot \va{B})^2}{(cB_0)^2}} + \va{J} \vdot \va{A} - \rho \phi
+ 	\end{equation*}
 \end{homeworkProblem}
 \end{document}
