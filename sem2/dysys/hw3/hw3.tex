@@ -1,0 +1,200 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ \#3}
+\newcommand{\hmwkDueDate}{Due on 25th January, 2019}
+\newcommand{\hmwkClass}{Dynamical Systems}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+(\textbf{Acknowledgements} - I would like to thank Divya Jagannathan for discussions.)
+\\
+\begin{homeworkProblem}
+	Given $ \overline{\lim\limits_{t \rightarrow \infty}} f(t) = a \ne \pm \infty$, we can think of two broad cases :-
+	\\
+	
+	{\textbf{Case I}} - $ \lim\limits_{t \rightarrow \infty} f(t) $ exists  $ \implies \lim\limits_{t \rightarrow \infty} f(t) = a $.
+	\begin{enumerate}[label=(\alph*)]
+		\item $\lim\limits_{t \rightarrow \infty} [f(t) - a - \epsilon] = - \epsilon$
+		\item $\overline{\lim\limits_{t \rightarrow \infty}} [f(t) - a - \epsilon] = - \epsilon$
+		\item  $\lim\limits_{t \rightarrow \infty} [f(t) - a + \epsilon] =  \epsilon$
+		\item  $\overline{\lim\limits_{t \rightarrow \infty}} [f(t) - a + \epsilon] =  \epsilon$
+		\end{enumerate}
+	
+	{\textbf{Case II}} - $ \lim\limits_{t \rightarrow \infty} f(t) $ does not exist  $ \implies f(t) \le a $ as $ t \rightarrow \infty  $.
+	\begin{enumerate}[label=(\alph*)]
+		\item $\lim\limits_{t \rightarrow \infty} [f(t) - a - \epsilon] $ does not exist.
+		\item $\overline{\lim\limits_{t \rightarrow \infty}} [f(t) - a - \epsilon] = - \epsilon$
+		\item  $\lim\limits_{t \rightarrow \infty} [f(t) - a + \epsilon] $ does not exist
+		\item  $\overline{\lim\limits_{t \rightarrow \infty}} [f(t) - a + \epsilon] =  \epsilon$
+	\end{enumerate}
+\end{homeworkProblem}
+
+
+
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
+
+
+
+
+
+
+
+
+\begin{homeworkProblem}
+	The most general quadratic time-independent Hamiltonian for a system with $ n $ degrees of freedom is,
+	\begin{equation*}
+	H = \dfrac{1}{2}\sum_{i=1,j=1}^{n}  A_{ij} q_i q_j + B_{ij} p_i p_j + C_{ij} q_i p_j
+	\end{equation*}
+	where $ A_{ij} = A_{ji}, B_{ij} = B_{ji}, C_{ij} = C_{ji}, $ and $ q_i $ and $ p_i $ are the generalized positions and momenta respectively. Using Hamilton's equations of motion, one can write,
+	\begin{equation*}
+	\dot{q}_i = \sum_{j=1}^n B_{ij} p_j + C_{ij} q_j (2 - \delta_{ij}) \qq{and} \dot{p}_i = - \sum_{j=1}^n A_{ij} q_j - C_{ij} p_j (2 - \delta_{ij})
+ 	\end{equation*}
+ 	
+\end{homeworkProblem}
+\end{document}
