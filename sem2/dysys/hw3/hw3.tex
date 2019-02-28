@@ -148,17 +148,17 @@
 \begin{document}
 
 \maketitle
-(\textbf{Acknowledgements} - I would like to thank Divya Jagannathan for discussions.)
+\textbf{Acknowledgements} - I would like to thank Divya Jagannathan and Sugan Murugan for discussions.
 \\
 \begin{homeworkProblem}
 	Given $ \overline{\lim\limits_{t \rightarrow \infty}} f(t) = a \ne \pm \infty$, we can think of two broad cases :-
 	\\
 	
-	{\textbf{Case I}} - $ \lim\limits_{t \rightarrow \infty} f(t) $ exists  $ \implies \lim\limits_{t \rightarrow \infty} f(t) = a $.
+	{\textbf{Case I}} - $ \lim\limits_{t \rightarrow \infty} f(t) $ exists  $ \implies \lim\limits_{t \rightarrow \infty} f(t) \le a $.
 	\begin{enumerate}[label=(\alph*)]
-		\item $\lim\limits_{t \rightarrow \infty} [f(t) - a - \epsilon] = - \epsilon$
+		\item $\lim\limits_{t \rightarrow \infty} [f(t) - a - \epsilon] \le - \epsilon$
 		\item $\overline{\lim\limits_{t \rightarrow \infty}} [f(t) - a - \epsilon] = - \epsilon$
-		\item  $\lim\limits_{t \rightarrow \infty} [f(t) - a + \epsilon] =  \epsilon$
+		\item  $\lim\limits_{t \rightarrow \infty} [f(t) - a + \epsilon] \le  \epsilon$
 		\item  $\overline{\lim\limits_{t \rightarrow \infty}} [f(t) - a + \epsilon] =  \epsilon$
 		\end{enumerate}
 	
@@ -169,13 +169,26 @@
 		\item  $\lim\limits_{t \rightarrow \infty} [f(t) - a + \epsilon] $ does not exist
 		\item  $\overline{\lim\limits_{t \rightarrow \infty}} [f(t) - a + \epsilon] =  \epsilon$
 	\end{enumerate}
-\end{homeworkProblem}
+
+	For the next part, we note,
+	\begin{align*}
+	\chi[x(t)] &= \ln \qty[\norm{\exp(\int A(\tau) \dd{\tau}) x_0}] \\
+	&\le \ln \qty[\norm{\exp(\int A(\tau) \dd{\tau})} \norm{x_0}] \\
+	&\le \ln \qty[{\exp(\int \norm{A(\tau)} \dd{\tau})} \norm{x_0}] \\
+	\chi[x(t)] &\le {\int \norm{A(\tau)} \dd{\tau}} +  \ln \norm{x_0}
+	\end{align*}
+	Hence, if $\chi[x] = \pm \infty $ is not bounded, then $ \norm{A(\tau)} $ should also go to $ \infty $ at some point. Hence, $ \chi[x] = \pm \infty \implies \norm{A(\tau)}  $ is unbounded.
+	\\
+	For the converse statement, we give a counterexample. Consider $ x(t) = \exp(t \sin t) \implies A(t) = \sin t + t \cos t$. $ \chi[x] = 1 $. So even though $ A(t) $ is unbounded, the Lyapunov exponent is finite.
+\end{homeworkProblem} 
 
 
 
 
 \begin{homeworkProblem}
-	content...
+	The eigenvalues are given to be as $ u_k + i v_k $. Therefore the set $ \{u_k\} $ is the set of Lyapunov characteristic exponents. A general non-trivial linear combination of the eigensolutions will have Lyapunov exponent $ \max u_k $.
+	
+	
 \end{homeworkProblem}
 
 
@@ -195,6 +208,12 @@
 	\begin{equation*}
 	\dot{q}_i = \sum_{j=1}^n B_{ij} p_j + C_{ij} q_j (2 - \delta_{ij}) \qq{and} \dot{p}_i = - \sum_{j=1}^n A_{ij} q_j - C_{ij} p_j (2 - \delta_{ij})
  	\end{equation*}
+ 	One can really write this above set of equations in matrix form $ \dot{x} = A x $, with $ x = \mqty[q_1 & \ldots q_N & p_1 & \ldots & p_N]^T $, and hence, as per the previous question, the Lyapunov exponent would be $ \max[u_k] $, for eigenvalues $ u_k + i v_k $.
  	
+ 	For action angle variables $ Q_k, P_k $, the equations of motion would be linear in $ t $, and the Lyapunov exponent would be zero. The Hamiltonian can be written as,
+ 	\begin{equation*}
+ 	H = \sum_{i=1,j=1}^{n} P_i P_j
+ 	\end{equation*}
+ 	Canonical transformations keep the equations of motion invariant, hence the Lyapunov exponents stay invariant too.
 \end{homeworkProblem}
 \end{document}

@@ -217,6 +217,10 @@
 	\end{align*}
 	
 	\textbf{Part (c)}\\
+	\begin{align*}
+	\int \dd^d{\va{r}} J_0(d; kr) g(r) f(r) &= \int \dd^d{\va{r}} J_0(d; kr) g(r) \int \dfrac{\dd^d{k}}{(2 \pi)^d} J_0 (d; k' r) \bar{f}(k) \\
+	&= \int \dd^d{\va{r}} J_0(d; kr) \int \dfrac{\dd^d({\va{k} - \va{k'}})}{(2 \pi)^d} J_0\qty(d; \abs{{\va{k} - \va{k'}} }r)   \bar{g}\qty(\abs{{\va{k} - \va{k'}} }) \int \dfrac{\dd^d{k}}{(2 \pi)^d} J_0 (d; k' r) \bar{f}(k)
+	\end{align*}
 	\textbf{Part (d)}\\
 	Consider, 
 	\begin{equation*}
@@ -291,9 +295,21 @@
 	\implies \dfrac{x}{d} \dv{x} I_0(d;x) &= \dfrac{x^2}{d^2} I_0(d + 2; x)
 	\end{align*}	
 	\begin{align*}
-	 I_0(d-2;x) - I_0(d,x) &= \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \qty[\dfrac{\Gamma(d/2 - 1)}{z^{d/2 -1}} - \dfrac{\Gamma(d/2)}{z^{d/2}}] \exp(z + \dfrac{x^2}{4z})\\
-	 &= 
-	\end{align*}
+	I_0(d;x) &=  \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2)}{z^{d/2}} \exp(z + \dfrac{x^2}{4z}) \\
+	&= H - \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \int \dd{z} \dfrac{\Gamma(d/2)}{z^{d/2}} \exp(z + \dfrac{x^2}{4z}) \qty(1 - \dfrac{x^2}{4z^2}) \\
+	&= H + \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2)}{z^{d/2-1} (d/2 -1)} \exp(z + \dfrac{x^2}{4z}) \qty(1 - \dfrac{x^2}{4z^2}) \\
+	&= H + \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2 - 1)}{z^{d/2-1}} \exp(z + \dfrac{x^2}{4z}) - \dfrac{x^2 }{4} \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2 + 1)}{z^{d/2+1} (d/2 -1) (d/2)} \exp(z + \dfrac{x^2}{4z}) \\
+	 &= H + \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2 - 1)}{z^{d/2-1}} \exp(z + \dfrac{x^2}{4z}) - \dfrac{x^2 }{d(d-2)} \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2 + 1)}{z^{d/2+1}} \exp(z + \dfrac{x^2}{4z})\\
+	 I_0(d;x) &= H + I_0(d-2;x) - \dfrac{x^2}{d(d-2)} I_0(d+2;x)
+	\end{align*} 
+	where $ H $ is given by,
+	\begin{equation*}
+	H = \exp(z + \dfrac{x^2}{4z}) \oint_\mathcal{C} \dfrac{\dd{z}}{2 \pi i} \dfrac{\Gamma(d/2)}{z^{d/2}} = 0
+	\end{equation*}
+	as the contour $ \mathcal{C} $ does not include the pole at the origin. Hence, we have proved,
+	\begin{equation*}
+	I_0(d;x) = I_0(d-2;x) - \dfrac{x^2}{d(d-2)} I_0(d+2;x) \implies \dfrac{x^2}{d^2} I_0(d + 2; x) = \dfrac{d - 2}{d}\qty[ I_0(d-2;x) - I_0(d,x)]
+	\end{equation*}
 	
 	\textbf{Part (c)}\\
 	We are given,
