@@ -21,46 +21,76 @@
 %\setlength{\parindent}{0em}
 %\setlength{\parskip}{0.8em}
 
-\title{\textbf{Some Information about Gravitational Waves}}
+\title{\textbf{Multipole Expansion of Gravitational Waves}}
 \author{Aditya Vijaykumar}
 \affiliation{International Centre for Theoretical Sciences, Bengaluru, India.}
 \emailAdd{aditya.vijaykumar@icts.res.in}
-\abstract{One needs to get accustomed with what gravitational waves are before jumping in and working on it. One hopes the two tomes by Maggiore will aid one's exploration.}
+\abstract{Term Paper for the Electromagnetism Course, January-April 2019}
 
 \begin{document}
 \maketitle
 
-\section{Gravitational Waves as Geometry}
 
-\textit{Though Maggiore, the main reference for this tome, prefers not to use geometric units, I shall unapologetically use them.}
+\section{Gravitational Waves}
+\textit{Main Reference : Gravitation - Foundations and Frontiers by Thanu Padmanabhan}
 
-The gravitational action is a sum of the Einstein-Hilbert action and the matter action; $S = S_E + S_M$ where,
+\subsection{Facts about the Field Equations}
+The field equations are given by,
+\begin{equation*}
+G_{ab}  = R_{ab} - \dfrac{1}{2} g_{ab} R = 8 \pi T_{ab}
+\end{equation*}
+where,
+\begin{align*}
+R_{ijkl} = \dfrac{1}{2} (\partial_k \partial_l g_{im}  + \partial_i \partial_m g_{kl} - \partial_k \partial_m g_{il} &- \partial_i \partial_l g_{km}) + g_{np} (\Gamma^n_{kl} \Gamma^p_{im} - \Gamma^p_{il} \Gamma^n_{km}) \\
+R_{ab} &= R_{iajb} g^{ij} \\
+R &= R_{ab} g^{ab}
+\end{align*}
+The equations are symmetric under the exchange of indices, and hence there are really \textbf{ten} equations from the face of it. But we also note that the Bianchi identity tells us that $ \nabla_a G^a_{b} = 0 $, \textcolor{red}{Where does this come from? Read.} giving us \textbf{four} constraint equations. So really, we have \textbf{six} independent functions of spacetime coordinates to solve for. This suggests naively that though we have ten independent components in $ g_{ab} $ only six of them play a part in dynamics, and the other four are just fixed by the evolution of these six components. Let's now observe a few other things :-
 
-$$S_E = \frac{1}{16 \pi} \int d^4 x \sqrt{-g}R$$
+\begin{itemize}
+	\item Second derivatives of time are contained only in $ R_{0 \alpha 0 \beta} $, where $ \alpha, \beta $ run only over the space coordinates. \textit{The only terms which have double time derivatives}, hence, are $ \ddot{g}_{\alpha \beta} $.
+	\item $ \nabla_a G^a_{b} = 0 \implies \nabla_0 G^0_{b} =-  \nabla_\alpha G^\alpha_{b}  $. The RHS has terms with double time derivatives, which means that $ G^0_{b} $ should have \textit{only one time derivative}.
+	\item Further, the space-time and the time-time components have first time derivatives which are propotional to $ \dot{g}_{\alpha \beta} $. The time derivatives of the type $ \dot{g}_{0 a} $ \textit{do not appear in Einstein's equations}.
+\end{itemize}
+This now gives us an alternate way to understand the evolution equations. To evolve the equations, we need to provide the initial values of $ g_{\alpha \beta} $ and $ \dot{g}_{\alpha \beta} $ on a time slice. The space-time and the time-time Einstein's equations fix the value of the other four components. \textcolor{red}{Add Harmonic Gauge details here.}
 
-The \textit{energy-momentum tensor} $T_{\mu \nu}$ is defined from the variation of the matter action under a metric change $g_{\mu \nu} \rightarrow g_{\mu \nu} + \delta g_{\mu \nu}$ as,
+\subsection{Weak field limit of gravity} 
+Consider $ g_{ab} = \eta_{ab} + \epsilon h_{ab} $, with $  \eta = \text{diag} (-1,1,1,1) $, and $ \epsilon $ being a small number. We now write down the field equations with terms only up to $ \order{\epsilon} $. After the dust settles, we get,
+\begin{equation*}
+\partial_n \partial_m h + \Box h_{mn} - \partial_n \partial_r h^r_m - \partial_m \partial_r h^r_n - \eta_{mn} \qty(\Box h - \partial_r \partial_s h^{sr}) = - 16 \pi \kappa T_{mn}
+\end{equation*}
+We effect a change of variables as $ \bar{h}_{mn} = h_{mn} - \dfrac{\eta_{mn}}{2} h $. The equation now becomes,
+\begin{equation*}
+\Box \bar{h}_{mn} + \eta_{mn} \partial_r \partial_s \bar{h}^{rs} - \partial_n \partial_r \bar{h}^r_m - \partial_m \partial_r \bar{h}^r_n = - 16 \pi \kappa T_{mn}
+\end{equation*}
+Noticing that the above equation is invariant under gauge transformations of the form \begin{equation*}
+\bar{h}'^{mr} = \bar{h}^{mr} - \partial^m \xi^r - \partial^r \xi^m + \eta^{mr} \partial_s \xi^s
+\end{equation*}
+and imposing the harmonic gauge constraint $ \Box \xi^m =0 $, \textcolor{red}{review this calculation} we get,
+\begin{equation*}
+\Box \bar{h}^{mn} = - 16 \pi \kappa T_{mn}
+\end{equation*}
+This shows us that some sort of gravitational waves exist, with or without a source.
+\subsection{Gravitational waves in a flat background}
+By symmetry considerations of the Riemann tensor and upto first order in perturbation, we can write,
+\begin{equation*}
+\Box R_{bcmn } = 8 \pi [\partial_b(\partial_m \bar{T}_{nc} - \partial_n \bar{T}_{mc} ) - \partial_c(\partial_m \bar{T}_{nb} - \partial_n \bar{T}_{mb} )] = 8 \pi \bar{T}_{bcmn}
+\end{equation*}
+where $ \bar{T}_{ij} = T_{ij} -\dfrac{g_{ij} T}{2} $. The equation in invariant under infinitesimal coordinate transformations. Let's first consider the vacuum case $ \Box R_{bcmn } =0 \implies R_{abmn} = C_{abmn} e^{i k_a x^a}, k^a k_a = 0$. The Bianchi identity gives, \textcolor{red}{Read Up}
+\begin{equation*}
+C_{bcmn} k_a + C_{camn}k_b + C_{abmn}k_c =0 
+\end{equation*}
+We now choose the wavevector to be oriented aong the $ z $-axis \textit{ie} $ k_a = (-\omega, 0 , 0 , \omega) $. Setting index $ c=0 $, we get
+\begin{align*}
+C_{abmn} = \dfrac{1}{\omega}(C_{b0mn} k_a + C_{0amn}k_b ) &= \dfrac{1}{\omega}(C_{b0mn} k_a - C_{a0mn}k_b ) \\
+n \rightarrow 0 \implies C_{a0bm} &= \dfrac{1}{\omega}(C_{b0m0} k_a - C_{a0m0}k_b )
+\end{align*}
+Substituting the second equation into the first, we can figure that $ C_{abmn} $ can be specified completely in terms of the form $ C_{i0j0} $. Furthermore, substituting $a=0$ in the second equation gives,
+\begin{align*}
+ C_{00bm} &= \dfrac{1}{\omega}(C_{b0m0} (-\omega) - C_{00m0}k_b ) \implies C_{00m0}=0
+\end{align*}
+This means that $ i,j $ cannot be zero, and hence only the terms of the form $ C_{\alpha 0 \beta 0} $ survive this ordeal.
 
-$$\delta S_M = \frac{1}{2}  \int d^4 x \sqrt{-g} \ T^{\mu \nu} \delta g_{\mu \nu}$$
+\section{Symmetric Trace-free Tensors}
 
-Variation of the total action with respect to $g_{\mu \nu}$ yields Einstein's equations,
-$$\boxed{R_{\mu \nu} - \frac{1}{2}g_{\mu \nu}R = 8 \pi T_{\mu \nu}}$$
-
-General relativity is invariant under a huge groups of transformations $x^\mu \rightarrow x'^\mu(x)$, as long as $x'$ is invertible, differentiable, and has a differentiable inverse. Such transformations are called \textit{diffeomorphisms}. Under diffeomorphisms, $g_{\mu \nu}$ transforms as,
-$$g_{\mu \nu}(x') = \pdv{x^\rho}{x'^\mu} \pdv{x^\sigma}{x'^\nu} g_{\mu \nu}(x)$$
-
-\subsection{Expansions around flat space}
-Lets imagine that our system is a perturbation around the flat space metric,
-$$g_{\mu \nu} = \eta_{\mu \nu} + h_{\mu \nu}$$
-The magnitude of $h_{\mu \nu}$ is infinitesmal, and we only consider equations upto first order in $h_{\mu \nu}$.
-
-Lets stare at the above equation for a few seconds. We know that the numerical values of the tensor depends on the choice of reference frame. So on what basis are we calling $h_{\mu \nu}$ infinitesmal? Actually, what we merely wish to say is that for some choice of reference frame, the above equation will be valid and we can do all our calculations. While this choice helps us simplify our calculations, it should be noted that choosing a specific reference frame breaks the diffeomorphism invariance.
-
-Even after choosing the above transformation, we still have a residual gauge freedom left. Consider $$x'^\mu \rightarrow x^\mu + \xi^\mu (x)$$ where the derivatives of $\xi^\mu$ as as inifinitesmal as $h_{\mu \nu}$. By using the diffeomorphism property,
-$$g'_{\mu \nu}(x') = \pdv{x^\rho}{x'^\mu} \pdv{x^\sigma}{x'^\nu} g_{\rho \sigma}(x)$$ and substituting for the partial derivatives, one gets,
-\begin{flalign*}
-	g'_{\mu \nu}(x') &= \left(\delta^\rho_\mu - \pdv{\xi^\rho}{x'^\mu}\right)  \left(\delta^\sigma_\nu - \pdv{\xi^\sigma}{x'^\nu}\right)  (\eta_{\rho \sigma} + h_{\rho \sigma}(x)) \\
-	\eta_{\mu \nu} + h'_{\mu \nu}(x') &= \left(\delta^\rho_\mu \delta^\sigma_\nu - \pdv{\xi^\rho}{x'^\mu}\delta^\sigma_\nu - \pdv{\xi^\sigma}{x'^\nu} \delta^\rho_\mu \right)  (\eta_{\rho \sigma} + h_{\rho \sigma}(x))\\
-	h'_{\mu \nu}(x') &= h_{\mu \nu}(x) - \pdv{\xi_\nu}{x'^\mu} - \pdv{\xi_\mu}{x'^\nu} 
-\end{flalign*}
-
-\end{document}\grid
+\end{document}

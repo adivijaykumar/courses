@@ -1,0 +1,128 @@
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm, mathtools}
+%\usepackage{hyperref}
+\usepackage{color}
+\usepackage{jheppub}
+\usepackage[T1]{fontenc} % if needed
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+%\linespread{1.0}
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.8em}
+
+\title{\textbf{Singular Perturbation Theory}}
+\author{Aditya Vijaykumar}
+\affiliation{International Centre for Theoretical Sciences, Bengaluru, India.}
+\emailAdd{aditya.vijaykumar@icts.res.in}
+\abstract{Course Project - Dynamical Systems}
+
+\begin{document}
+\maketitle
+\section{Introduction}
+\section{Singular Perturbation theory for Algebraic Equations}
+Consider first the equation $ \epsilon m^2 + 2m + 1 =0 $, where $ \epsilon << 1 $ is a small parameter. We note that with $ \epsilon= 0$ the equation has just one solution $ m = -1/2 $, whereas the full equation has two solutions by virtue of being quadratic. If what we desire are perturbative solutions around the unperturbed solutions, we won't be able to obtain two solutions by usual power series substitution.
+
+So where exactly are we failing to capture the problem? As this problem is exactly solvable, let's look at the roots -
+\begin{equation*}
+m_\pm = \dfrac{-1 \pm \sqrt{1 - \epsilon}}{\epsilon} \approx\dfrac{-1 \pm (1 - \epsilon/2)}{\epsilon} \approx -\dfrac{1}{2}, - \dfrac{2}{\epsilon}
+\end{equation*}
+We see that the roots are diverging at $ \epsilon \rightarrow 0 $, which explains why the pertubative approach fails! So  from the two preceding observations that \textit{ignoring} the $ \epsilon $ for obtaining the unperturbed solution is not the best of ideas. 
+
+Let's then try to do the next best thing - trying to see what terms have comparable orders as the $ \epsilon m^2 $ term. We adopt a trial and error approach. Let's first try $ \epsilon m^2 \sim m \implies m \sim \frac{1}{\epsilon} \implies 2m  = \order{\frac{1}{\epsilon}} $. This means that now the $ \epsilon m^2 $ term cannot be ignored. Let's make the substitution $ m = \frac{x}{\epsilon}$ to, in some sense, normalize $ \epsilon  $ term.
+\begin{align*}
+\implies \epsilon \qty(\dfrac{x}{\epsilon})^2 + 2 \dfrac{x}{\epsilon} + 1 = 0 \\
+\implies \dfrac{x^2}{\epsilon} + 2 \dfrac{x}{\epsilon} + 1 = 0 \\
+\implies x^2 + 2 x + \epsilon = 0
+\end{align*}
+Let's make the subsitution $  x = \sum_{n=0}^{\infty} x_n \epsilon^n$. Upto first order in $ \epsilon $, we get the following equations,
+\begin{align*}
+x_0^2 + 2 x_0 = 0 &\implies x_0 = 0 , -2 \\
+2 x_0 x_1 + 2 x_1 + 1 = 0 &\implies x_1 = -\dfrac{1}{2}, x_1 = \dfrac{1}{2} \qq{pairwise for } x_0= 0 , -\frac{1}{2}
+\end{align*}
+Hence we have the two roots, perturbatively to $ \order{\epsilon} $,
+\begin{equation*}
+x = -\dfrac{\epsilon}{2}, -2 + \dfrac{\epsilon}{2} \implies m = -\dfrac{1}{2}, -\dfrac{2}{\epsilon}
+\end{equation*}
+So this procedure works! The procedure is actually called the \textit{method of dominant balance}. Let's look at a more complicated equation, $ \epsilon x^4 + \epsilon x^3 - x^2 + 2x - 1 =0 $. A usual characteristic of a singular perturbation problem is that the highest order term is multiplied by an infinitesimal quantity. Let's apply the above procedure to this equation -
+\begin{itemize}
+	\item Substituting $ x = \sum_{n} a_n \epsilon^n $, we get,
+	\begin{align*}
+	a_0^2 -2a_0 +1 = 0 \implies a_0 = 1,-1 \\
+	a_0^4 +a_0^3 - 2 a_0 a_1 + 2 a_1 = 0 \implies 
+	\end{align*}
+	\item $ \epsilon x^4 \sim x^2 \implies x \sim \frac{1}{\sqrt{\epsilon}} \sim \frac{1}{\mu} $. Substituting $ x = \frac{m}{\mu} $, $ m^4 + \mu m^3 - m^2 + 2 \mu m - \mu^2 = 0$. Substituting $ m = \sum_{n=0}^{\infty} a_n \mu^n $ and using sympy to do the algebraic manipulations, we get the following equations,
+	\begin{align*}
+	a_0^4 - a_0^2 = 0 &\implies a_0 = 1,-1 \\
+	4 a_0^3 a_1 + a_0^3 - 2 a_0 a_1 + 2 a_0 = 0 &\implies a_1 = -\frac{3}{2}, -\frac{3}{2} \\
+	4 a_0^3 a_2 + 6 a_0^2 a_1^2 + 3 a_0^2 a_1 -2 a_0 a_2 - a_1^2 +2 a_1 - 1 = 0 &\implies a_2 = -\dfrac{11}{8}, \dfrac{11}{8}
+	\end{align*}
+	Hence, we get two roots as,
+	\begin{align*}
+	x &= \frac{1 -\frac{3}{2}\mu - \frac{11}{8} \mu^2}{\mu}, \frac{-1 -\frac{3}{2}\mu + \frac{11}{8} \mu^2}{\mu} \\
+	\implies x &\approx \frac{1}{\sqrt{\epsilon}} -\frac{3}{2}, -\frac{1}{\sqrt{\epsilon}} -\frac{3}{2}
+	\end{align*}
+	\item $ \epsilon x^4 + \epsilon x^3 = (x-1)^2 \implies x = 1 \pm \sqrt{\epsilon} \sqrt{x^3 + x^4}$. We can use this to set up an iterative scheme in $ \sqrt{\epsilon} $. Therefore, two more roots are,
+	\begin{equation*}
+	x = 1 + \sqrt{2} \sqrt{\epsilon} + \dfrac{7}{2} \epsilon, 1 - \sqrt{2} \sqrt{\epsilon} + \dfrac{7}{2} \epsilon, 
+	\end{equation*}
+\end{itemize}
+	
+\section{Singular Peturbation Theory for Ordinary Differential Equations}
+\subsection{Boundary Value Problem}
+\begin{equation*}
+\epsilon y'' + 2 y' + y = 0 \qq{,} y' = \dv{y}{x} \qq{,} y(0) = 0 \qq{,} y(1)=1
+\end{equation*}
+The unperturbed differential equation reads $ 2y' + y = 0  $. We see now, if we take both boundary conditions into account, that this is an overdetermined problem. Anyway, this unperturbed equation has the general solution,
+\begin{equation*}
+y = A \exp(-\dfrac{x}{2}) \implies y = 0 \qq{OR} y = \exp(\dfrac{1-x}{2})
+\end{equation*} 
+How do we reconcile the differences? Let's first solve the differential equation exactly by substituting $ y = \exp(mx) $ :-
+\begin{align*}
+\epsilon m^2 + 2m + 1 = 0 &\implies m = \dfrac{-1 \pm \sqrt{1 - \epsilon}}{\epsilon} \approx -\dfrac{1}{2}, -\dfrac{2}{\epsilon} \\
+\implies y = B \exp(-\dfrac{x}{2}) +  C \exp(-\dfrac{2x}{\epsilon}) &\implies y \approx e^{1/2} \qty(\exp(-\dfrac{x}{2}) - \exp(-\dfrac{2x}{\epsilon}) )
+\end{align*}
+So, we see that there is a term which becomes large as $ x\rightarrow 0 $, but dies of faster as $ x $ increases. This infinitesimal region near $x =0 $ is popularly called the the \textit{boundary layer}, mainly inspired by fluid mechanics problems. 
+
+What does this tell us? We can clearly see that there are two regions in the problem - one where the effects of the $ \epsilon $ term are significant, and one where the effects are insignificant. This suggests we should really solve this equation in these regions separately and then adopt some kind of matching procedure. So let's do exactly that, first for the region where $ x \sim \order{\epsilon} $. Substituting $ t = \frac{x}{\delta} $ in the governing equation, we get,
+\begin{equation*}
+\dfrac{\epsilon}{\delta^2} \ddot{y} + \dfrac{2}{\delta} \dot{y} + y = 0 \qq{,} \dot{y} = \dv{y}{t}
+\end{equation*}
+Let's now apply a dominant balance like method here. If $ \frac{\epsilon}{\delta^2} \sim \frac{2}{\delta}  \implies \epsilon \sim \delta$, after rearranging terms and neglecting $ \order{\epsilon} $ terms, we have
+\begin{equation*}
+\ddot{y} + 2 \dot{y} = 0 \implies y = A + B \exp(-2t) 
+\end{equation*}
+We note that this solution is only valid when $ \delta \sim \epsilon $, \textit{ie} when $ x \rightarrow 0 $. Hence, imposing only the boundary condition $ y(0) = 0 $, we have $ y_{in} = A(1 - e^{-2t}) $. We have already obtained the solution far away from zero, which is just $ y_{out} =e^{\frac{1-x}{2}}  $. So we have now got solutions at two extremities, and need to match these solutions at some intermediate points. If $ \theta(\epsilon) $ is the scale of the intermediate region, we can say it should satisfy the following,
+\begin{equation*}
+\lim\limits_{\epsilon \rightarrow 0} \dfrac{\theta}{\epsilon} = \infty \qq{and} \lim\limits_{\epsilon \rightarrow 0} \theta = 0
+\end{equation*}
+So it's natural to now consider another scale in the system $ x \sim \theta $ and substitute $ x = \eta \theta \implies t = \frac{\eta \theta}{\delta}$. Matching condition requires,
+\begin{align*}
+\lim\limits_{\epsilon \rightarrow 0} y_{out}(x=\eta \theta) &= \lim\limits_{\epsilon \rightarrow 0} y_{in}( x =\eta \theta) \\
+\implies \lim\limits_{\epsilon \rightarrow 0}e^{\frac{1 - \eta \theta}{2}} &= \lim\limits_{\epsilon \rightarrow 0}A( 1 - e^{-2 \eta \theta/\delta}) \\
+\implies e^{1/2} &= A
+\end{align*}
+Hence, we can no2 say that $ y_{in} =   e^{1/2}(1 - e^{-2x/\epsilon})$. To obtain a seemingly uniform solution, what we can do is add the inner and outer solutions and subtract the common part \textit{i.e.} $ e^{1/2} $,
+\begin{equation*}
+\implies y_{uni} = e^{1/2}(e^{-x/2} - e^{-2x/\epsilon})
+\end{equation*}
+which exactly agrees with our initial approximation.
+
+\subsection{Initial Value Problem}
+
+\section{Method of Multiple Scales}
+\end{document}
+
+
+
+
