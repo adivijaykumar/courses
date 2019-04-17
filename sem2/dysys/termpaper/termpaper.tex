@@ -133,14 +133,14 @@ The unperturbed equation has solution $ y_{out} = A_0 e^{x^2/2} $. Let us consid
 \dfrac{\epsilon}{\delta^3} \dddot{y} - \dfrac{1}{\delta} \dot{y} + xy = 0 &\qq{,} \dfrac{\epsilon}{\delta^3} \sim \dfrac{1}{\delta} \implies \delta \sim \sqrt{\epsilon} \\
 \dddot{y} - \dot{y} = 0 \implies \dot{y} = A e^t + B e^{-t} &\implies y_{in} = A e^t - B e^{-t} + C \implies y_{in}' = \dfrac{A}{\sqrt{\epsilon}} e^{\frac{x}{\sqrt{\epsilon}}} + \dfrac{B}{\sqrt{\epsilon}} e^{-\frac{x}{\sqrt{\epsilon}}}
 \end{align*}
-We now impose boundary conditions $ y(0)= y'(0) = 1 \implies  $ and get $ y_{in}  = A (e^\frac{x}{\sqrt{\epsilon}} + e^{-\frac{x}{\sqrt{\epsilon}}}) + (1- 2A )$, where we have retained only the leading terms. If we try to match the inner and outer solutions, we see that . Hence we expect to have another layer at $ x=1 $. Now using t = $\frac{1-x}{\delta}$ and doing a similar procedure again, we obtain,
+We now impose boundary conditions $ y(0)= y'(0) = 1 \implies  $ and get $ y_{in}  = A (e^\frac{x}{\sqrt{\epsilon}} + e^{-\frac{x}{\sqrt{\epsilon}}}) + (1- 2A )$, where we have retained only the leading terms. If we try to match the inner and outer solutions, we see that there is now way that the final form of the solution satisfies the boundary condition $ y(1) = 1 $ . Hence we expect to have another layer at $ x=1 $. Now using t = $\frac{1-x}{\delta}$ and doing a similar procedure again, we obtain,
 \begin{equation*}
 y_{1in} = A' e^{\frac{1-x}{\sqrt{\epsilon}}} + B' e^{-\frac{1-x}{\sqrt{\epsilon}}} + (1 - A' - B')
 \end{equation*}
 Matching this with the outer solution gives $ A'=0, B'=1, A_0 = 1  \implies y_{out} = e^{x^2/2} $ and $ y_{1in} = e^{\frac{x-1}{\sqrt
 \epsilon}} $. The perturbative solution upto leading order is, hence,
 \begin{equation*}
-y_{uni} = e^{x^2/2} + e^{\frac{x-1}{\sqrt{\epsilon}}}
+y_{uni} = e^{x^2/2} (1 + \sqrt{\epsilon}) + e^{\frac{x-1}{\sqrt{\epsilon}}} (\sqrt{\epsilon }-1) - \sqrt{\epsilon} e^{-\frac{x}{\sqrt{\epsilon}}} + constant
 \end{equation*}
 
 
