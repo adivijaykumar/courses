@@ -4,7 +4,7 @@
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\usepackage{amsthm, mathtools}
+\usepackage{amsthm, mathtools, bm}
 %\usepackage{hyperref}
 \usepackage{color}
 \usepackage{jheppub}
@@ -30,6 +30,14 @@
 \begin{document}
 \maketitle
 
+\section{Introduction}
+We hope to understand how the gravitational radiation field can be expanded in terms of multipole moments. This is important especially because the multipole moments can be written in terms of the parameters of the source producing these waves. The references for the document are :-
+\begin{itemize}
+	\item Thorne, Kip S. 1980. "Multipole expansions of gravitational radiation" - The classic reference, and the first that did the job of establishing a uniform notation for the subject. The structure of this document roughly follows the first four sections of this paper.	
+	\item Misner, Charles W., Kip S. Thorne, John Archibald Wheeler, and David Kaiser. 2017. Gravitation. - The article above constantly refers to this book.
+	\item Padmanabhan, T. 2012. \textit{Gravitation: foundations and frontiers}. Cambridge: Cambridge University Press. - So far, my favourite text book on the subject
+	\item Poisson, Eric, and Clifford M. Will. 2014. \textit{Gravity: Newtonian, post-Newtonian, relativistic}. Cambridge: Cambridge University Press. - An expansive reference, which I had planned to follow  as the primary reference earlier for its treatment of post-Newtonian theory, but had to abandon the idea mainly to the expanse itself.
+\end{itemize}
 
 \section{Gravitational Waves}
 \textit{Main Reference : Gravitation - Foundations and Frontiers by Thanu Padmanabhan}
@@ -45,14 +53,14 @@ R_{ijkl} = \dfrac{1}{2} (\partial_k \partial_l g_{im}  + \partial_i \partial_m g
 R_{ab} &= R_{iajb} g^{ij} \\
 R &= R_{ab} g^{ab}
 \end{align*}
-The equations are symmetric under the exchange of indices, and hence there are really \textbf{ten} equations from the face of it. But we also note that the Bianchi identity tells us that $ \nabla_a G^a_{b} = 0 $, \textcolor{red}{Where does this come from? Read.} giving us \textbf{four} constraint equations. So really, we have \textbf{six} independent functions of spacetime coordinates to solve for. This suggests naively that though we have ten independent components in $ g_{ab} $ only six of them play a part in dynamics, and the other four are just fixed by the evolution of these six components. Let's now observe a few other things :-
+The equations are symmetric under the exchange of indices, and hence there are really \textbf{ten} equations from the face of it. But we also note that the Bianchi identity tells us that $ \nabla_a G^a_{b} = 0 $, giving us \textbf{four} constraint equations. So really, we have \textbf{six} independent functions of spacetime coordinates to solve for. This suggests naively that though we have ten independent components in $ g_{ab} $ only six of them play a part in dynamics, and the other four are just fixed by the evolution of these six components. Let's now observe a few other things :-
 
 \begin{itemize}
 	\item Second derivatives of time are contained only in $ R_{0 \alpha 0 \beta} $, where $ \alpha, \beta $ run only over the space coordinates. \textit{The only terms which have double time derivatives}, hence, are $ \ddot{g}_{\alpha \beta} $.
 	\item $ \nabla_a G^a_{b} = 0 \implies \nabla_0 G^0_{b} =-  \nabla_\alpha G^\alpha_{b}  $. The RHS has terms with double time derivatives, which means that $ G^0_{b} $ should have \textit{only one time derivative}.
 	\item Further, the space-time and the time-time components have first time derivatives which are propotional to $ \dot{g}_{\alpha \beta} $. The time derivatives of the type $ \dot{g}_{0 a} $ \textit{do not appear in Einstein's equations}.
 \end{itemize}
-This now gives us an alternate way to understand the evolution equations. To evolve the equations, we need to provide the initial values of $ g_{\alpha \beta} $ and $ \dot{g}_{\alpha \beta} $ on a time slice. The space-time and the time-time Einstein's equations fix the value of the other four components. \textcolor{red}{Add Harmonic Gauge details here.}
+This now gives us an alternate way to understand the evolution equations. To evolve the equations, we need to provide the initial values of $ g_{\alpha \beta} $ and $ \dot{g}_{\alpha \beta} $ on a time slice. The space-time and the time-time Einstein's equations fix the value of the other four components.
 
 \subsection{Weak field limit of gravity} 
 Consider $ g_{ab} = \eta_{ab} + \epsilon h_{ab} $, with $  \eta = \text{diag} (-1,1,1,1) $, and $ \epsilon $ being a small number. We now write down the field equations with terms only up to $ \order{\epsilon} $. After the dust settles, we get,
@@ -66,21 +74,21 @@ We effect a change of variables as $ \bar{h}_{mn} = h_{mn} - \dfrac{\eta_{mn}}{2
 Noticing that the above equation is invariant under gauge transformations of the form \begin{equation*}
 \bar{h}'^{mr} = \bar{h}^{mr} - \partial^m \xi^r - \partial^r \xi^m + \eta^{mr} \partial_s \xi^s
 \end{equation*}
-and imposing the harmonic gauge constraint $ \Box \xi^m =0 $, \textcolor{red}{review this calculation} we get,
+and imposing the harmonic gauge constraint $\partial_r \bar{h}'^{mr} =0 $, we get,
 \begin{equation*}
 \Box \bar{h}^{mn} = - 16 \pi \kappa T_{mn}
 \end{equation*}
-This shows us that some sort of gravitational waves exist, with or without a source.
+This shows us that some sort of gravitational waves exist, with or without a source. We note that this gauge condition can always be satisfied if we choose $ \xi^r $ such that $ \Box \xi^m =  \partial_r \bar{h}^{mr}$. This also shows us that there is a freedom is choosing $ \xi^r $, and we can add to it any vector $ \tilde{\xi}^r $ such that $ \Box \tilde{\xi}^r = 0 $.
 \subsection{Gravitational waves in a flat background}
 By symmetry considerations of the Riemann tensor and upto first order in perturbation, we can write,
 \begin{equation*}
 \Box R_{bcmn } = 8 \pi [\partial_b(\partial_m \bar{T}_{nc} - \partial_n \bar{T}_{mc} ) - \partial_c(\partial_m \bar{T}_{nb} - \partial_n \bar{T}_{mb} )] = 8 \pi \bar{T}_{bcmn}
 \end{equation*}
-where $ \bar{T}_{ij} = T_{ij} -\dfrac{g_{ij} T}{2} $. The equation in invariant under infinitesimal coordinate transformations. Let's first consider the vacuum case $ \Box R_{bcmn } =0 \implies R_{abmn} = C_{abmn} e^{i k_a x^a}, k^a k_a = 0$. The Bianchi identity gives, \textcolor{red}{Read Up}
+where $ \bar{T}_{ij} = T_{ij} -\dfrac{g_{ij} T}{2} $. The equation in invariant under infinitesimal coordinate transformations. Let's first consider the vacuum case $ \Box R_{bcmn } =0 \implies R_{abmn} = C_{abmn} e^{i k_a x^a}, k^a k_a = 0$. The Bianchi identity gives,
 \begin{equation*}
 C_{bcmn} k_a + C_{camn}k_b + C_{abmn}k_c =0 
 \end{equation*}
-We now choose the wavevector to be oriented aong the $ z $-axis \textit{ie} $ k_a = (-\omega, 0 , 0 , \omega) $. Setting index $ c=0 $, we get
+We now choose the wave-vector to be oriented along the $ z $-axis \textit{ie} $ k_a = (-\omega, 0 , 0 , \omega) $. Setting index $ c=0 $, we get
 \begin{align*}
 C_{abmn} = \dfrac{1}{\omega}(C_{b0mn} k_a + C_{0amn}k_b ) &= \dfrac{1}{\omega}(C_{b0mn} k_a - C_{a0mn}k_b ) \\
 n \rightarrow 0 \implies C_{a0bm} &= \dfrac{1}{\omega}(C_{b0m0} k_a - C_{a0m0}k_b )
@@ -91,6 +99,238 @@ Substituting the second equation into the first, we can figure that $ C_{abmn} $
 \end{align*}
 This means that $ i,j $ cannot be zero, and hence only the terms of the form $ C_{\alpha 0 \beta 0} $ survive this ordeal.
 
-\section{Symmetric Trace-free Tensors}
+In general, one can describe the solution to the wave equation without sources as follows,
+\begin{equation*}
+\bar{h}_{mn} = \int \dd^3{k} A_{mn}( \vb{k}) \exp(i \vb{k} \cdot \vb{x} - i \omega t)
+\end{equation*}
+Recall that the harmonic gauge constraint that had already been imposed still left us with a freedom of choice for $ \tilde{\xi}^r; \Box \tilde{\xi}^r =0 $. To take care of these, let us postulate the following gauge,
+\begin{equation*}
+h_{00} = h_{0\alpha} = 0 \qq{,} h = h^\alpha_\alpha = 0 \qq{,} \partial_\alpha h^{\alpha \beta} = 0
+\end{equation*}
+This gauge is called the transverse traceless (TT) gauge. To see that this is an allowed gauge, we write the general solution for $ \xi^r $,
+\begin{equation*}
+\xi^r = \int \dd^3{k} C^a(\vb{k}) \exp(i \vb{k} \cdot \vb{x} - i \omega t)
+\end{equation*}
+Under the harmonic gauge condition, 
+\begin{equation*}
+A_{mn} \rightarrow A'_{mn} = A_{mn} - ik_m C_n - i k_m C_n + i \eta_{mn} k^d C_d
+\end{equation*}
+\textcolor{red}{Add remaining steps of calculation}
+Note that the TT gauge can be used only in the absence of sources, while the harmonic gauge is valid for general $ T_{mn} $.
+
+So how many degrees of freedom does our $ h_{mn} $ have left? Initially, we had 10 degrees of freedom. The harmonic gauge constraint $ \partial_r \bar{h}^{mr} = 0 $ allows us to eliminate 4 degrees of freedom. For solutions of the source-less wave equation, we can further use the above condition to eliminate four more degrees of freedom! This leaves us with just two degrees of freedom. For a gravitational wave propagating along the $ z $-axis, we can write the TT components as follows,
+\begin{equation*}
+h_{xx}^{TT} = - h_{yy}^{TT} = h_+ (t-z) \qq{and} h_{xy}^{TT} = h_{yx}^{TT} = h_{\cross} (t-z)
+\end{equation*}
+It can be shown that the TT gauge permits us to write the stress-energy tensor as follows,
+\begin{equation*}
+t_{mn} = \dfrac{1}{32 \pi} \ev{\partial_m h^{TT}_{ij} \partial_n h^{ij}_{TT}}
+\end{equation*}
+where the average is over all wavelengths. \textcolor{red}{add derivation from notes}
+We can thus write down expressions for the energy and momentum of the gravitational wave! $ t_{00} $ gives the energy flux, $ t^{0\alpha} $ gives the linear momentum flux, 
+\begin{align*}
+\implies \dfrac{\dd{E}}{\dd{\Omega} \dd{t}} &=  \dfrac{r^2}{32 \pi} \ev{ \dot{h}^{TT}_{ij} \dot{h}^{ij}_{TT}} \\
+ \dfrac{\dd{p^k}}{\dd{\Omega} \dd{t}} &= \dfrac{1}{32 \pi} \ev{\dot{h}^{TT}_{ij} \partial^k h^{ij}_{TT}}
+\end{align*}
+
+\section{Spherical Harmonics}
+Let us first fix notations for the rest of the document. If $ n_a $ is a radial unit vector, then
+\begin{equation*}
+N_{A_l}  = n_{a_1} n_{a_2} n_{a_3} \ldots n_{a_l}
+\end{equation*}
+We also use the shorthand notation,
+\begin{equation*}
+S_{A_l} = S_{a_1 a_2 \ldots a_l}
+\end{equation*}
+The indices on which a tensor is symmetrized will be denoted by parentheses,
+\begin{equation*}
+S_{ab(cde)} = \dfrac{1}{6}(S_{abcde} + S_{abdec} + S_{abecd} + S_{abdce} + S_{abced} +  S_{abedc})
+\end{equation*}
+When only the free indices are being symmetrized, we denote that by $ [S_{abc}]^S $. To denote symmetric trace-free tensors, we use the superscript STF,
+\begin{equation*}
+[T_{abc}]^{STF}= T_{(abc)} - \dfrac{1}{5} \qty(\delta_{ab} T_{(jjc)} + \delta_{bc} T_{(ajj)} + \delta_{ac} T_{(jbj)} )
+\end{equation*}
+The transverse part of a tensor will be denoted by superscript $ T $,
+\begin{equation*}
+[T_{abc}]^T = P_{ai} P_{bj} P_{ck} T_{ijk} \qq{,} P_{jk} = \delta_{jk} - n_j n_k
+\end{equation*}
+and the transverse-traceless part of the tensor will be denoted superscript TT,
+\begin{equation*}
+[T_{ab}]^T = P_{ai} P_{bj} T_{ij} - \dfrac{1}{2} P_{ab} P_{jk } T_{kj} 
+\end{equation*}
+We reserve script notation \textit{eg}. $ \mathcal{B} $ for tensors which are independent of $ \theta, \phi $.
+\subsection{Symmetric trace-free tensors}
+How does one construct a general symmetric trace-free tensor? Consider a tensor $ A_{k_1 k_2 \ldots k_l	} $. We first construct the symmetric part of the tensor,
+\begin{equation*}
+[A_{k_1 k_2 \ldots k_l	}]^S = \dfrac{1}{l!}\sum_{\pi} A_{(\pi_1 \pi_2) \pi_3 \ldots \pi_l}  
+\end{equation*}
+where $ \pi $ runs over all permutations of $k_1 k_2 \ldots k_l  $. We now proceed to remove all the traces. 
+
+\subsection{Scalar spherical harmonics}
+The scalar spherical harmonics are given by,
+\begin{equation*}
+Y^{lm} (\theta , \phi) = C^{lm} e^{i m \phi} P^{lm} (\cos \theta) \qq{,} C^{lm} = (-1)^m \qty[\dfrac{2l + 1}{4 \pi} \dfrac{(l-m)!}{(l+m)!}]^{1/2}
+\end{equation*}
+The value of $ C^{lm} $ is such that the orthonormality relation of $ Y^{lm} $ is satisfied, that is,
+\begin{equation*}
+\int Y^{lm} Y^{l'm'} \dd{\Omega} = \delta_{ll'} \delta_{mm'}
+\end{equation*}
+If we expand the expression for $ P^{lm} $ in the equation for $ Y^{lm} $, we get,
+\begin{align*}
+Y^{lm} (\theta , \phi)&= C^{lm} e^{i  \phi} \sin \sum_{j=0}^{[(l-m)/2]} a^{lmj} (\sin\theta)^m (\cos \theta)^{l-m-2j} \\
+&= C^{lm} (e^{i  \phi} \sin \theta)^m \sum_{j=0}^{[(l-m)/2]} a^{lmj} (\cos \theta)^{l-m-2j}  \qq{,} a^{lmj} = \dfrac{(-1)^j (2l - 2j)!}{2^l j! (l-j)! (l-m-2j)!}
+\end{align*}
+
+One notes that the symmetric trace-free tensors of rank $ l $ form an irreducible representation of the rotation group, and hence the should exist a one-to-one correspondence by the STF tensors and the spherical harmonics. One can simplify the above formula by writing it in terms of cartesian components of unit radial vector. Substituting $ n_x + i n_y = e^{i  \phi} \sin \theta $ and $ n_z = \cos \theta $, we get
+\begin{equation*}
+Y^{lm} (\theta, \phi) = \mathcal{Y}^{lm}_{K_l} N_{K_l}
+\end{equation*}
+Here, $ \mathcal{Y}^{lm}_{K_l} $ are the STF tensors, and they can be used to generate spherical harmonics following the above equation. It is also interesting to note that the  $ \mathcal{Y}^{lm}_{K_l} $'s form a basis for the $ 2l+1 $ dimensional vector space of STF-$ l $ tensors. A scalar function can be expanded in terms of spherical harmonics as follows,
+\begin{equation*}
+f(\theta,\phi) =  \sum_{l = 0}^{\infty} \sum_{m=-l}^{l} f^{lm} Y^{lm} (\theta, \phi) = \sum_{l = 0}^{\infty} \sum_{m=-l}^{l} f^{lm} \mathcal{Y}^{lm}_{K_l} N_{K_l}
+\end{equation*}
+\subsection{Vector spherical harmonics}
+We formulate the vector spherical harmonics in the following basis,
+\begin{equation*}
+\vu{\xi}^0 = \vu{z} \qq{,} \vu{\xi}^\pm = \mp \dfrac{\vu{x} \pm i \vu{y}}{\sqrt{2}}
+\end{equation*}
+These basis vectors transform under an irreducible representation of order $ 1 $. The vector spherical harmonics can now be generated by coupling scalar spherical harmonics to these basis vectors, thereby generating harmonics that transform under a representation of order $ l = l', l'\pm 1 $.
+\begin{equation*}
+\vb{Y}^{l',lm} (\theta, \phi) = \sum_{m'=-l'}^{l'} \sum_{m''=-1}^{1} \ip{1 l' m'' m'}{lm} \vu{\xi}^{m''} Y^{l'm'}
+\end{equation*}
+where $ \ip{1 l' m'' m'}{lm}  $ are just the \textit{Clebsch-Gordan} coefficients. Again, the vector spherical harmonics satisfy the orthonormality relation,
+\begin{equation*}
+\int \vb{Y}^{l'_1,l_1m_1} \vdot \vb{Y}^{l'_2,l_2m_2} \dd{\Omega} = \delta_{l_1l_2} \delta_{l'_1l'_2} \delta_{m_1m_2}
+\end{equation*}
+These $ \vb{Y}^{l',lm}  $ are called the \textit{pure-orbital vector harmonics}, because they are the eigenfunctions of the angular momentum operator $ L^2 $, as we shall see further. Though the pure-orbital harmonics can be used perfectly well for describing solutions to the Laplace and wave equations, we can't use them to describe radiation because they aren't purely radial or purely transverse. For this reason, we introduce the \textit{pure-spin vector harmonics}, which are related to the $  \vb{Y}^{l',lm} $'s by the following relations, 	
+\begin{align*}
+\vb{Y}^{E,lm} &= \dfrac{1}{\sqrt{2 l + 1}} \qty[\sqrt{l+1} \vb{Y}^{l-1,lm}  + \sqrt{l} \vb{Y}^{l+1,lm} ] = \dfrac{r \grad{Y^{lm}}}{\sqrt{l(l + 1)}}\\
+\vb{Y}^{B,lm} &= i \vb{Y}^{l,lm} = \dfrac{i}{\sqrt{l(l + 1)}} \vb{L} Y^{lm} =  \dfrac{ r \vb{n} \cross \grad}{\sqrt{l(l + 1)}}  Y^{lm}\\
+\vb{Y}^{R,lm} &= \dfrac{1}{\sqrt{2 l + 1}} \qty[\sqrt{l} \vb{Y}^{l-1,lm}  - \sqrt{l-1} \vb{Y}^{l+1,lm} ] = \vb{n} Y^{lm}
+\end{align*}
+We can also see from the expressions that $ \vb{Y}^{B,lm} = \vb{n} \cross \vb{Y}^{B,lm} $$ \vb{Y}^{B,lm} $$ \vb{Y}^{E,lm} $ are purely transverse, and $ \vb{Y}^{R,lm} $ is purely radial. The constants in the above expressions are fixed by demanding that the spin harmonics be orthonormal \textit{ie.},
+\begin{equation*}
+\int \vb{Y}^{J,lm} \vdot \vb{Y}^{J',l'm'} \dd{\Omega} = \delta_{J J'} \delta_{l l'} \delta_{m m'}
+\end{equation*}
+Regge-Wheeler harmonics are related to the pure-spin harmonics as follows,
+\begin{align*}
+\vb{Y}^{E,lm} = \dfrac{\bm{\psi}^{lm}}{\sqrt{l(l+1)}} \qq{,}
+\vb{Y}^{B,lm}= \dfrac{\bm{\Phi}^{lm}}{\sqrt{l(l+1)}} \qq{,}
+\vb{Y}^{R,lm} = \vb{n} Y^{lm}
+\end{align*}
+Newman-Penrose also proposed the \textit{spin-weighted spherical harmonics} given by $ _s Y^{lm} $,
+\begin{align*}
+\vb{Y}^{E,lm} = \dfrac{1}{\sqrt{2}} \qty[_{-1}Y^{lm} \vb{m} - {}_{1}Y^{lm} \vb{m^*} ] \qq{,}
+\vb{Y}^{B,lm} & =- \dfrac{i}{\sqrt{2}}\qty[_{-1}Y^{lm} \vb{m} + {}_{1}Y^{lm} \vb{m^*} ] \qq{,} \vb{Y}^{R,lm} = {}_0 Y^{lm} \vb{n}\\
+\qq{Here} \vb{m} &= \dfrac{\vu{e}_{\theta} + i\vu{e}_{\phi}}{\sqrt{2}}
+\end{align*}
+
+We have seen that multiple formulations of vector spherical harmonics exist and they are all related. It is worth noting that all we did to obtain vector harmonics is to couple the scalar harmonics to basis vectors, and though the expressions might look scary and long, the key takeaway is that knowledge of scalar harmonics is enough to generate the vector harmonics. We shall see in the next subsection that general tensor spherical harmonics are also generated by a similar procedure - only the expressions and calculations involved would be longer and more tedious.
+
+Another consequence of the vector/tensor harmonics being generated from scalar harmonics is that it becomes easy, in principle, to obtain the STF version of the harmonics. All one has to do is plug in $ Y^{lm} = \mathcal{Y}^{lm}_{K_l} N_{K_l} $ and proceed with the calculations.
+\subsection{Tensor spherical harmonics}
+Like we did for vector harmonics, the first job here is to construct the basis. We use the $ \vu{\xi} $'s that we formulated earlier. Using them, we can write the basis tensors as,
+\begin{equation*}
+\vb{t}^m =  \sum_{m'=-1'}^1 \sum_{m''=-1}^1 \ip{11m'm''}{2m} \vu{\xi}^{m'} \otimes \vu{\xi}^{m''}
+\end{equation*}
+Note that the above tensors have $ l=1+1 =2 $, and are also symmetric. We can also have basis tensors of $ l=1-1=0 $, which will essentially give us just one tensor $ \delta $,
+\begin{equation*}
+\dfrac{1}{\sqrt{3}}\bm{\delta} = - \sum_{m'=-1'}^1 \sum_{m''=-1}^1 \ip{11m'm''}{00} \vu{\xi}^{m'} \otimes \vu{\xi}^{m''}
+\end{equation*}
+We do not consider tensors of $ l=1 $ because they are antisymmetric. \textcolor{red}{(Expound)}
+
+The basis tensors $ \vb{t}^m $ can be written as follows,
+\begin{align*}
+\vb{t}^{\pm 2} &= \dfrac{1}{2} (\vu{x} \otimes \vu{x}  - \vu{y} \otimes \vu{y} ) \pm \dfrac{i}{2} (\vu{x} \otimes \vu{y} + \vu{y} \otimes \vu{x} ) \\
+\vb{t}^{\pm 1} &= \mp \dfrac{1}{2} (\vu{x} \otimes \vu{z}  + \vu{z} \otimes \vu{x} ) -\dfrac{i}{2} (\vu{z} \otimes \vu{y} + \vu{y} \otimes \vu{z} ) \\
+\vb{t}^0 &= \dfrac{1}{\sqrt{6}} (- \vu{x} \otimes \vu{x}  - \vu{y} \otimes \vu{y} + 2 \vu{z} \otimes \vu{z} )\\
+\dfrac{1}{\sqrt{3}}\bm{\delta}  &=\dfrac{1}{\sqrt{3}}  (\vu{x} \otimes \vu{x}  + \vu{y} \otimes \vu{y} + \vu{z} \otimes \vu{z})
+\end{align*}
+Using the above tensors, we can now define our harmonics as,
+\begin{align*}
+\vb{T}^{2l',lm} &= \sum_{m'=-l'}^{l'} \sum_{m''=-2}^2 \ip{l'2m'm''}{ lm} Y^{l'm'} \vb{t}^{m''} \qq{,} \vb{T}^{0l,lm} = - Y^{lm} \dfrac{\bm{\delta}}{\sqrt{3}}
+\end{align*}
+These are the \textit{pure-orbital tensor harmonics}, and again, as always, they satisfy the orthonormality relations,
+\begin{equation*}
+\int \vb{T}^{ab,cd}_{ij} \vb{T}^{a'b',c'd'}_{ij}  \dd{\Omega} = \delta_{a a'} \delta_{b b'} \delta_{c c'} \delta_{d d'}
+\end{equation*}
+Again, though the pure-orbital harmonics are perfectly good for describing solutions to the Laplace equation and the wave equation, the tensor components do not transform as the polarization tensor of a pure spin state \textcolor{red}{(expound from notes)} under local rotations about the radial direction. Zerilli introduced a consistent formulation of \textit{pure-spin tensor harmonics} denoted by $ \vb{T}^{T0,lm}, \vb{T}^{L0,lm}, \vb{T}^{E1,lm}, \vb{T}^{E2,lm} , \vb{T}^{B1,lm} , \vb{T}^{B2,lm}  $  and they are related to the pure-orbital harmonics as follows,
+\begin{align*}
+ \vb{T}^{0l,lm} &= - \dfrac{1}{\sqrt{3}}\vb{T}^{L0,lm} - \sqrt{\dfrac{2}{3}}\vb{T}^{T0,lm} \\
+\vb{T}^{2 \text{ }l-2,lm} &= \sqrt{\dfrac{(l-1)l}{(2l-1)(2l+1)}}  \vb{T}^{L0,lm} - \sqrt{\dfrac{(l-1)l}{2(2l-1)(2l+1)}}  \vb{T}^{T0,lm} \\
+&+ \sqrt{\dfrac{2(l-1)(l+1)}{(2l-1)(2l+1)}}  \vb{T}^{E1,lm} + \sqrt{\dfrac{(l+1)(l+2)}{2(2l-1)(2l+1)}}  \vb{T}^{E2,lm} \\
+\vb{T}^{2 \text{ }l,lm} &= i \sqrt{\dfrac{l-1}{2l+1}} \vb{T}^{B1,lm}+  i \sqrt{\dfrac{l+2}{2l+1}} \vb{T}^{B2,lm}\\
+\vb{T}^{2 \text{ }l-2,lm} &= -\sqrt{\dfrac{2l(l+1)}{3(2l-1)(2l+3)}}  \vb{T}^{L0,lm} + \sqrt{\dfrac{(l+1)l}{3(2l-1)(2l+3)}}  \vb{T}^{T0,lm} \\
+&- \sqrt{\dfrac{3}{(2l-1)(2l+3)}}  \vb{T}^{E1,lm} + \sqrt{\dfrac{3(l-1)(l+2)}{(2l-1)(2l+3)}}  \vb{T}^{E2,lm}
+\\
+\vb{T}^{2 \text{ }l+1,lm} &= -i \sqrt{\dfrac{l+2}{2l+1}} \vb{T}^{B1,lm}+  i \sqrt{\dfrac{l-1}{2l+1}} \vb{T}^{B2,lm}
+\\
+\vb{T}^{2 \text{ }l+2,lm} &= \sqrt{\dfrac{(l+1)(l+2)}{(2l+1)(2l+3)}}  \vb{T}^{L0,lm} - \sqrt{\dfrac{(l+1)(l+2)}{2(2l+1)(2l+3)}}  \vb{T}^{T0,lm} \\
+&- \sqrt{\dfrac{2l(l+2)}{(2l+1)(2l+3)}}  \vb{T}^{E1,lm} + \sqrt{\dfrac{(l-1)l}{2(2l+1)(2l+3)}}  \vb{T}^{E2,lm} 
+\end{align*}
+The thus defined pure-spin spherical harmonics have the following properties -
+\begin{itemize}
+	\item $\vb{T}^{L0,lm}$ - purely radial
+	\item $\vb{T}^{T0,lm}$ - purely transverse, and proportion to the projection operator $ P_{ij} $
+	\item $ \vb{T}^{E1,lm} \qq{and} \vb{T}^{B1,lm}$ - mixed longitudinal and transverse
+	\item  $ \vb{T}^{E2,lm} \qq{and} \vb{T}^{B2,lm}$ - transverse and traceless
+\end{itemize}
+The pure-spin tensor harmonics have been defined such that they are orthonormal, as has been the convention so far. One can now equivalently also describe the \textit{Regge-Wheeler tensor harmonics} and the \textit{Newman-Penrose tensor harmonics}. \textcolor{red}{Expound if needed}
+\section{Solving Equations with Multipole Expansion}
+\subsection{Solving Laplace equation}
+The angular momentum operator $ L^2 $ is given by,
+\begin{equation*}
+\vb{L}^2 = -\dfrac{1}{\sin \theta} \pdv{\theta}\qty(\sin \theta \pdv{\theta}) - \dfrac{1}{\sin^2 \theta} \pdv[2]{\phi} = -r^2 \nabla^2 + \pdv{r}\qty(r^2 \pdv{r})
+\end{equation*}
+We know that,
+\begin{equation*}
+\vb{L^2} Y^{lm} = l (l+1) Y^{lm} \qq{,} \vb{L^2} \vb{Y}^{l',lm} = l' (l'+1) \vb{Y}^{l',lm} \qq{,} 
+\vb{L^2} \vb{T}^{al',lm} = l' (l'+1) \vb{T}^{al',lm} 
+\end{equation*}
+From this, we can write the general scalar, vector and tensor solutions to the eigenvalue equations in terms of the multipoles,
+\begin{align*}
+F(r, \theta, \phi ) &= \sum_{l,m} [F^{lm} r^{-(l +1)} + G^{lm } r^l] Y^{l',lm}  \impliedby \qq{scalar harmonics}\\
+\vb{V}(r, \theta, \phi ) &= \sum_{l',l,m} [F^{l',lm} r^{-(l' +1)} + G^{l',lm } r^{l'}] \vb{Y}^{lm}  \impliedby \qq{vector harmonics}\\
+\vb{U}(r, \theta, \phi ) &=\sum_{\lambda, l',l,m} [F^{\lambda l',lm} r^{-(l' +1)} + G^{\lambda l',lm } r^{l'}] \vb{T}^{\lambda l', lm}  \impliedby \qq{tensor harmonics}
+\end{align*}
+\textcolor{red}{Insert expressions for STF solutions to Laplace}
+\subsection{Solving wave equation}
+\textcolor{red}{Insert expressions for Green Functions}
+\section{Description of Spacetime around Gravitational-wave Sources}
+
+If we look at the generation of gravitational waves from a bird's eye view, we can broadly say that there are three length scales :-
+\begin{itemize}
+	\item $ L  \rightarrow $ size of the source, the length of the region inside which the stress-energy $ T_{ab} $ is contained.
+	
+	\item $ 2M \rightarrow $ gravitational radius of the source, proportional to mass expressed in geometric unity $ G=c=1 $
+	
+	\item $ \lambda_c  \rightarrow $ characteristic wavelength of the emitted gravitational waves. This is defined as $ \frac{2\pi c}{\omega_c} $, where $ \omega_c $ is the characteristic frequency of the source.
+\end{itemize}
+With the preceding scales in mind, we can define the concept of the \textit{near zone} and the \textit{wave zone} as follows :-
+\begin{itemize}
+	\item Strong field region $ \rightarrow $ $ r \le 10 M $ provided that $ L < 10 M $. If $ L>10M $ the strong field region can be considered non-existent.
+	\item Weak field near zone $ \rightarrow $ $ r > L $, $ r \ll 10 M $, $ r \gg \lambda_c $
+	\item Local wave zone $ \rightarrow $ This is the region where the gravitational waves are weak, and the propagate on the background spacetime feeling no effects of the background curvature. We define two quantities $ r_I $ and $ r_O $ corresponding to the inner and outer radii of the local wave zone. Hence, for the local wave zone $  r_I \le r \le r_O $.
+	\item Distant wave zone $ \rightarrow $  $ r\ge r_O $
+\end{itemize}
+\textcolor{red}{write more about how the sources can be considered to be isolated}.
+
+\section{Multipole Expansion of the Radiation Field}
+\subsection{The radiation field}
+We restrict ourselves to the region where, for an isolated source of gravitational waves, we can treat the waves as a linearized metric perturbation. We introduce our coordinate system $ (t,x,y,z) $ with the source at the origin and at rest. As we have shown earlier, under these conditions, we can write the radiation field in terms of the transverse traceless part of the metric perturbation; these components describe the radiation completely. One can write,
+\begin{equation*}
+h^{TT}_{ij} = \dfrac{1}{r} A_{ij}(t-r,\theta, \phi	)
+\end{equation*}
+Of course, $ A_{ij} $ is a transverse traceless function that does varies slowly in the transverse direction. Now the time has come that we use all the knowledge that we have developing over the past few sections. We can decompose the angular dependence of  $ A_{ij} $ in terms of the tensor spherical harmonics. But since $ A_{ij} $ is already transverse and traceless, the non-transverse harmonics can be conveniently thrown away. Considering only the TT harmonics $ \vb{T}^{E2, lm} $ and $ \vb{T}^{B2,lm} $, we can write,
+\begin{equation*}
+h^{TT}_{ij} = \dfrac{1}{r}\qty[\sum_{l=2}^{\infty} \sum_{m=-l}^{l} {}^{(l)} I^{lm}(t-r){T}^{E2, lm}_{ij} + {}^{(l)} S^{lm}(t-r){T}^{B2, lm}_{ij}]
+\end{equation*}
+The $ I^{lm} $'s are called the \textit{mass multipole moments} of the field and the $ S^{lm} $'s are called the \textit{spin multipole moments} of the field. The $ (l) $ in $ {}^{(l)}I^{lm}(t-r) $ denotes the the number of times a derivative is taken with respect to $ t-r $. One now needs to write the tensor harmonics in symmetric trace-free form, and then we are done! From the multipole expansion of the radiation field, it is straightforward to find the expressions for the energy, linear momentum and angular momentum carried by gravitational waves using the formulas in Section 1.5
+
+\subsection{Energy in the waves}
+
+\subsection{Linear momentum in the waves}
+
+\subsection{Angular momentum in the waves}
 
 \end{document}

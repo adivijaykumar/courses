@@ -1,0 +1,67 @@
+
+\documentclass[a4paper,11pt]{article}
+
+\usepackage{physics}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm, mathtools}
+%\usepackage{hyperref}
+\usepackage{color}
+\usepackage{jheppub}
+\usepackage[T1]{fontenc} % if needed
+
+% My Documents
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+%\linespread{1.0}
+%\setlength{\parindent}{0em}
+%\setlength{\parskip}{0.8em}
+
+\title{\textbf{Binaries and Tides}}
+\author{Aditya Vijaykumar}
+\affiliation{International Centre for Theoretical Sciences, Bengaluru, India.}
+\emailAdd{aditya.vijaykumar@icts.res.in}
+\abstract{}
+\begin{document}
+\maketitle
+
+\section{Tanja's Lectures at Gravitational Wave School 2017}
+
+Non-black hole objects differ from black holes in that  :-
+\begin{itemize}
+	\item They can deform due to their rotational motion
+	\item They can have effects due to no presence of horizon
+	\item They can get tidally deformed
+\end{itemize}
+Tanja's lectures focus on tidal effects, which are the most promising candidates (as of 2017) to detect parameters of neutron stars.
+
+We start off with tides in Newtonian physics.
+
+\subsection{Newtonian Physics}
+Notation - $ \vb{a} $ is 3-vector and $ \va{a} $ is 4-vector.
+
+The force between two bodies of masses $ m  $ and $ M $ is,
+\begin{equation}\label{key}
+\vb{F} = - \dfrac{GmM}{r^2} \vu{n} \qq{,} U = -\dfrac{GM}{r} \qq{,} \vb{a} = \grad{U}
+\end{equation}
+where $ U $ and $ \vb{a} $ are the gravitational potential due to mass $ M $ and the acceleration respectively.
+
+To make things more specific, consider a body of mass $ m_A $ with position vector $ \vb{z}_A $. The potential at $\vb{x} $ due to $ m_A$ is,
+\begin{equation}\label{key}
+U_A(\vb{x}) = \dfrac{Gm_A}{\abs{\vb{x} - \vb{z}_A}}
+\end{equation}
+Alternatively, if we consider extended bodies with density $ \rho(x) $, the potential can be written as,
+\begin{align}\label{key}
+U_A(\vb{x}) &= G \int \dd^3{\vb{x}'}\dfrac{\rho(\vb{x}' )}{\abs{\vb{x} - \vb{x}'}}\\
+\implies \laplacian{U_A} &= G \int \dd^3{\vb{x}'} \rho(\vb{x}' ) \laplacian{\dfrac{1}{\abs{\vb{x} - \vb{x}'}}} \\
+&=  G \int \dd^3{\vb{x}'} \rho(\vb{x}' ) \qty(-4 \pi \delta(\vb{x} - \vb{x}'))  \\
+\laplacian{U_A} &= -4 \pi G \rho(\vb{x} )
+\end{align}
+\end{document}

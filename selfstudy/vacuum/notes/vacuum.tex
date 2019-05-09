@@ -30,13 +30,74 @@
 \emailAdd{aditya.vijaykumar@icts.res.in}
 \abstract{This is a exploratory effort in understanding vacuum spacetimes from all aspects - analytical, numerical, geometrical - so that one can prepare oneself to understand the higher truths in the phenomenological and experimental results of such spacetimes.
 	
-	The main references are expected to be books on General Relativity by Prof. T Padmanabhan and Prof. Sean Carroll, and the book on Numerical Relativity by Prof. Baumgarte and Prof. Shapiro. If the occasion demands, we might also refer to Prof. Maggiore's two tomes on Gravitational Waves. }
+	The main references are expected to be books on General Relativity by Prof. T Padmanabhan and Prof. Sean Carroll, the book on Numerical Relativity by Prof. Baumgarte and Prof. Shapiro, and Prof. Berti's Black Hole Perturbation Theory lecture notes. If the occasion demands, we might also refer to Prof. Maggiore's two tomes on Gravitational Waves. }
 \begin{document}
 \maketitle
-\section{(Not) A Lightning Fast Review of General Relativity}
 
-Physicists are in search of equations that do not change form in any coordinate system, and hence are universal. We write all our non-relativistic laws in form of vector equations. In relativity, we shall write all our laws in form of \textit{four vectors} and related quantities. An important object which usually appears in such equations is called the \textit{tensor}.
+\section{Review of General Relativity}
+\textit{This will be a dynamical section, with changes based on the author's moods.}
+\subsection{Local Inertial Frame}
+Let us assume that a theory of gravity should be a tensor theory. One can justify this in many ways, but I particularly like how Padmanabhan presents this in his book as an \textit{inevitabilty}.
 
-\subsection{Tensors}
-\subsubsection{Tensor LOLs}
+Right, so what do we have? We know that gravity should be described in geometrical terms, and when one speaks about some geometry, one should ascribe the notion of distance on that geometry. Hence, we define the interval as,
+\begin{equation}
+\dd s^2 = g_{ij} \dd x^i \dd x_j
+\end{equation}
+where  $ g_{ij}(x) $ is called the \textit{metric tensor}. In general, $ g_{ij} $ will depend on all spacetime components and will not be a constant, allowing us to calculate the curvature of our geometry. It is worthy to note that the presence of non-constant terms in $ g_{ij} $ does not mean that our space is necessarily curved. For example, consider two intervals written in 2-D spherical polar coordinates,
+\begin{equation*}
+\dd s_1^2 = \dd r^2 + r^2 \dd \theta^2 \qq{,} \dd s_2^2 = \dd r^2 + r^2 \sin^2 \theta \dd \theta^2
+\end{equation*}
+We know that $ \dd s_1 $ is just the flat space metric written in polar coordinates, while $ \dd s_2 $ is in fact the distance metric on the circumference of a circle. Both have non-constant matrix elements, but only one of them describes a truly curved space.
+
+In principle, it should not be that hard to distinguish between curved and non-curved space. Consider the Minkowski metric $ \eta_{ij} $ and the transformation,
+\begin{equation}\label{key}
+g_{ij} = \eta_{ij} \pdv{x^i}{x'^a} \pdv{x^j}{x'^b} \implies \qq{four arbitrary functions of spacetime coordinates}
+\end{equation}
+But a general symmetric tensor in $ 4 $ dimensions has $ 10 $ independent components. So, a genuinely curved spacetime cannot be reduced to a flat metric globally by a coordinate transformation.
+
+To see how curvature really can be distinguished from flat spacetimes, let us consider the general transformation law for a vector in the neighbourhood of a particular point,
+\begin{equation}\label{key}
+x'^i = A^i_j x^j + B^i_{jk} x^j x^k + C^i_{jkl} x^j x^k x^l + \ldots
+\end{equation}
+We want to try and make the neighbourhood of the point as \textit{flat} as possible by setting the metric $ g_{ij}= \eta_{ij} $ and all the metric derivatives to zero. Let's see if that is possible.
+\begin{itemize}
+	\item $ g_{ij} = \eta_{ij} \implies 10$ conditions, and we have $ 16 $ free parameters in $ A^i_j $. So this is certainly possible, with $ 6 $ parameters to spare. These $ 6 $ parameters correspond to the Lorentz rotations in $ 4 $-dimensions.
+	\item $ \partial_a g^{ik} = 0 \implies 40 $ conditions. We have $ 40 $ free parameters in $ B^i_{jk} $, on account of it being symmetric in $ j $ and $ k $. So setting the first derivative to zero is also possible.
+	\item $ \partial_a \partial_b g^{ik} = 0 \implies 100 $ conditions. In $ C^i_{jkl} $, we have $ N \times ^{4+2}C_3 = 80 $ free parameters. This means that, even after using all the freedom in $ C^i_{jkl} $, we cannot set the second derivative of the metric to zero.
+\end{itemize}
+So, the bottom line is that we can always choose coordinates around a point in such a way that the metric is Minkowski, and the first derivatives vanish. Such a coordinate system is called the local inertial frame at that point.
+
+\subsection{Covariant Derivative and its Manipulations}
+The covariant derivative is defined as :-
+\begin{equation}\label{key}
+\nabla_b v^a = \partial_b v^a + \Gamma^{a}_{bi} v^i
+\end{equation}
+Consider,
+\begin{align*}
+\nabla_b (v_a v^a) &= \partial_b (v_a v^a) \\
+v_a \nabla_b v^a + v^a \nabla_b v_a&= 2 v_a \partial_b v^a \\
+ v_a \partial_b v^a + v_a \Gamma^{a}_{bi} v^i + v^a \nabla_b v_a &=2  v_a \partial_b v^a \\
+\nabla_b v_a &= \partial_b v_a - \Gamma^{i}_{ab} v_i
+\end{align*}
+Now, writing $ T^a_b = u^a v_b $, we get,
+\begin{equation}\label{key}
+\nabla_i T^a_b = \partial_i T^a_b + \Gamma^a_{ki} T^k_b - \Gamma^k_{bi} T^a_k
+\end{equation}
+Consider some identities for the connections $ \Gamma^i_{jk} $,
+\begin{align}\label{key}
+\Gamma^a_{ba} &= \dfrac{1}{2} g^{ad} \partial_b g^{ad }= \dfrac{1}{2g} \partial_b g = \partial_b\qty(\ln\sqrt{-g}) \\
+g^{bc}  \Gamma^a_{bc} &= g^{bc} g^{ad} \qty(\partial_c g_{db} - \dfrac{1}{2} \partial_d g_{bc}) = - \dfrac{1}{\sqrt{-g}} \partial_b \qty(\sqrt{-g} g^{ab})
+\end{align}
+Let $ Q_{ab} $ be an antisymmetric tensor. Consider,
+\begin{equation}\label{key}
+\nabla_b Q^{ab} = \partial_b Q^{ab} + \Gamma^b_{db} Q^{ad}  = \dfrac{1}{\sqrt{-g}} \partial_b \qty(\sqrt{-g} Q^{ab})
+\end{equation}
+
+
+
+
+
+\section{Black Holes}
+\subsection{Black Holes without Spin - Schwarzschild solution}
+
 \end{document}
