@@ -7,6 +7,7 @@
 \usepackage{amsthm, mathtools, bm}
 %\usepackage{hyperref}
 \usepackage{color}
+\usepackage{verbatim}
 \usepackage{jheppub}
 \usepackage[T1]{fontenc} % if needed
 
@@ -80,6 +81,7 @@ and imposing the harmonic gauge constraint $\partial_r \bar{h}'^{mr} =0 $, we ge
 \end{equation*}
 This shows us that some sort of gravitational waves exist, with or without a source. We note that this gauge condition can always be satisfied if we choose $ \xi^r $ such that $ \Box \xi^m =  \partial_r \bar{h}^{mr}$. This also shows us that there is a freedom is choosing $ \xi^r $, and we can add to it any vector $ \tilde{\xi}^r $ such that $ \Box \tilde{\xi}^r = 0 $.
 \subsection{Gravitational waves in a flat background}
+\begin{comment}
 By symmetry considerations of the Riemann tensor and upto first order in perturbation, we can write,
 \begin{equation*}
 \Box R_{bcmn } = 8 \pi [\partial_b(\partial_m \bar{T}_{nc} - \partial_n \bar{T}_{mc} ) - \partial_c(\partial_m \bar{T}_{nb} - \partial_n \bar{T}_{mb} )] = 8 \pi \bar{T}_{bcmn}
@@ -98,7 +100,7 @@ Substituting the second equation into the first, we can figure that $ C_{abmn} $
  C_{00bm} &= \dfrac{1}{\omega}(C_{b0m0} (-\omega) - C_{00m0}k_b ) \implies C_{00m0}=0
 \end{align*}
 This means that $ i,j $ cannot be zero, and hence only the terms of the form $ C_{\alpha 0 \beta 0} $ survive this ordeal.
-
+\end{comment}
 In general, one can describe the solution to the wave equation without sources as follows,
 \begin{equation*}
 \bar{h}_{mn} = \int \dd^3{k} A_{mn}( \vb{k}) \exp(i \vb{k} \cdot \vb{x} - i \omega t)
@@ -177,7 +179,7 @@ The value of $ C^{lm} $ is such that the orthonormality relation of $ Y^{lm} $ i
 \end{equation*}
 If we expand the expression for $ P^{lm} $ in the equation for $ Y^{lm} $, we get,
 \begin{align*}
-Y^{lm} (\theta , \phi)&= C^{lm} e^{i  \phi} \sin \sum_{j=0}^{[(l-m)/2]} a^{lmj} (\sin\theta)^m (\cos \theta)^{l-m-2j} \\
+Y^{lm} (\theta , \phi)&= C^{lm} e^{i  m\phi}  \sum_{j=0}^{[(l-m)/2]} a^{lmj} (\sin\theta)^m (\cos \theta)^{l-m-2j} \\
 &= C^{lm} (e^{i  \phi} \sin \theta)^m \sum_{j=0}^{[(l-m)/2]} a^{lmj} (\cos \theta)^{l-m-2j}  \qq{,} a^{lmj} = \dfrac{(-1)^j (2l - 2j)!}{2^l j! (l-j)! (l-m-2j)!}
 \end{align*}
 

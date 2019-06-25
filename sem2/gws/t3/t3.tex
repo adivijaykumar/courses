@@ -1,0 +1,238 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{hyperref}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+%\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\bes}{\begin{equation*}}
+\newcommand{\ees}{\end{equation*}}
+\newcommand{\bea}{\begin{flalign*}}
+\newcommand{\eea}{\end{flalign*}}
+
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Tutorial\ \#3	}
+\newcommand{\hmwkDueDate}{ICTS Summer School on Gravitational Wave Astronomy, 2019. }
+\newcommand{\hmwkClass}{Advanced General Relativity}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{Sudipta Sarkar}
+\newcommand{\hmwkAuthorName}{\textbf{Tutorial Instructors : Aditya Vijaykumar, Md Arif Shaikh}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	Given,
+	\begin{equation}\label{key}
+	\dd{s}^2 = - \qty(1- \dfrac{2M}{r}) \dd{t}^2 + \qty(1 - \dfrac{2M}{r})^{-1} \dd{r}^2 + r^2 \qty(\dd{\theta}^2 + \sin^2 \theta \dd{\phi}^2)
+	\end{equation}
+	Using an affine parameter $ \lambda $, we can rewrite these equations as,
+	\begin{equation}\label{e2}
+	\kappa = \qty(\dv{s}{\lambda})^2 = - \qty(1- \dfrac{2M}{r}) \dot{t}^2 + \qty(1 - \dfrac{2M}{r})^{-1} \dot{r}^2 + r^2 \qty(\dot{\theta}^2 + \sin^2 \theta \dot{\phi}^2)
+	\end{equation}
+	where $ \kappa = -1,0,1 $ for timelike, null and spacelike geodesics respectively. Corresponding to the Killing vectors $ \partial_t $ and $ \partial_\phi $, we would have the following conserved quantities,
+	\begin{equation}\label{e3}
+	\tilde{E} = 2\qty(1 - \dfrac{2M}{r}) \dot{t} \qq{and} \tilde{L} = 2 r^2 \sin^2 \theta \dot{\phi}
+	\end{equation}
+	Substituting $\dot{t} $ and $ \dot{\phi} $ from (\ref{e3}) to (\ref{e2}) and assuming planar orbit ($ \theta = \pi/2 $), we get,
+	\begin{align}\label{key}
+	\kappa &= - \qty(1- \dfrac{2M}{r}) \dfrac{\tilde{E}^2}{4 \qty(1 - \dfrac{2M}{r})^2}+ \qty(1 - \dfrac{2M}{r})^{-1} \dot{r}^2 + r^2 \dfrac{\tilde{L}^2}{4 r^4 \sin^4 \theta} \\
+	&= - \qty(1- \dfrac{2M}{r})^{-1} \dfrac{\tilde{E}^2}{4}+ \qty(1 - \dfrac{2M}{r})^{-1} \dot{r}^2 + \dfrac{\tilde{L}^2}{4 r^2}\\
+	\kappa - \dfrac{2M\kappa}{r} &= -  \dfrac{\tilde{E}^2}{4}+  \dot{r}^2 + \dfrac{\tilde{L}^2}{4 r^2} \qty(1 - \dfrac{2M}{r})
+	\end{align}
+	\begin{equation}\label{key}
+	\therefore \dfrac{\dot{r}^2}{2} - \dfrac{1}{2}\qty({\kappa} +\dfrac{\tilde{E}^2}{4} ) + \dfrac{M\kappa}{r} + \dfrac{\tilde{L}^2}{8r^2} - \dfrac{\tilde{L}^2 M}{4 r^3} = 0
+	\end{equation}
+	Defining $ E = \dfrac{\tilde{E}}{2} $ and $ L = \dfrac{\tilde{L}}{2} $, we have,
+	\begin{equation}\label{e8}
+	\dfrac{\dot{r}^2}{2} + V_{eff}(r) = 0
+	\end{equation}
+	where $ V_{eff}(r) = - \dfrac{E^2 + \kappa}{2} + \dfrac{M\kappa}{r} + \dfrac{{L}^2}{2r^2} - \dfrac{{L}^2 M}{ r^3}  $
+	\\
+	
+	\textbf{Part (b)}\\
+	Substituting $ \kappa = 0$ and $ \dot{r} = 0 $ in (\ref{e8}), and further using (\ref{e3}) we have,
+	\begin{equation}\label{e9}
+	E^2 = \dfrac{L^2}{ r^2} \qty(1 - \dfrac{2M}{r}) \implies \qty(\dv{t}{\phi})^2  = r^2 \qty(1 - \dfrac{2M}{r})^{-1}
+	\end{equation} 
+	Now, writing down the radial geodesic for the Schwarzschild metric, we have,
+	\begin{equation}\label{key}
+	\dv{\tau} \qty[2\qty(1 - \dfrac{2M}{r})^{-1} \dot{r} ] = - \dfrac{2M}{r^2} \dot{t}^2  - \qty(1 - \dfrac{2M}{r})^{-2} \qty(\dfrac{2M}{r^2}) \dot{r}^2 + 2 r (\dot{\theta}^2 + \sin^2 \theta \dot{\phi}^2)
+	\end{equation}
+	Using $ \dot{r}=0 $, $ \theta = \pi/2 $, we get,
+	\begin{equation}\label{key}
+	\dfrac{2M}{r^2} \dot{t}^2 = 2 r \dot{\phi}^2 \implies \qty(\dv{t}{\phi})^2 = \dfrac{r^3}{M}
+	\end{equation}
+	Comparing with (\ref{e9}), we have,
+	\begin{equation}\label{key}
+	r^2 \qty(1 - \dfrac{2M}{r})^{-1} = \dfrac{r^3}{M} \implies 1 - \dfrac{2M}{r} = \dfrac{M}{r} \implies r = 3M
+	\end{equation}
+	Hence, there is a null circular orbit at $ r = 3M $. To decide stability, one needs to check the value of $ \pdv[2]{V_{eff}}{r} $ at $ r=r_p=3M $,
+	\begin{equation}\label{key}
+	\eval{\pdv[2]{V_{eff}}{r}}_{r=r_p} =  \dfrac{3L^2}{r_p^4} - 12\dfrac{L^2 M}{r_p^5} = - \dfrac{L^2}{(3M)^4} < 0
+	\end{equation}
+	Hence, this orbit is unstable.
+	
+	
+	
+	\textbf{Part (c)}\\
+	Radial null geodesics will have $ \kappa =0  $ and $ L=0 $. Hence,
+	\begin{align}\label{key}
+	\dot{r}^2 = E^2 &= \qty(1 - \dfrac{2M}{r})^2 \dot{t}^2 \\
+	\implies \dv{r}{t} &= \pm \qty(1 - \dfrac{2M}{r}) \\
+	a
+	\end{align}
+	
+	\textbf{Part (d)}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	The area of a black hole $ A \propto M^2 $. The area theorem hence implies,
+	\begin{equation}\label{ehawk}
+	M_3^2 \ge M_1^2 + M_2^2 
+	\end{equation}
+	Consider the two numbers $ M_1^2 $ and $ M_2^2 $. Let's write down the $ AM \ge GM $ inequality \textit{ie.},
+	\begin{align}\label{e10}
+	\dfrac{M_1^2 + M_2^2}{2} &\ge M_1 M_2\\
+	\implies M_1^2 + M_2^2 &\ge \dfrac{M_1^2 + M_2^2}{2} + M_1 M_2 \\
+	\implies M_1^2 + M_2^2 &\ge \dfrac{(M_1 + M_2)^2}{2}
+	\end{align}
+	
+	Combining (\ref{ehawk}) and the last inequality, we have,
+	\begin{equation}\label{key}
+	M_3^2 \ge \dfrac{(M_1 + M_2)^2}{2} \implies \dfrac{M_3}{M_1 + M_2} \ge \dfrac{1}{\sqrt{2}}
+	\end{equation}
+	Hence, 
+	\begin{equation}\label{key}
+ \eta \le 1 - \dfrac{1}{\sqrt{2}}
+	\end{equation}
+\end{homeworkProblem}
+\end{document}
