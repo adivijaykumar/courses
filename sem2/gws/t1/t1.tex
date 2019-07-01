@@ -28,7 +28,7 @@
 \linespread{1.1}
 
 \pagestyle{fancy}
-\lhead{\hmwkAuthorName}
+%\lhead{\hmwkAuthorName}
 \chead{\hmwkClass\ : \hmwkTitle}
 \rhead{\firstxmark}
 \lfoot{\lastxmark}
@@ -96,7 +96,7 @@
 %   - Author
 %
 
-\newcommand{\hmwkTitle}{Tutorial\ \#1}
+%\newcommand{\hmwkTitle}{Tutorial\ \#1	}
 \newcommand{\hmwkDueDate}{ICTS Summer School on Gravitational Wave Astronomy, 2019. }
 \newcommand{\hmwkClass}{Advanced General Relativity}
 \newcommand{\hmwkClassTime}{}
@@ -149,6 +149,53 @@
 \maketitle
 
 \begin{homeworkProblem}
+	
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{Part (a)}\\
+	First, let us just look at the symmetries of the Riemann tensor.
+	\begin{itemize}
+		\item The tensor is antisymmetric in the first two indices, and also in the last two indices. It is also symmetric under the mutual exchange of the first two and the last two indices.
+		\begin{equation}\label{key}
+		R_{abcd} = - R_{bacd} = - R_{abdc} = R_{badc}
+		\end{equation}
+		So we proceed by thinking of the Riemann tensor as a combination of two rank-$2$ antisymmetric tensors, which are combined in a symmetric fashion! An antisymmetric rank-$2$ in $ D $-dimensions has $ \frac{D(D-1)}{2} $ independent components. A symmetric rank-$ 2 $ tensor in $ \tilde{D} $-dimensions has $ \frac{{\tilde{D}}(\tilde{D}+1)}{2} $ independent components. So, with $ \tilde{D} = \frac{D(D-1)}{2} $, we have,
+		\begin{equation}\label{key}
+		N = \dfrac{D(D-1)}{4} \qty[\dfrac{D(D-1)}{2} + 1]
+		\end{equation}
+		\item There is one more symmetry of the Riemann tensor, which is the cyclic symmetric,
+		\begin{equation}\label{key}
+		R_{abcd} + R_{bcda} + R_{cdab} + R_{dabc} = 0
+		\end{equation}
+		So, for every collection of $ 4 $ components there is one such constraint. This just boils down to choosing $ 4 $ components out of the $ D $ available components \textit{ie.} $ ^D C_4 $, and subtracting it from the earlier answer. Hence, the new answer is,
+		\begin{align}\label{key}
+		N &= \dfrac{D(D-1)}{4} \qty[\dfrac{D(D-1)}{2} + 1] - \dfrac{D(D-1)(D-2)(D-3)}{24} \\
+		&= \dfrac{D(D-1)}{4}\qty[\dfrac{D(D+1)}{3}] \\
+		N &= \dfrac{D^2 (D^2 - 1)}{12}
+		\end{align} 
+	\end{itemize}
+	$ N $ is the number of independent components of the Riemann tensor in $ D $-dimensions.\\
+	
+	\textbf{Part (b)}\\
+	\textcolor{red}{TO-DO}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	The Bianchi identity says that the covariant derivative of the Einstein tensor is zero, that is,
+	\begin{align}
+	\nabla_a G^{ab} &= 0 \\
+	\nabla_0 \qty(R^{0b} - \dfrac{1}{2} g^{0b} R ) &= - \nabla_\alpha \qty(R^{\alpha b} - \dfrac{1}{2} g^{\alpha b} R )
+	\end{align}
+	where $ \alpha $ goes $1,2,3$. Let's stare at this for a second. We know that the Riemann/Ricci tensor has double derivatives in each spacetime component. As the RHS is acted on with just space derivatives, there can maximum be a second derivative in time on the RHS. This means that the quantity in the round brackets in the LHS can have maximum one time derivative.
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
 	content...
 \end{homeworkProblem}
+
+\begin{homeworkProblem}
+	content...
+\end{homeworkProblem}
+
 \end{document}

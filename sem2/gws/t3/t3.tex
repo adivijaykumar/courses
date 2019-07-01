@@ -151,7 +151,7 @@
 \begin{homeworkProblem}
 	\textbf{Part (a)}\\
 	Given,
-	\begin{equation}\label{key}
+	\begin{equation}\label{e1}
 	\dd{s}^2 = - \qty(1- \dfrac{2M}{r}) \dd{t}^2 + \qty(1 - \dfrac{2M}{r})^{-1} \dd{r}^2 + r^2 \qty(\dd{\theta}^2 + \sin^2 \theta \dd{\phi}^2)
 	\end{equation}
 	Using an affine parameter $ \lambda $, we can rewrite these equations as,
@@ -199,19 +199,26 @@
 	\begin{equation}\label{key}
 	\eval{\pdv[2]{V_{eff}}{r}}_{r=r_p} =  \dfrac{3L^2}{r_p^4} - 12\dfrac{L^2 M}{r_p^5} = - \dfrac{L^2}{(3M)^4} < 0
 	\end{equation}
-	Hence, this orbit is unstable.
+	Hence, this orbit is unstable.	
+	\\
 	
-	
-	
-	\textbf{Part (c)}\\
-	Radial null geodesics will have $ \kappa =0  $ and $ L=0 $. Hence,
+	\textbf{Parts (c) and (d)}\\
+	Radial null geodesics will have $ \kappa =0  $ and $ L=0 $. Hence, using (\ref{e8}),
 	\begin{align}\label{key}
-	\dot{r}^2 = E^2 &= \qty(1 - \dfrac{2M}{r})^2 \dot{t}^2 \\
-	\implies \dv{r}{t} &= \pm \qty(1 - \dfrac{2M}{r}) \\
-	a
+	\dot{r}^2 &= E^2  \\
+	\implies \dv{r}{\lambda} &= - E \qq{for ingoing rays}\\
+	\implies \int_{r_0}^{2M} \dd{r}  &= - E \int_{0}^{\lambda_0} \dd{\lambda} \\
+	\implies \lambda_0 &= \dfrac{r_0 - 2M}{E} \implies \qq{finite}
 	\end{align}
 	
-	\textbf{Part (d)}
+	Also, using (\ref{e2}), and assuming null radial orbits, we get,
+	\begin{align}\label{key}
+	\dfrac{\dot{t}^2}{\dot{r}^2} &= \qty(\dv{t}{r})^2 = \qty(1 - \dfrac{2M}{r})^{-2}\\
+	\implies t &= \pm \int \dd{r}  \qty(1 - \dfrac{2M}{r})^{-1} + C \\
+	\implies t &= \pm \qty[r - r_0 + 2M \log(\dfrac{r-2M}{r_0 - 2M})] + t_0
+	\end{align}
+	
+	\textcolor{red}{Sketch the rays}
 \end{homeworkProblem}
 
 \begin{homeworkProblem}
@@ -233,6 +240,6 @@
 	Hence, 
 	\begin{equation}\label{key}
  \eta \le 1 - \dfrac{1}{\sqrt{2}}
-	\end{equation}
+	\end{equation}	
 \end{homeworkProblem}
 \end{document}
