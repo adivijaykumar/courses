@@ -1,0 +1,235 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{physics}
+\usepackage[plain]{algorithm}
+\usepackage{hyperref}
+\usepackage{algpseudocode}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ : \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{Problem \arabic{#1} (continued)}{Problem \arabic{#1} continued on next page\ldots}\nobreak{}
+    \stepcounter{#1}
+    \nobreak\extramarks{Problem \arabic{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+\newcounter{homeworkProblemCounter}
+\setcounter{homeworkProblemCounter}{1}
+\nobreak\extramarks{Problem \arabic{homeworkProblemCounter}}{}\nobreak{}
+
+%
+% Homework Problem Environment
+%
+% This environment takes an optional argument. When given, it will adjust the
+% problem counter. This is useful for when the problems given for your
+% assignment aren't sequential. See the last 3 problems of this template for an
+% example.
+%
+\newenvironment{homeworkProblem}[1][-1]{
+    \ifnum#1>0
+        \setcounter{homeworkProblemCounter}{#1}
+    \fi
+    \section{Problem \arabic{homeworkProblemCounter}}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{homeworkProblemCounter}
+}{
+    \exitProblemHeader{homeworkProblemCounter}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Due date
+%   - Class
+%   - Section/Time
+%   - Instructor
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Assignment\ \#1}
+\newcommand{\hmwkDueDate}{Due on 7th September, 2021}
+\newcommand{\hmwkClass}{Theory and Numerics of PDEs}
+\newcommand{\hmwkClassTime}{}
+\newcommand{\hmwkClassInstructor}{}
+\newcommand{\hmwkAuthorName}{\textbf{Aditya Vijaykumar}}
+
+%
+% Title Page
+%
+
+\title{
+    %\vspace{2in}
+    \textmd{\textbf{\hmwkClass:\ \hmwkTitle}}\\
+    \normalsize\vspace{0.1in}\small{\hmwkDueDate\ }\\
+%    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #1} (#2)}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\begin{document}
+
+\maketitle
+
+%\pagebreak
+
+\begin{homeworkProblem}
+	\textbf{Question}: Show $ y(t)  = \sum_{n\ge0} \dfrac{a_0}{n!} t^n  $ converges.
+	
+	Let,
+	\begin{equation}\label{key}
+	x_n = \dfrac{a_0}{n!} t^n
+	\end{equation}
+	\begin{align}\label{key}
+	\dfrac{x_{n+1}}{x_{n}} = \dfrac{t}{n+1}
+	\end{align}
+	which goes to 0 as $ n \rightarrow \infty $. So this passes the ratio test for convergence.
+
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+	\textbf{Question}: Use $ y = \sum_{n\ge0} a_n t^n$ to solve $ y'' + y = 0 $.
+	
+	Substituting, we get,
+	\begin{equation}\label{key}
+	\sum_{n\ge0} a_n t^{n-2} + a_n t^n = 0 \implies \sum_{n\ge2} a_{n+2} t^{n-2} +  \sum_{n\ge0} a_n t^n = 0
+	\end{equation}
+	
+	So we just need two constants, and the solution is fully specified. If $ a_0 = A $ and $ a_1 = B $,
+	
+	\begin{equation}\label{key}
+	y = A \qty(1 - \dfrac{t^2}{2!} + \dfrac{t^4}{4!}+ \ldots) + B \qty(x - \dfrac{t^3}{3!} + \dfrac{t^5}{5!}) = A \cos(t) + B \sin(t) 
+	\end{equation}
+\end{homeworkProblem}
+
+\begin{homeworkProblem}
+\textbf{Question}: Consider
+\begin{equation}\label{q1}
+t^2 y'' - 4 t y' + 6 y = 0 \qq{;} y(1) = 1  \qq{;} y'(1) = 2 \qq{.}
+\end{equation}
+
+\begin{enumerate}
+	\item Show that, $y(t) = t^2$ is a solution to the differential equation.
+	\item Use Picard iteration to solve the differential equation.\\
+\end{enumerate}
+
+\textbf{Solution:}\\
+For $ y = t^2 $, $ y' = 2 t $ and $  y'' =2 $. Hence, the LHS of (\ref{q1}) becomes,
+
+\begin{equation}\label{key}
+y'' - \dfrac{4}{t} y' + \dfrac{6}{t^2} y = 0
+\end{equation}
+We write two iterates, for $ y' $ and $ y $.
+
+\begin{align}\label{key}
+y_{1}' &=  2 + \int_{1}^{t} \dd{t } \qty[ \dfrac{8}{t} - \dfrac{6}{t^2} ] = 2 +  8\log t +  \dfrac{6}{t} - 6 \\
+y_{1} &= 1 + \int_{2}^t (1) \dd{t} = 1 + 2t - 2 = 2t - 1
+\end{align}
+
+\end{homeworkProblem}
+
+
+\begin{homeworkProblem}
+	\textbf{Question}: Consider 
+	\begin{equation}\label{q2}
+	\dv{y}{t}  = y ( 1 -y) \qq{,} y(0) = 1/2	
+	\end{equation}
+	
+	\begin{enumerate}
+		\item Show that,
+		\begin{equation}\label{key}
+		y(t) = \dfrac{e^t}{e^t + 1} 
+		\end{equation}
+		solves the differential equation.
+		\item Use Picard iterates to find the solution. Compare this solution to the true Taylor series.
+		\item How many iterates do we need to obtain the true Taylor coefficient for $ t^k $.\\
+				
+	\textbf{Solution:}\\
+	\begin{align}\label{key}
+	\dv{y}{t} = \dfrac{e^t}{(e^t + 1)^2} &\qq{;} y(1-y) = \dfrac{e^t}{e^t + 1}  \dfrac{1}{e^t + 1} = \dfrac{e^t}{(e^t + 1)^2}\\
+	\implies \dv{y}{t} &= y(1-y)
+	\end{align}	
+	
+	Also, $ y(0) = 1/2  $. So the solution satisfies both the differential equation as well as the initial condition.
+	
+	Let $ \phi_{k} $ be the $ k^\mathrm{th} $ Picard iterate. We start off with $ \phi_0 = 1/2 $. Then,
+	\begin{align}\label{key}
+	\phi_1 &= \dfrac{1}{2} + \int_{0}^{t} \dfrac{1}{2}  \dfrac{1}{2} \dd{s} =\dfrac{1}{2} + \dfrac{t}{4}\\
+	\phi_2 &= \dfrac{1}{2} + \int_{0}^{t} \qty(\dfrac{1}{2} + \dfrac{s}{4} )\qty(\dfrac{1}{2} - \dfrac{s}{4}) \dd{s} = \dfrac{1}{2} + \dfrac{s}{4} - \dfrac{t^3}{48}\\
+	\phi_3 &= \dfrac{1}{2} + \int_{0}^{t} \dd{t}\qty(\dfrac{1}{2} + \dfrac{s}{4} - \dfrac{s^3}{48})\qty(\dfrac{1}{2} - \dfrac{s}{4} + \dfrac{s^3}{48}) = \dfrac{t}{4} - \dfrac{t^3}{48} + \dfrac{t^5}{480} - \dfrac{t^7}{16128}
+	\end{align}
+	
+		
+	\end{enumerate}
+\end{homeworkProblem}
+\end{document}
